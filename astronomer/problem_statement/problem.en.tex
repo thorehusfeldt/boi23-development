@@ -1,0 +1,41 @@
+\problemname{Astronomer}
+
+Tycho the astronomer has a passion for stargazing.
+In particular, he gets immense pleasure out of gazing at $k$ stars simultaneously through his telescope.   
+Building a telescope with radius $r$ costs $tr$~kroner, it will point exactly at the zenith.
+Moving a telescope also takes effort and costs $s$~kroner per unit.
+
+Given the coordinates of all start in tonight's sky, how much does it cost to build and move a telescope that allows $k$ stars to be observed at once?
+
+\subsection*{Input}
+
+On the first line three integers: the number $n$ of stars, the telescope building cost $t$, and the telescope moving cost $s$.
+Then follow $n$ lines, where the $i$th line contains the integer coordinates $x_i$ and $y_i$ of the $i$th star.
+
+\subsection*{Output}
+
+A single integer: the minimum number of kroner that Tycho needs to spend.
+
+\subsection*{Points and constraints}
+
+You can assume 
+\begin{enumerate}
+\item $1\leq k\leq n\leq 400$.
+\item $x_i, y_i\in \{-10^9,\ldots, 10^9\}$ for all $i\in\{1,\ldots,n\}$.
+\item $s, t\in \{0,\ldots, 10^9\}$.
+\end{enumerate}
+
+Your solution will be tested on a set of test groups, each worth a number of points.
+Each test group contains a set of test cases.
+To get the points for a test group you need to solve all test cases in the test group.
+Your final score will be the maximum score of a single submission.
+
+\begin{description}
+\item[Subtask 1 (5 points).] $t\leq s$.
+\item[Subtask 2 (5 points).] $k=n$ and $s=0$.
+\item[Subtask 3 (15 points).] $s=0$.
+\item[Subtask 4 (10 points).] $k=n$.
+\item[Subtask 5 (15 points).] $n\leq 20$.
+\item[Subtask 6 (25 points).] $n\leq 100$.
+\item[Subtask 7 (15 points).] No further constraints.
+\end{description}
