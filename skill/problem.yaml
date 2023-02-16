@@ -1,7 +1,7 @@
 source: BOI 2023
 license: cc by-sa
-author: Toby Specified
+author: Jevgēnijs Vihrovs
 type: scoring
 validation: custom interactive
 grading:
-    show_test_data_groups: yes
+  show_test_data_groups: yes
