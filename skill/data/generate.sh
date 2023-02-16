@@ -8,12 +8,21 @@ use_solution ../../data/empty.sh # empty .ans files
 
 # all the generators are introduced here
 compile gen_explicit.py
+compile gen_range.py
 
 samplegroup
 # no samples
 
 # so far only have one test group, this will change
 group group1 100
+tc range-10    gen_range --n 10
+tc range-100   gen_range --n 100
+tc range-1000  gen_range --n 1000
+tc range-10000 gen_range --n 10000
+tc range-r-10    gen_range --random --n 10
+tc range-r-100   gen_range --random --n 100
+tc range-r-1000  gen_range --random --n 1000
+tc range-r-10000 gen_range --random --n 10000
 tc four-primes-1 gen_explicit 2 3 5 7
 tc four-primes-2 gen_explicit 2 3 7 5
 tc four-primes-3 gen_explicit 2 5 3 7
