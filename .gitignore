@@ -1,4 +1,5 @@
 *.ans
+testdata.yaml
 **/data/secret
 __pycache__
 *.class
