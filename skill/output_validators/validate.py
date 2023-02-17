@@ -26,9 +26,9 @@ def fail(msg: str) -> None:
 def accept(rounds_used: int, input_size: int) -> None:
     if rounds_used < input_size + 16 * math.log(n):
         score = 100
-    elif rounds_used < input_size // 2:
+    elif rounds_used < 2 * (input_size - 2) + 1:
         score = 75
-    elif rounds_used < input_size // 3:
+    elif rounds_used < 3 * (input_size - 2):
         score = 50
     else:
         score = 25
