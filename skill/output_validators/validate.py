@@ -15,7 +15,6 @@ import math
 import sys
 from pathlib import Path
 
-
 def fail(msg: str) -> None:
     """Fail WA with given message"""
     with open(sys.argv[3] / Path("judgemessage.txt"), "a", encoding="utf-8") as jfile:
@@ -24,20 +23,18 @@ def fail(msg: str) -> None:
         afile.write(f"WA: {msg}\n")
     sys.exit(43)
 
-
 def accept(rounds_used: int, input_size: int) -> None:
     if rounds_used < input_size + 16 * math.log(n):
-        score = 99
+        score = 100
     elif rounds_used < input_size // 2:
         score = 75
     elif rounds_used < input_size // 3:
         score = 50
     else:
         score = 25
-    with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as jfile:
-        jfile.write(str(score) + "\n")
+    with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
+        sfile.write(str(score)+"\n")
     sys.exit(42)
-
 
 def get_team_line():
     team_bytes = sys.stdin.buffer.readline()
@@ -46,9 +43,8 @@ def get_team_line():
     except UnicodeDecodeError:
         fail("Team answer contains unexpected characters")
     if not team_line:
-        fail("Team produces empty output")  # can this ever happen?
+        fail("Team produces empty output") # can this ever happen?
     return team_line
-
 
 with open(sys.argv[1]) as in_file:
     skills = list(map(int, in_file.readline().split()))
@@ -56,7 +52,7 @@ with open(sys.argv[1]) as in_file:
     print(n, flush=True)
     for q in range(3 * n):
         line = get_team_line().split()
-        if line[0] == "?":
+        if line[0] == '?':
             if len(line) != 3:
                 fail(f"Got {len(line)} tokens, expected 3")
             i, j = map(int, line[1:])
@@ -67,7 +63,7 @@ with open(sys.argv[1]) as in_file:
             if i == j:
                 fail(f"Query indices must be different, not both {i}")
             print(min(skills[i - 1], skills[j - 1]), flush=True)
-        elif line[0] == "!":
+        elif line[0] == '!':
             if len(line) != n + 1:
                 fail(f"Got {len(line)} tokens, expected {n + 1}: {line}")
             for token in line[1:]:
