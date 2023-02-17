@@ -2,6 +2,6 @@ source: BOI 2023
 license: cc by-sa
 author: Jevgēnijs Vihrovs
 type: scoring
-validation: custom interactive
+validation: custom score interactive
 grading:
   show_test_data_groups: yes

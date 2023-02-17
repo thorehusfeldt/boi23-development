@@ -11,10 +11,10 @@
     judge_answer.ans is ignored
 """
 
+import math
 import sys
 from pathlib import Path
 
-MAX_ROUNDS = 10**5
 
 def fail(msg: str) -> None:
     """Fail WA with given message"""
@@ -25,7 +25,17 @@ def fail(msg: str) -> None:
     sys.exit(43)
 
 
-def accept() -> None:
+def accept(rounds_used: int, input_size: int) -> None:
+    if rounds_used < input_size + 16 * math.log(n):
+        score = 99
+    elif rounds_used < input_size // 2:
+        score = 75
+    elif rounds_used < input_size // 3:
+        score = 50
+    else:
+        score = 25
+    with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as jfile:
+        jfile.write(str(score) + "\n")
     sys.exit(42)
 
 
@@ -36,16 +46,17 @@ def get_team_line():
     except UnicodeDecodeError:
         fail("Team answer contains unexpected characters")
     if not team_line:
-        fail("Team produces empty output") # can this ever happen?
+        fail("Team produces empty output")  # can this ever happen?
     return team_line
+
 
 with open(sys.argv[1]) as in_file:
     skills = list(map(int, in_file.readline().split()))
     n = len(skills)
     print(n, flush=True)
-    for _ in range(MAX_ROUNDS):
+    for q in range(3 * n):
         line = get_team_line().split()
-        if line[0] == '?':
+        if line[0] == "?":
             if len(line) != 3:
                 fail(f"Got {len(line)} tokens, expected 3")
             i, j = map(int, line[1:])
@@ -56,7 +67,7 @@ with open(sys.argv[1]) as in_file:
             if i == j:
                 fail(f"Query indices must be different, not both {i}")
             print(min(skills[i - 1], skills[j - 1]), flush=True)
-        elif line[0] == '!':
+        elif line[0] == "!":
             if len(line) != n + 1:
                 fail(f"Got {len(line)} tokens, expected {n + 1}: {line}")
             for token in line[1:]:
@@ -79,4 +90,4 @@ with open(sys.argv[1]) as in_file:
             fail("Team response must start with ! or ?")
     else:
         fail("Too many rounds")
-    accept()
+    accept(q, n)
