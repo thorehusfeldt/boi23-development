@@ -14,16 +14,19 @@ parser.add_argument("-m", type=int)
 parser.add_argument("-c", type=int)
 parser.add_argument("-n", type=int)
 parser.add_argument(
-    "--max_a", type=int, default=None, help="Largest hideout index, default = 2 * z"
+    "--max_a", type=int, default=None, help="Largest hideout index, default = z - 1"
 )
 parser.add_argument("seed", type=int, help="seed")
 
 args = parser.parse_args()
-if args.max_a is None:
-    args.max_a = 2 * args.z
+z = args.z
+n = args.n
+max_a = args.max_a or args.z - 1
+
+assert max_a < z
 
 random.seed(args.seed)
 
-print(args.z, args.m, args.c, args.n)
-if args.n > 0:
-    print(*sorted(random.sample(range(args.max_a + 1), args.n)), sep="\n")
+print(z, args.m, args.c, args.n)
+if n > 0:
+    print(*sorted(random.sample(range(1, max_a + 1), n)), sep="\n")

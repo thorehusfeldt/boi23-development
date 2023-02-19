@@ -4,7 +4,7 @@
 
 . ../../_testdata_tools/gen.sh
 
-use_solution always_dig.py 
+use_solution th-zm.py 
 
 # all the generators are introduced here
 compile gen_random.py
@@ -23,7 +23,7 @@ tc 2
 tc 3
 tc 4
 tc ty-no-holes     gen_random -z   10 -m 2 -c 10 -n 0
-tc ty-all-holes    gen_random -z   10 -m 2 -c 10 -n 10 --max_a 9
+tc ty-all-holes    gen_random -z   10 -m 2 -c 10 -n 9
 tc ty-some-holes   gen_random -z   10 -m 2 -c 10 -n 3
 tc sm-some-holes   gen_random -z  100 -m 2 -c 10 -n 33
 tc md-some-holes   gen_random -z 1000 -m 2 -c 10 -n 333
