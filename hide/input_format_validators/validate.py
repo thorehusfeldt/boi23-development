@@ -20,8 +20,7 @@ if a:
     assert a == sorted(a), "Unsorted hideouts"
     assert len(set(a)) == n, "Duplicate hideouts"
     assert min(a) > 0, "Negative hideout" # redundant, caught by regex
-    assert z not in a, "z is implicitly hidden, shouldn't appear in a"
-    assert max(a) <= 10**12, "Invalid hideout"
+    assert max(a) < z, "hideout out of bounds"
 
 assert sys.stdin.readline() == ""
 sys.exit(42)
