@@ -13,11 +13,15 @@ compile gen_random.py
 samplegroup
 sample 1
 sample 2
+sample 3
+sample 4
 
 # First test group, and the number of points for it
 group group1 100
 tc 1
 tc 2
+tc 3
+tc 4
 tc ty-no-holes     gen_random -z   10 -m 2 -c 10 -n 0
 tc ty-all-holes    gen_random -z   10 -m 2 -c 10 -n 10 --max_a 9
 tc ty-some-holes   gen_random -z   10 -m 2 -c 10 -n 3
