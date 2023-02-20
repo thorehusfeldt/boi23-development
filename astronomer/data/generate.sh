@@ -4,7 +4,7 @@
 
 . ../../_testdata_tools/gen.sh
 
-use_solution drl_sweep_circle.cpp
+use_solution sweep_circle.cpp
 
 # all the generators are introduced here
 compile gen_random.py
