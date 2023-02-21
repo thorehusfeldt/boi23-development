@@ -26,9 +26,12 @@ def fail(msg: str) -> None:
     sys.exit(43)
 
 
-def accept(rounds_used: int, max_rounds: int) -> None:
+def accept(num_hidden_points: int, rounds_used: int, max_rounds: int) -> None:
     # Extremely preliminary scoring function
-    score =  int(100 * (1 - rounds_used / max_rounds))
+    if num_hidden_points == 1:
+        score = 6
+    else:
+        score =  int(.5 + 93 * (1 - rounds_used / max_rounds))
     with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
         sfile.write(str(score) + "\n")
     sys.exit(42)
@@ -98,4 +101,4 @@ with open(sys.argv[1]) as in_file:
             fail("Team response must start with ! or ?")
     else:
         fail("Too many rounds")
-    accept(rounds, Q)
+    accept(k, rounds, Q)
