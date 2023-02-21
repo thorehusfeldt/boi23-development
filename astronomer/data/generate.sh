@@ -19,7 +19,10 @@ group group1 100
 tc 1
 tc 2
 tc 3
-tc sm-random-1 gen_random --s 100 --t 100 --k 30 --n 100
-tc sm-random-2 gen_random --s 10 --t 100 --k 30 --n 100
-tc sm-random-3 gen_random --s 100 --t 10 --k 30 --n 100
-tc sm-random-4 gen_random --s 100 --t 100 --k 70 --n 100
+tc sm-random-2 gen_random --s 10  --t 100 --k  5 --n 50
+tc sm-random-3 gen_random --s 100 --t  10 --k  5 --n 50
+tc sm-random-4 gen_random --s 100 --t  10 --k 10 --n 50
+tc sm-random-5 gen_random --s 10  --t 100 --k 10 --n 50
+tc sm-random-6 gen_random --s 100 --t 100 --k 20 --n 50
+tc sm-random-7 gen_random --s 100 --t  10 --k 40 --n 50
+tc sm-random-8 gen_random --s 10  --t 100 --k 40 --n 50
