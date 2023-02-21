@@ -7,6 +7,12 @@ int64_t ssize(T const&v){ return (int64_t) v.size(); }
 
 struct Point{
     int x, y;
+    friend bool operator<(Point const&a, Point const&b){
+        return make_pair(a.x, a.y) < make_pair(b.x, b.y);
+    }
+    friend bool operator==(Point const&a, Point const&b){
+        return !((a < b) || (b < a));
+    }
 };
 
 int X, Y, k, Q;
@@ -46,6 +52,8 @@ signed main(){
             pool.push_back(Point{u, v});
         }
     }
+    sort(pool.begin(), pool.end());
+    pool.erase(unique(pool.begin(), pool.end()), pool.end());
     // for(auto const&e : pool) cerr << e.x << "," << e.y << " / ";
     // cerr << "\n";
     auto count_in_range = [&](int l, int r){
