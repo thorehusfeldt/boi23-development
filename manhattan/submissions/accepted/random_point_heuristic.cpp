@@ -17,7 +17,6 @@ using namespace std;
 #define MT make_tuple
 #define MP make_pair
 #define pb push_back
-#define endl '\n'
 #define F first
 #define S second
 #define vvvll vector<vvll>
@@ -46,17 +45,17 @@ int main() {
 
     vi a = query({0,0});
     vi b = query({0,m});
-    vii pts;
+    set<ii> init;
     FORE(p,a) FORE(q,b) {
         if((p+q-m)%2) continue;
         ll x = (p + q - m)/2;
         ll y = p - x;
         if(y < 0 || y > m || x < 0 || x > n) continue;
-        pts.pb({x,y});
+        init.insert({x,y});
     }
+    vii pts(ALL(init));
 
     vii sol;
-
     while(pts.size() > 0) {
         int ri = rand() % pts.size();
 
@@ -75,7 +74,6 @@ int main() {
         }
         pts = nc;
     }
-
     cout << "! ";
     FORE(s,sol) cout << s.F << " " << s.S << " ";
     cout << endl;

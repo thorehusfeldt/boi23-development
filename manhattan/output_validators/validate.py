@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 MAX_D = 10**4 # should be set as an argument, not hard-coded
-
+MAX_ROUND = 10**4
 
 def fail(msg: str) -> None:
     """Fail WA with given message"""
@@ -31,7 +31,7 @@ def accept(num_hidden_points: int, rounds_used: int, max_rounds: int) -> None:
     if num_hidden_points == 1:
         score = 6
     else:
-        score =  int(.5 + 93 * (1 - rounds_used / max_rounds))
+        score = int(.5 + 94 * min(1,max_rounds/rounds_used))
     with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
         sfile.write(str(score) + "\n")
     sys.exit(42)
@@ -55,7 +55,7 @@ with open(sys.argv[1]) as in_file:
         hidden_dots.add(tuple(map(int, in_file.readline().split())))
 
     print(n, m, k, Q, flush=True)
-    for rounds in range(Q):
+    for rounds in range(MAX_ROUND):
         line = get_team_line().split()
         if line[0] == "?":
             if len(line) != 2:
