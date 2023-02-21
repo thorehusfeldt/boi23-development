@@ -76,6 +76,8 @@ with open(sys.argv[1]) as in_file:
                 except ValueError:
                     fail(f"Failed to parse {line} as two ints")
                 query_points.add((x, y))
+            if len(query_points) < d:
+                fail("Duplicate query points")
             print(
                 *sorted(
                     abs(p[0] - q[0]) + abs(p[1] - q[1])
