@@ -78,7 +78,7 @@ with open(sys.argv[1]) as in_file:
                     abs(p[0] - q[0]) + abs(p[1] - q[1])
                     for q in query_points
                     for p in hidden_dots
-                )
+                ), flush=True
             )
         elif line[0] == "!":
             if len(line) != 2 * k + 1:
