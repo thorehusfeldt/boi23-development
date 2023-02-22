@@ -9,6 +9,7 @@ use_solution ../../data/empty.sh # empty .ans files
 # all the generators are introduced here
 compile gen_explicit.py
 compile gen_random.py
+compile gen_maximise_candidates.py
 
 samplegroup
 # no samples
@@ -30,3 +31,9 @@ tc random-maxk-2 gen_random --n 10 --m 100 --Q 350 --k 50
 tc random-maxk-3 gen_random --n 100 --m 10 --Q 350 --k 50
 tc random-maxk-4 gen_random --n 1000 --m 1000 --Q 350 --k 50
 tc random-maxk-5 gen_random --n 1000000000 --m 100000000 --Q 350 --k 50
+
+tc random-maxcand-1 gen_maximise_candidates --n 2000 --m 2000 --Q 350 --k 50 --ccx 400 --ccy 400
+tc random-maxcand-2 gen_maximise_candidates --n 2000000 --m 2000000 --Q 350 --k 50 --ccx 10000 --ccy 1000
+tc random-maxcand-3 gen_maximise_candidates --n 2000000 --m 2000 --Q 350 --k 50 --ccx 800 --ccy 800
+tc random-maxcand-4 gen_maximise_candidates --n 2000 --m 2000000 --Q 350 --k 50 --ccx 1100 --ccy 80000
+tc random-maxcand-5 gen_maximise_candidates --n 1000000000 --m 100000000 --Q 350 --k 50 --ccx 10000000 --ccy 1000000
