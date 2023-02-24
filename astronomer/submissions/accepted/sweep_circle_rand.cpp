@@ -1,0 +1,208 @@
+/*input
+3 4 0 10
+0 0
+10 0
+5 10
+5 5
+*/
+#include <cstdlib>
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define com complex<double>
+#define ld long double
+#define ii pair<ll,ll>
+#define vi vector<int>
+#define vii vector<ii>
+#define vc vector<char>
+#define vs vector<string>
+#define vd vector<double>
+#define vcom vector<com>
+#define vld vector<ld>
+#define vll vector<ll>
+#define vvi vector<vi>
+#define vvii vector<vii>
+#define vvc vector<vc>
+#define vvs vector<vs>
+#define vvll vector<vll>
+#define vvd vector<vd>
+#define vvcom vector<vcom>
+#define vvld vector<vld>
+#define FOR(x,n) for(int x=0;x<(n);x++)
+#define FORS(x,n) for(int x=1;x<=(n);x++)
+#define FORE(x,a) for(auto &x: a)
+#define FORT(x,a,b) for(int x=(a);x<(b);x++)
+#define FORD(x,a,b) for(int x=(a);x>=(b);x--)
+#define ALL(x) x.begin(),x.end()
+#define REP(n) for(int _ = 0; _ < n; _++)
+#define MT make_tuple
+#define MP make_pair
+#define pb push_back
+#define F first
+#define S second
+#define vvvll vector<vvll>
+#define sz(x) ((int)x.size())
+
+#ifndef M_PI
+#define M_PI (acosl(-1))
+#endif
+
+double epsilon = 1e-8;
+
+// kactl geometry
+template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
+template<class T>
+struct Point {
+    typedef Point P;
+    T x, y;
+    explicit Point(T x = 0, T y = 0) : x(x), y(y) {}
+    bool operator<(P p) const { return tie(x, y) < tie(p.x, p.y); }
+    bool operator==(P p) const { return tie(x, y) == tie(p.x, p.y); }
+    P operator+(P p) const { return P(x + p.x, y + p.y); }
+    P operator-(P p) const { return P(x - p.x, y - p.y); }
+    P operator*(T d) const { return P(x * d, y * d); }
+    P operator/(T d) const { return P(x / d, y / d); }
+    T dot(P p) const { return x * p.x + y * p.y; }
+    T cross(P p) const { return x * p.y - y * p.x; }
+    T cross(P a, P b) const { return (a - *this).cross(b - *this); }
+    T dist2() const { return x * x + y * y; }
+    double dist() const { return sqrt((double)dist2()); }
+    // angle to x-axis in interval [-pi, pi]
+    double angle() const { return atan2(y, x); }
+    P unit() const { return *this / dist(); } // makes dist()=1
+    P perp() const { return P(-y, x); }
+    P normal() const { return perp().unit(); }
+    P rotate(double a) const {
+        return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));
+    }
+    friend ostream& operator<<(ostream& os, P p) {
+        return os << "(" << p.x << "," << p.y << ")";
+    }
+};
+typedef Point<double> Pd;
+vector<Pd> ps;
+ll k, n, t, s;
+
+bool sweep(int u, double cst) {
+    //cout << "Testing " << u << " " << cst << endl;
+    vector<pair<double, int>> e; // Events (Angle,change) where change is whether a new point was added or removed.
+    FOR(v, n) {
+        if (v == u) continue;
+        Pd md = (ps[u] + ps[v]) / 2; // Point on bisector
+        Pd dir = (ps[v] - ps[u]).perp(); // Direction vector
+        bool found_valid = false;
+        // We can now ternary search on the magnitude of dir
+        double lmn = -1e9, lmx = 1e9;
+        REP(80) {
+            double lmd1 = (2 * lmn + lmx) / 3;
+            double lmd2 = (lmn + 2 * lmx) / 3;
+            // Estimating slope sign
+            double cs1 = (md + dir * lmd1 - ps[u]).dist() * t + (md + dir * lmd1).dist() * s;
+            double cs2 = (md + dir * lmd2 - ps[u]).dist() * t + (md + dir * lmd2).dist() * s;
+            double dcst = cs2 - cs1;
+            if (cs1 <= cst) {
+                lmx = lmd1;
+                found_valid = 1;
+            } else if (cs2 <= cst) {
+                lmx = lmd2;
+                found_valid = 1;
+            } else if (dcst < 0) {
+                lmn = lmd1;
+            } else {
+                lmx = lmd2;
+            }
+        }
+
+        double rmn = -1e9, rmx = 1e9;
+        REP(80) {
+            double rmd1 = (2 * rmn + rmx) / 3;
+            double rmd2 = (rmn + 2 * rmx) / 3;
+            // Estimating slope sign
+            double cs1 = (md + dir * rmd1 - ps[u]).dist() * t + (md + dir * rmd1).dist() * s;
+            double cs2 = (md + dir * rmd2 - ps[u]).dist() * t + (md + dir * rmd2).dist() * s;
+            double dcst = cs2 - cs1;
+            //cout << rmx << " " << rmn  << " " << dcst << endl;
+            if (cs1 <= cst) {
+                rmn = rmd1;
+                found_valid = 1;
+            } else if (cs2 <= cst) {
+                rmn = rmd2;
+                found_valid = 1;
+            } else if (dcst < 0) {
+                rmn = rmd1;
+            } else {
+                rmx = rmd2;
+            }
+        }
+        if (!found_valid) continue;
+        //assert(abs(rmx-rmn) < epsilon);
+
+        double langle = (md + dir * lmn).angle();
+        double rangle = (md + dir * rmn).angle();
+
+        e.pb({langle, 1});
+        e.pb({rangle, -1});
+
+        if (langle > rangle) { // Crosses starting point
+            e.pb({ -M_PI, 1});
+            e.pb({M_PI, -1});
+        }
+    }
+    sort(ALL(e));
+    int cr = 1;
+    //cout << e.size() << endl;
+    FORE(v, e) {
+        cr += v.S;
+        if (cr >= k) return true;
+    }
+    return false;
+}
+
+bool construct(double cst) {
+    FOR(i, n) if (sweep(i, cst)) return true;
+    return false;
+}
+
+int main() {
+    cin >> k >> n >> t >> s ;
+    FOR(i, n) {
+        int x, y;
+        cin >> x >> y;
+        ps.pb(Pd(x, y));
+    }
+
+    cout << setprecision(8) << fixed;
+    if (t <= s) {
+        vd d(n);
+        FOR(i, n) d[i] = ps[i].dist();
+        sort(ALL(d));
+        cout << d[k - 1] * t << endl;
+        return 0;
+    }
+    double best = 2e18;
+    mt19937_64 rng(0);
+    vi p(n);
+    FOR(i, n)
+    p[i] = i;
+    double eps = 1e-9;
+    for (int i : p)
+    {
+        double better = best > 1 ? best * (1 - eps) : max(0.0, best - eps);
+        if (sweep(i, better))
+        {
+            double mic = 0, mac = best;
+            // Plenty to get enough precision I believe
+            REP(80) {
+                double md = (mic + mac) / 2;
+                //cout << md << endl;
+                if (construct(md)) {
+                    mac = md;
+                } else {
+                    mic = md;
+                }
+            }
+            best = (mic + mac) / 2;
+        }
+    }
+    cout << best << endl;
+}
