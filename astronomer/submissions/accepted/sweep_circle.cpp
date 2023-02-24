@@ -163,7 +163,7 @@ int main() {
         vd d(n);
         FOR(i,n) d[i] = ps[i].dist();
         sort(ALL(d));
-        cout << d[k-1] << endl;
+        cout << d[k-1] * t << endl;
         return 0;
     }
 
