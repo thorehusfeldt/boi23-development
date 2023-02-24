@@ -192,12 +192,12 @@ int main() {
             break;
         if (sweep(i, better))
         {
-            double mic = 0, mac = best;
+            double mic = 0, mac = better;
             // Plenty to get enough precision I believe
             REP(80) {
                 double md = (mic + mac) / 2;
                 //cout << md << endl;
-                if (construct(md)) {
+                if (sweep(i, md)) {
                     mac = md;
                 } else {
                     mic = md;
