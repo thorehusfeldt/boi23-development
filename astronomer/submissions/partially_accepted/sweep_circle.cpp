@@ -36,7 +36,7 @@ using namespace std;
 #define vvvll vector<vvll>
 #define sz(x) ((int)x.size())
 
-double epsilon = 1e-8;
+double epsilon = 1e-6;
 
 // kactl geometry
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
@@ -77,7 +77,7 @@ bool sweep(int u, double cst) {
         if(v == u) continue;
         Pd md = (ps[u] + ps[v]) / 2; // Point on bisector
         Pd dir = (ps[v]-ps[u]).perp(); // Direction vector
-        bool found_valid = false;
+ 
         // We can now ternary search on the magnitude of dir
         double lmn = -1e9, lmx = 1e9;
         double mcost = 1e18;

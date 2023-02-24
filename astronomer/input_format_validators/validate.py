@@ -3,7 +3,7 @@
 import re
 import sys
 
-MAX_N = 400
+MAX_N = 800
 
 line = sys.stdin.readline()
 

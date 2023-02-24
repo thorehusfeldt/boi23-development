@@ -47,7 +47,7 @@ using namespace std;
 #define M_PI (acosl(-1))
 #endif
 
-double epsilon = 1e-8;
+double eps = 1e-8;
 
 // kactl geometry
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
@@ -89,31 +89,33 @@ bool sweep(int u, double cst) {
     FOR(v,n) {
         if(v == u) continue;
         Pd md = (ps[u] + ps[v]) / 2; // Point on bisector
-        Pd dir = (ps[v]-ps[u]).perp(); // Direction vector
-        bool found_valid = false;
+        Pd dir = (ps[v]-ps[u]).perp().unit(); // Direction vector
+
         // We can now ternary search on the magnitude of dir
         double lmn = -1e9, lmx = 1e9;
+        double rmn = lmn, rmx = 1e9;
         double mcost = 1e18;
-        REP(90) {
+        while (lmn + abs(lmn*eps) < lmx && lmn + eps < lmx) {
             double lmd1 = (2*lmn + lmx) / 3;
             double lmd2 = (lmn + 2*lmx) / 3;
-            // Estimating slope sign
+
             double cs1 = (md + dir*lmd1-ps[u]).dist()*t + (md+dir*lmd1).dist()*s;
             double cs2 = (md + dir*lmd2-ps[u]).dist()*t + (md+dir*lmd2).dist()*s; 
             double dcst = cs2-cs1;
             mcost = min(mcost,cs1);
             if(cs1 <= cst || dcst > 0) {
                 lmx = lmd2;
+                if(cs2 > cst) rmx = lmd2;
             } else {
                 lmn = lmd1;
             }
         }
+        rmn = lmn;
 
-        double rmn = -1e9, rmx = 1e9;
-        REP(90) {
+        while(rmn + abs(rmn*eps) < rmx && rmn + eps < rmx) {
             double rmd1 = (2*rmn + rmx) / 3;
             double rmd2 = (rmn + 2*rmx) / 3;
-            // Estimating slope sign
+
             double cs1 = (md + dir*rmd1-ps[u]).dist()*t + (md+dir*rmd1).dist()*s;
             double cs2 = (md + dir*rmd2-ps[u]).dist()*t + (md+dir*rmd2).dist()*s; 
             double dcst = cs2-cs1;
@@ -150,11 +152,6 @@ bool sweep(int u, double cst) {
     return false;
 }
 
-bool construct(double cst) {
-    FOR(i, n) if (sweep(i, cst)) return true;
-    return false;
-}
-
 int main() {
     cin >> k >> n >> t >> s ;
     FOR(i, n) {
@@ -176,7 +173,6 @@ int main() {
     vi p(n);
     FOR(i, n)
     p[i] = i;
-    double eps = 1e-9;
     for (int i : p)
     {
         double better = best > 1 ? best * (1 - eps) : best - eps;
@@ -186,7 +182,7 @@ int main() {
         {
             double mic = 0, mac = better;
             // Plenty to get enough precision I believe
-            REP(80) {
+            while(mic + abs(mic*eps) < mac && mic + eps < mac) {
                 double md = (mic + mac) / 2;
                 //cout << md << endl;
                 if (sweep(i, md)) {
