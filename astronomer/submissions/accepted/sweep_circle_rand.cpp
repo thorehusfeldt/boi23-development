@@ -187,7 +187,9 @@ int main() {
     double eps = 1e-9;
     for (int i : p)
     {
-        double better = best > 1 ? best * (1 - eps) : max(0.0, best - eps);
+        double better = best > 1 ? best * (1 - eps) : best - eps;
+        if (better < 0)
+            break;
         if (sweep(i, better))
         {
             double mic = 0, mac = best;
