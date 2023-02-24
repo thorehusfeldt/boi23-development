@@ -80,48 +80,40 @@ bool sweep(int u, double cst) {
         bool found_valid = false;
         // We can now ternary search on the magnitude of dir
         double lmn = -1e9, lmx = 1e9;
-        REP(120) {
+        double mcost = 1e18;
+        REP(90) {
             double lmd1 = (2*lmn + lmx) / 3;
             double lmd2 = (lmn + 2*lmx) / 3;
             // Estimating slope sign
             double cs1 = (md + dir*lmd1-ps[u]).dist()*t + (md+dir*lmd1).dist()*s;
             double cs2 = (md + dir*lmd2-ps[u]).dist()*t + (md+dir*lmd2).dist()*s; 
             double dcst = cs2-cs1;
-            if(cs1 <= cst) {
-                lmx = lmd1;
-                found_valid = 1;
-            } else if (cs2 <= cst) {
+            mcost = min(mcost,cs1);
+            if(cs1 <= cst || dcst > 0) {
                 lmx = lmd2;
-                found_valid = 1;
-            } else if (dcst < 0) {
-                lmn = lmd1;
             } else {
-                lmx = lmd2;
+                lmn = lmd1;
             }
         }
 
         double rmn = -1e9, rmx = 1e9;
-        REP(120) {
+        REP(90) {
             double rmd1 = (2*rmn + rmx) / 3;
             double rmd2 = (rmn + 2*rmx) / 3;
             // Estimating slope sign
             double cs1 = (md + dir*rmd1-ps[u]).dist()*t + (md+dir*rmd1).dist()*s;
             double cs2 = (md + dir*rmd2-ps[u]).dist()*t + (md+dir*rmd2).dist()*s; 
             double dcst = cs2-cs1;
+            mcost = min(mcost,cs1);
             //cout << rmx << " " << rmn  << " " << dcst << endl;
-            if(cs1 <= cst) {
-                rmn = rmd1;
-                found_valid = 1;
-            } else if (cs2 <= cst) {
-                rmn = rmd2;
-                found_valid = 1;
-            } else if (dcst < 0) {
+
+            if(cs2 <= cst || dcst < 0) {
                 rmn = rmd1;
             } else {
                 rmx = rmd2;
             }
         }
-        if(!found_valid) continue;
+        if(mcost > cst) continue;
         //assert(abs(rmx-rmn) < epsilon);
 
         double langle = (md + dir*lmn-ps[u]).angle();
