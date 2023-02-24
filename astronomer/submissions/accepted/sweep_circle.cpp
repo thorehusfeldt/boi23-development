@@ -80,7 +80,7 @@ bool sweep(int u, double cst) {
         bool found_valid = false;
         // We can now ternary search on the magnitude of dir
         double lmn = -1e9, lmx = 1e9;
-        REP(80) {
+        REP(120) {
             double lmd1 = (2*lmn + lmx) / 3;
             double lmd2 = (lmn + 2*lmx) / 3;
             // Estimating slope sign
@@ -101,7 +101,7 @@ bool sweep(int u, double cst) {
         }
 
         double rmn = -1e9, rmx = 1e9;
-        REP(80) {
+        REP(120) {
             double rmd1 = (2*rmn + rmx) / 3;
             double rmd2 = (rmn + 2*rmx) / 3;
             // Estimating slope sign
@@ -124,8 +124,8 @@ bool sweep(int u, double cst) {
         if(!found_valid) continue;
         //assert(abs(rmx-rmn) < epsilon);
 
-        double langle = (md + dir*lmn).angle();
-        double rangle = (md + dir*rmn).angle();
+        double langle = (md + dir*lmn-ps[u]).angle();
+        double rangle = (md + dir*rmn-ps[u]).angle();
 
         e.pb({langle,1});
         e.pb({rangle,-1});
