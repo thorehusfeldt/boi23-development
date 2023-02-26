@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 from math import sqrt,atan2,pi
 import sys
+import random
 eps = 1e-8
 class Point:
     def __init__(self,x,y):
@@ -98,6 +99,7 @@ def main():
         return
     best = 2e18
     p = [i for i in range(n)]
+    random.shuffle(p)
     for i in p:
         #print(i)
         better = best * (1-eps) if best > 1 else best - eps
