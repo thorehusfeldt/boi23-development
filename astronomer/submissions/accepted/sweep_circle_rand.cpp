@@ -172,7 +172,8 @@ int main() {
     mt19937_64 rng(0);
     vi p(n);
     FOR(i, n)
-    p[i] = i;
+        p[i] = i;
+    shuffle(p.begin(), p.end(), rng());
     for (int i : p)
     {
         double better = best > 1 ? best * (1 - eps) : best - eps;
