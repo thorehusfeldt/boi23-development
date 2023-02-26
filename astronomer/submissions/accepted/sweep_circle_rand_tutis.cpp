@@ -55,6 +55,7 @@ int main()
 	int s, t;
 	cin >> k >> n >> t >> s;
 	point A[n];
+	ld st = ld(s) / ld(max(1, t));
 	for (int i = 0; i < n; i++)
 		cin >> A[i].x >> A[i].y;
 	shuffle(A, A + n, rng);
@@ -64,7 +65,7 @@ int main()
 			return false;
 		auto cost = [&](point x)->ld
 		{
-			return (x - A[i]).r() * t + x.r() * s;
+			return (x - A[i]).r() + x.r() * st;
 		};
 		int cnt = 0;
 		vector<pair<ld, int>>E;
@@ -170,7 +171,6 @@ int main()
 		cout << fixed << setprecision(15) << D[k - 1] * t << "\n";
 		return 0;
 	}
-
 	const ld eps = 1e-10;
 	const ld eps1 = 1e-15;
 	ld best = 1e20;
@@ -193,5 +193,5 @@ int main()
 		}
 		best = (lo + hi) / 2;
 	}
-	cout << fixed << setprecision(15) << best << "\n";
+	cout << fixed << setprecision(15) << best * t << "\n";
 }
