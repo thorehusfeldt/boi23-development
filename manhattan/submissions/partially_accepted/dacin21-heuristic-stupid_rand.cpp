@@ -1,3 +1,13 @@
+/*
+ *  An even more stupid heuristic solution:
+ *   - get k^2 candidate points.
+ *   - repetedly select an *arbitrary* candidate, query it,
+ *     and remove all candidates that are too close to this candidate.
+ *
+ *
+ */
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -15,6 +25,9 @@ struct Point{
         return !((a < b) || (b < a));
     }
 };
+ll dist(Point const&a, Point const&b){
+    return abs(a.x - b.x) + abs(a.y - b.y);
+}
 
 ll X, Y;
 int k, Q;
@@ -34,9 +47,9 @@ vector<ll> query(vector<Point> const&v){
     }
     return ret;
 }
-int query_zeros(vector<Point> const&v){
-    auto tmp = query(v);
-    return count(tmp.begin(), tmp.end(), 0);
+ll query_min(Point const& p){
+    auto tmp = query({p});
+    return *min_element(tmp.begin(), tmp.end());
 }
 
 signed main(){
@@ -47,7 +60,7 @@ signed main(){
     for(int a : A){
         for(int b : B){
             ll u  = (a-b+X), v = (a+b-X);
-            // if(!(u%2 == 0 && v%2 == 0)) continue;
+            if(!(u%2 == 0 && v%2 == 0)) continue;
             u/=2, v/=2;
             if(u < 0 || u > X) continue;
             if(v < 0 || v > Y) continue;
@@ -56,36 +69,25 @@ signed main(){
     }
     sort(pool.begin(), pool.end());
     pool.erase(unique(pool.begin(), pool.end()), pool.end());
+    mt19937 rng(5315189052189ll);
+    shuffle(pool.begin(), pool.end(), rng);
 
-    auto count_in_range = [&](int l, int r){
-        return query_zeros(vector<Point>(pool.begin()+l, pool.begin()+r));
-    };
-    vector<int> ans;
-    int L = 0, R = ssize(pool);
-    const int BLOCK = 32;
+    vector<Point> ans;
     while(ssize(ans) < k){
-        int l = L;
-        int r = L+BLOCK;
-        if(r > R) r = R;
-        else {
-            if(!count_in_range(l, r)){
-                L = r;
-                continue;
-            }
+        const Point p = pool.back();
+        pool.pop_back();
+        const ll D = query_min(p);
+        if(D == 0){
+            ans.push_back(p);
         }
-        assert(L < R);
-        while(l+1 < r){
-            const int m = l + (r-l)/2;
-            if(count_in_range(l, m)) r = m;
-            else l=m;
-        }
-        ans.push_back(l);
-        L = r;
+        pool.erase(remove_if(pool.begin(), pool.end(), [&](Point const&q){
+            return dist(p, q) < D;
+        }), pool.end());
     }
 
+
     cout << "!";
-    for(auto &i : ans){
-        auto const e = pool[i];
+    for(auto &e : ans){
         cout << " " << e.x << " " << e.y;
     }
     cout << endl;
