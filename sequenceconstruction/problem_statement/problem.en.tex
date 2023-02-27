@@ -1,0 +1,16 @@
+\problemname{Sequence}
+
+A sequence of positive integers $x_1,\ldots,x_m$ is \emph{good} if  $x_1 = 1$ and for each $1 < i \leq m$ we either have $x_i=x_{i-1}+1$ or $x_i=x_j\cdot x_k$ for some $0< j\leq k< i$.
+
+
+You are given an integer $n$ with $1\leq n\leq 30000$ and a sequence of positive integers $w_1,\ldots,w_n$  with $1\leq w_i \leq 10^6$. 
+Define the \emph{weight} of a sequence $x_1,\ldots,x_k$ as \[ w_{x_1} +\cdots +w_{x_k}\,.\] 
+
+\subsection*{Input}
+
+$n$, $w_1, \ldots, w_n$ on separate lines.
+
+\subsection*{Output}
+
+Print $n$ lines.
+For each $1\leq i \leq n$, the $i$th line consists of the smallest weight of a good sequence containing $i$.
