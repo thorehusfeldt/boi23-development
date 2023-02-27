@@ -3,14 +3,19 @@
 import re
 import sys
 
-MAX_N = 800
+from argparse import ArgumentParser
+
+parser = ArgumentParser("Validate input to astronomer")
+parser.add_argument("--max_n", type=int, default=500)
+args = parser.parse_args()
+
 
 line = sys.stdin.readline()
 
 assert re.match(r"[1-9][0-9]* [1-9][0-9]* (0|[1-9][0-9]*) (0|[1-9][0-9]*)\n", line), line
 k, n, s, t = map(int, line.split())
 
-assert 0 < k <= n <= MAX_N
+assert 0 < k <= n <= args.max_n
 assert 0 <= s <= 10**9
 assert 0 <= t <= 10**9
 
