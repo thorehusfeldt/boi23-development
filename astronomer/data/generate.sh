@@ -14,7 +14,6 @@ sample 1
 sample 2
 sample 3
 
-# so far only have one test group, this will change
 group group1 30
 limits --max_n 50
 tc 1

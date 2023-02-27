@@ -14,8 +14,9 @@
 import sys
 from pathlib import Path
 
-MAX_D = 10**4 # should be set as an argument, not hard-coded
+MAX_D = 10**4  # should be set as an argument, not hard-coded
 MAX_ROUND = 10**4
+
 
 def fail(msg: str) -> None:
     """Fail WA with given message"""
@@ -31,7 +32,7 @@ def accept(num_hidden_points: int, rounds_used: int, max_rounds: int) -> None:
     if num_hidden_points == 1:
         score = 6
     else:
-        score = int(.5 + 94 * min(1,max_rounds/rounds_used))
+        score = int(0.5 + 94 * min(1, max_rounds / rounds_used))
     with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
         sfile.write(str(score) + "\n")
     sys.exit(42)
@@ -83,7 +84,8 @@ with open(sys.argv[1]) as in_file:
                     abs(p[0] - q[0]) + abs(p[1] - q[1])
                     for q in query_points
                     for p in hidden_dots
-                ), flush=True
+                ),
+                flush=True,
             )
         elif line[0] == "!":
             if len(line) != 2 * k + 1:
@@ -97,7 +99,7 @@ with open(sys.argv[1]) as in_file:
             answer_ints = list(map(int, line))
             answer_dots = set(zip(answer_ints[::2], answer_ints[1::2]))
             if answer_dots != hidden_dots:
-                fail("Wrong answer") # this could be more informative...
+                fail("Wrong answer")  # this could be more informative...
             break
         else:
             fail("Team response must start with ! or ?")
