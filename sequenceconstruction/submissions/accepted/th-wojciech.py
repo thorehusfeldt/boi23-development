@@ -3,32 +3,27 @@
 # Pythonified version of Wojciech's solution,
 # uses frozenset(A) as hashable for memoisation.
 
+import functools
+
 n = int(input())
 w = [int(input()) for _ in range(n)]
 
-memo = {}
 
+@functools.lru_cache(maxsize=None)
 def F(A):
-    A_ = frozenset(A)
-    if A_ in memo:
-        return memo[A_]
     a = max(A)
     if a == 1:
-        memo[A_] = w[0]
-    else:
-        B = A - set([a])
-        best = F(B | set([a - 1]))
-        for d in divisors[a]:
-            best = min(best, F(B | set([d, a//d])))
-        memo[A_] = best + w[a - 1]
-    return memo[A_]
+        return w[0]
+    B = A - set([a])
+    best = F(frozenset(B | set([a - 1])))
+    for d in divisors[a]:
+        best = min(best, F(frozenset(B | set([d, a // d]))))
+    return best + w[a - 1]
 
-divisors = { i: [] for i in range(1, n + 1) }
+
+divisors = {i + 1: [] for i in range(n)}
 for i in range(2, n + 1):
-    for j in range(i, n + 1):
-        if i * j > n:
-            break
+    for j in range(i, n // i + 1):
         divisors[i * j].append(i)
 
-for i in range(1, n+1):
-    print(F(set([i])))
+print(*(F(frozenset([i])) for i in range(1, n + 1)))
