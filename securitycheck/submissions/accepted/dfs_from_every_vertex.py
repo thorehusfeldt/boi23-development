@@ -18,7 +18,7 @@ def check_halls(here, time, ignore=None) -> int:
         if hall == ignore:
             continue
         c, t = check_halls(hall, time + 1, ignore=here)
-        time += t
+        time = t
         cost += c
     return cost, time + 1
 
