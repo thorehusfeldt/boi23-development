@@ -4,7 +4,7 @@
 
 . ../../_testdata_tools/gen.sh
 
-use_solution dacin21-full-all_directions_dp.cpp
+use_solution dacin21-full-two_dfs.py
 
 # all the generators are introduced here
 compile gen_random.py
@@ -29,3 +29,8 @@ tc md-star gen_star   -n 1000
 tc sm-starlike gen_star   -n 100   --degree 10
 tc md-starlike gen_star   -n 1000  --degree 100
 
+group group3 51
+tc 1
+tc lg-random gen_random -n 10000
+tc lg-star gen_star -n 10000
+tc lg-starlike gen_star -n 10000 --degree 3

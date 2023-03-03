@@ -3,7 +3,7 @@
 import re
 import sys
 
-MAX_N = 1000
+MAX_N = 10000
 
 line = sys.stdin.readline()
 assert re.match("[1-9][0-9]*\n", line), line
