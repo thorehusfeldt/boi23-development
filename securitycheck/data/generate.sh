@@ -4,7 +4,7 @@
 
 . ../../_testdata_tools/gen.sh
 
-use_solution dfs_from_every_vertex.py # Use submissions/accepted/th-ac.py to generate answers
+use_solution dacin21-full-all_directions_dp.cpp
 
 # all the generators are introduced here
 compile gen_random.py
