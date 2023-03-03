@@ -2,9 +2,9 @@
 
 # O(n) solution
 
-# The following lines don't seem to work in the judge?
-# import sys
-# sys.setrecursionlimit(10**6)
+import sys
+sys.setrecursionlimit(10**5)
+
 
 n = int(input())
 g = [[] for _ in range(n)]
