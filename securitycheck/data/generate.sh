@@ -21,7 +21,7 @@ tc 1
 tc ty-random gen_random -n 10
 tc singleton gen_star -n 1
 tc edge      gen_star -n 2
-tc p3        gen_star -n 3 --degree 1
+#tc p3        gen_star -n 3 --degree 1 . Currently 1.in
 tc ty-star gen_star -n 10
 tc ty-starlike gen_star -n 10 --degree 3
 tc ty-line gen_star -n 10 --degree 1

@@ -11,7 +11,7 @@ n = int(line)
 assert 0 < n <= MAX_N
 
 edges = set()
-halls = set()
+halls = set([1])
 for _ in range(n - 1):
     line = sys.stdin.readline()
     assert re.match("[1-9][0-9]* [1-9][0-9]*\n", line), line
@@ -24,7 +24,7 @@ for _ in range(n - 1):
     halls.add(v)
 
 assert len(edges) == n - 1, f"{n - 1} different corridors expected"
-assert halls == set(range(1, n + 1)), "Unexpected set of hall names"
+assert n == 1 or halls == set(range(1, n + 1)), "Unexpected set of hall names"
 
 V = list(range(1, n))
 E = {i: [] for i in range(1, n + 1)}
