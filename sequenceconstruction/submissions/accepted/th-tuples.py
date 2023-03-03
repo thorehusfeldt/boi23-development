@@ -7,6 +7,7 @@
 # Should be retired sooner or later
 
 import bisect
+import functools
 
 n = int(input())
 w = [int(input()) for _ in range(n)]
@@ -18,25 +19,23 @@ def insert(sortedtuple, a):
         return (a,)
     if a > sortedtuple[-1]:
         return sortedtuple + (a,)
+    if a == sortedtuple[-1]:
+        return sortedtuple
     if a in sortedtuple:
         return sortedtuple
     idx = bisect.bisect(sortedtuple, a)
     return sortedtuple[:idx] + (a,) + sortedtuple[idx:]
 
-
+@functools.lru_cache(maxsize=None)
 def F(A):
-    if A in memo:
-        return memo[A]
     a = A[-1]
     if a == 1:
-        memo[A] = w[0]
-    else:
-        B = A[:-1]
-        best = F(insert(B, a - 1))
-        for d in divisors[a]:
-            best = min(best, F(insert(insert(B, d), a//d)))
-        memo[A] = best + w[a - 1]
-    return memo[A]
+        return w[0]
+    B = A[:-1]
+    best = F(insert(B, a - 1))
+    for d in divisors[a]:
+        best = min(best, F(insert(insert(B, d), a//d)))
+    return best + w[a - 1]
 
 divisors = { i + 1: [] for i in range(n) }
 for i in range(2, n + 1):

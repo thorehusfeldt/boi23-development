@@ -16,14 +16,16 @@ def F(A):
         return w[0]
     B = A - set([a])
     best = F(frozenset(B | set([a - 1])))
-    for d in divisors[a]:
-        best = min(best, F(frozenset(B | set([d, a // d]))))
+    for ij in divisors[a]:
+        best = min(best, F(frozenset(B | set(ij))))
     return best + w[a - 1]
 
 
 divisors = {i + 1: [] for i in range(n)}
-for i in range(2, n + 1):
-    for j in range(i, n // i + 1):
-        divisors[i * j].append(i)
+for i in range(2, n):
+    for j in range(i, n):
+        if i * j > n:
+            break
+        divisors[i * j].append((i, j))
 
 print(*(F(frozenset([i])) for i in range(1, n + 1)))
