@@ -23,9 +23,10 @@ random.seed(args.seed)
 n = args.n
 print(n)
 
-neighbours = [2] + sorted(random.sample(range(3, n + 1), args.degree - 1)) + [n + 1]
+if n > 1:
+    neighbours = [2] + sorted(random.sample(range(3, n + 1), args.degree - 1)) + [n + 1]
 
-for u, v in zip(neighbours, neighbours[1:]):
-    print(1, u)
-    for w in range(u + 1, v):
-        print(w - 1, w)
+    for u, v in zip(neighbours, neighbours[1:]):
+        print(1, u)
+        for w in range(u + 1, v):
+            print(w - 1, w)
