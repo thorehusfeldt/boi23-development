@@ -1,25 +1,37 @@
 #! /usr/bin/env python3
 
-# Very preliminary recursive solution, interesting for N around 1000.
-# Will crash for large N because it runs out of recursion stack.
-# Can be fixed (should TLE, not RTE); only interesting for small N anyway.
+# Nonrecursive DFS from every vertex
 
 n = int(input())
-V = list(range(1, n + 1))
-tunnels = {i:[] for i in V}
+edges = {u: [] for u in range(n)}
 for _ in range(n - 1):
-    u, v = map(int, input().split())
-    tunnels[u].append(v)
-    tunnels[v].append(u)
+    u, v = map(lambda x: int(x) - 1, input().split())
+    edges[u].append(v)
+    edges[v].append(u)
 
-def check_halls(here, time, ignore=None) -> int:
-    cost = time
-    for hall in tunnels[here]:
-        if hall == ignore:
-            continue
-        c, t = check_halls(hall, time + 1, ignore=here)
-        time = t
-        cost += c
-    return cost, time + 1
 
-print(min(check_halls(u, 0)[0] for u in V))
+def dfs(r):
+    # yield vertices in some dfs order from r
+    visited = set()
+    S = [r]
+    while S:
+        u = S.pop()
+        yield u
+        if u not in visited:
+            visited.add(u)
+            for v in edges[u]:
+                if v not in visited:
+                    S.append(u)
+                    S.append(v)
+
+
+costs = set()
+for start in range(n):
+    cost = 0
+    checked = set()
+    for time, u in enumerate(dfs(start)):
+        if u not in checked:
+            cost += time
+            checked.add(u)
+    costs.add(cost)
+print(min(costs))
