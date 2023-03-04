@@ -10,5 +10,6 @@ for n in range(3, 11):
         f = open(f"tree-{n}-{i}.in", "w")
         f.write(f"{n}\n")
         for u, v in T.edges:
-            f.write(f"{u + 1} {v + 1}\n")
+            u, v = min(u, v) + 1, max(u, v) + 1
+            f.write(f"{u} {v}\n")
         f.close()

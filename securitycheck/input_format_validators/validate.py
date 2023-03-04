@@ -22,8 +22,7 @@ for _ in range(n - 1):
     line = sys.stdin.readline()
     assert re.match("[1-9][0-9]* [1-9][0-9]*\n", line), line
     u, v = map(int, line.split())
-    assert u != v, "Loop"
-    u, v = sorted([u, v])
+    assert u < v
     assert (u, v) not in edges, "Duplicate corridor"
     edges.add((u, v))
     halls.add(u)
@@ -40,7 +39,7 @@ for u, v in edges:
 if args.structure == "path":
     assert sum(1 for v in V if len(E[v]) == 1) == 2, "Expected a path"
 
-if args.structure is not None and args.structure == "starlike":
+if args.structure == "starlike":
     assert sum(1 for v in V if len(E[v]) > 2) <= 1, "Expected a starlike graph"
 
 Q = [1]

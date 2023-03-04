@@ -31,5 +31,6 @@ remaining_vertices = list(range(1, args.n + 1))
 random.shuffle(remaining_vertices)
 T = [remaining_vertices.pop()]
 for v in remaining_vertices:
-    print (v, random.choice(T))
+    u = random.choice(T)
+    print (min(u, v), max(u, v))
     T.append(v)
