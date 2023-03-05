@@ -1,9 +1,10 @@
 #! /usr/bin/env python3
 
 """ Generate regular d-tree of order n
-    seed is typically provided behind the scenes by the generator script and ignored
+    seed is typically provided behind the scenes by the generator script
 """
 from argparse import ArgumentParser
+from util import write_edgelist
 
 parser = ArgumentParser("Random input")
 parser.add_argument("seed", type=int, help="seed")
@@ -15,10 +16,12 @@ print(args.n)
 parent = 1
 child = 2
 children = 0
+edgelist = []
 while child <= args.n:
-    print(parent, child)
+    edgelist.append(f"{parent - 1} {child - 1}")
     child += 1
     children += 1
     if children == args.d:
         parent += 1
         children = 0
+write_edgelist(edgelist, args.seed)
