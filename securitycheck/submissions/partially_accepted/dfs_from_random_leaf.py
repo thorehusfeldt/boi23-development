@@ -1,10 +1,6 @@
 #! /usr/bin/env python3
 
-# Best of many random traversals.
-
-# This works as soon as the random start node is correctly chosen,
-# which is quite ccertain with n^2 trails.
-# (Shuffling the edges turns out to be irrelevant.)
+# One nonrandom DFS from random start vertex
 
 import random
 random.seed(42)
@@ -32,19 +28,16 @@ def dfs(r):
                     S.append(v)
 
 
-costs = set()
-num_trails = n * n
+leaves = [u for u in range(n) if len(edges[u]) == 1]
 
-for _ in range(num_trails):
-    start = random.randrange(n)
-    for u in range(n):
-        random.shuffle(edges[u])
-    cost = 0
-    checked = set()
-    for time, u in enumerate(dfs(start)):
-        if u not in checked:
-            cost += time
-            checked.add(u)
-    costs.add(cost)
+start = random.choice(leaves)
+for u in range(n):
+    random.shuffle(edges[u])
+cost = 0
+checked = set()
+for time, u in enumerate(dfs(start)):
+    if u not in checked:
+        cost += time
+        checked.add(u)
 
-print(min(costs))
+print(cost)
