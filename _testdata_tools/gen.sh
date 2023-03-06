@@ -169,6 +169,8 @@ grader_flags: ignore_sample" > testdata.yaml
 # Arguments: testcase path
 solve () {
   local execmd=${programs[$SOLUTION]}
+  # set stack limit to 1GB to allow recursion
+  ulimit -Ss 1000000
   $execmd < $1.in > $1.ans
 }
 
