@@ -3,6 +3,8 @@
 # Single DFS from first vertex
 # Fails on a path unless the first vertex is an endpoint
 
+# @EXPECTED_GRADES@ WA WA WA WA WA
+
 n = int(input())
 edges = {u: [] for u in range(n)}
 for _ in range(n - 1):

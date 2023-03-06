@@ -7,6 +7,8 @@
 # Maybe needs to be fixed (should WA or TLE on larger testgroups, not RTE);
 # but only interesting for small N anyway.
 
+# @EXPECTED_GRADES@ WA WA WA WA WA
+
 n = int(input())
 V = list(range(1, n + 1))
 tunnels = {i:[] for i in V}

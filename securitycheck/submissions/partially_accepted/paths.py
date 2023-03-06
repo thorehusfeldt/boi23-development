@@ -1,7 +1,8 @@
 #! /usr/bin/env python3
 
-# Assumes the edges are 1 -- 2 -- ... -- n
-# without even looking at the input
+# Assumes graph is a path without even looking at the input.
+
+# # @EXPECTED_GRADES@ AC WA WA WA WA
 
 n = int(input())
 print(n * (n - 1) // 2)

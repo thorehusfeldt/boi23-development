@@ -2,6 +2,10 @@
 
 # O(n) solution
 
+# Runs out of recursion stack at n = 100000, so RTEs on most large test groups
+
+# @EXPECTED_GRADES@ RTE RTE AC AC RTE
+
 import sys
 sys.setrecursionlimit(10**5)
 

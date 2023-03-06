@@ -9,6 +9,8 @@
 # Broken version that sorts in the wrong direction
 # This still works for path graphs
 
+# # @EXPECTED_GRADES@ AC WA WA WA WA
+
 n = int(input())
 edges = [[] for _ in range(n)]
 for _ in range(n - 1):

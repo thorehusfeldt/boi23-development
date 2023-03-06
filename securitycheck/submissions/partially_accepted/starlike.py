@@ -6,6 +6,8 @@
 # P1 is longest, and then following the unique tour
 # starting in t[1] and ending in t[2].
 
+# @EXPECTED_GRADES@ AC AC WA WA WA
+
 n = int(input())
 edges = [[] for _ in range(n)]
 for _ in range(n - 1):

@@ -1,7 +1,11 @@
 /*
  *  brute force solution that enumerates all possible order. 
  *  runs in O(n! * poly(n))
+ *  
+ *  # @EXPECTED_GRADES@ TLE TLE AC TLE TLE
  */ 
+
+
 #include <bits/stdc++.h>
 using namespace std;
 using ll = int64_t;

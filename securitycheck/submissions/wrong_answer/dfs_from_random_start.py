@@ -2,6 +2,8 @@
 
 # One nonrandom DFS from random start vertex
 
+# @EXPECTED_GRADES@ WA WA WA WA WA
+
 import random
 random.seed(42)
 

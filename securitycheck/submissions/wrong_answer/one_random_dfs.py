@@ -3,6 +3,8 @@
 # One random DFS from random start vertex
 # Fails on paths (there are only two good choices for the starting vertex)
 
+# @EXPECTED_GRADES@ WA WA WA WA WA
+
 import random
 random.seed(42)
 
