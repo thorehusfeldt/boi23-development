@@ -9,6 +9,11 @@
 # @EXPECTED_GRADES@ AC AC WA WA WA
 
 n = int(input())
+
+if n == 1:
+    print(0)
+    exit()
+
 edges = [[] for _ in range(n)]
 for _ in range(n - 1):
     u, v =  map(lambda x: int(x) - 1, input().split())
