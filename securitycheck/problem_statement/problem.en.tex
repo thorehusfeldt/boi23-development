@@ -35,7 +35,7 @@ If instead you start in hall~$1$ and visit the mines as $1$, $2$, $3$, the total
 
 The first line of input consists of the integer $n$, the number of halls.
 We assume that $1\leq n\leq 100\,000$ and that the halls are numbered $1$, $\ldots$, $n$.
-The next $n-1$ lines each contain two space-separated integers $u$ and $v$ with $1\leq u < v \leq n$, meaning that there is a tunnel between hall~$u$ and hall~$v$ 
+The next $n-1$ lines each contain two space-separated integers $u$ and $v$ with $1\leq u < v \leq n$, meaning that there is a tunnel between hall~$u$ and hall~$v$.
 
 \subsection*{Output}
 
@@ -48,11 +48,12 @@ Each test group contains a set of test cases.
 To get the points for a test group you need to solve all test cases in the test group.
 Your final score will be the maximum score of a single submission.
 
+\medskip
 \begin{tabular}{lll}
-Group & Points & Constraints \\
-2 & 18 & no hall is incident to more than two tunnels\\
-3 & 19 & at most one hall is incident to more than two tunnels\\
-1 & 20 & $n\leq 10$\\
+Group & Points & Constraints \\\hline
+1 & 18 & no hall is incident to more than two tunnels\\
+2 & 19 & at most one hall is incident to more than two tunnels\\
+3 & 20 & $n\leq 10$\\
 4 & 21 & $n\leq 1\,000$\\
 5 & 22 & \emph{no additional constraints}
 \end{tabular}
