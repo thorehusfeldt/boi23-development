@@ -14,10 +14,14 @@ compile gen_regular.py
 # there are two *.in files in data/sample
 samplegroup
 sample 1
+sample 2
+sample 3
 
 # First test group, and the number of points for it
 group group1 18
 limits --max_n 100000 --structure "path"
+tc 1
+tc 3
 tc sm-path     gen_star -n 100   --degree 1
 tc md-path     gen_star -n 1000  --degree 1
 tc lg-path-999 gen_star -n 999   --degree 1
@@ -28,6 +32,7 @@ tc hg-path-1   gen_star -n 99999  --degree 1
 group group2 19
 limits --max_n 100000 --structure "starlike"
 include_group group1
+tc 2
 tc sm-star gen_star     -n 100
 tc md-star gen_star     -n 1000
 tc sm-starlike gen_star -n 100   --degree 10
@@ -41,8 +46,15 @@ tc hg-starlike-3000 gen_star -n 100000 --degree 3000
 group group3 20
 limits --max_n 10
 tc 1
+tc 2
+tc 3
 for F in ../manual_inputs/*.in; do
-	tc_manual $F
+	case "$F" in 
+		*tree-4-1*) echo "skipping $F (it duplicates sample 2)"
+			;;
+		*) tc_manual $F
+			;;
+	esac
 done
 
 group group4 21
