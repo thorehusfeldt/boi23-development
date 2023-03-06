@@ -1,5 +1,5 @@
 /*
- * O(n) solution with O(1) stack space
+ * O(n^2) solution, with clever randomization.
  *
  */ 
 #include <bits/stdc++.h>

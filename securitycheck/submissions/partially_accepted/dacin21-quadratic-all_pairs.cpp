@@ -1,5 +1,5 @@
 /*
- * O(n) solution with O(1) stack space
+ * O(n^2) solution, no heuristics
  *
  */ 
 #include <bits/stdc++.h>
