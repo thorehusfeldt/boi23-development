@@ -4,7 +4,7 @@
 
 . ../../_testdata_tools/gen.sh
 
-use_solution th.py
+use_solution dacin21-full-bottom_up.cpp
 
 # all the generators are introduced here
 compile gen_random.py
