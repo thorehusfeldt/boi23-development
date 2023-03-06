@@ -37,7 +37,7 @@ for u, v in edges:
     E[v].append(u)
 
 if args.structure == "path":
-    assert sum(1 for v in V if len(E[v]) == 1) == 2, "Expected a path"
+    assert n == 1 or sum(1 for v in V if len(E[v]) == 1) == 2, "Expected a path"
 
 if args.structure == "starlike":
     assert sum(1 for v in V if len(E[v]) > 2) <= 1, "Expected a starlike graph"
