@@ -20,9 +20,9 @@ void iterative_dfs(int root, S pre, T post){
     s.push_back({root, -1});
     while(!s.empty()){
         auto [u, p] = s.back();
-        if(p != -1) pre(u, p);
         s.pop_back();
         if(u >= 0){
+            if(p != -1) pre(u, p);
             s.push_back({-1-u, p});
             for(int const e : g[u]) if(e != p){
                 s.push_back({e, u});
