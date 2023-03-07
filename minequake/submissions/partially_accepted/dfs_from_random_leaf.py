@@ -1,6 +1,8 @@
 #! /usr/bin/env python3
 
-# One nonrandom DFS from random start vertex
+# One nonrandom DFS from random leaf. This works well for paths
+
+# @EXPECTED_GRADES@ AC WA WA WA WA
 
 import random
 random.seed(42)

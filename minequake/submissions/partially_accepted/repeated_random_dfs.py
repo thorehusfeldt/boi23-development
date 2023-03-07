@@ -3,8 +3,13 @@
 # Best of many random traversals.
 
 # This works as soon as the random start node is correctly chosen,
-# which is quite ccertain with n^2 trails.
+# which is quite certain with n^2 trails.
 # (Shuffling the edges turns out to be irrelevant.)
+# 
+# Much too slow for large instances (cubic time),
+# but works whp for small enough graphs
+
+# @EXPECTED_GRADES@ TLE TLE AC TLE TLE
 
 import random
 random.seed(42)

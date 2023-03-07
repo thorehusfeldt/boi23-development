@@ -2,6 +2,10 @@
 
 # Nonrecursive DFS from every vertex
 
+# Quadratic time, fine for instances up to 1000 halls or so
+
+# @EXPECTED_GRADES@ TLE TLE AC AC TLE
+
 n = int(input())
 edges = {u: [] for u in range(n)}
 for _ in range(n - 1):
