@@ -1,4 +1,5 @@
-/*
+/* @EXPECTED_GRADES@ AC WA AC AC WA
+ *
  * O(n^2) solution with dumb randomization.
  * 
  */ 
@@ -46,7 +47,7 @@ signed main(){
         cost = 0;
         dfs(u);
         ans = min<ll>(ans, cost);
-        if((++it)%8 == 0){
+        if((++it)%1 == 0){
             if((clock() - begin) * 1.0 / CLOCKS_PER_SEC >= 0.9) break;
         }
     }

@@ -1,4 +1,5 @@
-/*
+/* @EXPECTED_GRADES@ TLE TLE AC AC TLE
+ * 
  * O(n^2) solution, no heuristics
  *
  */ 
