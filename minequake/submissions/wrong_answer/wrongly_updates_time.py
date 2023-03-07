@@ -1,30 +1,70 @@
 #! /usr/bin/env python3
 
-# Broken recursive solution, interesting for N around 1000.
-# (Wrongly increments time after recursive check, this was
-# in fact an honest mistake.)
-# Will crash for large N because it runs out of recursion stack.
-# Maybe needs to be fixed (should WA or TLE on larger testgroups, not RTE);
-# but only interesting for small N anyway.
+# Nonrecursive DFS from every vertex identical to accepted/th.py
+# but misunderstands how time works.
+# Began as an honest misunderstanding of the original problem
+# formulation.
 
 # @EXPECTED_GRADES@ WA WA WA WA WA
 
 n = int(input())
-V = list(range(1, n + 1))
-tunnels = {i:[] for i in V}
+edges = {u: [] for u in range(n)}
 for _ in range(n - 1):
-    u, v = map(int, input().split())
-    tunnels[u].append(v)
-    tunnels[v].append(u)
+    u, v = map(lambda x: int(x) - 1, input().split())
+    edges[u].append(v)
+    edges[v].append(u)
 
-def check_halls(here, time, ignore=None) -> int:
-    cost = time
-    for hall in tunnels[here]:
-        if hall == ignore:
-            continue
-        c, t = check_halls(hall, time + 1, ignore=here)
-        time += t # Here's the mistake
-        cost += c
-    return cost, time + 1
 
-print(min(check_halls(u, 0)[0] for u in V))
+# Compute dfs traversal from (arbitrarily chosen) node 0.
+# Nonrecursive DFS to keep the Python gods happy.
+traversal = []
+visited = set()
+S = [0]
+while S:
+    u = S.pop()
+    traversal.append(u)
+    if u not in visited:
+        visited.add(u)
+        for v in edges[u]:
+            if v not in visited:
+                S.append(u)
+                S.append(v)
+
+
+# Compute total cost corresponding to any
+# traversal from 0. While we're
+# here, we also compute the size of the
+# subtree rooted at each node.
+
+cost = 0
+checked = set()
+subtree_size = {}
+time = 0
+for u in traversal:
+    if u not in checked:
+        cost += time
+        time += time # This line is wrong
+        subtree_size[u] = 1
+        checked.add(u)
+    else:
+        subtree_size[u] += childsize
+    childsize = subtree_size[u]
+    time += 1
+
+# Comput answer for other starting nodes than 0
+
+parentcost = cost
+res = {0: parentcost}
+for v in traversal:
+    if v not in res:
+        # Consider traversal that goes v, T_v, v, u, T_u
+        res[v] = parentcost # a priori same as starting at u, v, T_v,...
+        # but all of T_v is visisted one time step earlier:
+        res[v] -= subtree_size[v]
+        # u itself is now visited at time 2|E(T_v)| + 1 (rather than time 0)
+        res[v] += 2 * (subtree_size[v] - 1) + 1
+        # Each vertex in T_u - T_v - {u} is visited one time step earlier
+        res[v] -= (n - subtree_size[v] - 1)
+    parentcost = res[v]
+
+print(min(res.values()))
