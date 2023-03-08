@@ -171,8 +171,8 @@ int main()
 		cout << fixed << setprecision(15) << D[k - 1] * t << "\n";
 		return 0;
 	}
-	const ld eps = 1e-7;
-	const ld eps1 = 1e-7;
+	const ld eps = 1e-10;
+	const ld eps1 = 1e-15;
 	ld best = 1e20;
 	for (int i = 0; i < n; i++)
 	{

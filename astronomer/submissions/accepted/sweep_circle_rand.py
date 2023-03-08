@@ -86,6 +86,8 @@ def sweep(u,cst):
             e.append((pi,-1))
     e.sort()
     cr = 1
+    if cr >= k:
+        return True
     for v in e:
         cr += v[1]
         if cr >= k: return True

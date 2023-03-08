@@ -144,6 +144,7 @@ bool sweep(int u, double cst) {
     }
     sort(ALL(e));
     int cr = 1;
+    if(cr >= k) return true;
     //cout << e.size() << endl;
     FORE(v,e) {
         cr += v.S;

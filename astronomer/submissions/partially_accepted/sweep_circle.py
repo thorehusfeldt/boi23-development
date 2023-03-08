@@ -3,7 +3,7 @@
 from math import sqrt,atan2,pi
 import sys
 import random
-eps = 1e-8
+eps = 1e-7
 class Point:
     def __init__(self,x,y):
         self.x = x
@@ -74,11 +74,11 @@ def sweep(u,cst):
                 rmn = rmd1
             else:
                 rmx = rmd2
-        if mcost > cst: continue
+        if mcost > cst:
+            continue
 
         langle = (md + dir*lmn-ps[u]).angle()
         rangle = (md + dir*rmn-ps[u]).angle()
-
         e.append((langle,1))
         e.append((rangle,-1))
 
@@ -87,15 +87,18 @@ def sweep(u,cst):
             e.append((pi,-1))
     e.sort()
     cr = 1
+    if cr >= k:
+        return True
     for v in e:
         cr += v[1]
         if cr >= k: return True
     return False
 
 def construct(cst):
-    for i in range(n): 
+    for i in range(n):
         if sweep(i,cst): return True
     return False
+
 def main():
     if t <= s:
         d = list(map(lambda x: x.dist(), ps))
@@ -104,10 +107,12 @@ def main():
         return
 
     mic = 0
-    mac = 1e9
+    mac = 1e18
     while mic + abs(mic*eps) < mac and mic + eps < mac:
         md = (mic + mac) / 2
-        if(sweep(i,md)):
+        r = construct(md)
+        #print(md,r)
+        if(r):
             mac = md
         else:
             mic = md

@@ -119,10 +119,14 @@ int main()
 	vector<ld>D;
 	for (int i = 0; i < n; i++)
 		D.push_back(A[i].r());
+	if (k == 1)
+		for (int i = 0; i < n; i++)
+			ret = min(ret,A[i].r()*s);
 	sort(D.begin(), D.end());
 	ret = min(ret, D[k - 1] * t);
+	cout << fixed << setprecision(10);
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j <= i; j++)
 			check(A[i], A[j]);
-	cout << fixed << setprecision(10) << ret << "\n";
+	cout << ret << "\n";
 }
