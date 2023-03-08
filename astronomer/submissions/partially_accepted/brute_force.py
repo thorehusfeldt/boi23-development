@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-# @EXPECTED_GRADES@ TLE AC AC WA TLE TLE
+# @EXPECTED_GRADES@ WA AC AC WA TLE WA
 
 from itertools import combinations
 import sys

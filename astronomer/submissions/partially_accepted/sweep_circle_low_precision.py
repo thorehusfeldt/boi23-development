@@ -1,9 +1,9 @@
 #! /usr/bin/env python3
-# @EXPECTED_GRADES@ TLE AC AC AC AC TLE
+# @EXPECTED_GRADES@ AC WA WA WA AC WA
 from math import sqrt,atan2,pi
 import sys
 import random
-eps = 1e-7
+eps = 1e-1
 class Point:
     def __init__(self,x,y):
         self.x = x
@@ -24,7 +24,6 @@ class Point:
         return self/self.dist()
     def angle(self):
         return atan2(self.y, self.x)
-
 
 k,n,s,t = map(int,input().split())
 
@@ -50,8 +49,8 @@ def sweep(u,cst):
             lmd2 = (lmn + 2*lmx) / 3
 
             #print(lmn,lmx)
-            cs1 = (md + dir*lmd1-ps[u]).dist()*t + (md+dir*lmd1).dist()*s
-            cs2 = (md + dir*lmd2-ps[u]).dist()*t + (md+dir*lmd2).dist()*s 
+            cs1 = (Point(md.x + dir.x*lmd1 - ps[u].x,md.y + dir.y*lmd1 - ps[u].y)).dist()*t + (Point(md.x + dir.x*lmd1,md.y + dir.y*lmd1)).dist()*s
+            cs2 = (Point(md.x + dir.x*lmd2 - ps[u].x,md.y + dir.y*lmd2 - ps[u].y)).dist()*t + (Point(md.x + dir.x*lmd2,md.y + dir.y*lmd2)).dist()*s
             dcst = cs2-cs1
             mcost = min(mcost,cs1)
             if cs1 <= cst or dcst > 0:
@@ -65,8 +64,8 @@ def sweep(u,cst):
             rmd1 = (2*rmn + rmx) / 3
             rmd2 = (rmn + 2*rmx) / 3
 
-            cs1 = (md + dir*rmd1-ps[u]).dist()*t + (md+dir*rmd1).dist()*s
-            cs2 = (md + dir*rmd2-ps[u]).dist()*t + (md+dir*rmd2).dist()*s
+            cs1 = (Point(md.x + dir.x*rmd1 - ps[u].x,md.y + dir.y*rmd1 - ps[u].y)).dist()*t + (Point(md.x + dir.x*rmd1,md.y + dir.y*rmd1)).dist()*s
+            cs2 = (Point(md.x + dir.x*rmd2 - ps[u].x,md.y + dir.y*rmd2 - ps[u].y)).dist()*t + (Point(md.x + dir.x*rmd2,md.y + dir.y*rmd2)).dist()*s
             dcst = cs2-cs1
             mcost = min(mcost,cs1)
 

@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+# @EXPECTED_GRADES@ AC AC AC AC AC AC
 from math import sqrt,atan2,pi
 import sys
 import random
@@ -49,8 +50,8 @@ def sweep(u,cst):
             lmd2 = (lmn + 2*lmx) / 3
 
             #print(lmn,lmx)
-            cs1 = (md + dir*lmd1-ps[u]).dist()*t + (md+dir*lmd1).dist()*s
-            cs2 = (md + dir*lmd2-ps[u]).dist()*t + (md+dir*lmd2).dist()*s 
+            cs1 = (Point(md.x + dir.x*lmd1 - ps[u].x,md.y + dir.y*lmd1 - ps[u].y)).dist()*t + (Point(md.x + dir.x*lmd1,md.y + dir.y*lmd1)).dist()*s
+            cs2 = (Point(md.x + dir.x*lmd2 - ps[u].x,md.y + dir.y*lmd2 - ps[u].y)).dist()*t + (Point(md.x + dir.x*lmd2,md.y + dir.y*lmd2)).dist()*s
             dcst = cs2-cs1
             mcost = min(mcost,cs1)
             if cs1 <= cst or dcst > 0:
@@ -64,8 +65,8 @@ def sweep(u,cst):
             rmd1 = (2*rmn + rmx) / 3
             rmd2 = (rmn + 2*rmx) / 3
 
-            cs1 = (md + dir*rmd1-ps[u]).dist()*t + (md+dir*rmd1).dist()*s
-            cs2 = (md + dir*rmd2-ps[u]).dist()*t + (md+dir*rmd2).dist()*s
+            cs1 = (Point(md.x + dir.x*rmd1 - ps[u].x,md.y + dir.y*rmd1 - ps[u].y)).dist()*t + (Point(md.x + dir.x*rmd1,md.y + dir.y*rmd1)).dist()*s
+            cs2 = (Point(md.x + dir.x*rmd2 - ps[u].x,md.y + dir.y*rmd2 - ps[u].y)).dist()*t + (Point(md.x + dir.x*rmd2,md.y + dir.y*rmd2)).dist()*s
             dcst = cs2-cs1
             mcost = min(mcost,cs1)
 
@@ -73,11 +74,11 @@ def sweep(u,cst):
                 rmn = rmd1
             else:
                 rmx = rmd2
-        if mcost > cst: continue
+        if mcost > cst:
+            continue
 
         langle = (md + dir*lmn-ps[u]).angle()
         rangle = (md + dir*rmn-ps[u]).angle()
-
         e.append((langle,1))
         e.append((rangle,-1))
 

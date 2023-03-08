@@ -1,7 +1,7 @@
 /*
  *  runs in O(n^3 lg n)
  *  
- *  # @EXPECTED_GRADES@ TLE AC AC AC AC TLE
+ *  # @EXPECTED_GRADES@ AC AC AC AC TLE TLE
  */ 
 #include <cstdlib>
 #include <bits/stdc++.h>
@@ -41,7 +41,7 @@ using namespace std;
 #define vvvll vector<vvll>
 #define sz(x) ((int)x.size())
 
-double eps = 1e-7;
+double eps = 1e-8;
 
 // kactl geometry
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
