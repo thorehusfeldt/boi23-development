@@ -6,9 +6,11 @@ import sys
 from argparse import ArgumentParser
 
 parser = ArgumentParser("Validate input to astronomer")
-parser.add_argument("--max_n", type=int, default=500)
+parser.add_argument("--max_n", type=int, default=800)
+parser.add_argument("--s_geq_t",  action='store_true')
+parser.add_argument("--k_eq_n",  action='store_true')
+parser.add_argument("--s_eq_0",  action='store_true')
 args = parser.parse_args()
-
 
 line = sys.stdin.readline()
 
@@ -18,6 +20,11 @@ k, n, s, t = map(int, line.split())
 assert 0 < k <= n <= args.max_n
 assert 0 <= s <= 10**9
 assert 0 <= t <= 10**9
+
+assert not args.s_geq_t or s >= t
+assert not args.k_eq_n or k == n
+assert not args.s_eq_0 or s == 0
+
 
 points = set()
 for _ in range(n):

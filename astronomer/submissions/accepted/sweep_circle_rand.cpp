@@ -153,7 +153,7 @@ bool sweep(int u, double cst) {
 }
 
 int main() {
-    cin >> k >> n >> t >> s ;
+    cin >> k >> n >> s >> t ;
     FOR(i, n) {
         int x, y;
         cin >> x >> y;

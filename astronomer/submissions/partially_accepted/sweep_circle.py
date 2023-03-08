@@ -1,8 +1,9 @@
 #! /usr/bin/env python3
+# @EXPECTED_GRADES@ TLE AC AC AC AC TLE
 from math import sqrt,atan2,pi
 import sys
 import random
-eps = 1e-7
+eps = 1e-8
 class Point:
     def __init__(self,x,y):
         self.x = x
@@ -91,29 +92,27 @@ def sweep(u,cst):
         if cr >= k: return True
     return False
 
+def construct(cst):
+    for i in range(n): 
+        if sweep(i,cst): return True
+    return False
 def main():
     if t <= s:
         d = list(map(lambda x: x.dist(), ps))
         d.sort()
         print(d[k-1] * t)
         return
-    best = 2e18
-    p = [i for i in range(n)]
-    random.shuffle(p)
-    for i in p:
-        #print(i)
-        better = best * (1-eps) if best > 1 else best - eps
-        if better < 0: continue
-        if sweep(i,better):
-            mic = 0
-            mac = better
-            while mic + abs(mic*eps) < mac and mic + eps < mac:
-                md = (mic + mac) / 2
-                if(sweep(i,md)):
-                    mac = md
-                else:
-                    mic = md
-            best = (mic + mac) / 2
+
+    mic = 0
+    mac = 1e9
+    while mic + abs(mic*eps) < mac and mic + eps < mac:
+        md = (mic + mac) / 2
+        if(sweep(i,md)):
+            mac = md
+        else:
+            mic = md
+    best = (mic + mac) / 2 
+            
     print(best)
 
 main()

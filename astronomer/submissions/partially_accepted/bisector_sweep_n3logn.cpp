@@ -1,10 +1,8 @@
-/*input
-3 4 0 10
-0 0
-10 0
-5 10
-5 5
-*/
+/*
+ *  runs in O(n^3 lg n)
+ *  
+ *  # @EXPECTED_GRADES@ TLE AC AC AC TLE TLE
+ */ 
 #include <bits/stdc++.h>
 using namespace std;
 using ld = long double;
@@ -62,7 +60,7 @@ int main()
 {
 	int n, k;
 	int s, t;
-	cin >> k >> n >> t >> s;
+	cin >> k >> n >> s >> t;
 	point A[n];
 	for (int i = 0; i < n; i++)
 		cin >> A[i].x >> A[i].y;

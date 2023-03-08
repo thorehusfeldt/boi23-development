@@ -7,7 +7,7 @@
 */
 #include <bits/stdc++.h>
 using namespace std;
-using ld = long double;
+using ld = double;
 struct point
 {
 	ld x, y;
@@ -53,7 +53,7 @@ int main()
 {
 	int n, k;
 	int s, t;
-	cin >> k >> n >> t >> s;
+	cin >> k >> n >> s >> t;
 	point A[n];
 	ld st = ld(s) / ld(max(1, t));
 	for (int i = 0; i < n; i++)
@@ -171,8 +171,8 @@ int main()
 		cout << fixed << setprecision(15) << D[k - 1] * t << "\n";
 		return 0;
 	}
-	const ld eps = 1e-10;
-	const ld eps1 = 1e-15;
+	const ld eps = 1e-7;
+	const ld eps1 = 1e-7;
 	ld best = 1e20;
 	for (int i = 0; i < n; i++)
 	{
