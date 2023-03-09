@@ -43,7 +43,7 @@ vll query(vii qs) {
     return res;
 }
 
-map<int,int> dd;
+set<int> dd;
 vii qps;
 vi ccl;
 vii cpq;
@@ -56,14 +56,13 @@ bool try_cc(int idx, int dx, int dy){
     if(qp.F < 0 || qp.F > 1e9 || qp.S < 0 || qp.S > 1e9) return false;
     FOR(j,cp) {
         ll dj = dist(qp,pts[j]);
-        if(dd.count(dj)) return false;
-        if(j != idx && ccl[j] < 0 && dj <= abs(dx) + abs(dy)) {
-            return false;
-        }
+        if(j == idx) continue;
+        if(ccl[j] < 0 && dj <= abs(dx) + abs(dy)) return false;
+        if(dj <= ccl[j]) return false;
     }
     //cout << "sb" << endl;
     FOR(j,cp) {
-        dd[dist(qp,pts[j])] = idx;
+        dd.insert(dist(qp,pts[j]));
     }
     qps.pb(qp);
     cpq[idx] = qp;
@@ -109,19 +108,14 @@ int main() {
         } else {
             pr = idx;
         }
-        cc += cp + 7;
+        while(dd.count(++cc));
         idx = nxt[idx];
     }
 
     vll ds = query(qps);
 
-    vector<map<ll,int>> mp(pts.size());
-
-    FORE(d,ds) {
-        assert(dd.count(d));
-        ll pt = dd[d];
-        mp[pt][d]++;
-    }
+    map<ll,int> cnt;
+    FORE(d,ds) cnt[d]++;
 
     vii pem(cp);
     FOR(i,cp) {
@@ -134,11 +128,9 @@ int main() {
     FOR(pmi,cp) {
         int pi = pem[pmi].S;
         ii p = pts[pi];
-        FORE(q,sol) {
-            mp[pi][dist(cpq[pi],q)]--;
-        }
-        if(mp[pi][dist(cpq[pi],p)] == 1) {
+        if(cnt[ccl[pi]]) {
             sol.pb(p);
+            FORE(q,qps) cnt[dist(p,q)]--;
         }
     }
     cout << "! ";
