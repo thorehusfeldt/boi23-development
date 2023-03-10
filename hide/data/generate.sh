@@ -27,6 +27,9 @@ tc ty-no-holes     gen_random -z   10 -m 2 -c 10 -n 0
 tc ty-all-holes    gen_random -z   10 -m 2 -c 10 -n 9
 tc ty-some-holes   gen_random -z   10 -m 2 -c 10 -n 3
 tc sm-some-holes   gen_random -z  100 -m 2 -c 10 -n 33
+tc ty-packed-early gen_random --strategy regular  -z 100 --min_a  1 --max_a 50 -n 50 -m 2 -c 10
+tc ty-packed-late  gen_random --strategy regular  -z 100 --min_a 50 --max_a 99 -n 50 -m 2 -c 10
+tc ty-alternating  gen_random --strategy regular  -z 100 --min_a  1 --max_a 99 -n 50 -m 2 -c 10
 
 group group2 32
 limits --max_n 1000
