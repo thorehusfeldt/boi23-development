@@ -16,11 +16,9 @@ samplegroup
 group group1 9
 limits --max_n 50
 
-tc pair11     gen_explicit 1 1
 tc pair12     gen_explicit 1 2
 tc pair21     gen_explicit 2 1
-tc pair22     gen_explicit 2 2
-tc pair86400  gen_explicit 86400 86400
+tc pair86400  gen_explicit 86400 1
 tc range-50    gen_range --n 50
 tc range-r-50    gen_range --random --n 50
 tc range-10    gen_range --n 10
