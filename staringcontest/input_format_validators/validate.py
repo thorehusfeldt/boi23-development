@@ -19,5 +19,6 @@ for token in tokens:
 
 n = len(tokens)
 assert args.min_n <= n <= args.max_n
+assert len(set(tokens)) == n
 assert sys.stdin.readline() == ""
 sys.exit(42)
