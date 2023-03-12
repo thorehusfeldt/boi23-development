@@ -87,15 +87,14 @@ with open(sys.argv[1]) as in_file:
                 except ValueError:
                     fail(f"Failed to parse {token} as an integer")
             bs = map(int, line[1:])
-            zeroes = 0
+            errors = 0
             for a, b in zip(skills, bs):
-                if b == 0:
-                    zeroes += 1
-                else:
-                    if a != b:
-                        fail(f"Expected token to be {a}, got {b}")
-                if zeroes > 2:
-                    fail("Too many zeroes")
+                if a < b:
+                    fail(f"Expected value <= {a}, got {b}")
+                if a != b:
+                    errors += 1
+            if errors > 1:
+                fail(f"Too many errors (got {errors}, not 1)")
             break
         else:
             fail("Team response must start with ! or ?")

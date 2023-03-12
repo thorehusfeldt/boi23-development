@@ -22,4 +22,5 @@ for i in ids[2:]:
             res[k] = min_jk
             k = i
         min_jk = query(j, k)
+res[j] = res[k] = min_jk
 print("!", *res, flush=True)
