@@ -16,6 +16,8 @@ samplegroup
 group group1 9
 limits --max_n 50
 
+tc range-50    gen_range --n 50
+tc range-r-50    gen_range --random --n 50
 tc range-10    gen_range --n 10
 tc range-r-10    gen_range --random --n 10
 tc four-primes-1 gen_explicit 2 3 5 7
@@ -44,17 +46,17 @@ tc four-primes-23 gen_explicit 7 5 2 3
 tc four-primes-24 gen_explicit 7 5 3 2
 
 group group2 11
-limits --max_n 300
-
-tc range-100   gen_range --n 100
-tc range-300   gen_range --n 300
-tc range-r-100   gen_range --random --n 100
-tc range-r-300   gen_range --random --n 300
-
-group group3 80
 limits --max_n 1000
 
-tc range-lg  gen_range --n 1000
-tc range-r-lg-1 gen_range --random --n 1000
-tc range-r-lg-2 gen_range --random --n 1000
-tc range-r-lg-3 gen_range --random --n 1000
+tc range-300   gen_range --n 300
+tc range-1000   gen_range --n 1000
+tc range-r-300   gen_range --random --n 300
+tc range-r-1000   gen_range --random --n 1000
+
+group group3 80
+limits --min_n 1001 --max_n 1500
+
+tc range-lg  gen_range --n 1500
+tc range-r-lg-1 gen_range --random --n 1500
+tc range-r-lg-2 gen_range --random --n 1500
+tc range-r-lg-3 gen_range --random --n 1500

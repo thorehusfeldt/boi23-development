@@ -30,7 +30,7 @@ def fail(msg: str) -> None:
 def accept(rounds_used: int, input_size: int) -> None:
     if input_size <= 50:
         score = 9
-    elif 50 < input_size <= 300:
+    elif input_size <= 1000:
         score = 11
     else:
         # Set score to a number from 1..80, higher is better.
@@ -59,7 +59,7 @@ with open(sys.argv[1]) as in_file:
     skills = list(map(int, in_file.readline().split()))
     n = len(skills)
     print(n, flush=True)
-    for q in range(min(n * n, MAX_NUM_ROUNDS)):
+    for q in range(MAX_NUM_ROUNDS):
         line = get_team_line().split()
         if line[0] == '?':
             if len(line) != 3:
