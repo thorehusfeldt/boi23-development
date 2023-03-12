@@ -15,6 +15,10 @@ import math
 import sys
 from pathlib import Path
 
+MAX_NUM_ROUNDS = 1000 * 3
+
+
+
 def fail(msg: str) -> None:
     """Fail WA with given message"""
     with open(sys.argv[3] / Path("judgemessage.txt"), "a", encoding="utf-8") as jfile:
@@ -24,14 +28,19 @@ def fail(msg: str) -> None:
     sys.exit(43)
 
 def accept(rounds_used: int, input_size: int) -> None:
-    if rounds_used < input_size + 16 * math.log(n):
-        score = 100
-    elif rounds_used < 2 * (input_size - 2) + 1:
-        score = 75
-    elif rounds_used < 3 * (input_size - 2):
-        score = 50
+    if input_size <= 50:
+        score = 9
+    elif 50 < input_size <= 300:
+        score = 11
     else:
-        score = 25
+        # Set score to a number from 1..80, higher is better.
+        # This can be made much more fine-grained
+        if rounds_used < input_size + 3 * math.log(n):
+            score = 80
+        elif rounds_used < 2 * (input_size - 2) + 1:
+            score = 40
+        else:
+            score = 20
     with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
         sfile.write(str(score)+"\n")
     sys.exit(42)
@@ -50,7 +59,7 @@ with open(sys.argv[1]) as in_file:
     skills = list(map(int, in_file.readline().split()))
     n = len(skills)
     print(n, flush=True)
-    for q in range(3 * n):
+    for q in range(min(n * n, MAX_NUM_ROUNDS)):
         line = get_team_line().split()
         if line[0] == '?':
             if len(line) != 3:
