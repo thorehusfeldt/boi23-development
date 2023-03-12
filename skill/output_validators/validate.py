@@ -33,14 +33,20 @@ def accept(rounds_used: int, input_size: int) -> None:
     elif input_size <= 1000:
         score = 11
     else:
+        # We're in group 3, where n = 1500
+        #
         # Set score to a number from 1..80, higher is better.
-        # This can be made much more fine-grained
-        if rounds_used < input_size + 3 * math.log(n):
-            score = 80
-        elif rounds_used < 2 * (input_size - 2) + 1:
-            score = 40
-        else:
-            score = 20
+        additional_rounds = rounds_used - input_size
+        if additional_rounds < 25:
+            additional_rounds = 25
+        assert 25 <= additional_rounds <= 1500
+
+        # linearly interpolate such that
+        # 80 points for additional_rounds = 25 (roughly 2.5*log_2(n))
+        # 1 point for additional_rounds = 1500 (for 2n solution)
+        score = int(4799/59 - 79 * additional_rounds / 1475)
+        assert 1 <= score <= 80
+
     with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
         sfile.write(str(score)+"\n")
     sys.exit(42)
