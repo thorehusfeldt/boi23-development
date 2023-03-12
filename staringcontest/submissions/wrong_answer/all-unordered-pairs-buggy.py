@@ -20,4 +20,5 @@ while len(undetermined) > 2:
             a[i] = outcomes.pop()
             undetermined.remove(i)
             break
-print("!", *a)
+a[undetermined.pop()] = max(a)
+print("!", *a, flush=True)

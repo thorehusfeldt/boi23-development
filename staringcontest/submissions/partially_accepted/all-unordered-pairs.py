@@ -13,11 +13,12 @@ for i in range(n):
     for j in range(i):
         result[j][i] = result[i][j] = int(input(f"? {i + 1} {j + 1}\n"))
 
-while len(undetermined) > 2:
+while len(undetermined) > 1:
     for i in undetermined:
         outcomes = set(result[i][j] for j in undetermined if j != i)
         if len(outcomes) == 1:
             a[i] = outcomes.pop()
             undetermined.remove(i)
             break
+a[undetermined.pop()] = max(a)
 print("!", *a)
