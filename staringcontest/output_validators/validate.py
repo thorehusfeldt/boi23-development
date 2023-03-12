@@ -11,7 +11,6 @@
     judge_answer.ans is ignored
 """
 
-import math
 import sys
 from pathlib import Path
 

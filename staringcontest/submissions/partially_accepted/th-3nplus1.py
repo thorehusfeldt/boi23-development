@@ -1,6 +1,8 @@
 #! /usr/bin/env python3
 
-# 3 * (n - 2) + 1 queries
+# Very preliminary AC submission to use for development.
+# Will end up solving just test group 1 (and thus has to move to submissions/PAC).
+
 n = int(input())
 j, k = 0, 1
 res = [0] * n
@@ -17,5 +19,5 @@ for i in range(2, n):
     if ik == jk: # a[k] < a[i] and a[k] < a[j]
         res[k] = ik
         k = i
-res[j] = res[k] = int(input(f"? {j+1} {k+1}\n")) # redundant, but doesn't hurt us
+res[j] = res[k] = int(input(f"? {j+1} {k+1}\n"))
 print("!", *res, flush=True)

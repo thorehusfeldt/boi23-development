@@ -23,5 +23,5 @@ for i in range(2, n):
         res[k] = ik
         k = i
         jk = ij
-assert len(set(res)) == n - 1 and sorted(res)[:2] == [0,0]
+res[j] = res[k] = jk
 print("!", *res, flush=True)
