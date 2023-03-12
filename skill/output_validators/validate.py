@@ -87,7 +87,7 @@ with open(sys.argv[1]) as in_file:
                     zeroes += 1
                 else:
                     if a != b:
-                        fail(f"Expected {i}th token to be {a[i]}, got {b[i]}")
+                        fail(f"Expected token to be {a}, got {b}")
                 if zeroes > 2:
                     fail("Too many zeroes")
             break
@@ -98,4 +98,4 @@ with open(sys.argv[1]) as in_file:
     if not sys.stdin.buffer.readline():
         accept(q, n)
     else:
-        fail(f"Extra output")
+        fail("Extra output")
