@@ -20,9 +20,20 @@ tc pair12     gen_explicit 1 2
 tc pair21     gen_explicit 2 1
 tc pair86400  gen_explicit 86400 1
 tc range-50    gen_range --n 50
-tc range-r-50    gen_range --random --n 50
+tc range-r-50    gen_range --shuffled --n 50
 tc range-10    gen_range --n 10
-tc range-r-10    gen_range --random --n 10
+tc range-r-10     gen_range --shuffled --n 10
+tc sm-range-sm-1  gen_range --n 50 --max_a 100
+tc sm-range-sm-2  gen_range --n 50 --min_a 86350 --max_a 86400
+tc sm-range-mid   gen_range --n 50 --min_a 5000 --max_a 10000
+tc sm-range-mid-2 gen_range --n 50 --min_a 5000 --max_a 5100
+tc sm-range-hi    gen_range --n 50 --min_a 50000 --max_a 86400
+tc sm-range-sm-s    gen_range --n 50 --shuffled --max_a 50
+tc sm-range-sm-1-s  gen_range --n 50 --shuffled --max_a 100
+tc sm-range-sm-2-s  gen_range --n 50 --shuffled --min_a 86350 --max_a 86400
+tc sm-range-mid-s   gen_range --n 50 --shuffled --min_a 5000 --max_a 10000
+tc sm-range-mid-2-s gen_range --n 50 --shuffled --min_a 5000 --max_a 5100
+tc sm-range-hi-s    gen_range --n 50 --shuffled --min_a 50000 --max_a 86400
 tc four-primes-1 gen_explicit 2 3 5 7
 tc four-primes-2 gen_explicit 2 3 7 5
 tc four-primes-3 gen_explicit 2 5 3 7
@@ -53,13 +64,35 @@ limits --max_n 1000
 
 tc range-300   gen_range --n 300
 tc range-1000   gen_range --n 1000
-tc range-r-300   gen_range --random --n 300
-tc range-r-1000   gen_range --random --n 1000
+tc range-r-300   gen_range --shuffled --n 300
+tc range-r-1000   gen_range --shuffled --n 1000
+tc md-range-sm-1  gen_range --n 1000 --max_a 2000
+tc md-range-sm-2  gen_range --n 1000 --min_a 85400 --max_a 86400
+tc md-range-mid   gen_range --n 1000 --min_a 5000 --max_a 10000
+tc md-range-mid-2 gen_range --n 1000 --min_a 4000 --max_a 6000
+tc md-range-hi    gen_range --n 1000 --min_a 50000 --max_a 86400
+tc md-range-sm-s    gen_range --n 1000 --shuffled --max_a 1000
+tc md-range-sm-1-s  gen_range --n 1000 --shuffled --max_a 2000
+tc md-range-sm-2-s  gen_range --n 1000 --shuffled --min_a 85400 --max_a 86400
+tc md-range-mid-s   gen_range --n 1000 --shuffled --min_a 5000 --max_a 10000
+tc md-range-mid-2-s gen_range --n 1000 --shuffled --min_a 4000 --max_a 6000
+tc md-range-hi-s    gen_range --n 1000 --shuffled --min_a 50000 --max_a 86400
 
 group group3 80
 limits --min_n 1001 --max_n 1500
 
 tc range-lg  gen_range --n 1500
-tc range-r-lg-1 gen_range --random --n 1500
-tc range-r-lg-2 gen_range --random --n 1500
-tc range-r-lg-3 gen_range --random --n 1500
+tc range-r-lg-1 gen_range --shuffled --n 1500
+tc range-r-lg-2 gen_range --shuffled --n 1500
+tc range-r-lg-3 gen_range --shuffled --n 1500
+tc lg-range-sm-1  gen_range --n 1500 --max_a 3000
+tc lg-range-sm-2  gen_range --n 1500 --min_a 84900 --max_a 86400
+tc lg-range-mid   gen_range --n 1500 --min_a 5000 --max_a 10000
+tc lg-range-mid-2 gen_range --n 1500 --min_a 4000 --max_a 6000
+tc lg-range-hi    gen_range --n 1500 --min_a 50000 --max_a 86400
+tc lg-range-sm-s    gen_range --n 1500 --shuffled --max_a 1500
+tc lg-range-sm-1-s  gen_range --n 1500 --shuffled --max_a 2000
+tc lg-range-sm-2-s  gen_range --n 1500 --shuffled --min_a 84900 --max_a 86400
+tc lg-range-mid-s   gen_range --n 1500 --shuffled --min_a 5000 --max_a 10000
+tc lg-range-mid-2-s gen_range --n 1500 --shuffled --min_a 4000 --max_a 6000
+tc lg-range-hi-s    gen_range --n 1500 --shuffled --min_a 50000 --max_a 86400
