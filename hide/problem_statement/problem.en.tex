@@ -1,8 +1,29 @@
-\problemname{Hide}
+\problemname{Shelter}
 
-You walk along the $x$-axis, wanting to get from position $0$ to a given position $z$;
-your walking speed is $1$ unit/s and you can decide to stop and stand still at any point. 
-However, once you’ve started walking you have to be hidden every $m$ seconds (\emph{i.e.}, $m$ seconds after you started walking, $2m$ seconds after it, $3m$ seconds etc.). 
-Originally, there are $n$ hiding spots, located at positions $a_1 , \ldots , a_n$, and you can create as many additional hiding spots as you like before you start walking.
-However, adding such a hiding spot takes $c$ seconds (regardless of its location).
-What is the minimum amount of time necessary to get to $u$ under these circumstances?
+The planetary exploration vehicle \emph{Tycho VIII} needs to get back to the base after collecting mineral samples.
+Tycho travels in a straight line from position~$0$ to home base at position~$b$ at a slow but steady maximum pace of $1$~unit per second.
+Every second, Tycho takes $1$ unit of damage by the harsh planetary environment.
+
+The situation is made even worse by radiation damage from the nearby pulsar, which adds another $d$ additional units of damage every $m$ seconds.
+However, the radiation damage can be avoided by seeking shelter in one of $n$ different hiding spots---caves, vegetation, large rocks, carcasses of the planet's megafauna---along the way.
+Tycho can choose to stand still at any point for any integer number of seconds.
+
+The starting postion~$0$ and home base~$b$ are are considered shelters, so Tycho takes no radation damage there.
+
+\medskip
+What is the minumum damage Tycho will take on this journey back to home base?
+
+\subsection*{Input}
+
+On the first line, four integers, 
+\begin{itemize} 
+\item $b$ the location of the home base, where $1\leq b \leq 10^{12}$,
+\item $m$ the frequency of the pulsar, where $1\leq m \leq 10^{12}$,
+\item $d$ the additional radiation damage cause by the pulsar, where $0\leq d\leq 10^6$,
+\item $n$ the number of shelters, where $0\leq n\leq 10^5$.
+\end{itemize}
+The following $n$ lines each contain the locations $a_1$, $\ldots$, $a_n$ of the shelters, with $0<a_1< \leq < a_n < z$.
+
+\subsection*{Output}
+
+Print a single integer: the minimum amount of damage Tycho must take to reach $b$.
