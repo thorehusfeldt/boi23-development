@@ -2,12 +2,12 @@
 
 # O(n) solution
 
-# Runs out of recursion stack at n = 100000, so RTEs on most large test groups
+# Runs out of recursion stack, so RTEs on most large test groups.
+# Haven't fiddled with sys.setrecursionlimit because it's machine-
+# and compiler-dependent.
 
 # @EXPECTED_GRADES@ RTE RTE AC AC RTE
 
-import sys
-sys.setrecursionlimit(10**5)
 
 
 n = int(input())
