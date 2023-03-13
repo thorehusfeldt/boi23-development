@@ -34,6 +34,12 @@ tc sm-range-sm-2-s  gen_range --n 50 --shuffled --min_a 86350 --max_a 86400
 tc sm-range-mid-s   gen_range --n 50 --shuffled --min_a 5000 --max_a 10000
 tc sm-range-mid-2-s gen_range --n 50 --shuffled --min_a 5000 --max_a 5100
 tc sm-range-hi-s    gen_range --n 50 --shuffled --min_a 50000 --max_a 86400
+tc sm-planted-01    gen_range --n 50 --plantfirst 0 --plantsecond 1
+tc sm-planted-10    gen_range --n 50 --plantfirst 1 --plantsecond 0
+tc sm-planted--2-1  gen_range --n 50 --plantfirst 49 --plantsecond 48 --shuffled
+tc sm-planted--1-2  gen_range --n 50 --plantfirst 48
+tc sm-planted-1--1  gen_range --n 50 --plantfirst 0 --plantsecond 49
+tc sm-planted--1-1  gen_range --n 50 --plantfirst 49 --plantsecond 0
 tc four-primes-1 gen_explicit 2 3 5 7
 tc four-primes-2 gen_explicit 2 3 7 5
 tc four-primes-3 gen_explicit 2 5 3 7
@@ -77,6 +83,12 @@ tc md-range-sm-2-s  gen_range --n 1000 --shuffled --min_a 85400 --max_a 86400
 tc md-range-mid-s   gen_range --n 1000 --shuffled --min_a 5000 --max_a 10000
 tc md-range-mid-2-s gen_range --n 1000 --shuffled --min_a 4000 --max_a 6000
 tc md-range-hi-s    gen_range --n 1000 --shuffled --min_a 50000 --max_a 86400
+tc md-planted-01    gen_range --n 1000 --plantfirst 0 --plantsecond 1
+tc md-planted-10    gen_range --n 1000 --plantfirst 1 --plantsecond 0
+tc md-planted--2-1  gen_range --n 1000 --plantfirst 999 --plantsecond 998 --shuffled
+tc md-planted--1-2  gen_range --n 1000 --plantfirst 998
+tc md-planted-1--1  gen_range --n 1000 --plantfirst 0 --plantsecond 999
+tc md-planted--1-1  gen_range --n 1000 --plantfirst 999 --plantsecond 0
 
 group group3 80
 limits --min_n 1001 --max_n 1500
@@ -96,3 +108,9 @@ tc lg-range-sm-2-s  gen_range --n 1500 --shuffled --min_a 84900 --max_a 86400
 tc lg-range-mid-s   gen_range --n 1500 --shuffled --min_a 5000 --max_a 10000
 tc lg-range-mid-2-s gen_range --n 1500 --shuffled --min_a 4000 --max_a 6000
 tc lg-range-hi-s    gen_range --n 1500 --shuffled --min_a 50000 --max_a 86400
+tc lg-planted-01    gen_range --n 1500 --plantfirst 0 --plantsecond 1
+tc lg-planted-10    gen_range --n 1500 --plantfirst 1 --plantsecond 0
+tc lg-planted--2-1  gen_range --n 1500 --plantfirst 1499 --plantsecond 1498 --shuffled
+tc lg-planted--1-2  gen_range --n 1500 --plantfirst 1498
+tc lg-planted-1--1  gen_range --n 1500 --plantfirst 0 --plantsecond 1499
+tc lg-planted--1-1  gen_range --n 1500 --plantfirst 1499 --plantsecond 0
