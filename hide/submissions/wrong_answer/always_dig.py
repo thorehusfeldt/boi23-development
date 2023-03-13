@@ -1,16 +1,17 @@
 #! /usr/bin/env python3
 
-""" Wrong solution that stoically walks right,
-    digging a fresh hole whenever necessary.
+""" Wrong solution that stoically drives home
+    taking whatever damage the pulsar throws at you.
 """
 
 z, m, c, n = map(int, input().split())
 holes = set(map(int, (input() for _ in range(n))))
 
-time = pos = 0
+damage = pos = time = 0
 while pos != z:
     if time > 0 and time % m == 0 and pos not in holes:
-        time += c
-    pos += 1
+        damage += c
     time += 1
-print(time)
+    pos += 1
+    damage += 1
+print(damage)
