@@ -17,7 +17,7 @@ sample 2
 sample 3
 sample 4
 
-group group1 31
+group group1 23
 limits --max_z 100 --max_m 100
 tc 1
 tc 2
@@ -31,20 +31,30 @@ tc ty-packed-early gen_random --strategy regular  -z 100 --min_a  1 --max_a 50 -
 tc ty-packed-late  gen_random --strategy regular  -z 100 --min_a 50 --max_a 99 -n 50 -m 2 -c 10
 tc ty-alternating  gen_random --strategy regular  -z 100 --min_a  1 --max_a 99 -n 50 -m 2 -c 10
 
-group group2 32
+group group2 24
 limits --max_n 1000
 tc md-some-holes   gen_random -z 1000 -m 2 -c 10 -n 333
 tc md-early-holes  gen_random -z 1000 -m 2 -c 10 -n 333 --max_a 500
 tc rd-10k-1k-md    gen_random -z 10000 -m 1000 -c 10 -n 333
 tc rd-10k-lg-md    gen_random -z 10000 -m 5112 -c 10 -n 333
-tc rd-10k-lg-1k    gen_random      -z 10000 -m 5112 -c 10 -n 1000
+tc rd-10k-lg-1k    gen_random -z 10000 -m 5112 -c 10 -n 1000
+tc sm-n-lg-m       gen_random -z 1000000 -m 100000 -c 10 -n 1000 # need more of these
 tc crit-smallc     gen_critc  -z 10000 -m 42 -c0 7   -n 1000
 tc crit-medc       gen_critc  -z 10000 -m 42 -c0 24  -n 1000
 tc crit-bigc       gen_critc  -z 10000 -m 100 -c0 43 -n 1000
 
-group group3 37
+group group3 25
+limits --max_m 100
+tc small-m-md-early-holes  gen_random  -z 1000000 -m 100 -c 10 -n 100000 --max_a 200000
+tc small-m-rd              gen_random  -z 1000000 -m 100 -c 10 -n 100000
+tc small-m-crit-smallc     gen_critc   -z 1000000 -m 100 -c0 7   -n 1000
+tc small-m-crit-medc       gen_critc   -z 1000000 -m 100 -c0 24  -n 1000
+tc small-m-crit-bigc       gen_critc   -z 1000000 -m 100 -c0 43 -n 1000
+
+group group4 28
 include_group group1
 include_group group2
+include_group group3
 tc lg-some-holes   gen_random -z 10000 -m 2 -c 10 -n 3333
 tc hg-some-holes   gen_random -z 100000 -m 2 -c 10 -n 33333
 tc hg-large-m      gen_random -z 100000 -m 20000 -c 10 -n 33333
