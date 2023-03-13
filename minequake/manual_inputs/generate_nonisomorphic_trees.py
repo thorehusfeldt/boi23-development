@@ -5,7 +5,7 @@
 import networkx as nx
 
 
-for n in range(3, 11):
+for n in range(3, 10):
     for i, T in enumerate(nx.nonisomorphic_trees(n)):
         f = open(f"tree-{n}-{i}.in", "w")
         f.write(f"{n}\n")
