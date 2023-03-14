@@ -10,10 +10,10 @@ a = [0] + list(int(input()) for _ in range(n))
 f = lambda x: -(d + m) * (-x // m) - d
 g = lambda x: x + d * (-(-x // m) - 1)
 
-s = {0: 0} # want s[k] = max (j : j < i and a[j] % m == k)
-damage = [0]
-for i in range(1, n + 1):
-    damage.append(min(damage[j] + f(a[i] - a[j]) for j in s.values()))
+s = {} # want s[k] = max (j : j < i and a[j] % m == k)
+damage = []
+for i in range(n + 1):
+    damage += [min((damage[j] + f(a[i] - a[j]) for j in s.values()), default=0)]
     s[a[i] % m] = i
 
 print(min(damage[i] + g(b - a[i]) for i in range(n + 1)))
