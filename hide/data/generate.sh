@@ -17,6 +17,12 @@ sample 2
 sample 3
 sample 4
 
+group tiny 0
+limits --max_n 10
+tc sm-two-holes gen_random -z  10 -m  2 -c 10 -n 2
+tc lg-two-holes gen_random -z 100 -m 21 -c 10 -n 2
+tc lg-few-holes gen_random -z 100 -m 21 -c 10 -n 9
+
 group group1 23
 limits --max_z 100 --max_m 100
 tc 1
