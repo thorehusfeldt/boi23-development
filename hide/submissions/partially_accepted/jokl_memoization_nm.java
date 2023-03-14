@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class jokl_memoization_nm{
@@ -7,19 +10,19 @@ public class jokl_memoization_nm{
 	// Let memo[i][k] be the minimum cost of reaching z
 	// starting in caves[i] at a time t = k mod m
 	static int[][] memo;
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		
-		z = sc.nextInt();
-		m = sc.nextInt();
-		c = sc.nextInt();
-		n = sc.nextInt() + 1;
-		
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[] line = br.readLine().split(" ");
+		z = Integer.parseInt(line[0]);
+		m = Integer.parseInt(line[1]);
+		c = Integer.parseInt(line[2]);
+		n = Integer.parseInt(line[3]) + 1;
+
 		memo = new int[n][m];
 		caves = new int[n];
 		// Implicitly let pos. 0 be a cave
 		for(int i = 1; i<n; i++) {
-			caves[i] = sc.nextInt();
+			caves[i] = Integer.parseInt(br.readLine());
 		}
 		
 		System.out.println(explore(0, 0));
