@@ -2,11 +2,20 @@
 
 The planetary exploration vehicle \emph{Tycho VIII} needs to get back to the base after collecting mineral samples.
 Tycho travels in a straight line from position~$0$ to home base at position~$b$ at a slow but steady maximum pace of $1$~unit per second.
-Every second, Tycho takes $1$ unit of damage by the harsh planetary environment.
+Every second, Tycho takes $1$ unit of environmental damage by the harsh planetary conditions.
 
-The situation is made even worse by radiation damage from the nearby pulsar, which adds another $d$ additional units of damage every $m$ seconds.
+The situation is made even worse by radiation damage from the nearby pulsar, which adds $d$ additional units of damage every $m$ seconds.
 However, the radiation damage can be avoided by seeking shelter in one of $n$ different hiding spots---caves, vegetation, large rocks, carcasses of the planet's megafauna---along the way.
 Tycho can choose to stand still at any point for any integer number of seconds.
+
+Consider the situation where home base is at position $18$, there are shelters at positions $8$ and $15$.
+Assume that the pulsar's period is $4$, so an unsheltered Tycho would take damage at time $4$, $8$, $12$, etc.
+
+If Tycho leaves at time $0$ (where he is sheltered), he can reach the first shelter after $8$ seconds, incurring radiation damage $d$ at time $4$ (but none at time $8$ because he is sheltered there.)
+Continuing without stopping, he would reach home base at time $18$, incurring $8$ more ratiation damage (at time $12$ and $18$, respectively).
+Total radation damage is $d+d+d=3d$, the environmental damage is $18$.
+
+If instead Tycho waits at the $2$nd shelter (at position $15$) for $1$ second, the pulse at time $16$ causes him no damage, and he reaches the shelter at time $19$ for a total of $2d + 19$ dmage.
 
 The starting postion~$0$ and home base~$b$ are are considered shelters, so Tycho takes no radation damage there.
 
@@ -17,12 +26,12 @@ What is the minumum damage Tycho will take on this journey back to home base?
 
 On the first line, four integers, 
 \begin{itemize} 
-\item $b$ the location of the home base, where $1\leq b \leq 10^{12}$,
-\item $m$ the frequency of the pulsar, where $1\leq m \leq 10^{12}$,
-\item $d$ the additional radiation damage cause by the pulsar, where $0\leq d\leq 10^6$,
-\item $n$ the number of shelters, where $0\leq n\leq 10^5$.
+\item the location $b$ of the home base, where $1\leq b \leq 10^{12}$,
+\item the pulsar's period $p$, where $1\leq m \leq 10^{12}$,
+\item the additional radiation damage $d$ caused by the pulsar, where $0\leq d\leq 10^6$,
+\item the number $n$ of shelters, where $0\leq n\leq 10^5$.
 \end{itemize}
-The following $n$ lines each contain the locations $a_1$, $\ldots$, $a_n$ of the shelters, with $0<a_1< \leq < a_n < z$.
+The following $n$ lines each contain the locations $a_1$, $\ldots$, $a_n$ of the shelters, with $0<a_1< \cdots < a_n < z$.
 
 \subsection*{Output}
 
