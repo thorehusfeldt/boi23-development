@@ -27,12 +27,27 @@ def fail(msg: str) -> None:
     sys.exit(43)
 
 
-def accept(num_hidden_points: int, rounds_used: int, max_rounds: int) -> None:
+def accept(num_hidden_points: int, rounds_used: int, max_rounds: int, board_width : int, board_height : int) -> None:
     # Extremely preliminary scoring function
+    tc_point = None
     if num_hidden_points == 1:
-        score = 6
-    else:
-        score = int(0.5 + 94 * min(1, max_rounds / rounds_used))
+        tc_point = 3
+    elif num_hidden_points == 2:
+        tc_point = 6
+    elif max_rounds == 3000:
+        tc_point = 19
+    elif max_rounds == 600:
+        tc_point = 11
+    elif max_rounds == 310:
+        tc_point = 7
+    elif max_rounds == 2 and board_width <= 10**5 and board_height <= 10**5:
+        tc_point = 20
+    elif max_rounds == 2 and board_width <= 10**8 and board_height <= 10**8:
+        tc_point = 15
+    else: # Q = 2
+        tc_point = 19
+
+    score = int(0.5 + tc_point * min(1, max_rounds / rounds_used))
     with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
         sfile.write(str(score) + "\n")
     sys.exit(42)
@@ -76,6 +91,8 @@ with open(sys.argv[1]) as in_file:
                     x, y = map(int, line)
                 except ValueError:
                     fail(f"Failed to parse {line} as two ints")
+                if(x < 0 or x > 10**9 or y < 0 or y > 10** 9):
+                    fail(f"Query point is out of bounds:  {(x,y)}")
                 query_points.add((x, y))
             if len(query_points) < d:
                 fail("Duplicate query points")
@@ -105,4 +122,4 @@ with open(sys.argv[1]) as in_file:
             fail("Team response must start with ! or ?")
     else:
         fail("Too many rounds")
-    accept(k, rounds, Q)
+    accept(k, rounds, Q, n, m)

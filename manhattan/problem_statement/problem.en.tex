@@ -1,11 +1,41 @@
 \problemname{Manhattan Distances}
-
 We have field $n \times m$ and $k$ hidden dots.
 You need to guess positions of these dots by asking following questions:
 
-
 Choose some number $d$ ($1 \leq d \leq 10^4$).
-Then output $d$ points $(x, y)$  $(0 \leq x \leq n$, $0 \leq y \leq m)$.
+Then output $d$ points $(x, y)$  $(0 \leq x \leq 10^9$, $0 \leq y \leq 10^9)$.
 You will get $kd$ pairs of distances, i.e., all pairs of manhattan distances between hidden dot and queried dot, in some random (arbitrary) order.
 
-You may ask at most $Q\in\{1,\ldots,  10^4\}$ questions.
+You may ask at most $10^4$ questions.
+
+\subsection*{Interaction}
+
+This is an interactive problem.
+Interaction begins with you reading a single line containing four integers: $n$, $m$, $k$, $Q$ such that the width of the grid is $n$, 
+the height of the grid is $m$, the number of hidden points is $k$ and the number of allowed questions is $Q$
+We assume that $1\leq n,m\leq 10^9$, that $1 \leq k \leq 50$ and that $2 \le Q \le 10^4$.
+
+You then ask at most $10^4$ queries of the form ``\texttt{?} $d$'' followed by $d$ lines each containingt $2$ integers ``$x$ $y$'' such that $(x,y)$ is a query point.
+The response is a single line with $k *d$ integers in sorted order, all pairs of manhattan distances between the hidden dots and the queries dots.
+Interaction ends with you printing a single line consisting of \texttt{!} followed by $k$ points $x_1, y_1, x_2, y_2, \ldots x_k, y_k$, separated by space.
+
+Your submission is correct if you output all the hidden points. You may print them in any order.
+\subsection*{Constraints and scoring}
+Your solution will be tested on a set of test groups, each worth a number of points.
+Each test group contains a set of test cases.
+Let $U$ be the number of queries you asked. Then for a test-group that awards $p$ points, you recieve $max(1,Q^3/U^3)\cdot p$ points.
+Your final score will be the maximum score of a single submission.
+
+\medskip
+\begin{tabular}{lll}
+Group & Points & Constraints \\\hline
+1 & 3   & $k = 1, Q = 10^4$\\
+2 & 6   & $k \le 2, Q = 10^4$\\
+3 & 19  & $Q = 3000$\\
+4 & 11  & $Q = 600$\\
+5 & 7   & $Q = 310$\\
+6 & 20  & $Q = 2,\; n,m \le 10^5$\\
+7 & 15  & $Q = 2,\; n,m \le 10^8$\\
+8 & 19  & $Q = 2$
+\end{tabular}
+

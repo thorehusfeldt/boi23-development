@@ -8,19 +8,20 @@ parser.add_argument("--n", type=int)
 parser.add_argument("--m", type=int)
 parser.add_argument("--Q", type=int)
 parser.add_argument("--k", type=int)
+parser.add_argument("--ccx", type=int)
+parser.add_argument("--ccy", type=int)
 parser.add_argument("seed", type=int)
 args = parser.parse_args()
 
 seed(args.seed)
 
 n = args.n
-m = args.m
 print(args.n, args.m, args.k, args.Q)
 points = set()
 d1 = set()
 d2 = set()
 while len(points) < args.k:
-    p = (randint(0, n//2)*2, (randint(0, m//2))*2)
+    p = (randint(args.ccx//2 - 50, args.ccx//2 + 50)*2, (randint(args.ccy//2 - 50, args.ccy//2 + 50))*2)
 
     if p[0] + p[1] in d1 or p[0] - p[1] in d2: continue
 

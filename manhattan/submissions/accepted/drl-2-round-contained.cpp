@@ -76,10 +76,10 @@ int main() {
     m = 1e9;
 
     vll tt;
-    vll a = query({{0,0}}),b = query({{0,m}});
+    vll a = query({{0,0},{0,m}});
 
     set<ii> init;
-    FORE(p,a) FORE(q,b) {
+    FORE(p,a) FORE(q,a) {
         if((p+q-m)%2) continue;
         ll x = (p + q - m)/2;
         ll y = p - x;
@@ -100,7 +100,14 @@ int main() {
     iota(ALL(nxt),1);
     nxt[cp-1] = 0;
     int pr = cp-1;
+    int hic = 1;
     while(fd < cp) {
+        if(idx <= pr){
+            if(!hic) cc++;
+            hic = 0;
+        } 
+        
+        //cout << cc << " " << idx << " " << pr << endl;
         if(try_cc(idx,cc,0) || try_cc(idx,-cc,0) || try_cc(idx,0,cc) || try_cc(idx,0,-cc)) {
             ccl[idx] = cc;
             fd++;
@@ -108,7 +115,11 @@ int main() {
         } else {
             pr = idx;
         }
-        while(dd.count(++cc));
+        while(dd.count(cc)) {
+            cc++;
+            hic = 1;
+        }
+
         idx = nxt[idx];
     }
 

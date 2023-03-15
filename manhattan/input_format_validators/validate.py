@@ -3,14 +3,21 @@
 import re
 import sys
 
+from argparse import ArgumentParser
 line = sys.stdin.readline()
 assert re.match(r"[1-9][0-9]* [1-9][0-9]* [1-9][0-9]* [1-9][0-9]*\n", line), line
 n, m, k, Q = map(int, line.split())
 
-assert 1 <= n <= 10**9
-assert 1 <= m <= 10**9
-assert 1 <= k <= 50
-assert 1 <= Q <= 10**4
+parser = ArgumentParser("Validate input to manhattan")
+parser.add_argument("--max_nm", type=int, default=10**9)
+parser.add_argument("--max_k",  type=int, default=50)
+parser.add_argument("--Q",  type=int)
+args = parser.parse_args()
+
+assert 1 <= n <= args.max_nm
+assert 1 <= m <= args.max_nm
+assert 1 <= k <= args.max_k
+assert Q == args.Q
 
 hidden_points = set()
 for _ in range(k):
