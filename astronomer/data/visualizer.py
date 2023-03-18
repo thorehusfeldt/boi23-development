@@ -31,6 +31,7 @@ def fun(_x, _y):
     global ans
     global count_peaks
     ret = []
+    print(len(_x))
     for x, y in zip(_x, _y):
         def get_cost(X, Y):
             global ans
@@ -57,9 +58,9 @@ def fun(_x, _y):
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-plt.axis([2*(mnx-5),2*(mxx+5),2*(mny-5),2*(mxy+5)])
-x = np.arange(2*(mnx-5), 2*(mxx+5), float(2*(mxx-5)-2*(mnx+5))/100)
-y = np.arange(2*(mny-5), 2*(mxy+5), float(2*(mxy-5)-2*(mny+5))/100)
+plt.axis([mnx - 5,mxx + 5,mny - 5,mxy + 5])
+x = np.arange(mnx-5, mxx+5, (mxx-mnx+10)/100)
+y = np.arange(mny-5, mxy+5, (mxy-mny+10)/100)
 X, Y = np.meshgrid(x, y)
 zs = np.array(fun(np.ravel(X), np.ravel(Y)))
 Z = zs.reshape(X.shape)
