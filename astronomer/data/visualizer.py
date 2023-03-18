@@ -1,3 +1,4 @@
+from __future__ import division
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D  
 # Axes3D import has side effects, it enables using projection='3d' in add_subplot
@@ -41,9 +42,9 @@ def fun(_x, _y):
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-plt.axis([2*mnx,2*mxx,2*mny,2*mxy])
-x = np.arange(2*mnx, 2*mxx, (mxx-mnx)/300)
-y = np.arange(2*mny, 2*mxy, (mxy-mny)/300)
+plt.axis([2*(mnx-5),2*(mxx+5),2*(mny-5),2*(mxy+5)])
+x = np.arange(2*(mnx-5), 2*(mxx+5), float(mxx-mnx+5)/300)
+y = np.arange(2*(mny-5), 2*(mxy+5), float(mxy-mny+5)/300)
 X, Y = np.meshgrid(x, y)
 zs = np.array(fun(np.ravel(X), np.ravel(Y)))
 Z = zs.reshape(X.shape)
