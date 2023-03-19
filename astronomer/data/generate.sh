@@ -10,6 +10,7 @@ use_solution sweep_circle_rand.cpp
 compile gen_random.py
 compile gen_line.py
 compile gen_circles.py
+compile gen_many_peaks.cpp
 
 samplegroup
 sample 1
@@ -62,6 +63,8 @@ tc s-eq-0-sm-line-x-parallel gen_line   --s 0 --t 8 --k 1 --n 50 --px 12345 --py
 tc s-eq-0-sm-line-y-parallel gen_line   --s 0 --t 4 --k 2 --n 50 --px 0 --py 54321 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
 tc s-eq-0-sm-line-1 gen_line            --s 0 --t 27 --k 10 --n 50 --px 100 --py 100 --qx 1 --qy -1 --min_c -10000000 --max_c 10000000
 tc s-eq-0-sm-line-2 gen_line            --s 0 --t 1 --k 10 --n 50 --px 100 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
+tc s-eq-0-sm-many-peaks-1 gen_many_peaks --s 0 --t 11 --k 4 --n 18 --seed 7702
+tc s-eq-0-sm-many-peaks-2 gen_many_peaks --s 0 --t 11 --k 4 --n 18 --seed 1949
 
 # O(n^3 lg n)
 group group4 20
@@ -84,6 +87,9 @@ tc sm-line-y-parallel gen_line --s 1 --t 4 --k 10 --n 50 --px 0 --py 54321 --qx 
 
 tc sm-line-1 gen_line --s 5 --t 27 --k 10 --n 50 --px 100 --py 100 --qx 1 --qy -1 --min_c -10000000 --max_c 10000000
 tc sm-line-2 gen_line --s 5 --t 27 --k 10 --n 50 --px 100 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
+
+tc sm-many-peaks-1 gen_many_peaks --s 9 --t 11 --k 4 --n 18 --seed 2168
+tc sm-many-peaks-2 gen_many_peaks --s 9 --t 11 --k 4 --n 18 --seed 1265
 
 
 # O(n^2 lg eps^-2)
