@@ -25,11 +25,14 @@ min_dis = args.min_dis
 
 v = []
 while len(v) < c:
-    cu = Point(randint(-d//t,d//t), randint(-d//t,d//t)) 
-    if cu.dist() * t < min_dis:
-        continue
-    if cu.dist() * t < d:
-        v.append(cu)
+    cu = Point(randint(min_dis//t,d//t), randint(min_dis//t,d//t)) 
+    flp_x = randint(0,1)
+    flp_y = randint(0,1)
+    if flp_x == 1:
+        cu.x *= -1
+    if flp_y == 1:
+        cu.y *= -1
+    v.append(cu)
 
 points = set()
 while len(points) < n:

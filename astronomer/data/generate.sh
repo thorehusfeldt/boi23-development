@@ -9,6 +9,7 @@ use_solution sweep_circle_rand.cpp
 # all the generators are introduced here
 compile gen_random.py
 compile gen_line.py
+compile gen_circles.py
 
 samplegroup
 sample 1
@@ -84,6 +85,7 @@ tc sm-line-y-parallel gen_line --s 1 --t 4 --k 10 --n 50 --px 0 --py 54321 --qx 
 tc sm-line-1 gen_line --s 5 --t 27 --k 10 --n 50 --px 100 --py 100 --qx 1 --qy -1 --min_c -10000000 --max_c 10000000
 tc sm-line-2 gen_line --s 5 --t 27 --k 10 --n 50 --px 100 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
 
+
 # O(n^2 lg eps^-2)
 group group5 22
 limits --max_n 500
@@ -128,4 +130,5 @@ tc lg-line-x-parallel gen_line  --s 1   --t 8   --k 10 --n 700 --px 12345 --py 0
 tc lg-line-y-parallel gen_line  --s 1   --t 4   --k 10 --n 700 --px 0 --py 54321 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
 tc lg-line-1 gen_line           --s 5   --t 27  --k 10 --n 700 --px 100 --py 100 --qx 1 --qy -1 --min_c -10000000 --max_c 10000000
 tc lg-line-2 gen_line           --s 5   --t 27  --k 10 --n 700 --px 100 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
+tc lg-circle-1 gen_circles      --s 10  --t 100 --k 10 --n 700 --c 50 --d 10000000000 --min_dis 9000000000
 
