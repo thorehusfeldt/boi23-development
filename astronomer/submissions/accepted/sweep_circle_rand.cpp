@@ -174,7 +174,8 @@ int main() {
     shuffle(ps.begin(), ps.end(), rng);
     FOR(i, n)
     {
-        double better = best > 1 ? best * (1 - eps) : best - eps;
+        // double better = best > 1 ? best * (1 - eps) : best - eps;
+		double better = best - eps;
         if (better < 0)
             break;
         if (sweep(i, better))
