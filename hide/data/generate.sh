@@ -10,6 +10,11 @@ use_solution lucas_impl_seg.cpp
 compile gen_random.py
 compile gen_critc.py
 
+# compile_java() (from gen.sh) does not handle java source in current directory very well (fails on 'cp')
+# verifyproblem does not like finding extra directories in data/
+# A java/ directory in hide/ seems like the third best option
+compile ../java/GenSmallComplete.java
+
 # there are two *.in files in data/sample
 samplegroup
 sample 1
@@ -18,7 +23,14 @@ sample 3
 sample 4
 sample 5
 
-group group1 17
+group group1 5
+# Loop over binary strings of length 5
+for i in {0,1}{0,1}{0,1}{0,1}{0,1}; do
+    tc small-$i GenSmallComplete $i
+done
+
+
+group group2 12
 limits --max_n 10 --max_z 100 --max_m 100
 tc 1
 tc 2
@@ -29,7 +41,7 @@ tc sm-two-holes gen_random -z  10 -m  2 -c 10 -n 2
 tc lg-two-holes gen_random -z 100 -m 21 -c 10 -n 2
 tc lg-few-holes gen_random -z 100 -m 21 -c 10 -n 9
 
-group group2 18
+group group3 18
 limits --max_z 100 --max_m 100
 include_group group1
 tc ty-no-holes     gen_random -z   10 -m 2 -c 10 -n 0
@@ -40,7 +52,7 @@ tc ty-packed-early gen_random --strategy regular  -z 100 --min_a  1 --max_a 50 -
 tc ty-packed-late  gen_random --strategy regular  -z 100 --min_a 50 --max_a 99 -n 50 -m 2 -c 10
 tc ty-alternating  gen_random --strategy regular  -z 100 --min_a  1 --max_a 99 -n 50 -m 2 -c 10
 
-group group3 19
+group group4 19
 limits --max_n 1000
 tc md-some-holes   gen_random -z 1000 -m 2 -c 10 -n 333
 tc md-early-holes  gen_random -z 1000 -m 2 -c 10 -n 333 --max_a 500
@@ -53,7 +65,7 @@ tc crit-smallc     gen_critc  -z 10000 -m 42 -c0 7   -n 1000
 tc crit-medc       gen_critc  -z 10000 -m 42 -c0 24  -n 1000
 tc crit-bigc       gen_critc  -z 10000 -m 100 -c0 43 -n 1000
 
-group group4 20
+group group5 20
 limits --max_m 100
 tc small-m-md-early-holes  gen_random  -z 1000000 -m 100 -c 10 -n 100000 --max_a 200000
 tc small-m-rd              gen_random  -z 1000000 -m 100 -c 10 -n 100000
@@ -61,7 +73,7 @@ tc small-m-crit-smallc     gen_critc   -z 1000000 -m 100 -c0 7   -n 1000
 tc small-m-crit-medc       gen_critc   -z 1000000 -m 100 -c0 24  -n 1000
 tc small-m-crit-bigc       gen_critc   -z 1000000 -m 100 -c0 43 -n 1000
 
-group group5 26
+group group6 26
 include_group group2
 include_group group3
 include_group group4
