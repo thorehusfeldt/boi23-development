@@ -9,11 +9,7 @@ use_solution lucas_impl_seg.cpp
 # all the generators are introduced here
 compile gen_random.py
 compile gen_critc.py
-
-# compile_java() (from gen.sh) does not handle java source in current directory very well (fails on 'cp')
-# verifyproblem does not like finding extra directories in data/
-# A java/ directory in hide/ seems like the third best option
-compile ../java/GenSmallComplete.java
+compile GenSmallComplete.java
 
 # there are two *.in files in data/sample
 samplegroup
