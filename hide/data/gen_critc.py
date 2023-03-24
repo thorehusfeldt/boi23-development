@@ -1,14 +1,18 @@
 #! /usr/bin/env python3
 
-""" Generate random instance to hide
+""" Generate random instance to hide such that the solution changes when d is increased by 1
+    Idea: Suppose that we take radiation damage x times. Then increasing d by 1 will increase
+    the total damage by x. So if x stays the same, damage is a linear function. We binary search
+    for the first d where the answer is different from the linear function.
+
+    This requires the existence of a combiled full solution with file name "full_solution" in
+    the current directory. It should be provided (and cleaned up) by the generator script.
 
     seed is typically provided behind the scenes by the generator script
 """
 
 import random
 import subprocess
-import os
-import sys
 from argparse import ArgumentParser
 
 parser = ArgumentParser()
@@ -28,7 +32,6 @@ assert max_a < args.z
 
 random.seed(args.seed)
 
-# os.system("g++ -O2 ../submissions/accepted/lucas_impl_seg.cpp -o full_solution")
 positions = "\n".join(map(str, sorted(random.sample(range(1, max_a + 1), args.n)))) + "\n"
 
 def solve(c):

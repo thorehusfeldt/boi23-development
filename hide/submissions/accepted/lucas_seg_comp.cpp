@@ -43,7 +43,7 @@ void add(int l, int r, ll v, int a, int b, int i){
     }
 }
 void add(int l, int r, ll v){add(l, r, v, 0, cap-1, 1);}
-void circ_add(int l, int r, int v){
+void circ_add(int l, int r, ll v){
     if(l <= r) add(l, r, v);
     else add(l, cap-1, v), add(0, r, v);
 }
