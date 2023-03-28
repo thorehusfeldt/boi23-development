@@ -1,13 +1,22 @@
-\problemname{Manhattan Distances}
-We have field $n \times m$ and $k$ hidden dots.
-You need to guess positions of these dots by asking following questions:
+\problemname{Mineral deposits}
+One of the major reasons for the interest in space exploration is the options for extra-terrestial mining. 
+As part of this, you are now approaching an astroid. Preliminary scans show that $k$ mineral deposits are present on this astriod, though their precise locations are unkown.
+You do not want to land your space-ship more than strictly necessary, so you will have to determine the locations of all the deposits.
 
-Choose some number $d$ ($1 \leq d \leq 10^4$).
-Then output $d$ points $(x, y)$  $(0 \leq x \leq 10^9$, $0 \leq y \leq 10^9)$.
-You will get $kd$ pairs of distances, i.e., all pairs of manhattan distances between hidden dot and queried dot, in some random (arbitrary) order.
+\medskip
 
-You may ask at most $10^4$ questions.
+The surface of the astroid can be seen as a grid.
+Each of the mineral deposits are located at unkown integer coordinates such that the $i$'th deposit have coordinates $(x_i,y_i)$, $(0 \le x_i \le n$, $0\le y_i \le m)$.
 
+To determine the locations of these mineral deposits, you have the option to send down probes to the surface of the astroid. 
+Since it takes quite a while for a probe to arrive at the surface, since time is money you decide to send the probes out in waves to minimise the number of times that you have to wait for probes down arrive at the surface.
+
+If you were to send $d$ probes down to the surface in a wave to the coordinates $(s_j,t_j)$ for $j=1,\ldots,d$, once a probe arrives at its coordinates it immidiately determines the manhattan distances to all of the $k$ deposits and sends them back to the ship. 
+It is however not possible to distinguish precisely which probes returned which distances. 
+This means that all the distances will be returned at the same time, that is $k\cdot d$ distances are returned, which correspond to the integers $|x_i-s_j| + |y_i - t_j|$ for all $i = 1,\ldots,k$ and $j = 1,\ldots,d$.
+These distances will be in sorted order.
+
+You need to optimise the number of waves of probes that is send to the surface.
 \subsection*{Interaction}
 
 This is an interactive problem.
@@ -15,15 +24,16 @@ Interaction begins with you reading a single line containing four integers: $n$,
 the height of the grid is $m$, the number of hidden points is $k$ and the number of allowed questions is $Q$
 We assume that $1\leq n,m\leq 10^9$, that $1 \leq k \leq 50$ and that $2 \le Q \le 10^4$.
 
-You then ask at most $10^4$ queries of the form ``\texttt{?} $d$'' followed by $d$ lines each containingt $2$ integers ``$x$ $y$'' such that $(x,y)$ is a query point.
-The response is a single line with $k *d$ integers in sorted order, all pairs of manhattan distances between the hidden dots and the queries dots.
+You then ask at most $10^4$ queries of the form ``\texttt{?} $d$'' followed by $d$ lines each containingt $2$ integers ``$s$ $t$'' such that $(s,t)$ is a probe corrdinate.
+The response is a single line with $k *d$ integers in sorted order, all pairs of manhattan distances between the hidden deposits and the probe corrdinates.
 Interaction ends with you printing a single line consisting of \texttt{!} followed by $k$ points $x_1, y_1, x_2, y_2, \ldots x_k, y_k$, separated by space.
 
-Your submission is correct if you output all the hidden points. You may print them in any order.
+Your submission is considered correct if you output all locations of the deposits. You may print them in any order.
+
 \subsection*{Constraints and scoring}
 Your solution will be tested on a set of test groups, each worth a number of points.
 Each test group contains a set of test cases.
-Let $U$ be the number of queries you asked. Then for a test-group that awards $p$ points, you recieve $max(1,Q^3/U^3)\cdot p$ points.
+Let $U$ be the number of queries you asked. Then for a test-group that awards $p$ points, you recieve $max(1,Q/U)\cdot p$ points.
 Your final score will be the maximum score of a single submission.
 
 \medskip
