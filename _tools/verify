@@ -1,0 +1,73 @@
+#!/bin/bash
+set +e
+
+problem="$1"
+
+if ! [ -f /.dockerenv ]; then
+  echo "Running in docker image hamerly/problemtools-icpc..."
+  exec sudo docker run --rm -it -v "$PWD":/problems -w /problems hamerly/problemtools-icpc _tools/verify "$@"
+fi
+
+if ! command -v verifyproblem > /dev/null; then
+  echo "verifyproblem command not found!"
+  exit 1
+fi
+
+h="--------------------------------------------------"
+
+echo "$h"
+echo "Test case generation"
+echo "$h"
+echo
+(cd "$problem/data" && ./generate.sh)
+gen_status=$?
+if [[ "$gen_status" -ne 0 ]]; then
+  echo
+  echo "Test generation failed with code $gen_status"
+  exit "$gen_status"
+fi
+
+chown -R --reference="$problem/data" "$problem/data/secret"
+
+echo
+echo "$h"
+echo "Problem verification"
+echo "$h"
+echo
+python3 -u "$(type -p verifyproblem )" -l info "$problem" | tee /tmp/result.txt | grep -v "INFO : "
+ver_status=${PIPESTATUS[0]}
+
+if [[ "$ver_status" -eq 0 ]] && grep 'WARNING in submissions: PAC submission .* got AC' /tmp/result.txt &> /dev/null; then
+  echo
+  echo "Marking as ERROR, because PAC submission got AC judgement"
+  ver_status=1
+fi
+
+if [[ "$ver_status" -ne 0 ]]; then
+  echo
+  echo "Verification failed with code $ver_status"
+fi
+
+echo
+echo "$h"
+echo "Test group analysis"
+echo "$h"
+echo
+_tools/analyzetestgroups -f /tmp/result.txt "$problem" --no-status
+analyze_status=$?
+
+exit_code=0
+echo
+if [[ "$ver_status" -ne 0 ]]; then
+  echo "Verification failed with code $ver_status"
+  exit_code=$ver_status
+fi
+
+if [[ "$analyze_status" -ne 0 ]]; then
+  echo "Analyze failed with code $analyze_status"
+  if [[ "$exit_code" -eq 0 ]]; then
+    exit_code=$analyze_status
+  fi
+fi
+
+exit "$exit_code"

@@ -1,17 +1,32 @@
 name: Verify problems
 
-on: [push, pull_request]
+on:
+  - push
+  - pull_request
 
 jobs:
-  build:
+  problems:
     runs-on: ubuntu-latest
+    outputs:
+      problem: ${{ steps.set-problems.outputs.problem }}
+    steps:
+      - uses: actions/checkout@v3
 
+      - id: set-problems
+        run: echo "problem=$(_tools/list-problems)" >> $GITHUB_OUTPUT
+
+  verify:
+    needs:
+      - problems
+    runs-on: ubuntu-latest
     container:
       image: hamerly/problemtools-icpc
-
+    strategy:
+      matrix:
+        problem: ${{fromJson(needs.problems.outputs.problem)}}
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Generate test cases and verify problems
-      run: ./_tools/verifyall || true
+      - name: Generate test cases and verify problem
+        continue-on-error: true
+        run: _tools/verify ${{matrix.problem}}
