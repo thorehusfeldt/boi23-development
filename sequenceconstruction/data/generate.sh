@@ -2,7 +2,7 @@
 
 # run this as ./generate.sh from the data directory. It populates data/secret
 
-. ../../_testdata_tools/gen.sh
+. ../../_tools/gen.sh
 
 use_solution wojciech-hashing.cpp
 

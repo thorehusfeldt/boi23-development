@@ -5,9 +5,8 @@ These problems use the [Kattis Problem Package Format](https://www.kattis.com/pr
 
 Development uses the [Kattis/problemtools](https://github.com/Kattis/problemtools) toolchain, the easiest way to install this is to use a docker image, for instance using the `load_docker.sh` script.
 
-Test data are generated using the `_testdata_tools` scripts taken from
+Test data are generated using the `_tools` scripts taken from
 [Kodsport/testdata_tools](https://github.com/Kodsport/testdata_tools).
 Instances should be generated programmatically with a deterministic script in `data/generator.sh`.
 
-A very bare-bones example problem that uses this format is in  `_admin/skeleton`.
-Examples of polished problems can be found in `_testdata_tools/examples`, including two problems from BOI 2018.
+Examples of polished problems can be found in `_tools/examples`, including two problems from BOI 2018.
