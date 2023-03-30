@@ -44,17 +44,17 @@ vll query(vii qs) {
     return res;
 }
 
-ll r = 3e9; 
+ll r = 3e5; 
 
 int main() {
     cin >> n >> m >> k >> Q;
 
     srand(42); 
 
-    vll tt = query({{0,0},{-r,r}});
+    vll tt = query({{0,0},{0,4*r}});
     vll a,b;
     FORE(d,tt) {
-        if(d > r) b.pb(d-r);
+        if(d > 3*r) b.pb(d-3*r);
         else a.pb(d);
     }
     //cout << a.size() << " " << b.size() << endl;
@@ -68,11 +68,11 @@ int main() {
         init.insert({x,y});
     }
     vii pts(ALL(init));
-
+    reverse(ALL(pts));
     vii qs;
 
     FOR(i,pts.size()) {
-        qs.pb({-i*r,pts[i].S});
+        qs.pb({n + i*r,pts[i].S});
     }
 
     vll ds = query(qs);
@@ -81,6 +81,7 @@ int main() {
 
     FORE(d,ds) {
         ll pt = d/r;
+        //cout << " " << pt << " " << d << endl;
         mp[pt][d-pt*r]++;
     }
 
@@ -89,9 +90,9 @@ int main() {
     FOR(pi,pts.size()) {
         ii p = pts[pi];
         FORE(q,sol) {
-            mp[pi][dist({0,p.S},q)]--;
+            mp[pi][dist({n,p.S},q)]--;
         }
-        if(mp[pi][p.F] == 1) {
+        if(mp[pi][n-p.F] == 1) {
             sol.pb(p);
         } 
     }

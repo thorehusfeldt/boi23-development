@@ -41,65 +41,67 @@ tc g3-tmp-1 gen_random --n 100 --m 100 --Q 3000 --k 3
 tc g3-tmp-2 gen_random --n 100 --m 100 --Q 3000 --k 4
 tc g3-tmp-3 gen_random --n 100 --m 100 --Q 3000 --k 5
 tc g3-tmp-4 gen_random --n 100 --m 100 --Q 3000 --k 6
-tc g3-random-maxk-1 gen_random --n 100 --m 100 --Q 3000 --k 50
-tc g3-random-maxk-2 gen_random --n 10 --m 100 --Q 3000 --k 50
-tc g3-random-maxk-3 gen_random --n 100 --m 10 --Q 3000 --k 50
-tc g3-random-maxk-4 gen_random --n 1000 --m 1000 --Q 3000 --k 50
-tc g3-random-maxk-5 gen_random --n 1000000000 --m 100000000 --Q 3000 --k 50
-tc g3-random-maxcand-1 gen_maximise_candidates_consentrated --n 2000 --m 2000 --Q 3000 --k 50 --ccx 400 --ccy 400
-tc g3-random-maxcand-2 gen_maximise_candidates_consentrated --n 2000000 --m 2000000 --Q 3000 --k 50 --ccx 10000 --ccy 1000
-tc g3-random-maxcand-3 gen_maximise_candidates_consentrated --n 2000000 --m 2000 --Q 3000 --k 50 --ccx 800 --ccy 800
-tc g3-random-maxcand-4 gen_maximise_candidates_consentrated --n 2000 --m 2000000 --Q 3000 --k 50 --ccx 1100 --ccy 80000
-tc g3-random-maxcand-5 gen_maximise_candidates_consentrated --n 1000000000 --m 100000000 --Q 3000 --k 50 --ccx 10000000 --ccy 1000000
+tc g3-tmp-5 gen_random --n 100 --m 100 --Q 3000 --k 10
+tc g3-tmp-6 gen_random --n 100 --m 100 --Q 3000 --k 20
+tc g3-random-maxk-1 gen_random --n 100 --m 100 --Q 3000 --k 30
+tc g3-random-maxk-2 gen_random --n 10 --m 100 --Q 3000 --k 30
+tc g3-random-maxk-3 gen_random --n 100 --m 10 --Q 3000 --k 30
+tc g3-random-maxk-4 gen_random --n 1000 --m 1000 --Q 3000 --k 30
+tc g3-random-maxk-5 gen_random --n 1000000000 --m 100000000 --Q 3000 --k 30
+tc g3-random-maxcand-1 gen_maximise_candidates_consentrated --n 2000 --m 2000 --Q 3000 --k 30 --ccx 400 --ccy 400
+tc g3-random-maxcand-2 gen_maximise_candidates_consentrated --n 2000000 --m 2000000 --Q 3000 --k 30 --ccx 10000 --ccy 1000
+tc g3-random-maxcand-3 gen_maximise_candidates_consentrated --n 2000000 --m 2000 --Q 3000 --k 30 --ccx 800 --ccy 800
+tc g3-random-maxcand-4 gen_maximise_candidates_consentrated --n 2000 --m 2000000 --Q 3000 --k 30 --ccx 1100 --ccy 80000
+tc g3-random-maxcand-5 gen_maximise_candidates_consentrated --n 1000000000 --m 100000000 --Q 3000 --k 30 --ccx 10000000 --ccy 1000000
 
 group group4 11
 limits --Q 600
-tc g4-random-maxk-1 gen_random --n 100 --m 100 --Q 600 --k 50
-tc g4-random-maxk-2 gen_random --n 10 --m 100 --Q 600 --k 50
-tc g4-random-maxk-3 gen_random --n 100 --m 10 --Q 600 --k 50
-tc g4-random-maxk-4 gen_random --n 1000 --m 1000 --Q 600 --k 50
-tc g4-random-maxk-5 gen_random --n 1000000000 --m 100000000 --Q 600 --k 50
-tc g4-random-maxcand-1 gen_maximise_candidates_consentrated --n 2000 --m 2000 --Q 600 --k 50 --ccx 400 --ccy 400
-tc g4-random-maxcand-2 gen_maximise_candidates_consentrated --n 2000000 --m 2000000 --Q 600 --k 50 --ccx 10000 --ccy 1000
-tc g4-random-maxcand-3 gen_maximise_candidates_consentrated --n 2000000 --m 2000 --Q 600 --k 50 --ccx 800 --ccy 800
-tc g4-random-maxcand-4 gen_maximise_candidates_consentrated --n 2000 --m 2000000 --Q 600 --k 50 --ccx 1100 --ccy 80000
-tc g4-random-maxcand-5 gen_maximise_candidates_consentrated --n 1000000000 --m 100000000 --Q 600 --k 50 --ccx 10000000 --ccy 1000000
+tc g4-random-maxk-1 gen_random --n 100 --m 100 --Q 600 --k 30
+tc g4-random-maxk-2 gen_random --n 10 --m 100 --Q 600 --k 30
+tc g4-random-maxk-3 gen_random --n 100 --m 10 --Q 600 --k 30
+tc g4-random-maxk-4 gen_random --n 1000 --m 1000 --Q 600 --k 30
+tc g4-random-maxk-5 gen_random --n 1000000000 --m 100000000 --Q 600 --k 30
+tc g4-random-maxcand-1 gen_maximise_candidates_consentrated --n 2000 --m 2000 --Q 600 --k 30 --ccx 400 --ccy 400
+tc g4-random-maxcand-2 gen_maximise_candidates_consentrated --n 2000000 --m 2000000 --Q 600 --k 30 --ccx 10000 --ccy 1000
+tc g4-random-maxcand-3 gen_maximise_candidates_consentrated --n 2000000 --m 2000 --Q 600 --k 30 --ccx 800 --ccy 800
+tc g4-random-maxcand-4 gen_maximise_candidates_consentrated --n 2000 --m 2000000 --Q 600 --k 30 --ccx 1100 --ccy 80000
+tc g4-random-maxcand-5 gen_maximise_candidates_consentrated --n 1000000000 --m 100000000 --Q 600 --k 30 --ccx 10000000 --ccy 1000000
 
-group group5 11
+group group5 7
 limits --Q 310
-tc g5-random-maxk-1 gen_random --n 100 --m 100 --Q 310 --k 50
-tc g5-random-maxk-2 gen_random --n 10 --m 100 --Q 310 --k 50
-tc g5-random-maxk-3 gen_random --n 100 --m 10 --Q 310 --k 50
-tc g5-random-maxk-4 gen_random --n 1000 --m 1000 --Q 310 --k 50
-tc g5-random-maxk-5 gen_random --n 1000000000 --m 100000000 --Q 310 --k 50
-tc g5-random-maxcand-1 gen_maximise_candidates_consentrated --n 2000 --m 2000 --Q 310 --k 50 --ccx 400 --ccy 400
-tc g5-random-maxcand-2 gen_maximise_candidates_consentrated --n 2000000 --m 2000000 --Q 310 --k 50 --ccx 10000 --ccy 1000
-tc g5-random-maxcand-3 gen_maximise_candidates_consentrated --n 2000000 --m 2000 --Q 310 --k 50 --ccx 800 --ccy 800
-tc g5-random-maxcand-4 gen_maximise_candidates_consentrated --n 2000 --m 2000000 --Q 310 --k 50 --ccx 1100 --ccy 80000
-tc g5-random-maxcand-5 gen_maximise_candidates_consentrated --n 1000000000 --m 100000000 --Q 310 --k 50 --ccx 10000000 --ccy 1000000
+tc g5-random-maxk-1 gen_random --n 100 --m 100 --Q 310 --k 30
+tc g5-random-maxk-2 gen_random --n 10 --m 100 --Q 310 --k 30
+tc g5-random-maxk-3 gen_random --n 100 --m 10 --Q 310 --k 30
+tc g5-random-maxk-4 gen_random --n 1000 --m 1000 --Q 310 --k 30
+tc g5-random-maxk-5 gen_random --n 1000000000 --m 100000000 --Q 310 --k 30
+tc g5-random-maxcand-1 gen_maximise_candidates_consentrated --n 2000 --m 2000 --Q 310 --k 30 --ccx 400 --ccy 400
+tc g5-random-maxcand-2 gen_maximise_candidates_consentrated --n 2000000 --m 2000000 --Q 310 --k 30 --ccx 10000 --ccy 1000
+tc g5-random-maxcand-3 gen_maximise_candidates_consentrated --n 2000000 --m 2000 --Q 310 --k 30 --ccx 800 --ccy 800
+tc g5-random-maxcand-4 gen_maximise_candidates_consentrated --n 2000 --m 2000000 --Q 310 --k 30 --ccx 1100 --ccy 80000
+tc g5-random-maxcand-5 gen_maximise_candidates_consentrated --n 1000000000 --m 100000000 --Q 310 --k 30 --ccx 10000000 --ccy 1000000
 
 group group6 20
 limits --max_nm 100000 --Q 2
 tc ukr_task_description_sample_1 gen_explicit 4 5 2 1 2 3 3 2 5
-tc g6-random-maxk-1 gen_random --n 100 --m 100 --Q 2 --k 50
-tc g6-random-maxk-2 gen_random --n 10 --m 100 --Q 2 --k 50
-tc g6-random-maxk-3 gen_random --n 100 --m 10 --Q 2 --k 50
-tc g6-random-maxk-4 gen_random --n 1000 --m 1000 --Q 2 --k 50
-tc g6-random-maxk-5 gen_random --n 100000 --m 100000 --Q 2 --k 50
-tc g6-random-maxcand-1 gen_maximise_candidates_consentrated --n 100000 --m 100000 --Q 2 --k 50 --ccx 400 --ccy 400
-tc g6-random-maxcand-2 gen_maximise_candidates_consentrated --n 100000 --m 100000 --Q 2 --k 50 --ccx 10000 --ccy 1000
-tc g6-random-maxcand-3 gen_maximise_candidates_consentrated --n 100000 --m 100000 --Q 2 --k 50 --ccx 800 --ccy 800
-tc g6-random-maxcand-4 gen_maximise_candidates_consentrated --n 100000 --m 100000 --Q 2 --k 50 --ccx 1100 --ccy 80000
-tc g6-random-maxcand-5 gen_maximise_candidates_consentrated --n 100000 --m 100000 --Q 2 --k 50 --ccx 90000 --ccy 90000
+tc g6-random-maxk-1 gen_random --n 100 --m 100 --Q 2 --k 30
+tc g6-random-maxk-2 gen_random --n 10 --m 100 --Q 2 --k 30
+tc g6-random-maxk-3 gen_random --n 100 --m 10 --Q 2 --k 30
+tc g6-random-maxk-4 gen_random --n 1000 --m 1000 --Q 2 --k 30
+tc g6-random-maxk-5 gen_random --n 100000 --m 100000 --Q 2 --k 30
+tc g6-random-maxcand-1 gen_maximise_candidates_consentrated --n 100000 --m 100000 --Q 2 --k 30 --ccx 400 --ccy 400
+tc g6-random-maxcand-2 gen_maximise_candidates_consentrated --n 100000 --m 100000 --Q 2 --k 30 --ccx 10000 --ccy 1000
+tc g6-random-maxcand-3 gen_maximise_candidates_consentrated --n 100000 --m 100000 --Q 2 --k 30 --ccx 800 --ccy 800
+tc g6-random-maxcand-4 gen_maximise_candidates_consentrated --n 100000 --m 100000 --Q 2 --k 30 --ccx 1100 --ccy 80000
+tc g6-random-maxcand-5 gen_maximise_candidates_consentrated --n 100000 --m 100000 --Q 2 --k 30 --ccx 90000 --ccy 90000
 
 group group7 15
 limits --max_nm 100000000 --Q 2
-tc g7-random-maxk-5 gen_random --n 100000000 --m 100000000 --Q 2 --k 50
-tc g7-random-maxcand-1 gen_maximise_candidates_consentrated --n 100000000 --m 100000000 --Q 2 --k 50 --ccx 400 --ccy 400
-tc g7-random-maxcand-2 gen_maximise_candidates_consentrated --n 100000000 --m 100000000 --Q 2 --k 50 --ccx 10000 --ccy 1000
-tc g7-random-maxcand-3 gen_maximise_candidates_consentrated --n 100000000 --m 100000000 --Q 2 --k 50 --ccx 800 --ccy 800
-tc g7-random-maxcand-4 gen_maximise_candidates_consentrated --n 100000000 --m 100000000 --Q 2 --k 50 --ccx 1100 --ccy 80000
-tc g7-random-maxcand-5 gen_maximise_candidates_consentrated --n 100000000 --m 100000000 --Q 2 --k 50 --ccx 10000000 --ccy 1000000
+tc g7-random-maxk-5 gen_random --n 100000000 --m 100000000 --Q 2 --k 30
+tc g7-random-maxcand-1 gen_maximise_candidates_consentrated --n 100000000 --m 100000000 --Q 2 --k 30 --ccx 400 --ccy 400
+tc g7-random-maxcand-2 gen_maximise_candidates_consentrated --n 100000000 --m 100000000 --Q 2 --k 30 --ccx 10000 --ccy 1000
+tc g7-random-maxcand-3 gen_maximise_candidates_consentrated --n 100000000 --m 100000000 --Q 2 --k 30 --ccx 800 --ccy 800
+tc g7-random-maxcand-4 gen_maximise_candidates_consentrated --n 100000000 --m 100000000 --Q 2 --k 30 --ccx 1100 --ccy 80000
+tc g7-random-maxcand-5 gen_maximise_candidates_consentrated --n 100000000 --m 100000000 --Q 2 --k 30 --ccx 10000000 --ccy 1000000
 
 
 group group8 19
@@ -108,7 +110,7 @@ tc g8-tmp-1 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 7
 tc g8-tmp-2 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 14
 tc g8-tmp-3 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 42
 tc g8-tmp-4 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 49
-tc g8-random-maxk-4 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 50
-tc g8-random-maxk-5 gen_random --n 1000000000 --m 500000000 --Q 2 --k 50
-tc g8-random-maxcand-4 gen_maximise_candidates --n 999999999 --m 999999999 --Q 2 --k 50
-tc g8-random-maxcand-5 gen_maximise_candidates --n 1000000000 --m 1000000000 --Q 2 --k 50
+tc g8-random-maxk-4 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 30
+tc g8-random-maxk-5 gen_random --n 1000000000 --m 500000000 --Q 2 --k 30
+tc g8-random-maxcand-4 gen_maximise_candidates --n 999999999 --m 999999999 --Q 2 --k 30
+tc g8-random-maxcand-5 gen_maximise_candidates --n 1000000000 --m 1000000000 --Q 2 --k 30

@@ -8,6 +8,7 @@ using namespace std;
 #define vi vector<int>
 #define vll vector<ll>
 #define vvi vector<vi>
+#define vvvi vector<vvi>
 #define vvll vector<vll>
 #define vii vector<ii>
 #define FOR(x,n) for(int x=0;x<(int)(n);x++)
@@ -43,35 +44,10 @@ vll query(vii qs) {
     return res;
 }
 
-set<int> dd;
-vii qps;
-vi ccl;
-vii cpq;
-int cc = 0;
-vii pts;
-int cp;
-
-bool try_cc(int idx, int dx, int dy){
-    ii qp = {pts[idx].F + dx,pts[idx].S + dy};
-    if(qp.F < 0 || qp.F > 1e9 || qp.S < 0 || qp.S > 1e9) return false;
-    FOR(j,cp) {
-        ll dj = dist(qp,pts[j]);
-        if(j == idx) continue;
-        if(ccl[j] < 0 && dj <= abs(dx) + abs(dy)) return false;
-        if(dj <= ccl[j]) return false;
-    }
-    //cout << "sb" << endl;
-    FOR(j,cp) {
-        dd.insert(dist(qp,pts[j]));
-    }
-    qps.pb(qp);
-    cpq[idx] = qp;
-    return true;
-}
 
 int main() {
     cin >> n >> m >> k >> Q;
-    // Assumptions
+
     n = 1e9;
     m = 1e9;
 
@@ -87,61 +63,108 @@ int main() {
         init.insert({x,y});
     }
 
-    pts = vii(ALL(init));
+    vii pts(ALL(init));
+    int cp = pts.size();
 
-    cp = pts.size();
-    cpq.resize(cp);
-    ccl.resize(cp,-1);
-    int idx = 0;
-    int fd = 0;
-    int cc = 0;
+    int s = 2*cp*cp;
 
-    vi nxt(cp);
-    iota(ALL(nxt),1);
-    nxt[cp-1] = 0;
-    int pr = cp-1;
-    int hic = 1;
-    while(fd < cp) {
-        if(idx <= pr){
-            if(!hic) cc++;
-            hic = 0;
-        } 
-        
-        //cout << cc << " " << idx << " " << pr << endl;
-        if(try_cc(idx,cc,0) || try_cc(idx,-cc,0) || try_cc(idx,0,cc) || try_cc(idx,0,-cc)) {
-            ccl[idx] = cc;
-            fd++;
-            nxt[pr] = nxt[idx];
-        } else {
-            pr = idx;
+    vvvi dep(cp,vvi(4));
+    vvi dc(cp,vi(4));
+    FOR(i,cp) FOR(j,cp) {
+        if(dist(pts[i],pts[j]) > s) continue;
+        if(abs(pts[j].F - pts[i].F) <= abs(pts[j].S - pts[i].S)) {
+            if(pts[j].S > pts[i].S) {
+                dc[i][0]++;
+                dep[j][0].pb(i);
+            } else if (pts[j].S < pts[i].S) {
+                dc[i][1]++;
+                dep[j][1].pb(i);
+            }
         }
-        while(dd.count(cc)) {
-            cc++;
-            hic = 1;
+        if(abs(pts[j].F - pts[i].F) >= abs(pts[j].S - pts[i].S)) {
+            if(pts[j].F > pts[i].F) {
+                dc[i][2]++;
+                dep[j][2].pb(i);
+            } else if (pts[j].F < pts[i].F) {
+                dc[i][3]++;
+                dep[j][3].pb(i);
+            }
         }
-
-        idx = nxt[idx];
     }
 
+    vector<queue<int>> qs(4);
+    FOR(i,cp) FOR(j,4) if(!dc[i][j]) qs[j].push(i);
+
+    vi vis(cp);
+    int pc = 0;
+
+    vii qps(cp);
+    unordered_set<int> res;
+    unordered_set<int> dd;
+
+    vii dir = {{0,1},{0,-1},{1,0},{-1,0}};
+    vi odr;
+    int cc = 0;
+    while(pc < cp) {
+        FOR(dr,4) {
+            if(qs[dr].size() == 0) continue;
+            int idx = qs[dr].front();
+            qs[dr].pop();
+            if(vis[idx] == 1) {
+                FORE(v,dep[idx][dr]) {
+                    if(!(--dc[v][dr])) {
+                        qs[dr].push(v);
+                    }
+                }
+                continue;
+            }
+            ii qp;
+            int f = 1;
+            for(;;cc++) {
+                qp = {pts[idx].F + dir[dr].F*cc, pts[idx].S + dir[dr].S*cc};
+                if(qp.F < 0 || qp.F > 1e9 || qp.S < 0 || qp.S > 1e9) {
+                    goto total_fail;
+                };
+                if(dd.count(dist(qp,pts[idx]))) continue;
+                FOR(i,cp){
+                    if(res.count(dist(qp,pts[i]))) goto cc_fail;
+                }
+                break;
+                cc_fail:
+                cc = cc;
+            }
+            vis[idx] = 1;
+            qps[idx] = qp;
+            res.insert(dist(qp,pts[idx]));
+            FOR(i,cp){
+                dd.insert(dist(qp,pts[i]));
+            }
+            FORE(v,dep[idx][dr]) {
+                if(!(--dc[v][dr])) {
+                    qs[dr].push(v);
+                }
+            }
+            odr.pb(idx);
+            pc++;
+            cc++;
+            total_fail:
+            cc = cc;
+        }
+    }
     vll ds = query(qps);
 
     map<ll,int> cnt;
     FORE(d,ds) cnt[d]++;
-
-    vii pem(cp);
-    FOR(i,cp) {
-        pem[i] = {ccl[i],i};
-    }
-    sort(ALL(pem));
-
     vii sol;
 
     FOR(pmi,cp) {
-        int pi = pem[pmi].S;
+        int pi = odr[pmi];
         ii p = pts[pi];
-        if(cnt[ccl[pi]]) {
+        if(cnt[dist(qps[pi],pts[pi])]) {
             sol.pb(p);
-            FORE(q,qps) cnt[dist(p,q)]--;
+            FORE(q,qps) {
+                cnt[dist(p,q)]--;
+            }
         }
     }
     cout << "! ";
