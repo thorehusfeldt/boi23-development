@@ -1,0 +1,78 @@
+#!/bin/bash
+set +e
+if ! [ -f /.dockerenv ]; then
+  echo "Running in docker image hamerly/problemtools-icpc..."
+  exec sudo docker run --rm -it -v "$PWD":/problems -w /problems hamerly/problemtools-icpc _tools/verifyall "$@"
+fi
+if ! command -v verifyproblem > /dev/null; then
+  echo "verifyproblem command not found!"
+  exit 1
+fi
+h1="=================================================="
+h2="--------------------------------------------------"
+res=0
+gen_fails=""
+ver_fails=""
+for f in */data/generate.sh; do
+  d=$(dirname "$f")
+  p=$(dirname "$d")
+  echo "$h1"
+  echo "Problem: $p"
+  echo "$h1"
+  echo
+  echo "$h2"
+  echo "$p: Test case generation"
+  echo "$h2"
+  echo
+  (cd "$d" && ./generate.sh)
+  chown -R --reference="$d" "$d/secret"
+  gen_status=$?
+  res=$((res + gen_status))
+  if [ "$gen_status" -ne 0 ]; then
+    gen_fails="${gen_fails}${p}"$'\n'
+  fi
+  echo
+  echo "$h2"
+  echo "$p: Problem verification"
+  echo "$h2"
+  echo
+  if [ "$gen_status" -eq 0 ] ; then
+    python3 -u "$(type -p verifyproblem )" -l info "$p" | tee /tmp/result.txt | grep -v "INFO : "
+    ver_status=${PIPESTATUS[0]}
+
+    if [ "$ver_status" -eq 0 ] && grep 'WARNING in submissions: PAC submission .* got AC' /tmp/result.txt &> /dev/null; then
+      echo
+      echo "Marking as ERROR, because PAC submission got AC judgement"
+      ver_status=1
+    fi
+
+    echo
+    echo "$h2"
+    echo "$p: Test group analysis"
+    echo "$h2"
+    echo
+    _tools/analyzetestgroups -f /tmp/result.txt "$p"
+
+    if [ "$ver_status" -ne 0 ]; then
+      ver_fails="${ver_fails}${p}"$'\n'
+    fi
+    res=$((res + ver_status))
+  else
+	echo "Skipped due to failed test generation."
+  fi
+  echo
+  echo
+  echo
+done
+if [ "$res" -ne 0 ]; then
+  echo "$h1"
+  echo "Verification of all problems failed"
+  echo "$h1"
+  echo
+  echo "Problems failing test generation:"
+  echo "$gen_fails"
+  echo
+  echo "Problems failing problem verification:"
+  echo "$ver_fails"
+fi
+exit $res
