@@ -108,8 +108,8 @@ group group8 19
 limits --Q 2
 tc g8-tmp-1 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 7
 tc g8-tmp-2 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 14
-tc g8-tmp-3 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 42
-tc g8-tmp-4 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 49
+tc g8-tmp-3 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 22
+tc g8-tmp-4 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 29
 tc g8-random-maxk-4 gen_random --n 1000000000 --m 1000000000 --Q 2 --k 30
 tc g8-random-maxk-5 gen_random --n 1000000000 --m 500000000 --Q 2 --k 30
 tc g8-random-maxcand-4 gen_maximise_candidates --n 999999999 --m 999999999 --Q 2 --k 30
