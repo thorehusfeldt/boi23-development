@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
 
+# @EXPECTED_GRADES@ WA WA WA WA WA WA
+
 """ Wrong solution that stoically drives home,
     taking whatever damage the pulsar throws at you.
 """
