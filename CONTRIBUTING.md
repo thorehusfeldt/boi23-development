@@ -25,6 +25,8 @@ assert n <= max_n
 (It still makes sense to have argument defaults. But don't verify with them.)
 As a rule, each constraint should be verified exactly once.
 
-To avoid erros, do use underscores in python, as in `1_000`, and the correct decimal grouping seperators in your own natural language.
-In LaTeX, use `\,` (for `\thinspace`) as the thousands seperator in English.
-
+To avoid erros for numbers larger than 9999, do use underscores in python and bash, as in `10_000`, apostrophes in C++, etc. 
+Use the correct decimal grouping seperators in your own natural language,
+preferring thin space.
+(This is includes English.)
+In LaTeX source code, use `\,`, not `\thinspace`.

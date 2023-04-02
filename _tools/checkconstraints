@@ -75,17 +75,17 @@ class GeneratorGroups:
 
 @dataclass
 class StatementConstraints:
-    score = {}
-    limits = {}
-    constraints = {}
 
     def __init__(self, infile):
+        self.score = {}
+        self.limits = {}
+        self.constraints = {}
         numgroups = 0
         mode = "looking"
         for line in infile:
             if re.search(r"constraint:", line):
                 m = re.search("constraint:([a-z_]+)", line)
-                self.constraints[m.group(1)] = line
+                self.constraints[m.group(1)] = line.strip()
             if re.search(r"tabular", line):
                 mode = "slurping"
                 continue
@@ -139,7 +139,7 @@ def check(problem_folder):
 
     for k, v in validatorconstraints.items():
         print(f"\033[1m{k}\033[0m")
-        print("\033[36mValidator:\033[0m", v)
+        print("\033[36m  Validator:\033[0m", v)
         for lang in sorted(statement.keys()):
             print(f"  \033[36m{lang}\033[0m", statement[lang].constraints[k])
 
@@ -189,5 +189,5 @@ for problem_path in problem_paths:
     if ct > 0:
         print()
     ct += 1
-    print(f"\033[1;4m{problem_path}\033[0m\n")
+    print(f"\033[1;4m{problem_path}\033[0m")
     check(problem_path)
