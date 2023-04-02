@@ -12,6 +12,7 @@
 """
 
 import sys
+import math
 from pathlib import Path
 
 MAX_NUM_ROUNDS = 1000 * 3
@@ -43,7 +44,8 @@ def accept(rounds_used: int, input_size: int) -> None:
         # linearly interpolate such that
         # 80 points for additional_rounds = 25 (roughly 2.5*log_2(n))
         # 1 point for additional_rounds = 1500 (for 2n solution)
-        score = int(4799/59 - 79 * additional_rounds / 1475)
+        # score = int(4799/59 - 79 * additional_rounds / 1475)
+        score = round(118.2-12*math.log(additional_rounds))
         assert 1 <= score <= 80
 
     with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
