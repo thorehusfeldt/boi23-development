@@ -12,13 +12,13 @@ args = parser.parse_args()
 
 line = sys.stdin.readline()
 assert re.match(r"([1-9][0-9]* )*[1-9][0-9]*\n", line), line
-tokens = line.split()
-for token in tokens:
-    assert int(token) > 0, 'Skills must be positive'
-    assert int(token) <= 86400
+a = list(map(int, line.split()))
+for i in range(len(a)):
+    assert 1 <= a[i] <= 86_400, 'Skill out of bounds' # constraint:skillbounds
 
-n = len(tokens)
+n = len(a)
 assert args.min_n <= n <= args.max_n
-assert len(set(tokens)) == n
+assert 2 <= n <= 1225 # constraint:n
+assert len(set(a)) == len(a) # constraint:allskillsdifferent
 assert sys.stdin.readline() == ""
 sys.exit(42)

@@ -39,10 +39,13 @@ and for all $i$ with $i\neq k$ and $1\leq i\leq n$ you must have $a_i=b_i$.
 
 Interaction is \emph{non-adaptive}, meaning that the $a_1,\ldots, a_n$ are determined before interaction begins.
 
-\subsection*{Constraints and scoring}
+\subsection*{Constraints and Scoring}
 
-The number $n$ of athletes satisfies $2\leq n\leq 1500$.
-The imperturbability $a_i$ of each athlete satisfies $1\leq a_i\leq 86\,400$, they are all different.
+The number $n$ of athletes satisfies 
+$2\leq n\leq 1500$. % constraint:n
+The imperturbability $a_i$ of each athlete satisfies 
+$1\leq a_i\leq 86\,400$, % constraint:skillbounds
+they are all different. % constraint:allskillsdifferent
 You can use at most $3000$ queries.
 
 There are three test groups.
