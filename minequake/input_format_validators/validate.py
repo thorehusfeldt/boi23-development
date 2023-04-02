@@ -6,14 +6,14 @@ import sys
 from argparse import ArgumentParser
 
 parser = ArgumentParser("Validate input")
-parser.add_argument("--max_n", type=int, default=1000000)
+parser.add_argument("--max_n", type=int, default=100000)
 parser.add_argument("--structure", choices=["path", "starlike"])
 args = parser.parse_args()
 
 line = sys.stdin.readline()
 assert re.match("[1-9][0-9]*\n", line), line
 n = int(line)
-assert 0 < n <= args.max_n
+assert 1 <= n <= 100_000 # constraint:n
 
 V = list(range(1, n + 1))
 edges = set()
@@ -22,7 +22,7 @@ for _ in range(n - 1):
     line = sys.stdin.readline()
     assert re.match("[1-9][0-9]* [1-9][0-9]*\n", line), line
     u, v = map(int, line.split())
-    assert u < v
+    assert 1 <= u < v <= n # constraint:hallnames
     assert (u, v) not in edges, "Duplicate corridor"
     edges.add((u, v))
     halls.add(u)

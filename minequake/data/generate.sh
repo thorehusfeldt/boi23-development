@@ -19,7 +19,7 @@ sample 3
 
 # First test group, and the number of points for it
 group group1 18
-limits --max_n 100000 --structure "path"
+limits --structure "path"
 tc 1
 tc 3
 tc edge        gen_star -n 2     --degree 1
@@ -31,7 +31,7 @@ tc hg-path     gen_star -n 100000 --degree 1
 tc hg-path-1   gen_star -n 99999  --degree 1
 
 group group2 19
-limits --max_n 100000 --structure "starlike"
+limits --structure "starlike"
 include_group group1
 tc 2
 tc sm-star gen_star          -n 100
@@ -75,7 +75,6 @@ tc md-10-regular gen_regular   -n 1000 -d 10
 tc md-100-regular gen_regular  -n 1000 -d 100
 
 group group5 22
-limits --max_n 100000
 include_group group1
 include_group group2
 include_group group4
