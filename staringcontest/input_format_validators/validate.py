@@ -6,7 +6,7 @@ from argparse import ArgumentParser
 
 parser = ArgumentParser("Validate input to staringcontest")
 parser.add_argument("--min_n", type=int, default=2)
-parser.add_argument("--max_n", type=int, default=1225)
+parser.add_argument("--max_n", type=int, default=1500)
 args = parser.parse_args()
 
 
@@ -18,7 +18,7 @@ for i in range(len(a)):
 
 n = len(a)
 assert args.min_n <= n <= args.max_n
-assert 2 <= n <= 1225 # constraint:n
+assert 2 <= n <= 1500 # constraint:n
 assert len(set(a)) == len(a) # constraint:allskillsdifferent
 assert sys.stdin.readline() == ""
 sys.exit(42)

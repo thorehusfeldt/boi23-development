@@ -15,9 +15,6 @@ import sys
 import math
 from pathlib import Path
 
-MAX_NUM_ROUNDS = 1000 * 3
-
-
 
 def fail(msg: str) -> None:
     """Fail WA with given message"""
@@ -66,7 +63,7 @@ with open(sys.argv[1]) as in_file:
     skills = list(map(int, in_file.readline().split()))
     n = len(skills)
     print(n, flush=True)
-    for q in range(MAX_NUM_ROUNDS):
+    for q in range(3_000): # constraint:maxnumrounds
         line = get_team_line().split()
         if line[0] == '?':
             if len(line) != 3:
