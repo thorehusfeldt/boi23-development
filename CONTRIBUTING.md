@@ -30,3 +30,5 @@ Use the correct decimal grouping seperators in your own natural language,
 preferring thin space.
 (This is includes English.)
 In LaTeX source code, use `\,`, not `\thinspace`.
+
+Put problem-relevant numbers in LaTeX math mode. (Dates can remain in text mode.)

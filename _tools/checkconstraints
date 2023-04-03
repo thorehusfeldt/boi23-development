@@ -12,7 +12,8 @@ import yaml
 
 
 BOI23LANGUAGES = ["da", "de", "en", "et", "is", "lt", "lv", "no", "pl", "sv", "uk"]
-INTre = r"\$?\s*(\d+)\s*\$?"  # matches '3' and ' 5 ' and '$ 54$'
+INTre = r"\$(\d+)\$"  # matches '$54$' but not '54' or '$ 54$'
+RANGEre = r"\$(\d+)\$--\$(\d+)\$"  # matches '$54--67$'
 
 
 def parseValidatorConstraints(infile):
@@ -94,12 +95,18 @@ class StatementConstraints:
                 continue
             if mode == "slurping":
                 m = re.match(INTre + r"\s*&\s* " + INTre + r"\s*&(.*)", line.strip())
-                if m:
+                m_ = re.match(INTre + r"\s*&\s* " + RANGEre + r"\s*&(.*)", line.strip())
+                if m or m_:
                     numgroups += 1
-                    group, score = int(m.group(1)), int(m.group(2))
-                    assert group == numgroups
-                    self.score[group] = score
-                    self.limits[group] = m.group(3)
+                    if m:
+                        group = int(m.group(1))
+                        self.score[group] = int(m.group(2))
+                        self.limits[group] = m.group(3)
+                    else:
+                        group = int(m_.group(1))
+                        self.score[group] = int(m_.group(3))
+                        self.limits[group] = m_.group(4)
+                    assert group == numgroups, (self.score[group], numgroups)
 
 
 def check(problem_folder):
@@ -137,14 +144,11 @@ def check(problem_folder):
         ):
             logging.warning("Constraints for language %s don't match validator", lang)
 
-    for k, v in validatorconstraints.items():
+    for k in validatorconstraints:
         print(f"\033[1m{k}\033[0m")
-        print("\033[36m  Validator:\033[0m", v)
+        print("\033[36m  Validator:\033[0m", validatorconstraints[k])
         for lang in sorted(statement.keys()):
             print(f"  \033[36m{lang}\033[0m", statement[lang].constraints[k])
-
-    # if not len(ggroups) == len(sgroups['da']):
-    # print ("\033[31mNumber of test groups mismatch!\033[0m")
 
     for i in range(1, 1 + len(ggroups)):
         print(f"\033[1mGroup {i}\033[0m")

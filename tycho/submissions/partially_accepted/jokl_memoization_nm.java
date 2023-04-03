@@ -1,3 +1,8 @@
+// @EXPECTED_GRADES@ AC AC RTE AC RTE RTE
+//
+// RTEs can also be TLEs, depending on where the code runs (out
+// of heap space or out of time)
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

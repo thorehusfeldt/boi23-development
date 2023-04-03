@@ -1,6 +1,9 @@
 #! /usr/bin/env python3
 
 # Solution in time O(zm) using dynamic programming
+# @EXPECTED_GRADES@ AC AC RTE TLE RTE RTE
+# The RTE/TLE behaviour (does it run out of memory before
+# it runs out of time?) is funky and differs between pypy/cpython
 
 import math
 

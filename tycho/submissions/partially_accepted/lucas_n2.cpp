@@ -1,3 +1,5 @@
+// @EXPECTED_GRADES@ AC AC AC TLE TLE TLE
+
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
