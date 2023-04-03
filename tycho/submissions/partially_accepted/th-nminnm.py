@@ -4,6 +4,8 @@
 # using Lucas's formulas and notation from the original analysis,
 # and observing that s[k] has at most min(n, m) elements.
 
+# @EXPECTED_GRADES@ AC AC TLE AC TLE TLE
+
 b, m, d, n = map(int, input().split())
 a = [0] + list(int(input()) for _ in range(n))
 

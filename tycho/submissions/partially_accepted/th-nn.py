@@ -3,6 +3,8 @@
 # Solution in time O(n*n) using dynamic programming
 # using Lucas's formulas and notation from the original analysis
 
+# @EXPECTED_GRADES@ AC AC AC TLE TLE TLE
+
 import math
 
 z, m, c, n = map(int, input().split())
