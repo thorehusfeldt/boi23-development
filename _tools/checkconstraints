@@ -109,13 +109,13 @@ def check(problem_folder):
     try:
         with open(problem_folder / "data" / "generate.sh", "r") as infile:
             ggroups = GeneratorGroups(infile)
-        validators = list(
-            glob.iglob(os.path.join(problem_folder, "input_format_validators", "**"))
-        )
-        assert len(list(validators)) == 1, "Only works for 1 validator"
-        assert validators[0].split(".")[-1] in ["py", "cpp"], "Use C++ or Python for validator"
-        with open(validators[0], "r") as infile:
-            validatorconstraints = parseValidatorConstraints(infile)
+        validatorconstraints = {}
+        for validator in glob.iglob(os.path.join(problem_folder, "*validators", "**")):
+            assert validator.split(".")[-1] in ["py", "cpp"], "Use C++ or Python for validator"
+            with open(validator, "r") as infile:
+                tmp = parseValidatorConstraints(infile)
+                assert not set(tmp.keys()) & set(validatorconstraints.keys())
+                validatorconstraints.update(tmp)
 
         statement = {}
         for s in glob.iglob( os.path.join(problem_folder, "problem_statement", "problem.*.tex")):
