@@ -24,12 +24,12 @@ What is the minumum damage Tycho will take on this journey back to home base?
 
 \subsection*{Input}
 
-The first line consists of four integers $b,p,d,n$, separated by space;
+The first line consists of four integers $b$, $p$, $d$, and $n$, separated by space:
 the location $b$ of the home base,
-the pulsar's period $p$,
-the additional radiation damage $d$ caused by the pulsar,
-the number $n$ of shelters.
-The following $n$ lines each contain an integer giving the shelter locations $a_1$, $\ldots$, $a_n$, with 
+the pulsar's period~$p$,
+the additional radiation damage~$d$ caused by the pulsar,
+the number~$n$ of shelters.
+The following $n$~lines each contain an integer giving the shelter locations $a_1$, $\ldots$, $a_n$, with 
 $0<a_i< b$ for $1\leq i \leq n$ % constraint:shelterbounds
 and 
 $a_1<\cdots <a_n$. % constraint:sortedshelters
@@ -44,7 +44,6 @@ You can assume
 $p < b$ % constraint:pulsehappens
 and
 $n < b$. % constraint:sheltersfit
-
 We always have
 $1\leq b\leq 10^{12}$, % constraint:b
 $0\leq d \leq 10^6$, %constraint:d
@@ -59,7 +58,7 @@ Your final score will be the maximum score of a single submission.
 \medskip
 \begin{tabular}{lll}
 Group & Points & Constraints \\\hline
-  $1$ & $10$ & $b\leq 1000$, $p\leq 100$, $n\leq 10$, \\
+  $1$ & $10$ & $b\leq 1000$, $p\leq 100$, $n\leq 10$ \\
   $2$ & $10$ & $b\leq 1000$ \\
   $3$ & $15$ & $p\leq 10^6$, $n\leq 1000$\\
   $4$ & $20$ & $p\leq 100$\\

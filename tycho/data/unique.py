@@ -1,4 +1,4 @@
-#! /usr/bin/env/python3 
+#! /usr/bin/env/python3
 
 # Usage examples:
 
@@ -8,7 +8,6 @@
 
 
 import math
-import sys
 from argparse import ArgumentParser
 
 
@@ -83,12 +82,14 @@ def main():
     time = pos = waiting = 0
     used    = set(A[i] for i in hideout)
     shelters = set(A)
+    radiationdamage = 0
     while pos < b:
         if time % m == 0:
             if pos > 0:
                 if pos not in shelters:
                     if not args.terse:
                         print(f"*{pos}*", end=' ')
+                    radiationdamage += d
                 else:
                     if not args.terse:
                         print(f"[{pos}:{waiting}]", end=' ')
@@ -107,6 +108,6 @@ def main():
                         print(0, end='')
                 pos += 1
         time += 1
-    print()
+    print(f" -- rdamage: {radiationdamage}, time: {time}")
 
 main()

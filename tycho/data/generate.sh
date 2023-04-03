@@ -9,6 +9,7 @@ use_solution lucas_impl_seg.cpp
 # all the generators are introduced here
 compile gen_random.py
 compile gen_critc.py
+compile gen_waiting.py
 compile GenSmallComplete.java
 
 # gen_critc.py needs a full solution
@@ -42,6 +43,11 @@ tc ty-two-holes-21 gen_random -b 100 -p 21 -d 10 -n 2
 tc ty-9-holes      gen_random -b 100 -p 21 -d 10 -n 9
 tc ty-10-holes     gen_random -b 100 -p 21 -d 10 -n 10
 
+tc ty-waiting-1	   gen_waiting -n 10 -p 20 -d 1
+tc ty-waiting-2	   gen_waiting -n 10 -p 20 -d 20
+tc ty-waiting-3	   gen_waiting -n 10 -p 20 -d 30
+
+
 group group2 10
 limits --max_b 1000
 include_group group1
@@ -55,6 +61,8 @@ tc ty-alternating  gen_random --strategy regular  -b 100 --min_a  1 --max_a 99 -
 tc smallzmn-packed gen_random --strategy regular  -b 1000 -n 999 -p 2 -d 10
 tc crit-smallzm-1  gen_critc  -b 1000 -p 42 -d0 7 -n 100
 tc crit-smallzm-2  gen_critc  -b 1000 -p 42 -d0 7 -n 100
+tc sm-waiting-1    gen_waiting -n 100 -p 12 -d 12
+tc sm-waiting-2    gen_waiting -n 100 -p 12 -d 13
 
 group group3 15
 limits --max_p 1_000_000 --max_n 1000 
@@ -66,11 +74,14 @@ tc rd-10k-1k-md    gen_random -b 10_000 -p 1000 -d 10 -n 333
 tc rd-10k-lg-md    gen_random -b 10_000 -p 5112 -d 10 -n 333
 tc rd-10k-lg-1k    gen_random -b 10_000 -p 5112 -d 10 -n 1000
 tc sm-n-lg-p       gen_random -b  1_000_000 -p   100_000 -d 10 -n 1000 # need more of these
+tc sm-n-lg-p-2     gen_random -b 10_000_000 -p   654_321 -d 10 -n 1000 
 tc sm-n-hg-p       gen_random -b 10_000_000 -p 1_000_000 -d 10 -n 1000 
 tc sm-crit-smallc  gen_critc  -b 10_000 -p 42 -d0 7   -n 100
 tc crit-smallc     gen_critc  -b 10_000 -p 42 -d0 7   -n 1000
 tc crit-medc       gen_critc  -b 10_000 -p 42 -d0 24  -n 1000
 tc crit-bigc       gen_critc  -b 10_000 -p 100 -d0 43 -n 1000
+tc md-waiting-1    gen_waiting -n 1000 -p 500 -d 500
+tc md-waiting-2    gen_waiting -n 1000 -p 500 -d 501
 
 group group4 20
 limits --max_p 100
@@ -80,6 +91,8 @@ tc small-m-rd              gen_random  -b 1_000_000 -p 100 -d 10 -n 100_000
 tc small-m-crit-smallc     gen_critc   -b 1_000_000 -p 100 -d0 7   -n 1000
 tc small-m-crit-medc       gen_critc   -b 1_000_000 -p 100 -d0 24  -n 1000
 tc small-m-crit-bigc       gen_critc   -b 1_000_000 -p 100 -d0 43 -n 1000
+tc lg-waiting-1           gen_waiting -n 100_000 -p 100 -d 100
+tc lg-waiting-2           gen_waiting -n 100_000 -p 100 -d 101
 
 group group5 35
 limits --max_p 1_000_000
@@ -94,6 +107,8 @@ tc hg-midm-6       gen_random -b 100_000_000 -p 12345 -d 5123 -n 100000
 tc hg-midm-crit-smallc     gen_critc   -b 1_000_000_000 -p 1_000_000 -d0 7   -n 100_000
 tc hg-midm-crit-medc       gen_critc   -b 1_000_000_000 -p 1_000_000 -d0 24  -n 100_000
 tc hg-midm-crit-bigc       gen_critc   -b 1_000_000_000 -p 1_000_000 -d0 52  -n 100_000
+tc hg-waiting-1  gen_waiting -n 100_000 -p 50000 -d 50000
+tc hg-waiting-2  gen_waiting -n 100_000 -p 50000 -d 50001
 
 group group6 10
 include_group group5
