@@ -9,9 +9,9 @@ import random
 from argparse import ArgumentParser
 
 parser = ArgumentParser("Random input")
-parser.add_argument("-z", type=int)
-parser.add_argument("-m", type=int)
-parser.add_argument("-c", type=int)
+parser.add_argument("-b", type=int)
+parser.add_argument("-p", type=int)
+parser.add_argument("-d", type=int)
 parser.add_argument("-n", type=int)
 parser.add_argument("--min_a", type=int, default=None, help="Smallest hideout index, default = 1")
 parser.add_argument(
@@ -21,17 +21,17 @@ parser.add_argument("--strategy", choices=["random", "regular"], default="random
 parser.add_argument("seed", type=int, help="seed")
 
 args = parser.parse_args()
-z = args.z
+b = args.b
 n = args.n
 min_a = args.min_a or 1
-max_a = args.max_a or args.z - 1
+max_a = args.max_a or args.b - 1
 
-assert max_a < z, "Hideouts must be < z"
+assert max_a < b, "Hideouts must be < z"
 assert max_a - min_a + 1 >= n, f"Unable to put {n} hideouts in {min_a}..{max_a}"
 
 random.seed(args.seed)
 
-print(z, args.m, args.c, args.n)
+print(b, args.p, args.d, args.n)
 if args.strategy == "random":
     a = random.sample(range(1, max_a + 1), n)
 else:
