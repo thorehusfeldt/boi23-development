@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+INF = 10**18
 
 def update(idx, v):
     idx += cap
@@ -15,7 +16,7 @@ def query(l, r, a=0, b=None, idx=1):
     if l <= a and b <= r:
         return seg[idx]
     if b < l or r < a:
-        return float("inf")
+        return INF
     mid = (a + b) // 2
     return min(query(l, r, a, mid, 2 * idx), query(l, r, mid + 1, b, 2 * idx + 1))
 
@@ -29,7 +30,7 @@ comp = {v: i for i, v in enumerate(a_mod_m)}
 cap = 1
 while cap < n + 1:
     cap *= 2
-seg = [float("inf")] * (2 * cap)
+seg = [INF] * (2 * cap)
 
 update(0, 0)
 

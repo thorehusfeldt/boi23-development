@@ -1,10 +1,10 @@
 #! /usr/bin/env python3
 
-# Solution in time O(n* min(n, m)) using dynamic programming,
+# Solution in time O(n* min(n, p)) using dynamic programming,
 # using Lucas's formulas and notation from the original analysis,
-# and observing that s[k] has at most min(n, m) elements.
+# and observing that s[k] has at most min(n, p) elements.
 
-# @EXPECTED_GRADES@ AC AC TLE AC TLE TLE
+# @EXPECTED_GRADES@ AC AC AC AC TLE TLE
 
 b, m, d, n = map(int, input().split())
 a = [0] + list(int(input()) for _ in range(n))

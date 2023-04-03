@@ -2,7 +2,7 @@
 
 # Pythonification of Lucas' simple segment tree solution. Slooooow...
 import sys
-
+INF = 10**18
 
 class RMQ:
     def __init__(self, size):
@@ -10,7 +10,7 @@ class RMQ:
         while cap < size + 1:
             cap *= 2
         self.cap = cap
-        self.seg = [float("inf")] * (2 * cap)
+        self.seg = [INF] * (2 * cap)
 
     def update(self, idx, v):
         idx += self.cap
@@ -25,7 +25,7 @@ class RMQ:
         if l <= a and b <= r:
             return self.seg[idx]
         if b < l or r < a:
-            return float("inf")
+            return INF
         mid = (a + b) // 2
         return min(
             self.query(l, r, a, mid, 2 * idx), self.query(l, r, mid + 1, b, 2 * idx + 1)

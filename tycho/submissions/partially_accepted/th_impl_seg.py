@@ -5,8 +5,9 @@
 # TODO expected grade for group 5 is not clear to me... TLE/AC?
 
 MAX = (1 << 40) - 1
+INF = 10**18
 
-seg = [float("inf")]
+seg = [INF]
 lazy = [0]
 L = [-1]
 R = [-1]
@@ -31,7 +32,7 @@ def upd(p, v, a=0, b=MAX, i=0):
         if p <= m:
             if L[i] == -1:
                 L[i] = len(seg)
-                seg.append(float("inf"))
+                seg.append(INF)
                 lazy.append(0)
                 L.append(-1)
                 R.append(-1)
@@ -39,12 +40,12 @@ def upd(p, v, a=0, b=MAX, i=0):
         else:
             if R[i] == -1:
                 R[i] = len(seg)
-                seg.append(float("inf"))
+                seg.append(INF)
                 lazy.append(0)
                 L.append(-1)
                 R.append(-1)
             upd(p, v, m + 1, b, R[i])
-        seg[i] = float("inf")
+        seg[i] = INF
         if L[i] != -1:
             seg[i] = min(seg[i], seg[L[i]])
         if R[i] != -1:
@@ -64,7 +65,7 @@ def add(l, r, v, a=0, b=MAX, i=0):
             add(l, r, v, a, m, L[i])
         if R[i] != -1:
             add(l, r, v, m + 1, b, R[i])
-        seg[i] = float("inf")
+        seg[i] = INF
         if L[i] != -1:
             seg[i] = min(seg[i], seg[L[i]])
         if R[i] != -1:
