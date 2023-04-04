@@ -3,7 +3,7 @@
  *
  *   This implementation does check for parity.
  *   On good test data, this should not effect the number of points we score.
- *
+ * # @EXPECTED_GRADES@ AC AC AC WA WA WA WA
  */
 #include <bits/stdc++.h>
 using namespace std;

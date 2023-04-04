@@ -1,3 +1,4 @@
+// # @EXPECTED_GRADES@ AC AC AC AC WA WA WA
 #include <cstdlib>
 #include <bits/stdc++.h>
 using namespace std;

@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-
+# @EXPECTED_GRADES@ AC RTE RTE RTE RTE RTE RTE
 """ Works for k = 1 (i.e., a single hidden point) """
 
 n, m, k, Q = map(int,input().split())

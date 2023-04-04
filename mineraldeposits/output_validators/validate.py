@@ -14,8 +14,6 @@
 import sys
 from pathlib import Path
 
-MAX_ROUND = 10**4 # FIXME . This should maybe be Q
-
 
 def fail(msg: str) -> None:
     """Fail WA with given message"""
@@ -28,6 +26,8 @@ def fail(msg: str) -> None:
 
 def accept(num_hidden_points: int, rounds_used: int, max_rounds: int, board_width : int, board_height : int) -> None:
     # Extremely preliminary scoring function
+    sys.exit(42)
+    """
     tc_point = None
     if num_hidden_points == 1:
         tc_point = 3
@@ -49,7 +49,7 @@ def accept(num_hidden_points: int, rounds_used: int, max_rounds: int, board_widt
     score = int(0.5 + tc_point * min(1, max_rounds / rounds_used))
     with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
         sfile.write(str(score) + "\n")
-    sys.exit(42)
+    sys.exit(42)"""
 
 
 def get_team_line():
@@ -70,7 +70,7 @@ with open(sys.argv[1]) as in_file:
         hidden_dots.add(tuple(map(int, in_file.readline().split())))
 
     print(n, m, k, Q, flush=True)
-    for rounds in range(MAX_ROUND):
+    for rounds in range(Q + 1): # Q queries + 1 answer
         line = get_team_line().split()
         if line[0] == "?":
             if len(line) != 2:
