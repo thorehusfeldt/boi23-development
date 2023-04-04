@@ -1,4 +1,4 @@
-// @EXPECTED_GRADES@ AC AC AC TLE TLE TLE
+// @EXPECTED_GRADES@ TLE AC AC AC TLE TLE TLE
 
 #include <bits/stdc++.h>
 using namespace std;

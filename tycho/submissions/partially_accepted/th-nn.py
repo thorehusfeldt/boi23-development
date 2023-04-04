@@ -3,7 +3,7 @@
 # Solution in time O(n*n) using dynamic programming
 # using Lucas's formulas and notation from the original analysis
 
-# @EXPECTED_GRADES@ AC AC AC TLE TLE TLE
+# @EXPECTED_GRADES@ TLE AC AC AC TLE TLE TLE
 
 import math
 

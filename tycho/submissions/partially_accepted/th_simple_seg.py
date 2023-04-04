@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# @EXPECTED_GRADES@ AC AC AC AC AC AC TLE
 
 INF = 10**18
 

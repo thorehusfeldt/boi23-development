@@ -1,4 +1,4 @@
-// @EXPECTED_GRADES@ AC AC RTE AC RTE RTE
+// @EXPECTED_GRADES@ RTE AC AC RTE AC RTE RTE
 //
 // RTEs can also be TLEs, depending on where the code runs (out
 // of heap space or out of time)

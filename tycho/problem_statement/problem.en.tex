@@ -1,4 +1,4 @@
-\problemname{Shelter}
+\problemname{Tycho}
 
 The planetary exploration vehicle \emph{Tycho VIII} needs to get back to the base after collecting mineral samples.
 Tycho travels in a straight line from position~$0$ to home base at position~$b$ at a slow but steady maximum pace of $1$~unit per second.
@@ -12,7 +12,7 @@ Consider the situation where home base is at position $18$, there are shelters a
 Assume that the pulsar's period is $4$, so an unsheltered Tycho would take damage at time $4$, $8$, $12$, etc.
 
 If Tycho leaves at time $0$ (where he is sheltered), he can reach the first shelter after $8$ seconds, incurring radiation damage $d$ at time $4$ (but none at time $8$ because he is sheltered there.)
-Continuing without stopping, he would reach home base at time $18$, incurring $8$ more ratiation damage (at time $12$ and $18$, respectively).
+Continuing without stopping, he would reach home base at time $18$, incurring $8$ more ratiation damage (at time $12$ and $16$, respectively).
 Total radation damage is $d+d+d=3d$, the environmental damage is $18$.
 
 If instead Tycho waits at the $2$nd shelter (at position $15$) for $1$ second, the pulse at time $16$ causes him no damage, and he reaches the shelter at time $19$ for a total of $2d + 19$ dmage.
@@ -58,10 +58,11 @@ Your final score will be the maximum score of a single submission.
 \medskip
 \begin{tabular}{lll}
 Group & Points & Constraints \\\hline
-  $1$ & $10$ & $b\leq 1000$, $p\leq 100$, $n\leq 10$ \\
-  $2$ & $10$ & $b\leq 1000$ \\
-  $3$ & $15$ & $p\leq 10^6$, $n\leq 1000$\\
-  $4$ & $20$ & $p\leq 100$\\
-  $5$ & $35$ & $p\leq 10^6$\\
-  $6$ & $10$ & \emph{no additional constraints}
+  $1$ & $8$  & $p\leq 10^6$ and there exists an optimal strategy, where Tycho does not wait at any position \emph{after} leaving position 0. (But he might need to wait at position 0!) \\ % constraint:nowait
+  $2$ & $5$  & $b\leq 1000$, $p\leq 100$, $n\leq 10$ \\
+  $3$ & $7$  & $b\leq 1000$ \\
+  $4$ & $15$ & $p\leq 10^6$, $n\leq 1000$\\
+  $5$ & $20$ & $p\leq 100$\\
+  $6$ & $35$ & $p\leq 10^6$\\
+  $7$ & $10$ & \emph{no additional constraints}
 \end{tabular}

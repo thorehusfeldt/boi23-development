@@ -3,7 +3,7 @@
 # Solution in time O(n*m) using dynamic programming,
 # using Lucas's formulas and notation from the original analysis
 
-# @EXPECTED_GRADES@ AC AC TLE AC TLE TLE
+# @EXPECTED_GRADES@ TLE AC AC TLE AC TLE TLE
 
 z, m, c, n = map(int, input().split())
 a = [0] + list(int(input()) for _ in range(n))

@@ -1,4 +1,4 @@
-// @EXPECTED_GRADES@ AC TLE TLE TLE TLE TLE
+// @EXPECTED_GRADES@ TLE AC TLE TLE TLE TLE TLE
 import java.util.Scanner;
 
 public class jokl_bruteforce {
