@@ -4,12 +4,9 @@
 
 n, m, k, Q = map(int,input().split())
 assert k == 1
-print("? 2", flush=True)
-print("0 0", flush=True)
-print(f"{n} 0", flush=True)
+print(f"? 0 0 {n} 0", flush=True)
 da, db = map(int, input().split())
-print("? 1", flush=True)
-print("0 0", flush=True)
+print("? 0 0", flush=True)
 d = int(input())
 if d == db:
     da, db = db, da

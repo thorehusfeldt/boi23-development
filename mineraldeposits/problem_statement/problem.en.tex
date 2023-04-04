@@ -25,15 +25,17 @@ You need to minimise the number of waves of probes that is sent to the surface.
 \subsection*{Interaction}
 
 This is an interactive problem.
-Interaction begins with you reading a single line containing four integers $n$, $m$, $k$, $Q$:
-the grid's width~$n$ of the grid,
-the grid's height~$m$, the number~$k$ of deposits, and the maximum number~$Q$ of waves.
+Interaction begins with you reading a single line containing three integers $b$, $k$, $w$:
+the grid's boundary~$b$,
+the number~$k$ of deposits,
+and the maximum number~$w$ of waves.
 
-You then ask at most $Q$ queries, each corresponding to a wave.
-A query has the form ``\texttt{?} $d$'', where $d$ is the size of the wave satisfying
+You then ask at most $w$ queries, each corresponding to a wave.
+A query has the form ``\texttt{?} $s_1$ $t_1$ \cdots $s_d$ $t_d$'', where $d$, the number of probes in this wave, satisfies
 $1\leq d\leq 10^4$. % constraint:wavesize
-This is followed by $d$ lines each containing $2$~integers ``$s$ $t$'' such that $(s,t)$ is a probe coordinate.
-The response is a single line with $k \cdot d$ integers in sorted order, all pairs of manhattan distances between the hidden deposits and the probe coordinates.
+The values $(s_i,t_i)$ are interpreted as the coordinates of the $i$th probe and must satisfy
+$-10^8 \leq s_i \leq 10^8$ and $-10^8 \leq t_i \leq 10^8$. % constraint:probecoordinates
+The response is a single line with $k \cdot d$ integers in sorted order, all pairs of Manhattan distances between the hidden deposits and the probe coordinates.
 Interaction ends with you printing a single line consisting of \texttt{!} followed by $k$ points $x_1, y_1, x_2, y_2, \ldots x_k, y_k$, separated by space.
 
 Your submission is considered correct if you output all locations of the deposits.
@@ -42,27 +44,27 @@ You may print them in any order.
 \subsection*{Constraints and scoring}
 
 We always have 
-$1\leq n \leq 10^9$ % constraint:n
-$1\leq m\leq 10^9$,  % constraint:m
+$1\leq b \leq 10^9$ % constraint:b
 $1 \leq k \leq 30$, % constraint:k
 and
-$2 \le Q \le 10^4$. % constraint:Q
+$2 \le w \le 10^4$. % constraint:w
 
 Your solution will be tested on a set of test groups, each worth a number of points.
 Each test group contains a set of test cases.
-Let $U$ be the number of queries you asked. Then for a test-group that awards $p$ points, you recieve $\max(1,Q/U)\cdot p$ points.
+Let $U$ be the number of waves you sent. 
+Then for a test-group that awards $p$ points, you receive $\max(1,w/U)\cdot p$ points.
 Your final score will be the maximum score of a single submission.
 
 \medskip
 \begin{tabular}{lll}
 Group & Points & Constraints \\\hline
-  $1$ & $3$ & $k = 1, Q = 10^4$\\
-  $2$ & $6$ & $k \le 2, Q = 10^4$\\
-  $3$ & $19$ & $Q = 3000$\\
-  $4$ & $11$ & $Q = 600$\\
-  $5$ & $7$ & $Q = 310$\\
-  $6$ & $20$ & $Q = 2$, $\max{n,m} \le 10^5$\\
-  $7$ & $15$ & $Q = 2$, $\max{n,m} \le 10^8$\\
-  $8$ & $19$ & $Q = 2$
+  $1$ & $3$ & $k = 1, w = 10^4$\\
+  $2$ & $6$ & $k \le 2, w = 10^4$\\
+  $3$ & $19$ & $w = 3000$\\
+  $4$ & $11$ & $w = 600$\\
+  $5$ & $7$ & $w = 310$\\
+  $6$ & $20$ & $w = 2$, $b \le 10^5$\\
+  $7$ & $15$ & $w = 2$, $b \le 10^8$\\
+  $8$ & $19$ & $w = 2$
 \end{tabular}
 
