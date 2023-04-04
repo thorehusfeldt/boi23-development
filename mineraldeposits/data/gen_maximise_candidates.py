@@ -18,7 +18,7 @@ points = set()
 d1 = set()
 d2 = set()
 while len(points) < args.k:
-    p = (2 * randint(-b, b//2), 2 * randint(-b, b//2))
+    p = (2 * randint(-b//2, b//2), 2 * randint(-b//2, b//2))
 
     if p[0] + p[1] in d1 or p[0] - p[1] in d2:
         continue

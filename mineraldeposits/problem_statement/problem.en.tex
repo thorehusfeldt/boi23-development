@@ -6,8 +6,10 @@ Preliminary scans show that $k$ mineral deposits are present on this asteroid, t
 
 \medskip
 
-The surface of the asteroid can be seen as a grid.
-Each of the mineral deposits is located at unkown integer coordinates such that the $i$th deposit has coordinates $(x_i,y_i)$ with  $0 \le x_i \le n$ and $0\le y_i \le m$.
+The surface of the asteroid can be seen as a grid of integer coordinates.
+Each of the mineral deposits is located at unkown integer coordinates such that the $i$th deposit has coordinates $(x_i, y_i)$ with  
+$-b \le x_i \le b$ and $-b\le y_i \le b$ %constraint:depositcoords
+for some integer $b$ corresponding to the size of your initial scan.
 
 To determine the locations of these mineral deposits, you may send probes to the surface of the asteroid. 
 This is a time-consuming process, so the probes can be sent out in waves;
@@ -31,7 +33,7 @@ the number~$k$ of deposits,
 and the maximum number~$w$ of waves.
 
 You then ask at most $w$ queries, each corresponding to a wave.
-A query has the form ``\texttt{?} $s_1$ $t_1$ \cdots $s_d$ $t_d$'', where $d$, the number of probes in this wave, satisfies
+A query has the form ``\texttt{?} $s_1$ $t_1$ $\cdots$ $s_d$ $t_d$'', where $d$, the number of probes in this wave, satisfies
 $1\leq d\leq 10^4$. % constraint:wavesize
 The values $(s_i,t_i)$ are interpreted as the coordinates of the $i$th probe and must satisfy
 $-10^8 \leq s_i \leq 10^8$ and $-10^8 \leq t_i \leq 10^8$. % constraint:probecoordinates

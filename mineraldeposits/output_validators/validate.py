@@ -26,7 +26,7 @@ def fail(msg: str) -> None:
     sys.exit(43)
 
 
-def accept(num_hidden_points: int, rounds_used: int, max_rounds: int, board_width : int, board_height : int) -> None:
+def accept(num_hidden_points: int, rounds_used: int, max_rounds: int, board_size : int) -> None:
     # Extremely preliminary scoring function
     tc_point = None
     if num_hidden_points == 1:
@@ -39,9 +39,9 @@ def accept(num_hidden_points: int, rounds_used: int, max_rounds: int, board_widt
         tc_point = 11
     elif max_rounds == 310:
         tc_point = 7
-    elif max_rounds == 2 and board_width <= 10**5 and board_height <= 10**5:
+    elif max_rounds == 2 and board_size <= 10**5:
         tc_point = 20
-    elif max_rounds == 2 and board_width <= 10**8 and board_height <= 10**8:
+    elif max_rounds == 2 and board_size <= 10**8:
         tc_point = 15
     else: # Q = 2
         tc_point = 19
@@ -115,4 +115,4 @@ with open(sys.argv[1]) as in_file:
             fail("Team response must start with ! or ?")
     else:
         fail("Too many rounds")
-    accept(k, rounds, Q, n, m)
+    accept(k, rounds, w, b)
