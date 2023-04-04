@@ -49,12 +49,14 @@ they are all different. % constraint:allskillsdifferent
 You can use 
 at most $3000$ queries. % constraint:maxnumrounds
 
-There are three test groups.
+Your final score will be the maximum score of a single submission.
+There are three test groups, see table below.
 Each test group contains a set of test cases. 
 To get the points for a test group you need to solve all test cases in the test group.
-The score in the third group is determined by the number of queries you use;
-fewer queries are better.
-Your final score will be the maximum score of a single submission.
+The score in the third group depends on the number of queries you use;
+fewer queries are better: Suppose you use $q$ queries. If $q \le n+25$, you get the full 80 points. If $q > 3000$, you get no points.
+Otherwise, you get $118.2 - 12 \ln(q - n)$ points, rounded to the nearest integer. In particular, for $n = 1500$ and $q = 3000$, you get $30$ points.
+Your score in the third group is the minimum score among all test cases.
 
 \medskip
 \begin{tabular}{lll}
