@@ -14,8 +14,7 @@
 import sys
 from pathlib import Path
 
-MAX_D = 10**4  # should be set as an argument, not hard-coded
-MAX_ROUND = 10**4
+MAX_ROUND = 10**4 # FIXME . This should maybe be Q
 
 
 def fail(msg: str) -> None:
@@ -80,8 +79,8 @@ with open(sys.argv[1]) as in_file:
                 d = int(line[1])
             except ValueError:
                 fail(f"Failed to parse {line[1]} as int")
-            if not 1 <= d <= MAX_D:
-                fail(f"Number query points out of bounds: {d}")
+            if not 1 <= d <= 10**4: # constraint:wavesize
+                fail(f"Wave size out of bounds: {d}")
             query_points = set()
             for _ in range(d):
                 line = get_team_line().split()

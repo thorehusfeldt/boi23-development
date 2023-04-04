@@ -3,25 +3,24 @@
 One of the major goals of space exploration is extra-terrestial mining. 
 As part of this, you are now approaching an astroid. 
 Preliminary scans show that $k$ mineral deposits are present on this asteroid, though their precise locations are unkown.
-You do not want to land your spaceship more often than strictly necessary, so you will have to determine the locations of all the deposits.
 
 \medskip
 
-The surface of the astroid can be seen as a grid.
+The surface of the asteroid can be seen as a grid.
 Each of the mineral deposits is located at unkown integer coordinates such that the $i$th deposit has coordinates $(x_i,y_i)$ with  $0 \le x_i \le n$ and $0\le y_i \le m$.
 
 To determine the locations of these mineral deposits, you may send probes to the surface of the asteroid. 
 This is a time-consuming process, so the probes can be sent out in waves;
 several probes can be sent out at once, minimising the time you have to wait until they arrive at the surface.
 
-Say yoo send a wave of $d$ probes to the surface at coordinates $(s_j,t_j)$ for $1\leq j\leq d$.
+Say you sent a wave of $d$ probes to the surface at coordinates $(s_j,t_j)$ for $1\leq j\leq d$.
 When a probe arrives at its coordinates it determines the Manhattan distances to each of the $k$ deposits and sends them back to the ship. 
 The data packets arrive at the same time, and it is not possible to determinig which probes returned which distances. 
 Thus the wave returns the $k\cdot d$ integer distances
-\[|x_i-s_j| + |y_i - t_j| \qquad\text{for all} i \in \{1,\ldots,k\} \text{ and } j \in\{ 1,\ldots,d\}\,.\]
+\[|x_i-s_j| + |y_i - t_j| \qquad\text{for all } i \in \{1,\ldots,k\} \text{ and } j \in\{ 1,\ldots,d\}\,.\]
 These distances will be in sorted order.
 
-You need to minimise the number of waves of probes that is send to the surface.
+You need to minimise the number of waves of probes that is sent to the surface.
 
 \subsection*{Interaction}
 
@@ -31,7 +30,9 @@ the grid's width~$n$ of the grid,
 the grid's height~$m$, the number~$k$ of deposits, and the maximum number~$Q$ of waves.
 
 You then ask at most $Q$ queries, each corresponding to a wave.
-A query has the form ``\texttt{?} $d$'' followed by $d$ lines each containingt $2$ integers ``$s$ $t$'' such that $(s,t)$ is a probe coordinate.
+A query has the form ``\texttt{?} $d$'', where $d$ is the size of the wave satisfying
+$1\leq d\leq 10^4$. % constraint:wavesize
+This is followed by $d$ lines each containing $2$~integers ``$s$ $t$'' such that $(s,t)$ is a probe coordinate.
 The response is a single line with $k \cdot d$ integers in sorted order, all pairs of manhattan distances between the hidden deposits and the probe coordinates.
 Interaction ends with you printing a single line consisting of \texttt{!} followed by $k$ points $x_1, y_1, x_2, y_2, \ldots x_k, y_k$, separated by space.
 
