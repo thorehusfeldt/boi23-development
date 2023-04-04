@@ -9,6 +9,7 @@ use_solution ../../data/empty.sh # empty .ans files
 # all the generators are introduced here
 compile gen_explicit.py
 compile gen_range.py
+compile gen_structured.py
 
 samplegroup
 # no samples
@@ -19,7 +20,16 @@ limits --max_n 50
 tc pair12     gen_explicit 1 2
 tc pair21     gen_explicit 2 1
 tc pair86400  gen_explicit 86400 1
-tc range-50    gen_range --n 50
+tc sm-ascending   gen_structured -n 50 --structure ascending
+tc sm-ascending-r gen_structured -n 50 --structure ascending --reversed
+tc sm-updown      gen_structured -n 50 --structure updown
+tc sm-updown-r    gen_structured -n 50 --structure updown --reversed
+tc sm-downup      gen_structured -n 50 --structure downup
+tc sm-downup-r    gen_structured -n 50 --structure downup --reversed
+tc sm-zigzig      gen_structured -n 50 --structure zigzag
+tc sm-zigzag-r    gen_structured -n 50 --structure zigzag --reversed
+tc sm-staircase   gen_structured -n 50 --structure staircase
+tc sm-staircase-r gen_structured -n 50 --structure staircase --reversed
 tc range-r-50    gen_range --shuffled --n 50
 tc range-10    gen_range --n 10
 tc range-r-10     gen_range --shuffled --n 10
@@ -68,8 +78,17 @@ tc four-primes-24 gen_explicit 7 5 3 2
 group group2 11
 limits --max_n 1000
 
+tc md-ascending   gen_structured -n 1000 --structure ascending
+tc md-ascending-r gen_structured -n 1000 --structure ascending --reversed
+tc md-updown      gen_structured -n 1000 --structure updown
+tc md-updown-r    gen_structured -n 1000 --structure updown --reversed
+tc md-downup      gen_structured -n 1000 --structure downup
+tc md-downup-r    gen_structured -n 1000 --structure downup --reversed
+tc md-zigzig      gen_structured -n 1000 --structure zigzag
+tc md-zigzag-r    gen_structured -n 1000 --structure zigzag --reversed
+tc md-staircase   gen_structured -n 1000 --structure staircase
+tc md-staircase-r gen_structured -n 1000 --structure staircase --reversed
 tc range-300   gen_range --n 300
-tc range-1000   gen_range --n 1000
 tc range-r-300   gen_range --shuffled --n 300
 tc range-r-1000   gen_range --shuffled --n 1000
 tc md-range-sm-1  gen_range --n 1000 --max_a 2000
@@ -93,7 +112,16 @@ tc md-planted--1-1  gen_range --n 1000 --plantfirst 999 --plantsecond 0
 group group3 80
 limits --min_n 1001 --max_n 1500
 
-tc range-lg  gen_range --n 1500
+tc lg-ascending   gen_structured -n 1500 --structure ascending
+tc lg-ascending-r gen_structured -n 1500 --structure ascending --reversed
+tc lg-updown      gen_structured -n 1500 --structure updown
+tc lg-updown-r    gen_structured -n 1500 --structure updown --reversed
+tc lg-downup      gen_structured -n 1500 --structure downup
+tc lg-downup-r    gen_structured -n 1500 --structure downup --reversed
+tc lg-zigzig      gen_structured -n 1500 --structure zigzag
+tc lg-zigzag-r    gen_structured -n 1500 --structure zigzag --reversed
+tc lg-staircase   gen_structured -n 1500 --structure staircase
+tc lg-staircase-r gen_structured -n 1500 --structure staircase --reversed
 tc range-r-lg-1 gen_range --shuffled --n 1500
 tc range-r-lg-2 gen_range --shuffled --n 1500
 tc range-r-lg-3 gen_range --shuffled --n 1500
