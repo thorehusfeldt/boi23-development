@@ -4,7 +4,7 @@
  *   - repetedly select an *arbitrary* candidate, query it,
  *     and remove all candidates that are too close to this candidate.
  *
- *
+ *  # @EXPECTED_GRADES@ AC AC AC AC WA WA WA
  */
 
 

@@ -4,6 +4,7 @@
  *   Then processes the candidates row by row via binary search by querying points
  *   that are far enough away.
  *
+ *   # @EXPECTED_GRADES@ AC AC AC AC WA WA WA
  */
 
 

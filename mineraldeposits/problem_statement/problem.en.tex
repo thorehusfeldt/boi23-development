@@ -15,7 +15,7 @@ several probes can be sent out at once, minimising the time you have to wait unt
 
 Say you sent a wave of $d$ probes to the surface at coordinates $(s_j,t_j)$ for $1\leq j\leq d$.
 When a probe arrives at its coordinates it determines the Manhattan distances to each of the $k$ deposits and sends them back to the ship. 
-The data packets arrive at the same time, and it is not possible to determinig which probes returned which distances. 
+The data packets arrive at the same time, and it is not possible to determine which probes returned which distances. 
 Thus the wave returns the $k\cdot d$ integer distances
 \[|x_i-s_j| + |y_i - t_j| \qquad\text{for all } i \in \{1,\ldots,k\} \text{ and } j \in\{ 1,\ldots,d\}\,.\]
 These distances will be in sorted order.
@@ -56,13 +56,12 @@ Your final score will be the maximum score of a single submission.
 \medskip
 \begin{tabular}{lll}
 Group & Points & Constraints \\\hline
-  $1$ & $3$ & $k = 1, Q = 10^4$\\
-  $2$ & $6$ & $k \le 2, Q = 10^4$\\
-  $3$ & $19$ & $Q = 3000$\\
-  $4$ & $11$ & $Q = 600$\\
-  $5$ & $7$ & $Q = 310$\\
-  $6$ & $20$ & $Q = 2$, $\max{n,m} \le 10^5$\\
-  $7$ & $15$ & $Q = 2$, $\max{n,m} \le 10^8$\\
-  $8$ & $19$ & $Q = 2$
+  $1$ & $9$ & $k = 1, Q = 10^4$\\
+  $2$ & $19$ & $Q = 1000$\\
+  $3$ & $11$ & $Q = 350$\\
+  $4$ & $7$ & $Q = 230$\\
+  $5$ & $20$ & $Q = 3$, $\max{n,m} \le 10^5$\\
+  $6$ & $15$ & $Q = 3$, $\max{n,m} \le 10^8$\\
+  $7$ & $19$ & $Q = 2$
 \end{tabular}
 

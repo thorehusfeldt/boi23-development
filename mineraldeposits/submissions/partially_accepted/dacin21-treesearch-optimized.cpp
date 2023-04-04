@@ -2,7 +2,7 @@
  *   An optimized solution based on finding k^2 candidates + recursive integer tree search
  *   By doing integer queries "number of zeros" instead of just "no zero / at least one zero",
  *   we can cut the number of queries almost in half.
- *
+ * # @EXPECTED_GRADES@ AC AC AC AC WA WA WA
  */
 
 
