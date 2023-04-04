@@ -10,7 +10,8 @@ Generate permutations with a lot of structure
     --reversed same structure backwards
     --structure, can be
         'ascending': 1,2,...,n
-        'updown': 1,3,5,.. mid,..6, 4, 2
+        'updown': 1,3,5,.. n,..6, 4, 2
+        'downup': n, n-2, .. 0 ,.. n-3, n-1
         'zigzag': mid, mid + 1, mid - 1, mid + 2, mid - 2, ...
         'staircase': 1, 3, 2, 5, 4,...
 
