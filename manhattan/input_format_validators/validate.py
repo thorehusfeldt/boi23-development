@@ -14,10 +14,15 @@ parser.add_argument("--max_k",  type=int, default=50)
 parser.add_argument("--Q",  type=int)
 args = parser.parse_args()
 
-assert 1 <= n <= args.max_nm
-assert 1 <= m <= args.max_nm
-assert 1 <= k <= args.max_k
+assert n <= args.max_nm
+assert 1 <= n <= 10**9 # constraint:n
+assert m <= args.max_nm
+assert 1 <= m <= 10**9 # constraint:m
+assert k <= args.max_k
+assert 1 <= k <= 30 # constraint:k
+
 assert Q == args.Q
+assert 2 <= Q <= 10**4 # constraint:Q
 
 hidden_points = set()
 for _ in range(k):
