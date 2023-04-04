@@ -71,7 +71,10 @@ with open(sys.argv[1]) as in_file:
 
     print(b, k, w, flush=True)
     for rounds in range(w):
-        mode, *line = get_team_line().split() # FIXME does this JE on team output consisting of spaces?
+        line = get_team_line().split()
+        if len(line) == 0:
+            fail("Tokens expected (maybe team sent empty line?)")
+        mode = line.pop(0)
         if mode == "?":
             if len(line) % 2 == 1:
                 fail(f"Got {len(line)} tokens, expected an even number")
