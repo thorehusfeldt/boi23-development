@@ -20,7 +20,7 @@ def parseValidatorConstraints(infile):
     constraints = {}
     for line in infile:
         if re.search(r"constraint:", line):
-            c = re.search("constraint:([a-z]+)", line).group(1)
+            c = re.search("constraint:([A-Za-z]+)", line).group(1)
             if c in constraints:
                 logging.warning("Validator uses %s twice. Overwriting (fix me).", c)
             constraints[c] = line.strip()
@@ -85,7 +85,7 @@ class StatementConstraints:
         mode = "looking"
         for line in infile:
             if re.search(r"constraint:", line):
-                m = re.search("constraint:([a-z_]+)", line)
+                m = re.search("constraint:([A-Za-z_]+)", line)
                 self.constraints[m.group(1)] = line.strip()
             if re.search(r"tabular", line):
                 mode = "slurping"
