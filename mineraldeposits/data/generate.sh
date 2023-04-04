@@ -9,7 +9,6 @@ use_solution ../../data/empty.sh # empty .ans files
 # all the generators are introduced here
 compile gen_explicit.py
 compile gen_random.py
-compile gen_maximise_candidates_concentrated.py
 compile gen_maximise_candidates.py
 samplegroup
 # no samples
@@ -48,8 +47,8 @@ tc g3-tmp-6 gen_random --b 100 --w 3000 --k 20
 tc g3-random-maxk-1 gen_random --b 100  --w 3000 --k 30
 tc g3-random-maxk-4 gen_random --b 1000 --w 3000 --k 30
 tc g3-random-maxk-5 gen_random --b 100_000_000 --w 3000 --k 30
-tc g3-random-maxcand-1 gen_maximise_candidates_concentrated --b 2000 --w 3000 --k 30 --ccx 400 --ccy 400
-tc g3-random-maxcand-2 gen_maximise_candidates_concentrated --b 2_000_000 --w 3000 --k 30 --ccx 10000 --ccy 1000
+tc g3-random-maxcand-1 gen_maximise_candidates --b 2000 --w 3000 --k 30 --ccx 400 --ccy 400
+tc g3-random-maxcand-2 gen_maximise_candidates --b 2_000_000 --w 3000 --k 30 --ccx 10000 --ccy 1000
 
 group group4 11
 limits --w 600
@@ -57,9 +56,9 @@ limits --w 600
 tc g4-random-maxk-1 gen_random --b 100 --w 600 --k 30
 tc g4-random-maxk-4 gen_random --b 1000  --w 600 --k 30
 tc g4-random-maxk-5 gen_random --b 100_000_000  --w 600 --k 30
-tc g4-random-maxcand-1 gen_maximise_candidates_concentrated --b 2000 --w 600 --k 30 --ccx 400 --ccy 400
-tc g4-random-maxcand-2 gen_maximise_candidates_concentrated --b 2_000_000 --w 600 --k 30 --ccx 10000 --ccy 1000
-tc g4-random-maxcand-5 gen_maximise_candidates_concentrated --b 100_000_000 --w 600 --k 30 --ccx 10000000 --ccy 1000000
+tc g4-random-maxcand-1 gen_maximise_candidates --b 2000 --w 600 --k 30 --ccx 400 --ccy 400
+tc g4-random-maxcand-2 gen_maximise_candidates --b 2_000_000 --w 600 --k 30 --ccx 10000 --ccy 1000
+tc g4-random-maxcand-5 gen_maximise_candidates --b 100_000_000 --w 600 --k 30 --ccx 10000000 --ccy 1000000
 
 group group5 7
 limits --w 310
@@ -67,9 +66,9 @@ limits --w 310
 tc g5-random-maxk-1 gen_random --b 100 --w 310 --k 30
 tc g5-random-maxk-4 gen_random --b 1000 --w 310 --k 30
 tc g5-random-maxk-5 gen_random --b 100_000_000 --w 310 --k 30
-tc g5-random-maxcand-1 gen_maximise_candidates_concentrated --b 2000 --w 310 --k 30 --ccx 400 --ccy 400
-tc g5-random-maxcand-2 gen_maximise_candidates_concentrated --b 2_000_000 --w 310 --k 30 --ccx 10000 --ccy 1000
-tc g5-random-maxcand-5 gen_maximise_candidates_concentrated --b 100_000_000  --w 310 --k 30 --ccx 10000000 --ccy 1000000
+tc g5-random-maxcand-1 gen_maximise_candidates --b 2000 --w 310 --k 30 --ccx 400 --ccy 400
+tc g5-random-maxcand-2 gen_maximise_candidates --b 2_000_000 --w 310 --k 30 --ccx 10000 --ccy 1000
+tc g5-random-maxcand-5 gen_maximise_candidates --b 100_000_000  --w 310 --k 30 --ccx 10000000 --ccy 1000000
 
 group group6 20
 limits --max_b 100000 --w 2
@@ -78,21 +77,21 @@ tc ukr_task_description_sample_1 gen_explicit 5 2 1 2 3 3 2 5
 tc g6-random-maxk-1 gen_random --b 100  --w 2 --k 30
 tc g6-random-maxk-4 gen_random --b 1000 --w 2 --k 30
 tc g6-random-maxk-5 gen_random --b 100_000 --w 2 --k 30
-tc g6-random-maxcand-1 gen_maximise_candidates_concentrated --b 100_000 --w 2 --k 30 --ccx 400 --ccy 400
-tc g6-random-maxcand-2 gen_maximise_candidates_concentrated --b 100_000 --w 2 --k 30 --ccx 10000 --ccy 1000
-tc g6-random-maxcand-3 gen_maximise_candidates_concentrated --b 100_000 --w 2 --k 30 --ccx 800 --ccy 800
-tc g6-random-maxcand-4 gen_maximise_candidates_concentrated --b 100_000 --w 2 --k 30 --ccx 1100 --ccy 80000
-tc g6-random-maxcand-5 gen_maximise_candidates_concentrated --b 100_000 --w 2 --k 30 --ccx 90000 --ccy 90000
+tc g6-random-maxcand-1 gen_maximise_candidates --b 100_000 --w 2 --k 30 --ccx 400 --ccy 400
+tc g6-random-maxcand-2 gen_maximise_candidates --b 100_000 --w 2 --k 30 --ccx 10000 --ccy 1000
+tc g6-random-maxcand-3 gen_maximise_candidates --b 100_000 --w 2 --k 30 --ccx 800 --ccy 800
+tc g6-random-maxcand-4 gen_maximise_candidates --b 100_000 --w 2 --k 30 --ccx 1100 --ccy 80000
+tc g6-random-maxcand-5 gen_maximise_candidates --b 100_000 --w 2 --k 30 --ccx 90000 --ccy 90000
 
 group group7 15
 limits --max_b 100000000 --w 2
 #include_group group6
 tc g7-random-maxk-5 gen_random --b 100_000_000  --w 2 --k 30
-tc g7-random-maxcand-1 gen_maximise_candidates_concentrated --b 100_000_000 --w 2 --k 30 --ccx 400 --ccy 400
-tc g7-random-maxcand-2 gen_maximise_candidates_concentrated --b 100_000_000 --w 2 --k 30 --ccx 10000 --ccy 1000
-tc g7-random-maxcand-3 gen_maximise_candidates_concentrated --b 100_000_000 --w 2 --k 30 --ccx 800 --ccy 800
-tc g7-random-maxcand-4 gen_maximise_candidates_concentrated --b 100_000_000 --w 2 --k 30 --ccx 1100 --ccy 80000
-tc g7-random-maxcand-5 gen_maximise_candidates_concentrated --b 100_000_000 --w 2 --k 30 --ccx 10000000 --ccy 1000000
+tc g7-random-maxcand-1 gen_maximise_candidates --b 100_000_000 --w 2 --k 30 --ccx 400 --ccy 400
+tc g7-random-maxcand-2 gen_maximise_candidates --b 100_000_000 --w 2 --k 30 --ccx 10000 --ccy 1000
+tc g7-random-maxcand-3 gen_maximise_candidates --b 100_000_000 --w 2 --k 30 --ccx 800 --ccy 800
+tc g7-random-maxcand-4 gen_maximise_candidates --b 100_000_000 --w 2 --k 30 --ccx 1100 --ccy 80000
+tc g7-random-maxcand-5 gen_maximise_candidates --b 100_000_000 --w 2 --k 30 --ccx 10000000 --ccy 1000000
 
 
 group group8 19
