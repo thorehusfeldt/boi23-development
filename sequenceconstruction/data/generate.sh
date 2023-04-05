@@ -14,11 +14,13 @@ compile gen_random.py
 samplegroup
 sample 1
 sample 2
+sample 3
 
 group group1 23
 limits --max_n 10
 tc 1
 tc 2
+tc 3
 tc ty-fibo      gen_explicit  2 3 5 8 11
 tc ty-fibo-back gen_explicit  11 8 5 3 2
 tc ty-random    gen_random    -n 10

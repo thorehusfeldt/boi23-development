@@ -1,16 +1,43 @@
 \problemname{Sequence}
 
-A sequence of positive integers $x_1,\ldots,x_m$ is \emph{good} if  $x_1 = 1$ and for each $1 < i \leq m$ we either have $x_i=x_{i-1}+1$ or $x_i=x_j\cdot x_k$ for some $0< j\leq k< i$.
+A sequence of positive integers $x_1,\ldots,x_m$ is \emph{good} if  $x_1 = 1$ and for each $1 < j \leq m$ we either have $x_j=x_{j-1}+1$ or $x_j=x_k\cdot x_l$ for some $k$ and $l$ with $0< k\leq l< j$.
+The sequences~$1,1$ and $1,2$ are both good; the sequence~$1,3$ is not.
 
+For  $n$ given integers $w_1,\ldots,w_n$ define 
+the \emph{weight} of the integer sequence $x_1,\ldots,x_m$ with $1\leq x_j \leq n$ for each $1\leq j\leq m$ as
+\[ w_{x_1} +\cdots +w_{x_m}\,.\] 
+For instance, given the weights $10, 42, 1$, the weight of the sequence~$1,1$ is $20$ and the weight of sequence~$1,3$ is $11$.
+Define $s_i$ as the smallest weight of a good sequence containing $i$.
 
-You are given an integer $n$ with $1\leq n\leq 30000$ and a sequence of positive integers $w_1,\ldots,w_n$  with $1\leq w_i \leq 10^6$. 
-Define the \emph{weight} of a sequence $x_1,\ldots,x_k$ as \[ w_{x_1} +\cdots +w_{x_k}\,.\] 
+You task is to determine the values $s_1,\ldots ,s_n$.
 
 \subsection*{Input}
 
-$n$, $w_1, \ldots, w_n$ on separate lines.
+The first line of input consists of the integer $n$: the number of weights.
+The next $n$ lines of contain the integer weights $w_1, \ldots, w_n$.
 
 \subsection*{Output}
 
-Print $n$ lines.
-For each $1\leq i \leq n$, the $i$th line consists of the smallest weight of a good sequence containing $i$.
+Print $n$ lines, each containing a single integer.
+For each $1\leq j \leq n$, the $j$th line consists of the smallest weight of a good sequence that contains~$j$.
+
+\subsection{Constraints and Scoring}
+
+We always have
+$1\leq n \leq 10\,000$ % contraint:n
+and
+$1\leq w_i \leq 10^6$ for each $1\leq i \leq n$.% constraint:wi
+
+Your solution will be tested on a set of test groups, each worth a number of points.
+Each test group contains a set of test cases.
+To get the points for a test group you need to solve all test cases in the test group.
+Your final score will be the maximum score of a single submission.
+
+\medskip
+\begin{tabular}{lll}
+Group & Points & Constraints \\\hline
+$1$   & $23$ & $n\leq 10$ \\
+$2$   & $21$ & $n\leq 30$, $w_1=\cdots=w_n = 1$ \\
+$3$   & $22$ & $n\leq 1400$, $w_1=\cdots=w_n = 1$ \\
+$4$   & $34$ & 
+\end{tabular}
