@@ -25,6 +25,7 @@ using namespace std;
 #define vvvll vector<vvll>
 #define sz(x) ((int)x.size())
 int b, k, w;
+int lm = 1e8;
 
 ll dist(ii x, ii y) {
     return abs(x.F - y.F) + abs(x.S - y.S);
@@ -55,7 +56,7 @@ int cp;
 
 bool try_cc(int idx, int dx, int dy){
     ii qp = {pts[idx].F + dx,pts[idx].S + dy};
-    if(qp.F < -1e8 || qp.F > 1e8 || qp.S < -1e8 || qp.S > 1e8) return false;
+    if(qp.F < -lm || qp.F > lm || qp.S < -lm || qp.S > lm) return false;
     FOR(j,cp) {
         ll dj = dist(qp,pts[j]);
         if(j == idx) continue;
@@ -74,16 +75,16 @@ bool try_cc(int idx, int dx, int dy){
 int main() {
     cin >> b >> k >> w;
     // Assumptions
-    b = 1e8; // TH: huh?
 
     vll tt;
-    vll a = query({{0,0},{0,b}});
+    vll a = query({{-b,-b},{-b,b}});
 
     set<ii> init;
     FORE(p,a) FORE(q,a) {
-        if((p+q-b)%2) continue;
-        ll x = (p + q - b)/2;
-        ll y = p - x;
+        if((p+q-2*b)%2) continue;
+        ll x = (p + q - 2*b)/2-b;
+        ll y = p - (b + x) - b;
+        //cout << " " << x << " " << y << endl;
         if(y < -b || y > b || x < -b || x > b) continue;
         init.insert({x,y});
     }

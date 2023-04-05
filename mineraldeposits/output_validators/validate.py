@@ -70,7 +70,7 @@ with open(sys.argv[1]) as in_file:
         hidden_dots.add(tuple(map(int, in_file.readline().split())))
 
     print(b, k, w, flush=True)
-    for rounds in range(w):
+    for rounds in range(w + 1):
         line = get_team_line().split()
         if len(line) == 0:
             fail("Tokens expected (maybe team sent empty line?)")

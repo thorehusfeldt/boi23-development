@@ -26,18 +26,21 @@ using namespace std;
 #define S second
 #define vvvll vector<vvll>
 #define sz(x) ((int)x.size())
-int n,m,k,Q;
+int b,k,w;
+int lm = 1e8;
 
 ll dist(ii x, ii y) {
     return abs(x.F - y.F) + abs(x.S - y.S);
 }
 
 vll query(vii qs) {
-    cout << "? " << qs.size() << endl;
-    vll res(k*qs.size());
+    cout << "? "; 
     FORE(q,qs) {
-        cout << q.F << " " << q.S << endl;
+        cout << q.F << " " << q.S << " ";
     }
+    cout << endl;
+
+    vll res(k*qs.size());
     FOR(i,(k*qs.size())) {
         cin >> res[i];
     }
@@ -88,37 +91,31 @@ void push_event(int t, Event e) {
     eq[t].pb(e);
 }
 
-
-
-
 int main() {
-    cin >> n >> m >> k >> Q;
-
-    n = 1e9;
-    m = 1e9;
+    cin >> b >> k >> w;
 
     vll tt;
-    vll a = query({{0,0},{0,m}});
+    vll a = query({{-b,-b},{-b,b}});
 
     set<ii> init;
     FORE(p,a) FORE(q,a) {
-        if((p+q-m)%2) continue;
-        ll x = (p + q - m)/2;
-        ll y = p - x;
-        if(y < 0 || y > m || x < 0 || x > n) continue;
+        if((p+q-2*b)%2) continue;
+        ll x = (p + q - 2*b)/2-b;
+        ll y = p - (b + x) - b;
+        if(y < -b || y > b || x < -b || x > b) continue;
         init.insert({x,y});
     }
 
     vii pts(ALL(init));
     int cp = pts.size();
-    vi dd(4*cp*cp);
+    vi dd(2*cp*cp);
     adep = vvii(cp);
     vvi dc(cp,vi(4));
-    eq.resize(4*cp*cp);
+    eq.resize(2*cp*cp);
     acc = 4*cp;
     FOR(i,cp) FOR(j,cp) {
         if(i == j) continue;
-        if(dist(pts[i],pts[j]) > cp*cp*4) continue;
+        if(dist(pts[i],pts[j]) > cp*cp*2) continue;
         int dx = abs(pts[j].F - pts[i].F), dy = abs(pts[j].S - pts[i].S);
         if(dx <= dy) {
             if(pts[j].S > pts[i].S) {
@@ -137,7 +134,7 @@ int main() {
     }
 
     FOR(i,cp) {
-        vll r = {m-pts[i].S, pts[i].S, n-pts[i].F, pts[i].F};
+        vll r = {lm-pts[i].S, pts[i].S+lm, lm-pts[i].F, pts[i].F+lm};
         FOR(j,4) push_event(r[j],Event(i,-10,j,2));
     }
     iac = vvi(cp, vi(4));
