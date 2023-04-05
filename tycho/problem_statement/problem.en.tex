@@ -1,34 +1,34 @@
 \problemname{Tycho}
 
-The planetary exploration vehicle \emph{Tycho VIII} needs to get back to the base after collecting mineral samples.
-Tycho travels in a straight line from position~$0$ to home base at position~$b$ at a slow but steady maximum pace of $1$~unit per second.
+The planetary exploration vehicle \emph{Tycho VIII} needs to get back to the home base after collecting mineral samples.
+Tycho travels in a straight line from position~$0$ to the home base at position~$b$. While moving, it advances at a slow but steady pace of $1$~unit per second.
 Every second, Tycho takes $1$ unit of environmental damage by the harsh planetary conditions.
 
-The situation is made even worse by radiation damage from the nearby pulsar, which adds $d$ additional units of damage every $m$ seconds.
-However, the radiation damage can be avoided by seeking shelter in one of $n$ different hiding spots---caves, vegetation, large rocks, carcasses of the planet's megafauna---along the way.
+The situation is made even worse by radiation from a nearby pulsar, which adds $d$ additional units of damage every $m$ seconds.
+However, the radiation damage can be avoided by seeking shelter in one of the $n$ different hiding spots---caves, vegetation, large rocks, carcasses of the planet's megafauna---along the way.
 Tycho can choose to stand still at any point for any integer number of seconds.
 
-Consider the situation where home base is at position $18$, there are shelters at positions $8$ and $15$.
-Assume that the pulsar's period is $4$, so an unsheltered Tycho would take damage at time $4$, $8$, $12$, etc.
+Consider the situation where the home base is at position $18$ and there are shelters at positions $8$ and $15$.
+Assume that the pulsar's period is $4$, so unsheltered Tycho would take damage at times $4$, $8$, $12$, etc.
 
-If Tycho leaves at time $0$ (where he is sheltered), he can reach the first shelter after $8$ seconds, incurring radiation damage $d$ at time $4$ (but none at time $8$ because he is sheltered there.)
-Continuing without stopping, he would reach home base at time $18$, incurring $8$ more ratiation damage (at time $12$ and $16$, respectively).
-Total radation damage is $d+d+d=3d$, the environmental damage is $18$.
+If Tycho leaves from the starting position (where it's sheltered) at time $0$, it can reach the first shelter after $8$ seconds, incurring radiation damage $d$ at time $4$ (but none at time $8$ because it's sheltered then).
+Continuing without stopping, it reaches the home base at time $18$, incurring $d+d$ more units of radiation damage (at times $12$ and $16$, respectively).
+This way it incurs $d+d+d=3d$ units of radiation damage and $18$ units of environmental damage.
 
-If instead Tycho waits at the $2$nd shelter (at position $15$) for $1$ second, the pulse at time $16$ causes him no damage, and he reaches the shelter at time $19$ for a total of $2d + 19$ dmage.
+If instead Tycho waits at the $2$nd shelter (at position $15$) for $1$ second, the pulse at time $16$ causes it no damage, and it reaches the home base at time $19$ with a total of $2d + 19$ units of damage.
 
-The starting postion~$0$ and home base~$b$ are are considered shelters, so Tycho takes no radation damage there.
+The starting position~$0$ and the home base at~$b$ are both sheltered, so Tycho takes no radiation damage there.
 
 \medskip
-What is the minumum damage Tycho will take on this journey back to home base?
+What is the minumum damage Tycho will take on its journey back to the home base?
 
 \subsection*{Input}
 
-The first line consists of four integers $b$, $p$, $d$, and $n$, separated by space:
+The first line consists of four integers $b$, $p$, $d$, and $n$, separated by single spaces:
 the location $b$ of the home base,
-the pulsar's period~$p$,
-the additional radiation damage~$d$ caused by the pulsar,
-the number~$n$ of shelters.
+the pulsar's flare period~$p$,
+the additional radiation damage~$d$ caused by each flare of the pulsar,
+the number~$n$ of the shelters.
 The following $n$~lines each contain an integer giving the shelter locations $a_1$, $\ldots$, $a_n$, with 
 $0<a_i< b$ for $1\leq i \leq n$ % constraint:shelterbounds
 and 
@@ -58,7 +58,7 @@ Your final score will be the maximum score of a single submission.
 \medskip
 \begin{tabular}{lll}
 Group & Points & Constraints \\\hline
-  $1$ & $8$  & $p\leq 10^6$ and there exists an optimal strategy, where Tycho does not wait at any position \emph{after} leaving position 0. (But he might need to wait at position 0!) \\ % constraint:nowait
+  $1$ & $8$  & $p\leq 10^6$ and there exists an optimal strategy, where Tycho does not wait at any position \emph{after} leaving position~$0$. (But it might need to wait at position~$0$!) \\ % constraint:nowait
   $2$ & $5$  & $b\leq 1000$, $p\leq 100$, $n\leq 10$ \\
   $3$ & $7$  & $b\leq 1000$ \\
   $4$ & $15$ & $p\leq 10^6$, $n\leq 1000$\\
