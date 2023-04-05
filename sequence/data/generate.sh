@@ -13,14 +13,11 @@ compile gen_random.py
 # there are two *.in files in data/sample
 samplegroup
 sample 1
-sample 2
-sample 3
 
 group group1 11
 limits --max_n 10
 tc 1
-tc 2
-tc 3
+tc ty-longest   gen_explicit  1 1 300 1 300 300 300 1 1 1
 tc ty-fibo      gen_explicit  2 3 5 8 11
 tc ty-fibo-back gen_explicit  11 8 5 3 2
 tc ty-random    gen_random    -n 10
@@ -73,8 +70,9 @@ tc lg-random-md-1 gen_random -n 4999 --min_w 1000 --max_w 1050
 group group6 15
 include_group group5
 tc hg-random-1  gen_random -n 30000
-tc hg-random-2  gen_random -n 30000 --min_w 900_000
+tc hg-random-2-d  gen_random -n 30000 --min_w 900_000 --descending
 tc hg-random-3  gen_random -n 30000 --max_w 1000
+tc hg-random-3-d  gen_random -n 30000 --max_w 1000 --descending
 tc hg-random-4  gen_random -n 30000 --max_w 100
 tc hg-random-5  gen_random -n 30000 --min_w 100 --max_w 105
 tc hg-ones      gen_random -n 30000 --max_w 1
