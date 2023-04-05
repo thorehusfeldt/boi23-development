@@ -95,7 +95,7 @@ STATUS_ENABLED = True
 def print_status_line(s: str):
     if STATUS_ENABLED:
         print(s, end="\r")
-   
+
 
 class Grade(Enum):
     """Test group grade, i.e., the grade that a submission can get on a single test group."""
@@ -198,11 +198,11 @@ class Submission:
         """
         return self.type == SubmissionType.AC or len(self._expected_grades)
 
-    def expected_grade(self, i: str) -> Grade:
+    def expected_grade(self, i: str) -> Optional[Grade]:
         """Returns the expected grade on secret group i."""
         if self.type == SubmissionType.AC:
             return Grade.AC
-        return self._expected_grades[i]
+        return self._expected_grades[i] if i in self._expected_grades else None
 
     def __init__(self, problempath, stype: SubmissionType, name: str):
         self.name = name
@@ -417,6 +417,8 @@ class Problem:
                 for i in self.groups:
                     if sub.expected_grade(i) == sub.verdict[i].grade:
                         summary.append("\033[32my\033[0m")
+                    elif sub.expected_grade(i) is None:
+                        summary.append("?")
                     else:
                         summary.append("\033[91mn\033[0m")
                         warnings[sub].append(i)
@@ -442,7 +444,7 @@ class Problem:
             )
 
     def check_distinguished(self):
-        """Check if all secrete test groups are distinguished by some submission.
+        """Check if all secret test groups are distinguished by some submission.
         Emit warning otherwise.
         """
         accepting_subs = defaultdict(list)
