@@ -14,7 +14,7 @@ samplegroup
 # no samples
 
 group group1 3
-limits --w 10000 --max_k 1
+limits --max_k 1
 tc one-point-1 gen_explicit 10 10000 5 5
 tc one-point-2 gen_explicit 10 10000 9 1
 tc one-point-3 gen_explicit 10 10000 1 8
@@ -25,8 +25,8 @@ tc one-point-7 gen_explicit 10 10000 10 10
 tc ukr_task_description_sample_2 gen_explicit 5 10000 1 1
 
 group group2 6
-limits --w 10000 --max_k 2
-#include_group group1
+limits --max_k 2
+include_group group1
 tc two-point-1 gen_explicit 10 10000 5 5 1 2
 tc two-point-2 gen_explicit 10 10000 9 1 8 2
 tc two-point-3 gen_explicit 10 10000 1 8 1 6
@@ -36,8 +36,8 @@ tc two-point-6 gen_explicit 10 10000 0 10 10 0
 tc two-point-7 gen_explicit 10 10000 10 10 5 5
 
 group group3 19
-limits --w 3000
-#include_group group2
+limits --min_w 3000
+include_group group2
 tc g3-tmp-1 gen_random --b 100 --w 3000 --k 3
 tc g3-tmp-2 gen_random --b 100 --w 3000 --k 4
 tc g3-tmp-3 gen_random --b 100 --w 3000 --k 5
@@ -51,8 +51,8 @@ tc g3-random-maxcand-1 gen_maximise_candidates --b 2000 --w 3000 --k 30 --ccx 40
 tc g3-random-maxcand-2 gen_maximise_candidates --b 2_000_000 --w 3000 --k 30 --ccx 10000 --ccy 1000
 
 group group4 11
-limits --w 600
-#include_group group3
+limits --min_w 600
+include_group group3
 tc g4-random-maxk-1 gen_random --b 100 --w 600 --k 30
 tc g4-random-maxk-4 gen_random --b 1000  --w 600 --k 30
 tc g4-random-maxk-5 gen_random --b 100_000_000  --w 600 --k 30
@@ -61,8 +61,8 @@ tc g4-random-maxcand-2 gen_maximise_candidates --b 2_000_000 --w 600 --k 30 --cc
 tc g4-random-maxcand-5 gen_maximise_candidates --b 100_000_000 --w 600 --k 30 --ccx 10000000 --ccy 1000000
 
 group group5 7
-limits --w 310
-#include_group group4
+limits --min_w 310
+include_group group4
 tc g5-random-maxk-1 gen_random --b 100 --w 310 --k 30
 tc g5-random-maxk-4 gen_random --b 1000 --w 310 --k 30
 tc g5-random-maxk-5 gen_random --b 100_000_000 --w 310 --k 30
@@ -71,7 +71,7 @@ tc g5-random-maxcand-2 gen_maximise_candidates --b 2_000_000 --w 310 --k 30 --cc
 tc g5-random-maxcand-5 gen_maximise_candidates --b 100_000_000  --w 310 --k 30 --ccx 10000000 --ccy 1000000
 
 group group6 20
-limits --max_b 10_000 --w 2
+limits --max_b 10_000 --min_w 2
 #include_group group5
 tc ukr_task_description_sample_1 gen_explicit 5 2 1 2 3 3 2 5
 tc g6-random-maxk-1 gen_random --b 100  --w 2 --k 30
@@ -84,8 +84,9 @@ tc g6-random-maxcand-4 gen_maximise_candidates --b 10_000 --w 2 --k 30 --ccx 110
 tc g6-random-maxcand-5 gen_maximise_candidates --b 10_000 --w 2 --k 30 --ccx 9000 --ccy 9000
 
 group group7 15
-limits --max_b 100000000 --w 2
-#include_group group6
+limits --min_w 2
+include_group group5
+include_group group6
 tc g7-random-maxk-5 gen_random --b 100_000_000  --w 2 --k 30
 tc g7-random-maxcand-1 gen_maximise_candidates --b 100_000_000 --w 2 --k 30 --ccx 400 --ccy 400
 tc g7-random-maxcand-2 gen_maximise_candidates --b 100_000_000 --w 2 --k 30 --ccx 10000 --ccy 1000
@@ -95,8 +96,8 @@ tc g7-random-maxcand-5 gen_maximise_candidates --b 100_000_000 --w 2 --k 30 --cc
 
 
 group group8 19
-limits --w 2
-#include_group group7
+limits --min_w 2
+include_group group7
 tc g8-tmp-1 gen_random --b 100_000_000 --w 2 --k 7
 tc g8-tmp-2 gen_random --b 100_000_000 --w 2 --k 14
 tc g8-tmp-3 gen_random --b 100_000_000 --w 2 --k 22

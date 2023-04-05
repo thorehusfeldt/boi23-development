@@ -14,8 +14,6 @@
 import sys
 from pathlib import Path
 
-MAX_ROUND = 10**4 # FIXME . This should maybe be Q
-
 
 def fail(msg: str) -> None:
     """Fail WA with given message"""
@@ -26,29 +24,7 @@ def fail(msg: str) -> None:
     sys.exit(43)
 
 
-def accept(num_hidden_points: int, rounds_used: int, max_rounds: int, board_size : int) -> None:
-    # Extremely preliminary scoring function
-    tc_point = None
-    if num_hidden_points == 1:
-        tc_point = 3
-    elif num_hidden_points == 2:
-        tc_point = 6
-    elif max_rounds == 3000:
-        tc_point = 19
-    elif max_rounds == 600:
-        tc_point = 11
-    elif max_rounds == 310:
-        tc_point = 7
-    elif max_rounds == 2 and board_size <= 10**5:
-        tc_point = 20
-    elif max_rounds == 2 and board_size <= 10**8:
-        tc_point = 15
-    else: # Q = 2
-        tc_point = 19
-
-    score = int(0.5 + tc_point * min(1, max_rounds / rounds_used))
-    with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
-        sfile.write(str(score) + "\n")
+def accept() -> None:
     sys.exit(42)
 
 
@@ -118,4 +94,4 @@ with open(sys.argv[1]) as in_file:
             fail("Team response must start with ! or ?")
     else:
         fail("Too many rounds")
-    accept(k, rounds, w, b)
+    accept()

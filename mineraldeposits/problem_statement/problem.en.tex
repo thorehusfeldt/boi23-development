@@ -30,7 +30,7 @@ This is an interactive problem.
 Interaction begins with you reading a single line containing three integers $b$, $k$, $w$:
 the grid's boundary~$b$,
 the number~$k$ of deposits,
-and the maximum number~$w$ of waves.
+and the maximum number~$w$ of waves you may send.
 
 You then ask at most $w$ queries, each corresponding to a wave.
 A query has the form ``\texttt{?} $s_1$ $t_1$ $\cdots$ $s_d$ $t_d$'', where $d$, the number of probes in this wave, satisfies
@@ -46,15 +46,14 @@ You may print them in any order.
 \subsection*{Constraints and scoring}
 
 We always have 
-$1\leq b \leq 10^9$ % constraint:b
+$1\leq b \leq 10^8$ % constraint:b
 $1 \leq k \leq 30$, % constraint:k
 and
 $2 \le w \le 10^4$. % constraint:w
 
 Your solution will be tested on a set of test groups, each worth a number of points.
 Each test group contains a set of test cases.
-Let $U$ be the number of waves you sent. 
-Then for a test-group that awards $p$ points, you receive $\max(1,w/U)\cdot p$ points.
+To get the points for a test group you need to solve all test cases in the test group.
 Your final score will be the maximum score of a single submission.
 
 \medskip
