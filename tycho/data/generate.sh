@@ -42,11 +42,15 @@ tc 2
 tc 3
 tc 4
 tc 5
-#
-# Loop over binary strings of length 5
-#for i in {0,1}{0,1}{0,1}{0,1}{0,1}; do
-for i in 1{0,1}{0,1}{0,1}{0,1}; do
-    tc small-$i GenSmallComplete $i
+
+# Loop over binary strings of length 5, except 00000
+declare -a b_strings
+for i in {0,1}{0,1}{0,1}{0,1}{0,1}; do
+    b_strings+=($i)
+done
+for i in {1..31}; do
+    id=${b_strings[$i]}
+    tc small-$id GenSmallComplete $id
 done
 
 tc ty-two-holes-m2 gen_random -b  10 -p  2 -d 10 -n 2
