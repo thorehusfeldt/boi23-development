@@ -13,7 +13,7 @@ line = sys.stdin.readline()
 assert re.match(r"[1-9][0-9]*\n", line)
 n = int(line)
 assert n <= args.max_n, (n, args.max_n)
-assert 1 <= n <= 10_000 # constraint:n
+assert 1 <= n <= 30_000 # constraint:n
 for _ in range(n):
     line = sys.stdin.readline()
     assert re.match(r"[1-9][0-9]*\n", line)
