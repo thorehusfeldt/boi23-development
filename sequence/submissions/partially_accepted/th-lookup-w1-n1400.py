@@ -4,7 +4,7 @@
 
     Works only for unit weights and n<=1400.
 
-    @EXPECTED_GRADES@ WA AC AC WA
+    @EXPECTED_GRADES@ WA AC WA AC WA WA
 """
 
 

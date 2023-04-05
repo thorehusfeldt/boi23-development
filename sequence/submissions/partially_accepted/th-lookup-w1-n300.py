@@ -3,7 +3,7 @@
 
     Works only for unit weights and n<=300.
 
-    @EXPECTED_GRADES@ WA AC WA WA
+    @EXPECTED_GRADES@ WA AC WA WA WA WA
 
 """
 

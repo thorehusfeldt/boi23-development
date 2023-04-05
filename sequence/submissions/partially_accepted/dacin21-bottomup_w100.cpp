@@ -1,4 +1,4 @@
-// @EXPECTED_GRADES@ WA AC TLE WA/TLE
+// @EXPECTED_GRADES@ WA AC AC TLE WA WA
 
 // assumes all weights are similar, i.e. 100...108,
 // so that the optimal sequence is always a shortests one.

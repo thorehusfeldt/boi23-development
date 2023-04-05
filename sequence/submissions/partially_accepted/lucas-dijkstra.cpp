@@ -6,7 +6,7 @@ constexpr ll inf = 1e18;
 
 // Seems to solve the problem for n <= 100. But I have no idea how to analyze the complexity...
 
-// @EXPECTED_GRADES@ AC TLE TLE TLE
+// @EXPECTED_GRADES@ AC TLE TLE TLE TLE TLE
 
 int main(){
     ios_base::sync_with_stdio(false);

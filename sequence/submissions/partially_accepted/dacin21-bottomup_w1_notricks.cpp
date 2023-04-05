@@ -1,4 +1,4 @@
-// @EXPECTED_GRADES@ WA AC TLE WA/TLE
+// @EXPECTED_GRADES@ WA AC WA TLE WA WA
 
 // assumes all weights are = 1
 //
