@@ -5,6 +5,8 @@
 # sequences, so that “containing i” is
 # the same as “ends in i”.
 
+# @EXPECTED_GRADES@ AC TLE TLE TLE
+
 n = int(input())
 w = [int(input()) for _ in range(n)]
 
