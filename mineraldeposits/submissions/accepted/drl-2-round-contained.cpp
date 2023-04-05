@@ -25,18 +25,21 @@ using namespace std;
 #define S second
 #define vvvll vector<vvll>
 #define sz(x) ((int)x.size())
-int n,m,k,Q;
+int b,k,w;
+int lm = 1e8;
 
 ll dist(ii x, ii y) {
     return abs(x.F - y.F) + abs(x.S - y.S);
 }
 
 vll query(vii qs) {
-    cout << "? " << qs.size() << endl;
-    vll res(k*qs.size());
+    cout << "? "; 
     FORE(q,qs) {
-        cout << q.F << " " << q.S << endl;
+        cout << q.F << " " << q.S << " ";
     }
+    cout << endl;
+
+    vll res(k*qs.size());
     FOR(i,(k*qs.size())) {
         cin >> res[i];
     }
@@ -46,20 +49,17 @@ vll query(vii qs) {
 
 
 int main() {
-    cin >> n >> m >> k >> Q;
-
-    n = 1e9;
-    m = 1e9;
+    cin >> b >> k >> w;
 
     vll tt;
-    vll a = query({{0,0},{0,m}});
+    vll a = query({{-b,-b},{-b,b}});
 
     set<ii> init;
     FORE(p,a) FORE(q,a) {
-        if((p+q-m)%2) continue;
-        ll x = (p + q - m)/2;
-        ll y = p - x;
-        if(y < 0 || y > m || x < 0 || x > n) continue;
+        if((p+q-2*b)%2) continue;
+        ll x = (p + q - 2*b)/2-b;
+        ll y = p - (b + x) - b;
+        if(y < -b || y > b || x < -b || x > b) continue;
         init.insert({x,y});
     }
 
@@ -122,7 +122,7 @@ int main() {
             int f = 1;
             for(;;cc++) {
                 qp = {pts[idx].F + dir[dr].F*cc, pts[idx].S + dir[dr].S*cc};
-                if(qp.F < 0 || qp.F > 1e9 || qp.S < 0 || qp.S > 1e9) {
+                if(qp.F < -lm || qp.F > lm || qp.S < -lm || qp.S > lm) {
                     goto total_fail;
                 };
                 if(dd.count(dist(qp,pts[idx]))) continue;
