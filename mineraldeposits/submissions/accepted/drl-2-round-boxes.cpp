@@ -1,3 +1,4 @@
+// # @EXPECTED_GRADES@ AC AC AC AC AC AC AC
 #include <cstdlib>
 #include <bits/stdc++.h>
 using namespace std;
@@ -29,11 +30,11 @@ using namespace std;
 int b,k,w;
 int lm = 1e8;
 
-ll dist(ii x, ii y) {
+ll dist(ii &x, ii &y) {
     return abs(x.F - y.F) + abs(x.S - y.S);
 }
 
-vll query(vii qs) {
+vll query(vii &qs) {
     cout << "? "; 
     FORE(q,qs) {
         cout << q.F << " " << q.S << " ";
@@ -51,9 +52,10 @@ vll query(vii qs) {
 struct Event {
     int u, v, d;
     int tp; 
-    Event(int _u, int _v, int _d, int _tp) : u(_u), v(_v), d(_d), tp(_tp) {}
-    bool operator<(const Event other) const {
-        return tp > other.tp;
+    int tm;
+    Event(int _u, int _v, int _d, int _tp, int _tm) : u(_u), v(_v), d(_d), tp(_tp), tm(_tm) {}
+    bool operator<(const Event &other) const {
+        return tm < other.tm || (tm == other.tm && tp > other.tp);
     }
     // 1 add dependency
     // 2 set inactive
@@ -65,7 +67,8 @@ int main() {
     cin >> b >> k >> w;
 
     vll tt;
-    vll a = query({{-b,-b},{-b,b}});
+    vii tqs = {{-b,-b},{-b,b}};
+    vll a = query(tqs);
 
     set<ii> init;
     FORE(p,a) FORE(q,a) {
@@ -79,7 +82,7 @@ int main() {
     vii pts(ALL(init));
     int cp = pts.size();
 
-    priority_queue<pair<int,Event>> pq; // events
+    priority_queue<Event> pq; // events
 
     vvvi dep(cp,vvi(4));
     vvii adep(cp);
@@ -90,23 +93,23 @@ int main() {
         int dx = abs(pts[j].F - pts[i].F), dy = abs(pts[j].S - pts[i].S);
         if(dx <= dy) {
             if(pts[j].S > pts[i].S) {
-                pq.push({-(dy/2),Event(i,j,0,1)});
+                pq.push(Event(i,j,0,1,-(dy/2)));
             } else if (pts[j].S < pts[i].S) {
-                pq.push({-(dy/2),Event(i,j,1,1)});
+                pq.push(Event(i,j,1,1,-(dy/2)));
             }
         }
         if(dx >= dy) {
             if(pts[j].F > pts[i].F) {
-                pq.push({-(dx/2),Event(i,j,2,1)});
+                pq.push(Event(i,j,2,1,-(dx/2)));
             } else if (pts[j].F < pts[i].F) {
-                pq.push({-(dx/2),Event(i,j,3,1)});
+                pq.push(Event(i,j,3,1,-(dx/2)));
             }
         }
     }
 
     FOR(i,cp) {
         vll r = {lm-pts[i].S, pts[i].S+lm, lm-pts[i].F, pts[i].F+lm};
-        FOR(j,4) pq.push({-r[j],Event(i,-10,j,2)});
+        FOR(j,4) pq.push(Event(i,-10,j,2,-r[j]));
     }
     set<ii> ac;
     FOR(i,cp) FOR(j,4) ac.insert({i,j});
@@ -123,8 +126,8 @@ int main() {
     //int cnter = 0;
     while(ss < cp) {
         cc++;
-        while(!pq.empty() && -pq.top().F <= cc) {
-            Event e = pq.top().S;
+        while(!pq.empty() && -pq.top().tm <= cc) {
+            Event e = pq.top();
             pq.pop();
             if(e.tp == 1) {
                 if(!vis[e.v]) {
@@ -145,7 +148,7 @@ int main() {
         while(ac.size() && vis[ac.begin()->F]) ac.erase(ac.begin());
         if(ac.empty()) {
             if(pq.empty()) break;
-            cc = -pq.top().F - 1; // Next time something happens
+            cc = -pq.top().tm - 1; // Next time something happens
             continue;
         }
         if(dd.count(cc)) continue;
@@ -166,20 +169,20 @@ int main() {
             if(abs(pts[u].F-pts[i].F) <= cc+1) 
             {
                 if(pts[u].S-pts[i].S > 0) {
-                    pq.push({-(pts[u].S-pts[i].S-cc),Event(i,-1,0,2)});
-                    pq.push({-(pts[u].S-pts[i].S+cc),Event(i,-1,0,3)});
+                    pq.push(Event(i,-1,0,2,-(pts[u].S-pts[i].S-cc)));
+                    pq.push(Event(i,-1,0,3,-(pts[u].S-pts[i].S+cc)));
                 } else {
-                    pq.push({-(pts[i].S-pts[u].S-cc),Event(i,-1,1,2)});
-                    pq.push({-(pts[i].S-pts[u].S+cc),Event(i,-1,1,3)});
+                    pq.push(Event(i,-1,1,2,-(pts[i].S-pts[u].S-cc)));
+                    pq.push(Event(i,-1,1,3,-(pts[i].S-pts[u].S+cc)));
                 }
             }
             if(abs(pts[u].S-pts[i].S) <= cc+1) {
                 if(pts[u].F-pts[i].F > 0) {
-                    pq.push({-(pts[u].F-pts[i].F-cc),Event(i,-1,2,2)});
-                    pq.push({-(pts[u].F-pts[i].F+cc),Event(i,-1,2,3)});
+                    pq.push(Event(i,-1,2,2,-(pts[u].F-pts[i].F-cc)));
+                    pq.push(Event(i,-1,2,3,-(pts[u].F-pts[i].F+cc)));
                 } else {
-                    pq.push({-(pts[i].F-pts[u].F-cc),Event(i,-1,3,2)});
-                    pq.push({-(pts[i].F-pts[u].F+cc),Event(i,-1,3,3)});
+                    pq.push(Event(i,-1,3,2,-(pts[i].F-pts[u].F-cc)));
+                    pq.push(Event(i,-1,3,3,-(pts[i].F-pts[u].F+cc)));
                 }
             }
         }
