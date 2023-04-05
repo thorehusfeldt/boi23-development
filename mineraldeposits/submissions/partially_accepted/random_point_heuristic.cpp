@@ -6,6 +6,7 @@ using namespace std;
 #define ld long double;
 #define ii pair<ll,ll>
 #define vi vector<int>
+#define vll vector<ll>
 #define vii vector<ii>
 #define FOR(x,n) for(int x=0;x<(n);x++)
 #define FORS(x,n) for(int x=1;x<=(n);x++)
@@ -21,45 +22,53 @@ using namespace std;
 #define S second
 #define vvvll vector<vvll>
 #define sz(x) ((int)x.size())
-int n,m,k,Q;
+int b,k,w;
 
 int dist(ii x, ii y) {
     return abs(x.F - y.F) + abs(x.S - y.S);
 }
 
-vi query(ii q) {
-    cout << "? 1" << endl;
-    cout << q.F << " " << q.S << endl;
+vll query(vii qs) {
+    cout << "? "; 
+    FORE(q,qs) {
+        cout << q.F << " " << q.S << " ";
+    }
+    cout << endl;
 
-    vi res(k);
-    FOR(i,k) cin >> res[i];
-    Q--;
+    vll res(k*qs.size());
+    FOR(i,(k*sz(qs))) {
+        cin >> res[i];
+    }
+
     return res;
 }
 
+
 int main() {
-    cin >> n >> m >> k >> Q;
+    cin >> b >> k >> w;
 
     // Attempting to get somewhat random behaviour wihtout the issues with reproducibility at first.
     srand(42); 
 
-    vi a = query({0,0});
-    vi b = query({0,m});
+    vll s = query({{-b,-b}});
+    vll t = query({{-b,b}});
     set<ii> init;
-    FORE(p,a) FORE(q,b) {
-        if((p+q-m)%2) continue;
-        ll x = (p + q - m)/2;
-        ll y = p - x;
-        if(y < 0 || y > m || x < 0 || x > n) continue;
+    FORE(p,s) FORE(q,t) {
+        if((p+q-2*b)%2) continue;
+        ll x = (p + q - 2*b)/2-b;
+        ll y = p - (b + x) - b;
+        //cout << " " << x << " " << y << endl;
+        if(y < -b || y > b || x < -b || x > b) continue;
+        //cout << x << " " << y << endl;
         init.insert({x,y});
     }
     vii pts(ALL(init));
 
     vii sol;
-    while(pts.size() > 0) {
+    while(sz(pts) > 0) {
         int ri = rand() % pts.size();
 
-        vi qr = query(pts[ri]);
+        vll qr = query({pts[ri]});
         set<int> st(ALL(qr));
         
         vii nc;

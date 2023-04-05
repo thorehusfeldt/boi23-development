@@ -24,47 +24,47 @@ using namespace std;
 #define S second
 #define vvvll vector<vvll>
 #define sz(x) ((int)x.size())
-int n,m,k,Q;
+int b,k,w;
 
 ll dist(ii x, ii y) {
     return abs(x.F - y.F) + abs(x.S - y.S);
 }
 
 vll query(vii qs) {
-    cout << "? " << qs.size() << endl;
-    vll res(k*qs.size());
+    cout << "? "; 
     FORE(q,qs) {
-        cout << q.F << " " << q.S << endl;
+        cout << q.F << " " << q.S << " ";
     }
+    cout << endl;
+
+    vll res(k*qs.size());
     FOR(i,(k*qs.size())) {
         cin >> res[i];
-        //cout << " got " << res[i] << endl;
     }
 
     return res;
 }
 
-ll r = 3e5; 
+
+ll r = 3e4; 
 
 int main() {
-    cin >> n >> m >> k >> Q;
+    cin >> b >> k >> w; 
 
-    srand(42); 
-
-    vll tt = query({{0,0},{0,4*r}});
-    vll a,b;
+    vll tt = query({{-b,-b},{-b,b+3*r}});
+    vll s,t;
     FORE(d,tt) {
-        if(d > 3*r) b.pb(d-3*r);
-        else a.pb(d);
+        if(d >= 3*r) t.pb(d-3*r);
+        else s.pb(d);
     }
     //cout << a.size() << " " << b.size() << endl;
     set<ii> init;
-    FORE(p,a) FORE(q,b) {
-        //cerr << " " << p << " " << q << endl;
-        if((p+q-r)%2) continue;
-        ll x = (p + q - r)/2;
-        ll y = p - x;
-        if(y < 0 || y > m || x < 0 || x > n) continue;
+    FORE(p,s) FORE(q,t) {
+        if((p+q-2*b)%2) continue;
+        ll x = (p + q - 2*b)/2-b;
+        ll y = p - (b + x) - b;
+        //cout << " " << x << " " << y << endl;
+        if(y < -b || y > b || x < -b || x > b) continue;
         init.insert({x,y});
     }
     vii pts(ALL(init));
@@ -72,7 +72,7 @@ int main() {
     vii qs;
 
     FOR(i,pts.size()) {
-        qs.pb({n + i*r,pts[i].S});
+        qs.pb({b + i*r,pts[i].S});
     }
 
     vll ds = query(qs);
@@ -90,9 +90,9 @@ int main() {
     FOR(pi,pts.size()) {
         ii p = pts[pi];
         FORE(q,sol) {
-            mp[pi][dist({n,p.S},q)]--;
+            mp[pi][dist({b,p.S},q)]--;
         }
-        if(mp[pi][n-p.F] == 1) {
+        if(mp[pi][b-p.F] == 1) {
             sol.pb(p);
         } 
     }
