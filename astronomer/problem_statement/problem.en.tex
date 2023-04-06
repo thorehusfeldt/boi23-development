@@ -20,7 +20,7 @@ A single integer: the minimum number of kroner that Tycho needs to spend.
 
 You can assume 
 \begin{enumerate}
-\item $1\leq k\leq n\leq 400$.
+\item $1\leq k\leq n\leq 700$.
 \item $x_i, y_i\in \{-10^9,\ldots, 10^9\}$ for all $i\in\{1,\ldots,n\}$.
 \item $s, t\in \{0,\ldots, 10^9\}$.
 \end{enumerate}
@@ -32,10 +32,9 @@ Your final score will be the maximum score of a single submission.
 
 \begin{description}
 \item[Subtask 1 (5 points).] $t\leq s$.
-\item[Subtask 2 (5 points).] $k=n$ and $s=0$.
-\item[Subtask 3 (15 points).] $s=0$.
-\item[Subtask 4 (10 points).] $k=n$.
+\item[Subtask 2 (5 points).] $k=n\le 50$ and $s=0$.
+\item[Subtask 3 (15 points).] $s=0$ and $n\le50$.
 \item[Subtask 5 (15 points).] $n\leq 20$.
-\item[Subtask 6 (25 points).] $n\leq 100$.
+\item[Subtask 6 (25 points).] $n\leq 500$, the result is considered correct if it is within a factor 2 of the correct answer.
 \item[Subtask 7 (15 points).] No further constraints.
 \end{description}
