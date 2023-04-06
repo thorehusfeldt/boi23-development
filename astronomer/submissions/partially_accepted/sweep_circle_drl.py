@@ -43,7 +43,7 @@ def sweep(u,cst):
         lmx = 1e9
         rmn = -1e9
         rmx = 1e9
-        mcost = 1e18
+        mcost = 1e20
         while lmn + abs(lmn*eps) < lmx and lmn + eps < lmx:
             lmd1 = (2*lmn + lmx) / 3
             lmd2 = (lmn + 2*lmx) / 3
@@ -106,7 +106,7 @@ def main():
         return
 
     mic = 0
-    mac = 1e18
+    mac = 2e18
     while mic + abs(mic*eps) < mac and mic + eps < mac:
         md = (mic + mac) / 2
         r = construct(md)

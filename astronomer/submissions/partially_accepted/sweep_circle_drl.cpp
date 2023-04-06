@@ -86,7 +86,7 @@ bool sweep(int u, double cst) {
         // We can now ternary search on the magnitude of dir
         double lmn = -1e9, lmx = 1e9;
         double rmn = lmn, rmx = 1e9;
-        double mcost = 1e18;
+        double mcost = 1e20;
         while (lmn + abs(lmn*eps) < lmx && lmn + eps < lmx) {
             double lmd1 = (2*lmn + lmx) / 3;
             double lmd2 = (lmn + 2*lmx) / 3;
