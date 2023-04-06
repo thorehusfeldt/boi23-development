@@ -32,19 +32,21 @@ def circle(p, q, r):
 
 def main():
     costs = set()
-    for p, q in combinations(stars, 2):
-        # The assumption about optimal center is wrong
-        center = (p[0] + q[0]) / 2, (p[1] + q[1]) / 2 
-        radius = dist(p, q) / 2
-        if sum(1 for star in stars if dist(star, center) <= radius) >= k:
-            costs.add((t * radius + s * dist((0,0), center), center, radius, "2"))
-
-    for p, q, r in combinations(stars, 3):
-        center, radius = circle(p, q, r)
-        if center is None:
-            continue
-        if sum(1 for star in stars if dist(star, center) <= radius) >= k:
-            costs.add((t * radius + s * dist((0,0), center), center, radius, "3"))
+    for p in stars:
+        for q in stars:
+            # The assumption about optimal center is wrong
+            center = (p[0] + q[0]) / 2, (p[1] + q[1]) / 2 
+            radius = dist(p, q) / 2
+            if sum(1 for star in stars if dist(star, center) <= radius) >= k:
+                costs.add((t * radius + s * dist((0,0), center), center, radius, "2"))
+    for p in stars:
+        for q in stars:
+            for r in stars:
+                center, radius = circle(p, q, r)
+                if center is None:
+                    continue
+                if sum(1 for star in stars if dist(star, center) <= radius) >= k:
+                    costs.add((t * radius + s * dist((0,0), center), center, radius, "3"))
     cost, center, radius, three = min(costs)
     print(f"position={center}, radius={radius}, [{three}]", file=sys.stderr)
     print(cost)
