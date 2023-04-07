@@ -42,6 +42,7 @@ using namespace std;
 #define sz(x) ((int)x.size())
 
 double eps = 1e-10;
+double eps1 = 1e-5;
 
 // kactl geometry
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
@@ -76,6 +77,7 @@ vector<Pd> ps;
 ll k,n,t,s;
 
 bool sweep(int u, double cst) {
+    if(s*ps[u].dist() > cst) return false;
     //cout << "Testing " << u << " " << cst << endl;
     vector<pair<double,int>> e; // Events (Angle,change) where change is whether a new point was added or removed.
     FOR(v,n) {
@@ -86,8 +88,11 @@ bool sweep(int u, double cst) {
         // We can now ternary search on the magnitude of dir
         double lmn = -1e9, lmx = 1e9;
         double rmn = lmn, rmx = 1e9;
-        double mcost = 1e18;
-        REP(40) {
+        double mcost = 1e19;
+        double d = 1;
+        int x = 0;
+        while(d > eps1 || x < 40) {
+        //while (lmn + abs(lmn*eps1) < lmx && lmn + eps1 < lmx) {
             double lmd1 = (2*lmn + lmx) / 3;
             double lmd2 = (lmn + 2*lmx) / 3;
 
@@ -96,15 +101,20 @@ bool sweep(int u, double cst) {
             double dcst = cs2-cs1;
             mcost = min(mcost,cs1);
             if(cs1 <= cst || dcst > 0) {
+                d = fabs(lmx-lmd2);
                 lmx = lmd2;
                 if(cs2 > cst) rmx = lmd2;
             } else {
+                d = fabs(lmn-lmd1);
                 lmn = lmd1;
             }
+            x++;
         }
         rmn = lmn;
-
-        REP(40) {
+        d = 1;
+        x = 0;
+        while(d > eps1 || x < 40) {
+        //while(rmn + abs(rmn*eps1) < rmx && rmn + eps1 < rmx) {
             double rmd1 = (2*rmn + rmx) / 3;
             double rmd2 = (rmn + 2*rmx) / 3;
 
@@ -115,10 +125,13 @@ bool sweep(int u, double cst) {
             //cout << rmx << " " << rmn  << " " << dcst << endl;
 
             if(cs2 <= cst || dcst < 0) {
+                d = fabs(rmn-rmd1);
                 rmn = rmd1;
             } else {
+                d = fabs(rmx-rmd2);
                 rmx = rmd2;
             }
+            x++;
         }
         if(mcost > cst) continue;
         //assert(abs(rmx-rmn) < epsilon);
@@ -137,6 +150,7 @@ bool sweep(int u, double cst) {
     sort(ALL(e));
     int cr = 1;
     if(cr >= k) return true;
+    //cout << e.size() << endl;
     FORE(v,e) {
         cr += v.S;
         if(cr >= k) return true;

@@ -41,7 +41,7 @@ using namespace std;
 #define vvvll vector<vvll>
 #define sz(x) ((int)x.size())
 
-double eps = 1e-1;
+double eps = 1e-4;
 
 // kactl geometry
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
@@ -76,6 +76,7 @@ vector<Pd> ps;
 ll k,n,t,s;
 
 bool sweep(int u, double cst) {
+    if(s*ps[u].dist() > cst) return false;
     //cout << "Testing " << u << " " << cst << endl;
     vector<pair<double,int>> e; // Events (Angle,change) where change is whether a new point was added or removed.
     FOR(v,n) {

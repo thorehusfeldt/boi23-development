@@ -3,7 +3,7 @@
 from math import sqrt,atan2,pi
 import sys
 import random
-eps1 = 1e-7
+eps1 = 1e-5
 eps2 = 1e-10
 class Point:
     def __init__(self,x,y):
@@ -36,6 +36,7 @@ for i in range(n):
     ps.append(Point(x,y))
 
 def sweep(u,cst):
+    if(ps[u].dist()*s > cst): return False
     e = []
     for v in range(n):
         if v == u: continue
@@ -45,8 +46,10 @@ def sweep(u,cst):
         lmx = 1e9
         rmn = -1e9
         rmx = 1e9
-        mcost = 1e18
-        for _ in range(40):
+        mcost = 1e20
+        d = 1
+        x = 0
+        while d > eps1 or x < 40:
             lmd1 = (2*lmn + lmx) / 3
             lmd2 = (lmn + 2*lmx) / 3
 
@@ -56,13 +59,17 @@ def sweep(u,cst):
             dcst = cs2-cs1
             mcost = min(mcost,cs1)
             if cs1 <= cst or dcst > 0:
+                d = abs(lmx-lmd2)
                 lmx = lmd2
                 if cs2 > cst: rmx = lmd2
             else:
+                d = abs(lmn-lmd1)
                 lmn = lmd1
+            x += 1
         rmn = lmn
+        d = 1
 
-        for _ in range(40):
+        while d > eps1 or x < 40:
             rmd1 = (2*rmn + rmx) / 3
             rmd2 = (rmn + 2*rmx) / 3
 
@@ -72,9 +79,12 @@ def sweep(u,cst):
             mcost = min(mcost,cs1)
 
             if cs2 <= cst or dcst < 0:
+                d = abs(rmn-rmd1)
                 rmn = rmd1
             else:
+                d = abs(rmx-rmd2)
                 rmx = rmd2
+            x += 1
         if mcost > cst:
             continue
 

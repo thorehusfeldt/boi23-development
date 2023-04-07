@@ -3,7 +3,7 @@
 from math import sqrt,atan2,pi
 import sys
 import random
-eps = 1e-2
+eps = 1e-4
 class Point:
     def __init__(self,x,y):
         self.x = x
@@ -34,6 +34,7 @@ for i in range(n):
     ps.append(Point(x,y))
 
 def sweep(u,cst):
+    if(ps[u].dist()*s > cst): return False
     e = []
     for v in range(n):
         if v == u: continue

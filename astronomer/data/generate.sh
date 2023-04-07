@@ -133,24 +133,24 @@ tc lp-sm-line-x-parallel gen_line   --s 40  --t 8   --k 10  --n 50 --px 12345 --
 tc lp-sm-line-y-parallel gen_line   --s 80  --t 4   --k 10  --n 50 --px 0 --py 54321 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
 tc lp-sm-line-1 gen_line            --s 50  --t 27  --k 10  --n 50 --px 100 --py 100 --qx 1 --qy -1 --min_c -10000000 --max_c 10000000
 tc lp-sm-line-2 gen_line            --s 33  --t 27  --k 10  --n 50 --px 100 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
-tc lp-lg-random-3 gen_random        --s 100 --t 10  --k 50  --n 399
-tc lp-lg-random-4 gen_random        --s 1   --t 1   --k 123 --n 400
-tc md-random-2 gen_random           --s 10  --t 100 --k  5  --n 400
-tc md-random-3 gen_random           --s 100 --t  10 --k  5  --n 400
-tc md-random-4 gen_random           --s 100 --t  10 --k 10  --n 400
-tc md-random-5 gen_random           --s 10  --t 100 --k 10  --n 400
-tc md-random-6 gen_random           --s 100 --t 100 --k 20  --n 400
-tc md-line-x-axis gen_line          --s 1   --t 2   --k 10  --n 400 --px 0 --py 0 --qx 0 --qy 1 --min_c -100000000 --max_c 100000000
-tc md-line-y-axis gen_line          --s 1   --t 3   --k 10  --n 400 --px 0 --py 0 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
-tc md-line-x-parallel gen_line      --s 1   --t 8   --k 10  --n 400 --px 12345 --py 0 --qx 0 --qy 1 --min_c -100000000 --max_c 100000000
-tc md-line-y-parallel gen_line      --s 1   --t 4   --k 10  --n 400 --px 0 --py 54321 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
-tc md-line-1 gen_line               --s 5   --t 27  --k 10  --n 400 --px 500 --py 100 --qx 1 --qy -1 --min_c -10000000 --max_c 10000000
-tc md-line-2 gen_line               --s 5   --t 27  --k 10  --n 400 --px 500 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
-tc md-planted-ans-1 gen_equal_planted_answer --s 90000 --t 100000 --k 1 --n 400
-tc md-planted-ans-2 gen_equal_planted_answer --s 900000 --t 1000000 --k 1 --n 400
-tc md-planted-ans-3 gen_equal_planted_answer --s 9000000 --t 10000000 --k 25 --n 400
-tc md-planted-ans-4 gen_equal_planted_answer --s 90000000 --t 100000000 --k 50 --n 400
-tc md-planted-ans-5 gen_equal_planted_answer --s 900000000 --t 1000000000 --k 100 --n 400
+tc lp-lg-random-3 gen_random        --s 100 --t 10  --k 50  --n 499
+tc lp-lg-random-4 gen_random        --s 1   --t 1   --k 123 --n 500
+tc md-random-2 gen_random           --s 10  --t 100 --k  5  --n 500
+tc md-random-3 gen_random           --s 100 --t  10 --k  5  --n 500
+tc md-random-4 gen_random           --s 100 --t  10 --k 10  --n 500
+tc md-random-5 gen_random           --s 10  --t 100 --k 10  --n 500
+tc md-random-6 gen_random           --s 100 --t 100 --k 20  --n 500
+tc md-line-x-axis gen_line          --s 1   --t 2   --k 10  --n 500 --px 0 --py 0 --qx 0 --qy 1 --min_c -100000000 --max_c 100000000
+tc md-line-y-axis gen_line          --s 1   --t 3   --k 10  --n 500 --px 0 --py 0 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
+tc md-line-x-parallel gen_line      --s 1   --t 8   --k 10  --n 500 --px 12345 --py 0 --qx 0 --qy 1 --min_c -100000000 --max_c 100000000
+tc md-line-y-parallel gen_line      --s 1   --t 4   --k 10  --n 500 --px 0 --py 54321 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
+tc md-line-1 gen_line               --s 5   --t 27  --k 10  --n 500 --px 500 --py 100 --qx 1 --qy -1 --min_c -10000000 --max_c 10000000
+tc md-line-2 gen_line               --s 5   --t 27  --k 10  --n 500 --px 500 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
+tc md-planted-ans-1 gen_equal_planted_answer --s 90000 --t 100000 --k 1 --n 500
+tc md-planted-ans-2 gen_equal_planted_answer --s 900000 --t 1000000 --k 1 --n 500
+tc md-planted-ans-3 gen_equal_planted_answer --s 9000000 --t 10000000 --k 25 --n 500
+tc md-planted-ans-4 gen_equal_planted_answer --s 90000000 --t 100000000 --k 50 --n 500
+tc md-planted-ans-5 gen_equal_planted_answer --s 900000000 --t 1000000000 --k 100 --n 500
 
 
 # O(n^2 lg eps^-1 + n lg eps^-2 lg n)
