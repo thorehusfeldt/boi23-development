@@ -63,6 +63,8 @@ int main()
 		{
 			return (x - A[i]).r() + x.r() * st;
 		};
+		if(cost(A[i]) > r)
+			return false;
 		int cnt = 0;
 		vector<pair<ld, int>>E;
 		for (int j = 0; j < n; j++)
