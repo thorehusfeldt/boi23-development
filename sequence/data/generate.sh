@@ -20,18 +20,18 @@ tc 1
 tc ty-longest   gen_explicit  1 1 300 1 300 300 300 1 1 1
 tc ty-fibo      gen_explicit  2 3 5 8 11
 tc ty-fibo-back gen_explicit  11 8 5 3 2
-tc ty-random    gen_random    -n 10
-tc ty-random-10 gen_random    -n 10 --max_w 10
-tc ty-random-lg gen_random    -n 10
-tc ty-random-5  gen_random    -n 10 --max_w 5
+tc ty-random    gen_random    --avoid_short_solution -n 10
+tc ty-random-10 gen_random    --avoid_short_solution -n 10 --max_w 10
+tc ty-random-lg gen_random    --avoid_short_solution -n 10
+tc ty-random-5  gen_random    --avoid_short_solution -n 10 --max_w 5
 tc ty-ones-2    gen_random    -n 10 --max_w 1
 tc ty-ones-3    gen_random    -n 9 --max_w 1
 
 group group2 10
 limits --max_w 1 --max_n 300
 tc ty-one-one   gen_explicit  1
-tc ty-five-ones  gen_explicit  1 1 1 1 1
-tc sm-all-ones  gen_random -n 300 --max_w 1
+tc ty-five-ones   gen_explicit  1 1 1 1 1
+tc sm-all-ones    gen_random -n 300 --max_w 1
 tc ty-all-ones-2  gen_random -n 11 --max_w 1
 tc sm-all-ones-1  gen_random -n 299 --max_w 1
 
@@ -58,22 +58,21 @@ group group5 45
 limits --max_n 5000
 include_group group1
 include_group group4
-tc lg-random-1 gen_random -n 5000 
-tc lg-random-2 gen_random -n 5000 --min_w 900_000
-tc lg-random-3 gen_random -n 5000 --max_w 1000
-tc lg-random-sm gen_random -n 5000 --min_w 100 --max_w 105
-tc lg-random-ty gen_random -n 5000 --max_w 10
-tc lg-ones      gen_random -n 5000 --max_w 1
-tc lg-random-md gen_random -n 5000 --min_w 1000 --max_w 1050
+tc lg-random-1    gen_random --avoid_short_solution -n 5000 
+tc lg-random-2    gen_random -n 5000 --min_w 900_000
+tc lg-random-3    gen_random --avoid_short_solution -n 5000 --max_w 1000
+tc lg-random-ty   gen_random --avoid_short_solution -n 5000 --max_w 10
+tc lg-ones        gen_random -n 5000 --max_w 1
+tc lg-random-sm   gen_random -n 5000 --min_w 100 --max_w 105
+tc lg-random-md   gen_random -n 5000 --min_w 1000 --max_w 1050
 tc lg-random-md-1 gen_random -n 4999 --min_w 1000 --max_w 1050
 
 group group6 15
 include_group group5
-tc hg-random-1  gen_random -n 30000
-tc hg-random-2-d  gen_random -n 30000 --min_w 900_000 --descending
-tc hg-random-3  gen_random -n 30000 --max_w 1000
-tc hg-random-3-d  gen_random -n 30000 --max_w 1000 --descending
-tc hg-random-4  gen_random -n 30000 --max_w 100
-tc hg-random-5  gen_random -n 30000 --min_w 100 --max_w 105
-tc hg-ones      gen_random -n 30000 --max_w 1
-tc hg-random-sm gen_random -n 30000 --max_w 10
+tc hg-random-1    gen_random -n 30000
+tc hg-random-2-d  gen_random -n 30000 --min_w 900_000
+tc hg-random-3    gen_random -n 30000 --max_w 1000
+tc hg-random-4    gen_random -n 30000 --max_w 100
+tc hg-random-5    gen_random -n 30000 --min_w 100 --max_w 105
+tc hg-ones        gen_random -n 30000 --max_w 1
+tc hg-random-sm   gen_random -n 30000 --max_w 10
