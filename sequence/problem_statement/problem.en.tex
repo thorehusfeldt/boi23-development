@@ -1,12 +1,13 @@
 \problemname{Sequence}
 
-A sequence of positive integers $x_1,\ldots,x_m$ is \emph{good} if  $x_1 = 1$ and for each $1 < j \leq m$ we either have $x_j=x_{j-1}+1$ or $x_j=x_k\cdot x_l$ for some $k$ and $l$ with $0< k\leq l< j$.
-The sequences~$1,1$ and $1,2$ are both good; the sequence~$1,3$ is not good.
+\noindent
+A sequence of positive integers $(x_1,\ldots,x_m)$ is \emph{good} if  $x_1 = 1$ and for each $1 < j \leq m$ we have either $x_j=x_{j-1}+1$ or $x_j=x_k\cdot x_l$ for some $k$ and $l$ with $0< k\leq l< j$.
+For instance, the sequences~$(1,1)$ and $(1,2)$ are both good, but the sequence~$(1,3)$ is not good.
 For  $n$ given integers $w_1,\ldots,w_n$ define 
-the \emph{weight} of the integer sequence $x_1,\ldots,x_m$ with $1\leq x_j \leq n$ for each $1\leq j\leq m$ as
+the \emph{weight} of an integer sequence $(x_1,\ldots,x_m)$ satisfying $1\leq x_j \leq n$ for each $1\leq j\leq m$ as
 \[ w_{x_1} +\cdots +w_{x_m}\,.\] 
-For instance, given the weights $10, 42, 1$, the weight of the sequence~$1,1$ is $20$ and the weight of sequence~$1,3$ is $11$.
-Define $s_i$ as the smallest weight of a good sequence containing $i$.
+For instance, given the weights $w_1=10,  w_2=42,w_3= 1$, the weight of the sequence~$(1,1)$ is $20$ and the weight of sequence~$(1,3)$ is $11$.
+For $1\leq i\leq n$, define $s_i$ as the smallest weight of a good sequence containing $i$.
 
 Your task is to determine the values $s_1,\ldots ,s_n$.
 
@@ -17,7 +18,7 @@ The next $n$ lines contain the integer weights $w_1, \ldots, w_n$.
 
 \subsection*{Output}
 
-Print $n$ lines containing $s_1$, $\ldots$, $s_n$.
+Print $n$ lines containing $s_1$, $\ldots$, $s_n$ in order.
 
 \subsection*{Constraints and Scoring}
 
