@@ -3,7 +3,8 @@
 from math import sqrt,atan2,pi
 import sys
 import random
-eps = 1e-7
+eps1 = 1e-7
+eps2 = 1e-10
 class Point:
     def __init__(self,x,y):
         self.x = x
@@ -45,7 +46,7 @@ def sweep(u,cst):
         rmn = -1e9
         rmx = 1e9
         mcost = 1e18
-        while lmn + abs(lmn*eps) < lmx and lmn + eps < lmx:
+        for _ in range(40):
             lmd1 = (2*lmn + lmx) / 3
             lmd2 = (lmn + 2*lmx) / 3
 
@@ -61,7 +62,7 @@ def sweep(u,cst):
                 lmn = lmd1
         rmn = lmn
 
-        while rmn + abs(rmn*eps) < rmx and rmn + eps < rmx:
+        for _ in range(40):
             rmd1 = (2*rmn + rmx) / 3
             rmd2 = (rmn + 2*rmx) / 3
 
@@ -105,12 +106,12 @@ def main():
     random.shuffle(p)
     for i in p:
         #print(i)
-        better = best * (1-eps) if best > 1 else best - eps
+        better = best * (1-eps2) if best > 1 else best - eps2
         if better < 0: continue
         if sweep(i,better):
             mic = 0
             mac = better
-            while mic + abs(mic*eps) < mac and mic + eps < mac:
+            while mic + abs(mic*eps2) < mac and mic + eps2 < mac:
                 md = (mic + mac) / 2
                 if(sweep(i,md)):
                     mac = md

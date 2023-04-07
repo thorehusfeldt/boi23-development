@@ -13,23 +13,26 @@ std::vector <std::pair <int, int>> a;
 
 int main(int argc, char** argv) {
 	int seed = 0;
-	for (int i = 1; i + 1 < argc; i += 2) {
+	for (int i = 1; i < argc; i++) {
 		std::string arg = argv[i];
-		std::string val = argv[i + 1];
 		if (arg == "--s") {
+			std::string val = argv[i + 1];
 			s = std::stoi(val);
-		}
-		if (arg == "--t") {
+			i++;
+		} else if (arg == "--t") {
+			std::string val = argv[i + 1];
 			t = std::stoi(val);
-		}
-		if (arg == "--n") {
+			i++;
+		}else if (arg == "--n") {
+			std::string val = argv[i + 1];
 			n = std::stoi(val);
-		}
-		if (arg == "--k") {
+			i++;
+		}else if (arg == "--k") {
+			std::string val = argv[i + 1];
 			k = std::stoi(val);
-		}
-		if (arg == "--seed") {
-			seed = std::stoi(val);
+			i++;
+		} else {
+			seed = std::stoi(arg);
 		}
 	}
 	srand(seed);

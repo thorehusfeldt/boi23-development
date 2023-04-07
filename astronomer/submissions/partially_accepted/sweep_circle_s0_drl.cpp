@@ -1,7 +1,7 @@
 /*
  *  runs in O(n^3 lg n)
  *  
- *  # @EXPECTED_GRADES@ AC AC TLE AC TLE TLE
+ *  # @EXPECTED_GRADES@ WA AC AC WA WA WA
  */ 
 #include <cstdlib>
 #include <bits/stdc++.h>
@@ -41,7 +41,7 @@ using namespace std;
 #define vvvll vector<vvll>
 #define sz(x) ((int)x.size())
 
-double eps = 1e-10;
+double eps = 1e-12;
 
 // kactl geometry
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
@@ -71,60 +71,38 @@ struct Point {
 	friend ostream& operator<<(ostream& os, P p) {
 		return os << "(" << p.x << "," << p.y << ")"; }
 };
+
 typedef Point<double> Pd;
+vector<Pd> circleLine(Pd c, double r, Pd a, Pd b) {
+	Pd ab = b - a, p = a + ab * (c-a).dot(ab) / ab.dist2();
+	double s = a.cross(b, c), h2 = r*r - s*s / ab.dist2();
+	if (h2 < 0) return {};
+	if (h2 == 0) return {p};
+	Pd h = ab.unit() * sqrt(h2);
+	return {p - h, p + h};
+}
+
+
 vector<Pd> ps;
 ll k,n,t,s;
 
-bool sweep(int u, double cst) {
-    //cout << "Testing " << u << " " << cst << endl;
+bool sweep(int u, double r) {
     vector<pair<double,int>> e; // Events (Angle,change) where change is whether a new point was added or removed.
     FOR(v,n) {
         if(v == u) continue;
         Pd md = (ps[u] + ps[v]) / 2; // Point on bisector
-        Pd dir = (ps[v]-ps[u]).perp().unit(); // Direction vector
-
-        // We can now ternary search on the magnitude of dir
-        double lmn = -1e9, lmx = 1e9;
-        double rmn = lmn, rmx = 1e9;
-        double mcost = 1e18;
-        REP(40) {
-            double lmd1 = (2*lmn + lmx) / 3;
-            double lmd2 = (lmn + 2*lmx) / 3;
-
-            double cs1 = (md + dir*lmd1-ps[u]).dist()*t + (md+dir*lmd1).dist()*s;
-            double cs2 = (md + dir*lmd2-ps[u]).dist()*t + (md+dir*lmd2).dist()*s; 
-            double dcst = cs2-cs1;
-            mcost = min(mcost,cs1);
-            if(cs1 <= cst || dcst > 0) {
-                lmx = lmd2;
-                if(cs2 > cst) rmx = lmd2;
-            } else {
-                lmn = lmd1;
-            }
+        Pd dir = (ps[v]-ps[u]).perp(); // Direction vector
+        Pd f1,f2;
+        vector<Pd> ip = circleLine(ps[u],r,md,md+dir);
+        if(sz(ip) < 2) continue;
+        else {
+            f1 = ip[0];
+            f2  = ip[1];
         }
-        rmn = lmn;
+        double langle = (f1-ps[u]).angle();
+        double rangle = (f2-ps[u]).angle();
 
-        REP(40) {
-            double rmd1 = (2*rmn + rmx) / 3;
-            double rmd2 = (rmn + 2*rmx) / 3;
-
-            double cs1 = (md + dir*rmd1-ps[u]).dist()*t + (md+dir*rmd1).dist()*s;
-            double cs2 = (md + dir*rmd2-ps[u]).dist()*t + (md+dir*rmd2).dist()*s; 
-            double dcst = cs2-cs1;
-            mcost = min(mcost,cs1);
-            //cout << rmx << " " << rmn  << " " << dcst << endl;
-
-            if(cs2 <= cst || dcst < 0) {
-                rmn = rmd1;
-            } else {
-                rmx = rmd2;
-            }
-        }
-        if(mcost > cst) continue;
-        //assert(abs(rmx-rmn) < epsilon);
-
-        double langle = (md + dir*lmn-ps[u]).angle();
-        double rangle = (md + dir*rmn-ps[u]).angle();
+        if(rangle + (langle > rangle ?  2*M_PI : 0)-langle >= M_PI+eps) swap(rangle,langle);
 
         e.pb({langle,1});
         e.pb({rangle,-1});
@@ -134,18 +112,20 @@ bool sweep(int u, double cst) {
             e.pb({M_PI,-1});
         }
     }
+    //cout << sz(e) << endl;
     sort(ALL(e));
     int cr = 1;
     if(cr >= k) return true;
     FORE(v,e) {
         cr += v.S;
+        //cout << cr << endl;
         if(cr >= k) return true;
     }
     return false;
 }
 
-bool construct(double cst) {
-    FOR(i,n) if(sweep(i,cst)) return true;
+bool construct(double r) {
+    FOR(i,n) if(sweep(i,r)) return true;
     return false;
 }
 
@@ -158,13 +138,6 @@ int main() {
     }
 
     cout << setprecision(8) << fixed;
-    if(t <= s) {
-        vd d(n);
-        FOR(i,n) d[i] = ps[i].dist();
-        sort(ALL(d));
-        cout << d[k-1] * t << endl;
-        return 0;
-    }
 
     double mic = 0, mac = 2e18;
 
@@ -177,5 +150,5 @@ int main() {
             mic = md;
         }
     }
-    cout << mic << endl;
+    cout << mic*t << endl;
 }

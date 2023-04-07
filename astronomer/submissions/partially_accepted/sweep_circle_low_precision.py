@@ -3,7 +3,7 @@
 from math import sqrt,atan2,pi
 import sys
 import random
-eps = 1e-1
+eps = 1e-2
 class Point:
     def __init__(self,x,y):
         self.x = x

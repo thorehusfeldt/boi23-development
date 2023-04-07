@@ -47,7 +47,8 @@ using namespace std;
 #define M_PI (acosl(-1))
 #endif
 
-double eps = 1e-8;
+double eps1 = 1e-5;
+double eps2 = 1e-10;
 
 // kactl geometry
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
@@ -94,8 +95,9 @@ bool sweep(int u, double cst) {
         // We can now ternary search on the magnitude of dir
         double lmn = -1e9, lmx = 1e9;
         double rmn = lmn, rmx = 1e9;
-        double mcost = 1e20;
-        while (lmn + abs(lmn*eps) < lmx && lmn + eps < lmx) {
+        double mcost = 1e18;
+        FOR(_,40) {
+        //while (lmn + abs(lmn*eps1) < lmx && lmn + eps1 < lmx) {
             double lmd1 = (2*lmn + lmx) / 3;
             double lmd2 = (lmn + 2*lmx) / 3;
 
@@ -111,8 +113,8 @@ bool sweep(int u, double cst) {
             }
         }
         rmn = lmn;
-
-        while(rmn + abs(rmn*eps) < rmx && rmn + eps < rmx) {
+        FOR(_,40) {
+        //while(rmn + abs(rmn*eps1) < rmx && rmn + eps1 < rmx) {
             double rmd1 = (2*rmn + rmx) / 3;
             double rmd2 = (rmn + 2*rmx) / 3;
 
@@ -175,14 +177,13 @@ int main() {
     FOR(i, n)
     {
         // double better = best > 1 ? best * (1 - eps) : best - eps;
-		double better = best - eps;
+		double better = best - eps2;
         if (better < 0)
             break;
         if (sweep(i, better))
         {
             double mic = 0, mac = better;
-            // Plenty to get enough precision I believe
-            while(mic + abs(mic*eps) < mac && mic + eps < mac) {
+            while(mic + abs(mic*eps2) < mac && mic + eps2 < mac) {
                 double md = (mic + mac) / 2;
                 //cout << md << endl;
                 if (sweep(i, md)) {

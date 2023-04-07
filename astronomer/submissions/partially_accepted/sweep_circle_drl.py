@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-# @EXPECTED_GRADES@ AC AC AC AC TLE TLE
+# @EXPECTED_GRADES@ AC AC TLE AC TLE TLE
 from math import sqrt,atan2,pi
 import sys
 import random
@@ -44,7 +44,7 @@ def sweep(u,cst):
         rmn = -1e9
         rmx = 1e9
         mcost = 1e20
-        while lmn + abs(lmn*eps) < lmx and lmn + eps < lmx:
+        for _ in range(40):
             lmd1 = (2*lmn + lmx) / 3
             lmd2 = (lmn + 2*lmx) / 3
 
@@ -60,7 +60,7 @@ def sweep(u,cst):
                 lmn = lmd1
         rmn = lmn
 
-        while rmn + abs(rmn*eps) < rmx and rmn + eps < rmx:
+        for _ in range(40):
             rmd1 = (2*rmn + rmx) / 3
             rmd2 = (rmn + 2*rmx) / 3
 
