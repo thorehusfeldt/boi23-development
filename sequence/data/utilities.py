@@ -81,7 +81,7 @@ def check(w):
      - the weight of the optimum solution for w
      - the minimum length of a good sequence containing len(w)
      - the optimum weigth attained by minimal-length good sequences containing len(w)
-     
+
      In particular, the first and last return value *differ* if w cannot
      be solved by an algorithm that just inspects shortest good sequences.
      """
@@ -95,7 +95,7 @@ def check(w):
 
 
 if __name__ == "__main__":
-    weights = list(map(int, sys.argv[1:]))
+    weights = [int(input()) for _ in range(int(input()))]
     ans = check(weights)
     print(f"n={len(weights)}")
     print(f"w={weights}")

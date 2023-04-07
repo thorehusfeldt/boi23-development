@@ -9,6 +9,7 @@ use_solution dacin21-memo_vector_hash.cpp
 # all the generators are introduced here
 compile gen_explicit.py
 compile gen_random.py
+compile gen_linear.py
 
 # there are two *.in files in data/sample
 samplegroup
@@ -26,6 +27,7 @@ tc ty-random-lg gen_random    --avoid_short_solution -n 10
 tc ty-random-5  gen_random    --avoid_short_solution -n 10 --max_w 5
 tc ty-ones-2    gen_random    -n 10 --max_w 1
 tc ty-ones-3    gen_random    -n 9 --max_w 1
+tc ty-linear    gen_linear    7
 
 group group2 10
 limits --max_w 1 --max_n 300
@@ -59,6 +61,7 @@ limits --max_n 5000
 include_group group1
 include_group group4
 tc lg-random-1    gen_random --avoid_short_solution -n 5000 
+tc md-linear    gen_linear   2047
 tc lg-random-2    gen_random -n 5000 --min_w 900_000
 tc lg-random-3    gen_random --avoid_short_solution -n 5000 --max_w 1000
 tc lg-random-ty   gen_random --avoid_short_solution -n 5000 --max_w 10
@@ -69,6 +72,7 @@ tc lg-random-md-1 gen_random -n 4999 --min_w 1000 --max_w 1050
 
 group group6 15
 include_group group5
+tc hg-linear      gen_linear 16383
 tc hg-random-1    gen_random -n 30000
 tc hg-random-2-d  gen_random -n 30000 --min_w 900_000
 tc hg-random-3    gen_random -n 30000 --max_w 1000
