@@ -26,6 +26,7 @@ sample 5
 
 group group1 8
 limits --max_p 1_000_000 --no_wait
+tc 3
 tc nw-small-1    gen_no_wait -b 100 -p 10 -d 11 -n 10 -use 7
 tc nw-small-2    gen_no_wait -b 100 -p 10 -d 11 -n 15 -use 7 -start 5
 tc nw-mid-1      gen_no_wait -b 100_000 -p 1000 -d 123 -n 1000 -use 91
