@@ -21,11 +21,11 @@ samplegroup
 sample 1
 sample 2
 sample 3
-sample 4
-sample 5
 
 group group1 8
 limits --max_p 1_000_000 --no_wait
+tc 1
+tc 2
 tc nw-small-1    gen_no_wait -b 100 -p 10 -d 11 -n 10 -use 7
 tc nw-small-2    gen_no_wait -b 100 -p 10 -d 11 -n 15 -use 7 -start 5
 tc nw-mid-1      gen_no_wait -b 100_000 -p 1000 -d 123 -n 1000 -use 91
@@ -40,8 +40,6 @@ limits --max_b 1000 --max_p 100 --max_n 10
 tc 1
 tc 2
 tc 3
-tc 4
-tc 5
 
 # Loop over binary strings of length 5, except 00000
 declare -a b_strings
