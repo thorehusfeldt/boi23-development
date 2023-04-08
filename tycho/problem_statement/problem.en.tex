@@ -8,6 +8,15 @@ The situation is made even worse by radiation from a nearby pulsar, which adds $
 However, the radiation damage can be avoided by seeking shelter in one of the $n$ different hiding spots---caves, vegetation, large rocks, carcasses of the planet's megafauna---along the way.
 Tycho can choose to stand still at any point for any integer number of seconds.
 
+Consider the situation where the home base is at position $18$ and there are shelters at positions $8$ and $15$.
+Assume that the pulsar's period is $4$, so unsheltered Tycho would take damage at times $4$, $8$, $12$, etc.
+
+If Tycho leaves from the starting position (where it's sheltered) at time $0$, it can reach the first shelter after $8$ seconds, incurring radiation damage $d$ at time $4$ (but none at time $8$ because it's sheltered then).
+Continuing without stopping, it reaches the home base at time $18$, incurring $d+d$ more units of radiation damage (at times $12$ and $16$, respectively).
+This way it incurs $d+d+d=3d$ units of radiation damage and $18$ units of environmental damage.
+
+If instead Tycho waits at the $2$nd shelter (at position $15$) for $1$ second, the pulse at time $16$ causes it no damage, and it reaches the home base at time $19$ with a total of $2d + 19$ units of damage.
+
 The starting position~$0$ and the home base at~$b$ are both sheltered, so Tycho takes no radiation damage there.
 
 \medskip
@@ -49,7 +58,7 @@ Your final score will be the maximum score of a single submission.
 \medskip
 \begin{tabular}{lll}
 Group & Points & Constraints \\\hline
-  $1$ & $8$  & $p\leq 10^6$ and there exists an optimal strategy, where Tycho does not wait at any position \emph{after} leaving position~$0$. \\ % constraint:nowait
+  $1$ & $8$  & $p\leq 10^6$ and there exists an optimal strategy, where Tycho does not wait at any position \emph{after} leaving position~$0$. (But it might need to wait at position~$0$!) \\ % constraint:nowait
   $2$ & $5$  & $b\leq 1000$, $p\leq 100$, $n\leq 10$ \\
   $3$ & $7$  & $b\leq 1000$ \\
   $4$ & $15$ & $p\leq 10^6$, $n\leq 1000$\\
@@ -57,21 +66,3 @@ Group & Points & Constraints \\\hline
   $6$ & $35$ & $p\leq 10^6$\\
   $7$ & $10$ & \emph{no additional constraints}
 \end{tabular}
-
-\subsection*{Example}
-
-Consider the first sample input. The base is located at $b = 42$, the pulse happens every $p = 7$ seconds causing $d = 2$ units of radiation damage, and there are no shelters.
-It is optimal for Tycho to move to the base as fast as possible. Thus, Tycho reaches the base at time $42$ and it takes $42$ units of environmental damage.
-Additionaly, it takes radiation damage at times $7, 14, 21, 28, 35$. However, it doesn't take damage at time $42$ because Tycho will be at the base at this time.
-In total Tycho takes $42 + 5d = 52$ damage.
-
-Sample Inputs 2 and 3 differ only in $d$. We have $b = 15$, $p = 5$ and 3 shelters at positions $4, 9, 11$.
-
-In Sample 2, it is optimal for Tycho to wait one second at position $0$ and move straight to the base afterwards. So it will reach the base at time $16$.
-During the first two pulses at times $5$ and $10$, Tycho is sheltered at positions $4$ and $9$. But Tycho is unsheltered at time $15$ and position $14$ causing radiation damage.
-In total Tycho takes $16 + d = 18$ damage.
-
-In Sample 3, the previous strategy is no longer optimal because Tycho would take $16 + d = 20$ units of damage. If Tycho instead waits at position $11$ until time $15$, it doesn't take any radiation damage.
-So the total damage is only $19$.
-
-Note that Sample Inputs 1 and 2 are valid inputs for test group 1, but Sample Input 3 is not.
