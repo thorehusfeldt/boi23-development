@@ -94,4 +94,6 @@ with open(sys.argv[1]) as in_file:
             fail("Team response must start with ! or ?")
     else:
         fail("Too many rounds")
+    if sys.stdin.buffer.readline():
+        fail("Too much output")
     accept()
