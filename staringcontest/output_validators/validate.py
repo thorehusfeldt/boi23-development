@@ -24,7 +24,7 @@ def fail(msg: str) -> None:
         afile.write(f"WA: {msg}\n")
     sys.exit(43)
 
-def accept(rounds_used: int, input_size: int) -> None:
+def accept(queries_used: int, input_size: int) -> None:
     if input_size <= 50:
         score = 9
     elif input_size <= 1000:
@@ -33,16 +33,16 @@ def accept(rounds_used: int, input_size: int) -> None:
         # We're in group 3, where n = 1500
         #
         # Set score to a number from 1..80, higher is better.
-        additional_rounds = rounds_used - input_size
-        if additional_rounds < 25:
-            additional_rounds = 25
-        assert 25 <= additional_rounds <= 1500
+        additional_queries = queries_used - input_size
+        if additional_queries < 25:
+            additional_queries = 25
+        assert 25 <= additional_queries <= 1500
 
         # linearly interpolate such that
         # 80 points for additional_rounds = 25 (roughly 2.5*log_2(n))
         # 1 point for additional_rounds = 1500 (for 2n solution)
         # score = int(4799/59 - 79 * additional_rounds / 1475)
-        score = round(118.2-12*math.log(additional_rounds))
+        score = round(118.2-12*math.log(additional_queries)) # constraint:scoringfunction
         assert 1 <= score <= 80
 
     with open(sys.argv[3] / Path("score.txt"), "a", encoding="utf-8") as sfile:
@@ -63,7 +63,8 @@ with open(sys.argv[1]) as in_file:
     skills = list(map(int, in_file.readline().split()))
     n = len(skills)
     print(n, flush=True)
-    for q in range(3_000): # constraint:maxnumrounds
+    q = 0
+    while q < 3_000: # constraint:maxnumqueries
         line = get_team_line().split()
         if line[0] == '?':
             if len(line) != 3:
@@ -75,6 +76,7 @@ with open(sys.argv[1]) as in_file:
                 fail(f"Query index out of bounds: {j}")
             if i == j:
                 fail(f"Query indices must be different, not both {i}")
+            q += 1
             print(min(skills[i - 1], skills[j - 1]), flush=True)
         elif line[0] == '!':
             if len(line) != n + 1:
