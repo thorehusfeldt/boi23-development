@@ -56,22 +56,25 @@ Each test group contains a set of test cases.
 To get the points for a test group you need to solve all test cases in the test group.
 Your final score will be the maximum score of a single submission.
 
-Your score for the third group is the minimum score among all test cases in the group.
+For group~$3$, your score is the minimum score among all test cases in the group.
 The score for each test case depends on the number of queries you use;
 fewer queries are better:
-Suppose you use $q$ queries. If $q \le n+25$, you get the full 80 points. If $q > 3000$, you get no points.
-Otherwise, you get $118.2 - 12 \ln(q - n)$ points, rounded to the nearest integer. In particular, for $n = 1500$ and $q = 3000$, you get $30$ points.
+Suppose you use $q$ queries. 
+If $q \le n+25$, then you get the full $80$~points. 
+If $q > 3000$, then you get no points.
+Otherwise, you get $118.2 - 12 \ln(q - n)$ points, rounded to the nearest integer.
+For instance, for $n = 1500$ and $q = 3000$, you get $30$~points.
 
 \medskip
 \begin{tabular}{lll}
 Group & Points & Constraints\\\hline
 $1$  &  $9$ & $n\leq 50$\\
 $2$  &  $11$ & $n\leq 1000$\\
-$3$  &  $up to $80$ & $1000 < n\leq 1500$\\
+$3$  &  $0$--$80$ & $1000 < n\leq 1500$\\
 \end{tabular}
 
 \subsection*{Explanation of sample interactions}
 
-
-Sample interaction $1$ shows a possible interaction using the above example; note that Anna's and Tony's strengths are correctly determined.
+Sample interaction $1$ shows a possible interaction using the above example. 
+Note that Anna's and Tony's strengths are correctly determined.
 (Esther's can never be determined.)
