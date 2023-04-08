@@ -74,7 +74,7 @@ Your final score will be the maximum score of a single submission.
 \medskip
 \begin{tabular}{lll}
 Group & Points & Constraints \\\hline
-  $1$ & $8$  & $p\leq 10^6$ and Tycho does not need to wait \emph{after} leaving position~$0$.* \\ % constraint:nowait
+  $1$ & $8$  & $p\leq 10^6$ and Tycho does not need to wait \emph{after} leaving position~$0$.$^*$ \\ % constraint:nowait
   $2$ & $5$  & $b\leq 1000$, $p\leq 100$, $n\leq 10$ \\
   $3$ & $7$  & $b\leq 1000$ \\
   $4$ & $15$ & $p\leq 10^6$, $n\leq 1000$\\
@@ -83,4 +83,6 @@ Group & Points & Constraints \\\hline
   $7$ & $10$ & \emph{no additional constraints}
 \end{tabular}
 
-\noindent * But Tycho might need to wait at position $0$ before it starts moving. For example, sample inputs $2$, $3$ and $4$ belong to test group $1$.
+\medskip
+\noindent $^*$ In test group~$1$, Tycho may still need to wait at position~$0$ \emph{before} it starts moving.
+For example, sample inputs $2$, $3$, and $4$ belong to test group~$1$.
