@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+# @EXPECTED_GRADES@ WA WA WA WA WA WA WA
 import random
 
 for _ in range(100000):

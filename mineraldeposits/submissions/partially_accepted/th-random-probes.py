@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+# @EXPECTED_GRADES@ AC AC AC AC WA WA WA
 import random
 
 b, k, _ = map(int, input().split())

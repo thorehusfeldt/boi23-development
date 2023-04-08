@@ -80,14 +80,14 @@ tc g6-random-maxcand-4 gen_maximise_candidates --b 10_000 --w 2 --k 20 --ccx 110
 tc g6-random-maxcand-5 gen_maximise_candidates --b 10_000 --w 2 --k 20 --ccx 9000 --ccy 9000
 
 group group6 15
-limits --min_w 2
+limits --min_w 2 --max_b 10_000_000
 include_group group5
-tc g7-random-maxk-5 gen_random --b 100_000_000  --w 2 --k 20
-tc g7-random-maxcand-1 gen_maximise_candidates --b 100_000_000 --w 2 --k 20 --ccx 400 --ccy 400
-tc g7-random-maxcand-2 gen_maximise_candidates --b 100_000_000 --w 2 --k 20 --ccx 10000 --ccy 1000
-tc g7-random-maxcand-3 gen_maximise_candidates --b 100_000_000 --w 2 --k 20 --ccx 800 --ccy 800
-tc g7-random-maxcand-4 gen_maximise_candidates --b 100_000_000 --w 2 --k 20 --ccx 1100 --ccy 80000
-tc g7-random-maxcand-5 gen_maximise_candidates --b 100_000_000 --w 2 --k 20 --ccx 10000000 --ccy 1000000
+tc g7-random-maxk-5 gen_random --b 10_000_000  --w 2 --k 20
+tc g7-random-maxcand-1 gen_maximise_candidates --b 10_000_000 --w 2 --k 20 --ccx 400 --ccy 400
+tc g7-random-maxcand-2 gen_maximise_candidates --b 10_000_000 --w 2 --k 20 --ccx 10000 --ccy 1000
+tc g7-random-maxcand-3 gen_maximise_candidates --b 10_000_000 --w 2 --k 20 --ccx 800 --ccy 800
+tc g7-random-maxcand-4 gen_maximise_candidates --b 10_000_000 --w 2 --k 20 --ccx 1100 --ccy 80000
+tc g7-random-maxcand-5 gen_maximise_candidates --b 10_000_000 --w 2 --k 20 --ccx 1_000_000 --ccy 1_000_000
 
 
 group group7 19
