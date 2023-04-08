@@ -1,4 +1,4 @@
-// # @EXPECTED_GRADES@ AC WA WA WA AC WA WA
+// # @EXPECTED_GRADES@ WA WA WA WA AC WA WA
 #include <cstdlib>
 #include <bits/stdc++.h>
 using namespace std;
@@ -47,7 +47,7 @@ vll query(vii qs) {
 }
 
 
-ll r = 3e4; 
+ll r = 6e4; 
 
 int main() {
     cin >> b >> k >> w; 
