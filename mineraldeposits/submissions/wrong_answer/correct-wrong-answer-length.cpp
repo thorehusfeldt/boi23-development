@@ -37,7 +37,6 @@ vll query(vii qs) {
     FORE(q,qs) {
         cout << q.F << " " << q.S << " ";
     }
-    cout << qs[0].F;
     cout << endl;
 
     vll res(k*qs.size());
@@ -172,5 +171,4 @@ int main() {
     FORE(s,sol) cout << s.F << " " << s.S << " ";
     cout << sol[0].F;
     cout << endl;
-    cout << "spam" << endl;
 }
