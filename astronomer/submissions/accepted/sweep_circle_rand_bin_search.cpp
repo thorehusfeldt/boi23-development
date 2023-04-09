@@ -1,6 +1,3 @@
-/* 
-*  # @EXPECTED_GRADES@ AC AC AC AC AC AC
-*/ 
 #include <cstdlib>
 #include <bits/stdc++.h>
 using namespace std;
@@ -176,9 +173,9 @@ int main() {
     ld best = 2e18;
     mt19937_64 rng(0);
     shuffle(ps.begin(), ps.end(), rng);
-    ld eps1 = 1e-10;
-    ld eps2 = 1e-15;
-    FOR(i,n) FOR(j,n) {
+    ld eps1 = 1e-8;
+    ld eps2 = 1e-8;
+    FOR(i,n) FOR(j,i) {
         if(i == j) continue;
         Pd mp = (ps[i]+ps[j])/2;
         Pd dir = (ps[j]-ps[i]).perp().unit();
@@ -197,6 +194,8 @@ int main() {
         }
         cmp[i][j] = (mi + ma)/2;
         cb[i][j] = (mp + dir*cmp[i][j]).dist()*s + (mp + dir*cmp[i][j] - ps[i]).dist()*t;
+        cb[j][i] = cb[i][j];
+        cmp[j][i] = -cmp[i][j]; 
     }
 
     

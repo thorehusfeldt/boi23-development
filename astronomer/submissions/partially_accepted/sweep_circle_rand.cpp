@@ -1,10 +1,6 @@
-/*input
-3 4 0 10
-0 0
-10 0
-5 10
-5 5
-*/
+/* 
+*  # @EXPECTED_GRADES@ AC AC AC AC AC AC
+*/ 
 #include <cstdlib>
 #include <bits/stdc++.h>
 using namespace std;
