@@ -6,7 +6,7 @@ import sys
 from argparse import ArgumentParser
 
 parser = ArgumentParser("Validate input to astronomer")
-parser.add_argument("--max_n", type=int, default=800)
+parser.add_argument("--max_n", type=int, default=550)
 parser.add_argument("--s_geq_t",  action='store_true')
 parser.add_argument("--k_eq_n",  action='store_true')
 parser.add_argument("--s_eq_0",  action='store_true')
