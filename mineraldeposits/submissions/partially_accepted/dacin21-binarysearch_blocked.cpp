@@ -1,10 +1,4 @@
-/*
- *   Very basic solution based on finding k^2 candidates + recursive yes/no tree search
- *
- *   This implementation doesn't check for parity when finding candidates.
- *   On good test data, this should not effect the number of points we score.
- * # @EXPECTED_GRADES@ AC AC AC WA WA WA WA
- */
+//# @EXPECTED_GRADES@ AC AC AC AC WA WA WA
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -27,14 +21,14 @@ ll X, Y;
 int k, Q;
 vector<ll> query(vector<Point> const&v){
     for(auto const&p : v){
-        assert(0 <= p.x && p.x <= X);
-        assert(0 <= p.y && p.y <= Y);
+        assert(-X <= p.x && p.x <= X);
+        assert(-X <= p.y && p.y <= Y);
     }
-    cout << "? " << v.size() << "\n";
+    cout << "? " << " ";
     for(auto const&p : v){
-        cout << p.x << " " << p.y << "\n";
+        cout << p.x << " " << p.y << " ";
     }
-    cout << flush;
+    cout << endl;
     vector<ll> ret(ssize(v) * k);
     for(auto &e : ret){
         cin >> e;
@@ -47,17 +41,18 @@ int query_zeros(vector<Point> const&v){
 }
 
 signed main(){
-    cin >> X >> Y >> k >> Q;
-    auto A = query({Point{0, 0}});
-    auto B = query({Point{X, 0}});
+    cin >> X >> k >> Q;
+    Y = X;
+    auto A = query({Point{-X, -Y}});
+    auto B = query({Point{X, -Y}});
     vector<Point> pool;
     for(int a : A){
         for(int b : B){
-            ll u  = (a-b+X), v = (a+b-X);
+            ll u  = (a-b), v = (a+b-2*X-2*Y);
             // if(!(u%2 == 0 && v%2 == 0)) continue;
             u/=2, v/=2;
-            if(u < 0 || u > X) continue;
-            if(v < 0 || v > Y) continue;
+            if(u < -X || u > X) continue;
+            if(v < -Y || v > Y) continue;
             pool.push_back(Point{u, v});
         }
     }
@@ -68,18 +63,27 @@ signed main(){
         return query_zeros(vector<Point>(pool.begin()+l, pool.begin()+r));
     };
     vector<int> ans;
-    auto rec = [&](auto& rec, int l, int r){
-        const int cnt = count_in_range(l, r);
-        if(!cnt) return;
-        if(r-l == 1){
-            ans.push_back(l);
-            return;
+    int L = 0, R = ssize(pool);
+    const int BLOCK = 32;
+    while(ssize(ans) < k){
+        int l = L;
+        int r = L+BLOCK;
+        if(r > R) r = R;
+        else {
+            if(!count_in_range(l, r)){
+                L = r;
+                continue;
+            }
         }
-        const int m = l + (r-l)/2;
-        rec(rec, l, m);
-        rec(rec, m, r);
-    };
-    rec(rec, 0, ssize(pool));
+        assert(L < R);
+        while(l+1 < r){
+            const int m = l + (r-l)/2;
+            if(count_in_range(l, m)) r = m;
+            else l=m;
+        }
+        ans.push_back(l);
+        L = r;
+    }
 
     cout << "!";
     for(auto &i : ans){

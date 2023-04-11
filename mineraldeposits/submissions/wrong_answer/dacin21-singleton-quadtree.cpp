@@ -1,9 +1,11 @@
 /*
+ * @EXPECTED_GRADES@ WA WA WA WA WA WA WA
  *   A solution that only queries a single point at a time.
  *   This solution does not use candidates. Instead, a quad-tree like descent
  *   is used to search the entire plane.
  *
  *   Note: This solution is really bad and uses O(k log nm) queries, with large constant.
+ *   It also needs to query points outside the grid.
  */
 
 #include <bits/stdc++.h>
@@ -30,11 +32,11 @@ ll dist(Point const&p, Point const&q){
 ll X, Y;
 int k, Q;
 map<ll, int> query(vector<Point> const&v){
-    cout << "? " << v.size() << "\n";
+    cout << "? " << " ";
     for(auto const&p : v){
-        cout << p.x << " " << p.y << "\n";
+        cout << p.x << " " << p.y << " ";
     }
-    cout << flush;
+    cout << endl;
     map<ll, int> ret;
     for(int it=0; it < ssize(v) * k; ++it){
         ll e;
@@ -63,7 +65,8 @@ bool is_square_nonempty(Point const&center, ll radius, set<Point> const&known){
     return query({center}).begin()->first <= radius;
 }
 signed main(){
-    cin >> X >> Y >> k >> Q;
+    cin >> X >> k >> Q;
+    Y = X;
     set<Point> ans;
     auto rec = [&](auto &rec, Point center, ll r){
         if(!is_square_nonempty(center, r, ans)) return;
@@ -81,7 +84,7 @@ signed main(){
             rec(rec, Point{center.x, center.y}, r);
         }
     };
-    rec(rec, Point{X/2, Y/2}, 1ull << __lg(X + Y + 4));
+    rec(rec, Point{0, 0}, 2ull << __lg(X + Y + 4));
 
     cout << "!";
     for(auto &e : ans){

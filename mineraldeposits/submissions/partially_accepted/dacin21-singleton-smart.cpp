@@ -4,7 +4,9 @@
  *   Then processes the candidates row by row via binary search by querying points
  *   that are far enough away.
  *
- *   # @EXPECTED_GRADES@ AC AC AC AC WA WA WA
+ *   Note: Queries points outside the grid, except for k=1
+ *
+ *   # @EXPECTED_GRADES@ AC WA WA WA WA WA WA
  */
 
 
@@ -32,15 +34,11 @@ ll dist(Point const&p, Point const&q){
 ll X, Y;
 int k, Q;
 map<ll, int> query(vector<Point> const&v){
-    // for(auto const&p : v){
-    //     assert(0 <= p.x && p.x <= X);
-    //     assert(0 <= p.y && p.y <= Y);
-    // }
-    cout << "? " << v.size() << "\n";
+    cout << "? " << " ";
     for(auto const&p : v){
-        cout << p.x << " " << p.y << "\n";
+        cout << p.x << " " << p.y << " ";
     }
-    cout << flush;
+    cout << endl;
     map<ll, int> ret;
     for(int it=0; it < ssize(v) * k; ++it){
         ll e;
@@ -67,11 +65,12 @@ map<ll, int> subtract_known(map<ll, int> ret, vector<Point> const&query, vector<
     return ret;
 }
 
-const ll STEP = 2.01e9;
+const ll STEP = 2.01e8;
 
 signed main(){
-    cin >> X >> Y >> k >> Q;
-    vector<Point> q_A = {Point{0, 0}}, q_B = {Point{X, 0}};
+    cin >> X >> k >> Q;
+    Y = X;
+    vector<Point> q_A = {Point{-X, -Y}}, q_B = {Point{X, -Y}};
     auto A_orig = query(q_A);
     auto B_orig = query(q_B);
     vector<Point> ans;
@@ -81,11 +80,11 @@ signed main(){
         const ll a = A.begin()->first;
         vector<Point> pool;
         for(auto [b, _] : B){
-            ll u  = (a-b+X), v = (a+b-X);
+            ll u  = (a-b), v = (a+b-2*X-2*Y);
             if(!(u%2 == 0 && v%2 == 0)) continue;
             u/=2, v/=2;
-            if(u < 0 || u > X) continue;
-            if(v < 0 || v > Y) continue;
+            if(u < -X || u > X) continue;
+            if(v < -Y || v > Y) continue;
             pool.push_back(Point{u, v});
         }
         int l = 0, r = ssize(pool);
