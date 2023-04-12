@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const ll inf = 1e18;
+const ll inf = 2e18;
 
 const ll MAX = (1ll<<40)-1;
 

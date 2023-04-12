@@ -1,8 +1,8 @@
-// @EXPECTED_GRADES@ AC AC AC AC AC AC TLE
+// @EXPECTED_GRADES@ WA AC AC WA WA WA WA
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const ll inf = 2e18;
+const ll inf = 1e18;
 
 int cap;
 vector<ll> seg;
@@ -25,17 +25,24 @@ ll qry(int l, int r){return qry(l, r, 0, cap-1, 1);}
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    ll b; int m, d, n;
+    ll b, m; int d, n;
     cin >> b >> m >> d >> n;
     vector<ll> a(++n);
     vector<ll> dp(n);
-    for(int i = 1; i < n; i++) cin >> a[i];
-    build(m);
+    vector<ll> a_mod_m{0};
+    for(int i = 1; i < n; i++) cin >> a[i], a_mod_m.push_back(a[i]%m);
+    sort(a_mod_m.begin(), a_mod_m.end());
+    a_mod_m.resize(unique(a_mod_m.begin(), a_mod_m.end()) - a_mod_m.begin());
+    auto comp = [&](ll x){
+        return int(lower_bound(a_mod_m.begin(), a_mod_m.end(), x%m) - a_mod_m.begin());
+    };
+    int mod_cnt = int(a_mod_m.size());
+    build(n);
     upd(0, 0);
     for(int i = 1; i < n; i++){
-        int p = int(a[i]%m);
+        int p = comp(a[i]);
         ll x = a[i]/m*(d+m);
-        dp[i] = x + min(qry(0, p-1)+d+m, qry(p, m-1)) - d;
+        dp[i] = x + min(qry(0, p-1)+d+m, qry(p, n-1)) - d;
         upd(p, dp[i] - x);
     }
     ll ans = inf;

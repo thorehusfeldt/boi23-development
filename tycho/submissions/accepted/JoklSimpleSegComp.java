@@ -7,7 +7,7 @@ import java.util.TreeSet;
 public class JoklSimpleSegComp {
 	static int cap;
 	static long[] seg;
-	static long max = Long.MAX_VALUE / 10;
+	static long max = Long.MAX_VALUE / 5;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

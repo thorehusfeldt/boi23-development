@@ -5,7 +5,7 @@
 # TODO expected grade for group 6 is not clear to me... TLE/AC?
 
 MAX = (1 << 40) - 1
-INF = 10**18
+INF = 2 * 10**18
 
 seg = [INF]
 lazy = [0]

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # @EXPECTED_GRADES@ AC AC AC AC AC AC TLE
 
-INF = 10**18
+INF = 2 * 10**18
 
 def update(idx, v):
     idx += cap

@@ -2,7 +2,7 @@
 
 import sys
 
-INF = 10**18 # less clean than float("inf"), but avoids type mismatch (thus faster)
+INF = 2 * 10**18 # less clean than float("inf"), but avoids type mismatch (thus faster)
 
 class RMQ:
     def __init__(self, size):

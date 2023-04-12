@@ -15,7 +15,7 @@ def damage(start):
     total += d * (pulse_cnt - shelter_cnt[first_shelter % p])
     return total
 
-best = 10**18
+best = 2 * 10**18
 for i in range(0, p):
     best = min(best, damage(i))
 

@@ -29,6 +29,7 @@ limits --max_p 1_000_000 --no_wait
 tc 2
 tc 3
 tc 4
+tc check-inf     gen_random -b 1_000_000_000_000 -p 1 -d 1_000_000 -n 0
 tc nw-small-1    gen_no_wait -b 100 -p 10 -d 11 -n 10 -use 7
 tc nw-small-2    gen_no_wait -b 100 -p 10 -d 11 -n 15 -use 7 -start 5
 tc nw-mid-1      gen_no_wait -b 100_000 -p 1000 -d 123 -n 1000 -use 91
@@ -85,6 +86,7 @@ group group4 15
 limits --max_p 1_000_000 --max_n 1000 
 include_group group2
 include_group group3
+tc check-inf
 tc md-some-holes   gen_random -b 1000 -p 2 -d 10 -n 333
 tc md-early-holes  gen_random -b 1000 -p 2 -d 10 -n 333 --max_a 500
 tc rd-10k-1k-md    gen_random -b 10_000 -p 1000 -d 10 -n 333
@@ -103,6 +105,7 @@ tc md-waiting-2    gen_waiting -n 1000 -p 500 -d 501
 group group5 20
 limits --max_p 100
 include_group group2
+tc check-inf
 tc small-m-md-early-holes  gen_random  -b 1_000_000 -p 100 -d 10 -n 100_000 --max_a 200_000
 tc small-m-rd              gen_random  -b 1_000_000 -p 100 -d 10 -n 100_000
 tc small-m-crit-smallc     gen_critc   -b 1_000_000 -p 100 -d0 7   -n 1000
