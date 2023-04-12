@@ -4,8 +4,8 @@
 
 . ../../_tools/gen.sh
 
-use_solution sweep_circle_rand_bin_search.cpp
-
+#use_solution sweep_circle_rand_bin_search.cpp
+use_solution ../partially_accepted/sweep_circle_high_precision.py pypy3
 # all the generators are introduced here
 compile gen_random.py
 compile gen_line.py

@@ -173,8 +173,8 @@ int main() {
     ld best = 2e18;
     mt19937_64 rng(0);
     shuffle(ps.begin(), ps.end(), rng);
-    ld eps1 = 1e-8;
-    ld eps2 = 1e-8;
+    ld eps1 = 1e-7;
+    ld eps2 = 1e-7;
     FOR(i,n) FOR(j,i) {
         if(i == j) continue;
         Pd mp = (ps[i]+ps[j])/2;
