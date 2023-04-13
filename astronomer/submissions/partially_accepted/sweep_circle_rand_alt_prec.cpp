@@ -1,5 +1,5 @@
 /* 
-*  # @EXPECTED_GRADES@ AC AC AC AC AC AC
+*  # @EXPECTED_GRADES@ AC AC AC AC AC AC AC
 */ 
 #include <cstdlib>
 #include <bits/stdc++.h>

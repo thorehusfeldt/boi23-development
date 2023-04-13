@@ -1,6 +1,4 @@
-/* 
-*  # @EXPECTED_GRADES@ AC WA WA WA WA WA WA
-*/ 
+// @EXPECTED_GRADES@ AC AC TLE AC TLE TLE TLE TLE
 #include <cstdlib>
 #include <bits/stdc++.h>
 using namespace std;
@@ -40,6 +38,19 @@ using namespace std;
 #define vvvll vector<vvll>
 #define sz(x) ((int)x.size())
 
+#ifndef M_PI
+#define M_PI (acosl(-1))
+#endif
+
+ld err(ld a, ld b)
+{
+	ld d = abs(b - a);
+	ld m = max((ld)(1), max(abs(a),abs(b)));
+	return d / m;
+}
+
+
+
 // kactl geometry
 template <class T> int sgn(T x) { return (x > 0) - (x < 0); }
 template<class T>
@@ -75,11 +86,25 @@ vector<Pd> ps;
 ll k, n;
 ld s,t;
 
-vvld cmp;
-vvld cb;
+double ccRadius(const Pd& A, const Pd& B, const Pd& C) {
+	return (B-A).dist()*(C-B).dist()*(A-C).dist()/
+			abs((B-A).cross(C-A))/2;
+}
+
+Pd ccCenter(const Pd& A, const Pd& B, const Pd& C) {
+	Pd b = C-A, c = B-A;
+    if(abs(b.cross(c)) <= 1e-8) return Pd(0,0);
+	return A + (b*c.dist2()-c*b.dist2()).perp()/b.cross(c)/2;
+}
 
 int main() {
-    cin >> k >> n >> s >> t;
+    ll os, ot;
+    cin >> k >> n >> os >> ot;
+    
+    s = os;
+    t = ot;
+    s /= t;
+    t = 1;
 
     FOR(i, n) {
         int x, y;
@@ -87,9 +112,48 @@ int main() {
         ps.pb(Pd(x, y));
     }
     cout << setprecision(12) << fixed;
-    vd d(n);
-    FOR(i, n) d[i] = ps[i].dist();
-    sort(ALL(d));
-    cout << d[k - 1] * t << endl;
-    return 0;
+    if (t <= s || k == 1) {
+        vd d(n);
+        FOR(i, n) d[i] = ps[i].dist();
+        sort(ALL(d));
+        cout << d[k - 1] * min(ot,os) << endl;
+        return 0;
+    }
+    ld best = 1e22;
+    ld eps = 1e-15;
+    FOR(i,n) FOR(j,i) {
+        if(i == j) continue;
+        Pd mp = (ps[i]+ps[j])/2;
+        Pd dir = (ps[j]-ps[i]).perp().unit();
+        ld mi = -1e10, ma = 1e10;
+        while(err(mi,ma) > eps) {
+            ld md1 = (2*mi + ma)/3;
+            ld md2 = (mi + 2*ma)/3;
+            ld c1 = (mp + dir*md1).dist()*s + (mp + dir*md1 - ps[i]).dist()*t;
+            ld c2 = (mp + dir*md2).dist()*s + (mp + dir*md2 - ps[i]).dist()*t;
+            if(c1 <= c2) {
+                ma = md2;
+            } else {
+                mi = md1;
+            }
+        }
+        Pd c = mp + dir*(mi + ma)/2;
+        ld r = (c-ps[i]).dist();
+        int d = 0;
+        FOR(l,n) if((ps[l]-c).dist() <= r*(1+1e-7)) d++;
+        if(d >= k) {
+            best = min(best,c.dist()*s + r*t);
+        }
+    }
+
+    FOR(i,n) FOR(j,n) FOR(l,n) {
+        Pd c = ccCenter(ps[i],ps[j],ps[l]);
+        double r = ccRadius(ps[i],ps[j],ps[l]);
+        int d = 0;
+        FOR(m,n) if((ps[m]-c).dist() <= r*(1+1e-7)) d++;
+        if(d >= k) {
+            best = min(best,c.dist()*s + r*t);
+        }
+    }
+    cout << best * ot << endl;
 }

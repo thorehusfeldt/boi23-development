@@ -18,7 +18,7 @@ sample 2
 sample 3
 
 # t <= s
-group group1 5
+group group1 7
 limits --s_geq_t
 
 tc s-geq-t-sm-random-3 gen_random       --s 100 --t 10  --k  5  --n 50
@@ -71,7 +71,7 @@ tc s-eq-0-sm-planted-ans-4 gen_equal_planted_answer --s 0 --t 100 --k 20 --n 50
 tc s-eq-0-sm-planted-ans-5 gen_equal_planted_answer --s 0 --t 1000000000 --k 20 --n 50
 
 # s = 0 
-group group3 15
+group group3 19
 limits --s_eq_0
 include_group group2
 tc lg-s0-random-3 gen_random       --s 0 --t  10 --k  5 --n 700
@@ -92,8 +92,8 @@ tc lg-s0-planted-ans-3 gen_equal_planted_answer --s 0 --t 1000 --k 25 --n 700
 tc lg-s0-planted-ans-4 gen_equal_planted_answer --s 0 --t 1000 --k 50 --n 700
 tc lg-s0-planted-ans-5 gen_equal_planted_answer --s 0 --t 1000 --k 100 --n 700
 
-# O(n^3 lg n)
-group group4 20
+# O(n^4)
+group group4 12
 limits --max_n 50
 include_group group2
 tc 1
@@ -120,8 +120,29 @@ tc sm-planted-ans-1 gen_equal_planted_answer --s 9 --t 30 --k 5 --n 50
 tc sm-planted-ans-2 gen_equal_planted_answer --s 9 --t 30 --k 10 --n 50
 tc sm-planted-ans-3 gen_equal_planted_answer --s 9 --t 30 --k 20 --n 50
 
+# O(n^3 lg n)
+group group5 14
+limits --max_n 350
+include_group group2
+include_group group4
+tc md-random-2 gen_random --s 10  --t 100 --k  5 --n 350
+tc md-random-3 gen_random --s 100 --t  10 --k  5 --n 350
+tc md-random-4 gen_random --s 100 --t  10 --k 10 --n 350
+tc md-random-5 gen_random --s 10  --t 100 --k 30 --n 350
+tc md-random-6 gen_random --s 99 --t 100 --k 100 --n 350
+tc md-line-x-axis gen_line --s 1 --t 2 --k 30 --n 350 --px 0 --py 0 --qx 0 --qy 1 --min_c -100000000 --max_c 100000000
+tc md-line-y-axis gen_line --s 1 --t 3 --k 50 --n 350 --px 0 --py 0 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
+tc md-line-x-parallel gen_line --s 1 --t 8 --k 10 --n 350 --px 12345 --py 0 --qx 0 --qy 1 --min_c -100000000 --max_c 100000000
+tc md-line-y-parallel gen_line --s 1 --t 4 --k 10 --n 350 --px 0 --py 54321 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
+tc md-line-1 gen_line --s 5 --t 27 --k 10 --n 350 --px 100 --py 100 --qx 1 --qy -1 --min_c -10000000 --max_c 10000000
+tc md-line-2 gen_line --s 5 --t 27 --k 10 --n 350 --px 100 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
+tc md-many-peaks gen_many_peaks --s 9 --t 11 --k 12 --n 150
+tc md-planted-ans-1 gen_equal_planted_answer --s 9 --t 30 --k 5 --n 349
+tc md-planted-ans-2 gen_equal_planted_answer --s 9 --t 30 --k 10 --n 350
+tc md-planted-ans-3 gen_equal_planted_answer --s 9 --t 30 --k 40 --n 350
+
 # O(n^2 lg eps^-2)
-group group5 22
+group group6 15
 limits --max_n 700
 output_validator_flags float_tolerance 0.1 
 tc lp-sm-random-3 gen_random        --s 100 --t 10  --k  5  --n 50
@@ -135,30 +156,31 @@ tc lp-sm-line-1 gen_line            --s 50  --t 27  --k 10  --n 50 --px 100 --py
 tc lp-sm-line-2 gen_line            --s 33  --t 27  --k 10  --n 50 --px 100 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
 tc lp-lg-random-3 gen_random        --s 100 --t 10  --k 50  --n 499
 tc lp-lg-random-4 gen_random        --s 1   --t 1   --k 123 --n 700
-tc md-random-2 gen_random           --s 10  --t 100 --k  5  --n 700
-tc md-random-3 gen_random           --s 100 --t  10 --k  5  --n 700
-tc md-random-4 gen_random           --s 100 --t  10 --k 10  --n 700
-tc md-random-5 gen_random           --s 10  --t 100 --k 10  --n 700
-tc md-random-6 gen_random           --s 100 --t 100 --k 20  --n 700
-tc md-line-x-axis gen_line          --s 1   --t 2   --k 10  --n 700 --px 0 --py 0 --qx 0 --qy 1 --min_c -100000000 --max_c 100000000
-tc md-line-y-axis gen_line          --s 1   --t 3   --k 10  --n 700 --px 0 --py 0 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
-tc md-line-x-parallel gen_line      --s 1   --t 8   --k 10  --n 700 --px 12345 --py 0 --qx 0 --qy 1 --min_c -100000000 --max_c 100000000
-tc md-line-y-parallel gen_line      --s 1   --t 4   --k 10  --n 700 --px 0 --py 54321 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
-tc md-line-1 gen_line               --s 5   --t 27  --k 10  --n 700 --px 500 --py 100 --qx 1 --qy -1 --min_c -10000000 --max_c 10000000
-tc md-line-2 gen_line               --s 5   --t 27  --k 10  --n 700 --px 500 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
-tc md-planted-ans-1 gen_equal_planted_answer --s 90000 --t 100000 --k 1 --n 700
-tc md-planted-ans-2 gen_equal_planted_answer --s 900000 --t 1000000 --k 1 --n 700
-tc md-planted-ans-3 gen_equal_planted_answer --s 9000000 --t 10000000 --k 25 --n 700
-tc md-planted-ans-4 gen_equal_planted_answer --s 90000000 --t 100000000 --k 50 --n 700
-tc md-planted-ans-5 gen_equal_planted_answer --s 900000000 --t 1000000000 --k 100 --n 700
+tc lp-random-2 gen_random           --s 10  --t 100 --k  5  --n 700
+tc lp-random-3 gen_random           --s 1 --t  10 --k  5    --n 700
+tc lp-random-4 gen_random           --s 1 --t  10 --k 10    --n 700
+tc lp-random-5 gen_random           --s 10  --t 100 --k 10  --n 700
+tc lp-random-6 gen_random           --s 100 --t 100 --k 20  --n 700
+tc lp-line-x-axis gen_line          --s 1   --t 2   --k 10  --n 700 --px 0 --py 0 --qx 0 --qy 1 --min_c -100000000 --max_c 100000000
+tc lp-line-y-axis gen_line          --s 1   --t 3   --k 10  --n 700 --px 0 --py 0 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
+tc lp-line-x-parallel gen_line      --s 1   --t 8   --k 10  --n 700 --px 12345 --py 0 --qx 0 --qy 1 --min_c -100000000 --max_c 100000000
+tc lp-line-y-parallel gen_line      --s 1   --t 4   --k 10  --n 700 --px 0 --py 54321 --qx 1 --qy 0 --min_c -100000000 --max_c 100000000
+tc lp-line-1 gen_line               --s 5   --t 27  --k 10  --n 700 --px 500 --py 100 --qx 1 --qy -1 --min_c -10000000 --max_c 10000000
+tc lp-line-2 gen_line               --s 5   --t 27  --k 10  --n 700 --px 500 --py 100 --qx 1 --qy 1 --min_c -10000000 --max_c 10000000
+tc lp-planted-ans-1 gen_equal_planted_answer --s 90000 --t 100000 --k 1 --n 700
+tc lp-planted-ans-2 gen_equal_planted_answer --s 900000 --t 1000000 --k 1 --n 700
+tc lp-planted-ans-3 gen_equal_planted_answer --s 9000000 --t 10000000 --k 25 --n 700
+tc lp-planted-ans-4 gen_equal_planted_answer --s 90000000 --t 100000000 --k 50 --n 700
+tc lp-planted-ans-5 gen_equal_planted_answer --s 900000000 --t 1000000000 --k 100 --n 700
 
 
 # O(n^2 lg eps^-1 + n lg eps^-2 lg n)
-group group6 28
+group group7 23
 include_group group1
 include_group group2
 include_group group3
 include_group group4
+include_group group5
 tc lg-random-3 gen_random       --s 100 --t  10 --k  5 --n 700
 tc lg-random-4 gen_random       --s 100 --t  10 --k 10 --n 700
 tc lg-random-6 gen_random       --s 100 --t 100 --k 20 --n 700

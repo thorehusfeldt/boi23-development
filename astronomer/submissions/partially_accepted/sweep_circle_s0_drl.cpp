@@ -1,7 +1,7 @@
 /*
  *  runs in O(n^3 lg n)
  *  
- *  # @EXPECTED_GRADES@ WA AC AC WA WA WA
+ *  # @EXPECTED_GRADES@ WA AC AC WA WA WA WA
  */ 
 #include <cstdlib>
 #include <bits/stdc++.h>

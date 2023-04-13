@@ -1,4 +1,6 @@
 #! /usr/bin/env python3
+# @EXPECTED_GRADES@ AC AC AC AC AC AC AC
+
 from math import sqrt,atan2,pi
 import sys
 import random

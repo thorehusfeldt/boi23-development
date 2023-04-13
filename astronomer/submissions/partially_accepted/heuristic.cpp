@@ -1,4 +1,4 @@
-// # @EXPECTED_GRADES@ AC WA WA WA WA WA
+// # @EXPECTED_GRADES@ AC WA WA WA WA WA WA
 #include <bits/stdc++.h>
 int n, k, s, t;
 std::vector <std::pair <int, int>> a;
