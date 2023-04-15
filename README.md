@@ -1,12 +1,17 @@
 Problems for BOI 2023
 =====================
 
-These problems use the [Kattis Problem Package Format](https://www.kattis.com/problem-package-format/).
+This repo contains the six new problems for the Baltic Informatics Olympiad 2023:
 
-Development uses the [Kattis/problemtools](https://github.com/Kattis/problemtools) toolchain, the easiest way to install this is to use a docker image, for instance using the `load_docker.sh` script.
+Day 1. Saturday 29 April 2023, 9:00–14:00 Copenhagen time (= CEST = GMT+2)
 
-Test data are generated using the `_tools` scripts taken from
-[Kodsport/testdata_tools](https://github.com/Kodsport/testdata_tools).
-Instances should be generated programmatically with a deterministic script in `data/generator.sh`.
+* Astronomer, `astronomer`  
+* Staring Contest, `staringcontest`
+* Tycho, `tycho`
 
-Examples of polished problems can be found in `_tools/examples`, including two problems from BOI 2018.
+
+Day 2. Sunday 30 April 2023, 9:00–14:00 Copenhagen time (= CEST = GMT+2)
+
+* Minequake, `minequake`
+* Mineral Deposits, `mineraldeposits`
+* Sequence, `sequence`
