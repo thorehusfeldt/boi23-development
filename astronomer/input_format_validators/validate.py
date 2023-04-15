@@ -17,9 +17,8 @@ line = sys.stdin.readline()
 assert re.match(r"[1-9][0-9]* [1-9][0-9]* (0|[1-9][0-9]*) (0|[1-9][0-9]*)\n", line), line
 k, n, s, t = map(int, line.split())
 
-assert 0 < k <= n <= args.max_n
-assert 0 <= s <= 10**9
-assert 0 <= t <= 10**9
+assert 0 < k <= n <= args.max_n # constraint:kn
+assert 0 <= s <= 10**9  and 0 <= t <= 10**9 # constraint:st
 
 assert not args.s_geq_t or s >= t
 assert not args.k_eq_n or k == n
@@ -31,8 +30,7 @@ for _ in range(n):
     line = sys.stdin.readline()
     assert re.match(r"(0|-?[1-9][0-9]*) (0|-?[1-9][0-9]*)\n", line), line
     x, y = map(int, line.split())
-    assert -10**9 <= x <= 10**9
-    assert -10**9 <= y <= 10**9
+    assert -10**9 <= x <= 10**9 and -10**9 <= y <= 10**9 # constraint:xy
     points.add((x,y))
 
 assert len(points) == n, "Duplicate points"
