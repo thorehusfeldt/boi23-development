@@ -21,7 +21,7 @@ Warm-up day
 
 BOI is preceded by a warmup contest that reuses problems from Open Kattis.
 
-Friday, 28 April 2023, 16:-18:00 Copenhagen time (= CEST = GMT+2)
+Friday, 28 April 2023, 16:00-18:00 Copenhagen time (= CEST = GMT+2)
 
 * Odd Echo, `open.kattis.com/problems/oddecho`
 * Simple arithmetic, `open.kattis.com/problems/simplearithmetic`
