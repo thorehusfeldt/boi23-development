@@ -23,7 +23,7 @@ sample 5
 # t <= s
 group group1 8
 limits --s_geq_t
-tc 3
+tc 1
 
 tc s-geq-t-sm-random-3 gen_random       --s 100 --t 10  --k  5  --n 50
 tc s-geq-t-sm-random-4 gen_random       --s 100 --t 10  --k 10  --n 50
@@ -103,6 +103,7 @@ limits --max_n 50
 include_group group2
 tc 1
 tc 2
+tc 3
 tc 5
 tc sm-random-2 gen_random --s 10  --t 100 --k  5 --n 50
 tc sm-random-3 gen_random --s 100 --t  10 --k  5 --n 50
