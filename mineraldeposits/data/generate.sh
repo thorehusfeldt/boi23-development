@@ -15,7 +15,7 @@ samplegroup
 # no samples
 
 group group1 9
-limits --max_k 1
+limits --max_k 1 --min_w 10_000
 tc one-point-1 gen_explicit 10 10000 5 5
 tc one-point-2 gen_explicit 10 10000 9 1
 tc one-point-3 gen_explicit 10 10000 1 8
@@ -80,36 +80,35 @@ tc g4-borders-1 gen_border_points --b 100_000_000 --w 130 --k 20
 tc g4-borders-2 gen_border_points --b 100_000_000 --w 130 --k 20
 
 group group5 20
-limits --max_b 10_000 --min_w 2
+limits --min_w 3 --max_b 10_000 
 #include_group group5
-tc ukr_task_description_sample_1 gen_explicit 5 2 1 2 3 3 2 5
-tc g5-random-maxk-1 gen_random --b 100  --w 2 --k 20
-tc g5-random-maxk-4 gen_random --b 1000 --w 2 --k 20
-tc g5-random-maxk-5 gen_random --b 10_000 --w 2 --k 20
-tc g5-random-maxcand-1 gen_maximise_candidates --b 10_000 --w 2 --k 20 --ccx 400 --ccy 400
-tc g5-random-maxcand-2 gen_maximise_candidates --b 10_000 --w 2 --k 20 --ccx 9000 --ccy 1000
-tc g5-random-maxcand-3 gen_maximise_candidates --b 10_000 --w 2 --k 20 --ccx 800 --ccy 800
-tc g5-random-maxcand-4 gen_maximise_candidates --b 10_000 --w 2 --k 20 --ccx 1100 --ccy 8000
-tc g5-random-maxcand-5 gen_maximise_candidates --b 10_000 --w 2 --k 20 --ccx 9000 --ccy 9000
-tc g5-borders-1 gen_border_points --b 10_000 --w 2 --k 20
-tc g5-borders-2 gen_border_points --b 10_000 --w 2 --k 20
+tc ukr_task_description_sample_1 gen_explicit 5 3 1 2 3 3 2 5
+tc g5-random-maxk-1 gen_random --b 100  --w 3 --k 20
+tc g5-random-maxk-4 gen_random --b 1000 --w 3 --k 20
+tc g5-random-maxk-5 gen_random --b 10_000 --w 3 --k 20
+tc g5-random-maxcand-1 gen_maximise_candidates --b 10_000 --w 3 --k 20 --ccx 400 --ccy 400
+tc g5-random-maxcand-2 gen_maximise_candidates --b 10_000 --w 3 --k 20 --ccx 9000 --ccy 1000
+tc g5-random-maxcand-3 gen_maximise_candidates --b 10_000 --w 3 --k 20 --ccx 800 --ccy 800
+tc g5-random-maxcand-4 gen_maximise_candidates --b 10_000 --w 3 --k 20 --ccx 1100 --ccy 8000
+tc g5-random-maxcand-5 gen_maximise_candidates --b 10_000 --w 3 --k 20 --ccx 9000 --ccy 9000
+tc g5-borders-1 gen_border_points --b 10_000 --w 3 --k 20
+tc g5-borders-2 gen_border_points --b 10_000 --w 3 --k 20
 
 
 group group6 15
-limits --min_w 2 --max_b 10_000_000
+limits --min_w 3 --max_b 10_000_000
 include_group group5
-tc g6-random-maxk-5 gen_random --b 10_000_000  --w 2 --k 20
-tc g6-random-maxcand-1 gen_maximise_candidates --b 10_000_000 --w 2 --k 20 --ccx 400 --ccy 400
-tc g6-random-maxcand-2 gen_maximise_candidates --b 10_000_000 --w 2 --k 20 --ccx 10000 --ccy 1000
-tc g6-random-maxcand-3 gen_maximise_candidates --b 10_000_000 --w 2 --k 20 --ccx 800 --ccy 800
-tc g6-random-maxcand-4 gen_maximise_candidates --b 10_000_000 --w 2 --k 20 --ccx 1100 --ccy 80000
-tc g6-random-maxcand-5 gen_maximise_candidates --b 10_000_000 --w 2 --k 20 --ccx 1_000_000 --ccy 1_000_000
-tc g6-borders-1 gen_border_points --b 10_000_000 --w 2 --k 20
-tc g6-borders-2 gen_border_points --b 10_000_000 --w 2 --k 20
+tc g6-random-maxk-5 gen_random --b 10_000_000  --w 3 --k 20
+tc g6-random-maxcand-1 gen_maximise_candidates --b 10_000_000 --w 3 --k 20 --ccx 400 --ccy 400
+tc g6-random-maxcand-2 gen_maximise_candidates --b 10_000_000 --w 3 --k 20 --ccx 10000 --ccy 1000
+tc g6-random-maxcand-3 gen_maximise_candidates --b 10_000_000 --w 3 --k 20 --ccx 800 --ccy 800
+tc g6-random-maxcand-4 gen_maximise_candidates --b 10_000_000 --w 3 --k 20 --ccx 1100 --ccy 80000
+tc g6-random-maxcand-5 gen_maximise_candidates --b 10_000_000 --w 3 --k 20 --ccx 1_000_000 --ccy 1_000_000
+tc g6-borders-1 gen_border_points --b 10_000_000 --w 3 --k 20
+tc g6-borders-2 gen_border_points --b 10_000_000 --w 3 --k 20
 
 
 group group7 19
-limits --min_w 2
 include_group group4
 include_group group6
 tc g7-tmp-1 gen_random --b 100_000_000 --w 2 --k 7

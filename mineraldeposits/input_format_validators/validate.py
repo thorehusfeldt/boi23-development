@@ -11,7 +11,7 @@ b, k, w = map(int, line.split())
 parser = ArgumentParser("Validate input to manhattan")
 parser.add_argument("--max_b", type=int, default=10**8)
 parser.add_argument("--max_k",  type=int, default=30)
-parser.add_argument("--min_w",  type=int, default=10**4)
+parser.add_argument("--min_w",  type=int, default=2)
 args = parser.parse_args()
 
 assert b <= args.max_b
