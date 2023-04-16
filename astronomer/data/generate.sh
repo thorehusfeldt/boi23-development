@@ -12,14 +12,18 @@ compile gen_line.py
 compile gen_circles.py
 compile gen_equal_planted_answer.py
 compile gen_many_peaks.cpp
+
 samplegroup
-sample 1
+sample_manual 1
 sample 2
-sample 3
+sample_manual 3
+sample 4
+sample 5
 
 # t <= s
 group group1 8
 limits --s_geq_t
+tc 3
 
 tc s-geq-t-sm-random-3 gen_random       --s 100 --t 10  --k  5  --n 50
 tc s-geq-t-sm-random-4 gen_random       --s 100 --t 10  --k 10  --n 50
@@ -37,6 +41,7 @@ tc s-geq-t-lg-random-4 gen_random       --s 1   --t 1   --k 123 --n 700
 # k = n <= 50 and s = 0
 group group2 9
 limits --s_eq_0 --max_n 50
+tc 4
 tc k-eq-n-sm-random-2 gen_random        --s 0   --t 100 --k 50 --n 50
 tc k-eq-n-sm-random-3 gen_random        --s 0   --t  10 --k 50 --n 50
 tc k-eq-n-sm-random-4 gen_random        --s 0   --t  10 --k 50 --n 50
@@ -98,7 +103,7 @@ limits --max_n 50
 include_group group2
 tc 1
 tc 2
-tc 3
+tc 5
 tc sm-random-2 gen_random --s 10  --t 100 --k  5 --n 50
 tc sm-random-3 gen_random --s 100 --t  10 --k  5 --n 50
 tc sm-random-4 gen_random --s 100 --t  10 --k 10 --n 50
