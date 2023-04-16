@@ -7,26 +7,40 @@ In particular, he gets immense pleasure out of gazing at $k$~stars simultaneousl
 Building a telescope with radius~$r$ costs $t\cdot r$~kroner.
 A newly built telescope will point exactly at the origin $(0,0)$.
 Moving it to point somewhere else also takes effort; 
-moving the telescope a distance of $d$~units incurs a cost of $s\cdot d$~kroner.
+shifting the telescope a distance of $d$~units incurs a cost of $s\cdot d$~kroner.
 
 Given the positions of all start in tonight's sky, how much does it cost to build and move a telescope that allows $k$~stars to be observed at once?
 
-All coordinates and distances are given the Euclidean plane.
+\medskip
+
+All coordinates and distances are given in the Euclidean plane.
 
 
-\subsection*{Input}
+\section*{Example}
+
+Here is an example with $n=3$ stars at positions $(0,0)$, $(2,0)$, and $(3,1)$.
+The shaded area shows a telescope of radius~$1$ pointing at $(1,0)$ covering two stars; this costs $s + t$~kroner and is an optimal solution to sample input~$3$.
+The image also shows optimal solutions to sample inputs~$1$, $2$, and $4$.
+
+\medskip
+\noindent
+\includegraphics[width=.3\textwidth]{img/samples.pdf}
+
+
+\section*{Input}
 
 On the first line four integers:
-the number~$k$ of stars the astronomer desires to observe,
+the number~$k$ of stars the astronomer wants to observe,
 the number~$n$ of stars in tonight's sky,
-the telescope building cost~$t$, and the telescope moving cost~$s$.
+the shifting cost~$s$, and
+the telescope building cost~$t$.
 Then follow $n$ lines, where the $i$th line contains the integer coordinates $x_i$ and $y_i$ of the $i$th star.
 
-\subsection*{Output}
+\section*{Output}
 
 A single real number given with a decimal point: the minimum number of kroner that Tycho needs to spend.
 
-\subsection*{Points and constraints}
+\section*{Points and constraints}
 
 You can assume 
 \begin{enumerate}
