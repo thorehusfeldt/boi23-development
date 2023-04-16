@@ -17,7 +17,8 @@ line = sys.stdin.readline()
 assert re.match(r"[1-9][0-9]* [1-9][0-9]* (0|[1-9][0-9]*) (0|[1-9][0-9]*)\n", line), line
 k, n, s, t = map(int, line.split())
 
-assert 0 < k <= n <= args.max_n # constraint:kn
+assert 0 < k <= n <= 700 # constraint:kn
+assert n <= args.max_n
 assert 0 <= s <= 10**9  and 0 <= t <= 10**9 # constraint:st
 
 assert not args.s_geq_t or s >= t

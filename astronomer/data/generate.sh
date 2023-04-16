@@ -148,7 +148,6 @@ tc md-planted-ans-3 gen_equal_planted_answer --s 9 --t 30 --k 40 --n 350
 
 # O(n^2 lg eps^-2)
 group group6 15
-limits --max_n 700
 output_validator_flags float_tolerance 0.1 
 tc lp-sm-random-3 gen_random        --s 100 --t 10  --k  5  --n 50
 tc lp-sm-random-4 gen_random        --s 100 --t 10  --k 10  --n 50
