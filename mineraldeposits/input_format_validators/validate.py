@@ -10,14 +10,14 @@ b, k, w = map(int, line.split())
 
 parser = ArgumentParser("Validate input to manhattan")
 parser.add_argument("--max_b", type=int, default=10**8)
-parser.add_argument("--max_k",  type=int, default=30)
+parser.add_argument("--max_k",  type=int, default=20)
 parser.add_argument("--min_w",  type=int, default=2)
 args = parser.parse_args()
 
 assert b <= args.max_b
 assert 1 <= b <= 10**8 # constraint:b
 assert k <= args.max_k
-assert 1 <= k <= 30 # constraint:k
+assert 1 <= k <= 20 # constraint:k
 
 assert w >= args.min_w
 assert 2 <= w <= 10**4 # constraint:w

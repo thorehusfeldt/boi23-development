@@ -44,7 +44,7 @@ with open(sys.argv[1]) as in_file:
     hidden_dots = set()
     for _ in range(k):
         hidden_dots.add(tuple(map(int, in_file.readline().split())))
-
+    total_probes = 0
     print(b, k, w, flush=True)
     for rounds in range(w + 1):
         line = get_team_line().split()
@@ -55,8 +55,11 @@ with open(sys.argv[1]) as in_file:
             if len(line) % 2 == 1:
                 fail(f"Got {len(line)} tokens, expected an even number")
             d = len(line) // 2
-            if not 1 <= d <= 10**4: # constraint:wavesize
-                fail(f"Expected at least 1 and at most 10^4 probes, got {d}")
+            total_probes += d
+            if not 1 <= d <= 2_000: # constraint:wavesize
+                fail(f"Expected at least 1 and at most 2000 probes, got {d}")
+            if total_probes > 20_000: #constraint:totalprobes
+                fail(f"Expected at most 20_000 probes in total, currently has {total_probes}")
             probe_coordinates = []
             for token in line:
                 try:
