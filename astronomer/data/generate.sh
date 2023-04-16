@@ -18,7 +18,7 @@ sample 2
 sample 3
 
 # t <= s
-group group1 7
+group group1 8
 limits --s_geq_t
 
 tc s-geq-t-sm-random-3 gen_random       --s 100 --t 10  --k  5  --n 50
@@ -35,7 +35,7 @@ tc s-geq-t-lg-random-3 gen_random       --s 100 --t 10  --k 50  --n 499
 tc s-geq-t-lg-random-4 gen_random       --s 1   --t 1   --k 123 --n 700
 
 # k = n <= 50 and s = 0
-group group2 10
+group group2 9
 limits --s_eq_0 --max_n 50
 tc k-eq-n-sm-random-2 gen_random        --s 0   --t 100 --k 50 --n 50
 tc k-eq-n-sm-random-3 gen_random        --s 0   --t  10 --k 50 --n 50
@@ -71,7 +71,7 @@ tc s-eq-0-sm-planted-ans-4 gen_equal_planted_answer --s 0 --t 100 --k 20 --n 50
 tc s-eq-0-sm-planted-ans-5 gen_equal_planted_answer --s 0 --t 1000000000 --k 20 --n 50
 
 # s = 0 
-group group3 19
+group group3 18
 limits --s_eq_0
 include_group group2
 tc lg-s0-random-3 gen_random       --s 0 --t  10 --k  5 --n 700
@@ -93,7 +93,7 @@ tc lg-s0-planted-ans-4 gen_equal_planted_answer --s 0 --t 1000 --k 50 --n 700
 tc lg-s0-planted-ans-5 gen_equal_planted_answer --s 0 --t 1000 --k 100 --n 700
 
 # O(n^4)
-group group4 12
+group group4 13
 limits --max_n 50
 include_group group2
 tc 1
