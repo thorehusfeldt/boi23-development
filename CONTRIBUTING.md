@@ -19,6 +19,7 @@ Problem statements are written in LaTeX and reside in `<problem_id>/problem_name
 To turn this into PDF or HTML, assuming you want the Danish translation (using the ISO 639-1 two-letter language code `da`) of problem `sequence`:
 ```
 _tools/load_docker.sh
+_tools/verify sequence
 problem2pdf -l da sequence
 problem2html -l da sequence
 ```
