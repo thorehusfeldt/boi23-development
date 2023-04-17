@@ -24,6 +24,17 @@ problem2pdf -l da sequence
 problem2html -l da sequence
 ```
 
+The `verify` step is quite time consuming, but it build the input/output pairs in `sequence/data/sample` needed for the sample inputs in the problem statement. To avoid full verification, you can instead just do (after running the docker image)
+
+```
+cd sequence/data
+./generate.sh
+cd ../..
+problem2pdf -l da sequence
+```
+
+(Once you’ve generate the `.ans` files in `sequence/data/sample` you don’t need to rebuild them.)
+
 To avoid errors, the script `_tools/checkconstraints` exctracts properly labelled LaTeX source code and shows it next to the other translations (as well the relevant parts of the input validator and instance generators).
 So please run 
 ```
