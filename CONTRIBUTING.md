@@ -16,6 +16,13 @@ Translation
 
 Problem statements are written in LaTeX and reside in `<problem_id>/problem_name/problem.<code>.tex`, where `<code>` is the two-letter language code.
 
+To turn this into PDF or HTML, assuming you want the Danish translation (using the ISO 639-1 two-letter language code `da`) of problem `sequence`:
+```
+_tools/load_docker.sh
+problem2pdf -l da sequence
+problem2html -l da sequence
+```
+
 To avoid errors, the script `_tools/checkconstraints` exctracts properly labelled LaTeX source code and shows it next to the other translations (as well the relevant parts of the input validator and instance generators).
 So please run 
 ```
