@@ -1,0 +1,82 @@
+\problemname{Wettstarren}
+
+\illustration{.4}{img/Staring_contest.pdf}{}
+
+\noindent
+Ein Wettstarren ist ein klassischer Kampf der Unerschütterlichkeit, bei dem zwei Personen einander in die Augen starren und dabei einen Gesichtsausdruck von sicherer Gelassenheit bewahren.
+Ziel ist es, den Augenkontakt länger aufrechtzuerhalten als der Gegner.
+Der Wettbewerb endet, wenn einer der Teilnehmer die Fassung verliert, indem er wegschaut, lächelt, spricht oder kichert.
+
+Als Trainer des nationalen Starwettbewerbs musst du für das bevorstehende Weltfinale die Unerschütterlichkeit aller $n$ Mitglieder deiner Mannschaft bestimmen.
+Der $i$-te Sportler kann den Blickkontakt genau $a_i$ Sekunden lang aufrechterhalten, aber diese Werte sind Dir anfangs unbekannt.
+Du kannst zum Beispiel eine Mannschaft mit $n=3$ Mitgliedern haben:
+
+\medskip
+\begin{tabular}{lll}
+  $i$ & Name & $a_i$\\\hline
+  1 & Anna &  431 \\
+  2 & Esther & 623 \\
+  3 & Tony &  121\\
+\end{tabular}
+
+\medskip
+Wenn die Athleten $i$ und $j$ gegeneinander antreten, dauert die Konfrontation genau $\min(a_i, a_j)$ Sekunden, wobei der schwächere Teilnehmer die Fassung verliert und beide Teilnehmer innerhalb eines Sekundenbruchteils zu lächeln und zu kichern beginnen.
+Wenn zum Beispiel Anna gegen Esther antritt, dauert der Wettbewerb $431$~Sekunden.
+Für einen außenstehenden Beobachter ist es unmöglich, den tatsächlichen Gewinner der Konfrontation (in diesem Fall Esther) zu bestimmen, nur die Dauer des Wettkampfs ist messbar.
+
+Dein Ziel ist es, die Werte $a_1,\ldots, a_n$ anhand möglichst weniger Wettkämpfe zu schätzen.
+Es ist klar, dass die Stärke des stärksten Athleten nie bestimmt werden kann, also darfst du einen der Werte $a_i$ unterschätzen.
+
+\section*{Interaktion}
+
+Dies ist ein interaktives Problem.
+Die Interaktion beginnt damit, dass du eine einzelne Zeile einliest, die die ganze Zahl $n$ enthält.
+Du kannst dann Abfragen der Form ``\texttt{?} $i$ $j$'' stellen, so dass $1\leq i\leq n$ und $1\leq j\leq n$ und $i\neq j$.
+Die Antwort auf eine Abfrage ist eine einzelne ganze Zahl: der Wert $\min(a_i, a_j)$.
+Die Interaktion endet damit, dass du eine einzelne Zeile ausgibst, bestehend aus \texttt{!}, gefolgt von $n$ Schätzungen in Form von ganzen Zahlen $b_1$, $\ldots$, $b_n$, getrennt durch Leerzeichen.
+Dies muss die letzte Zeile der Ausgabe sein.
+
+Deine Eingabe ist korrekt, wenn $b_i=a_i$ für jeden Teilnehmer~$i$ außer einem, den du vielleicht unterschätzt, gilt.
+Um genau zu sein, verlangen wir $b_i\leq a_i$ für alle $1\leq i\leq n$ und erlauben $b_k \neq a_k$ für höchstens einen~$k$.
+
+Der Interaktor ist \emph{nicht adaptiv}, d.h. die $a_1,\ldots, a_n$ sind bestimmt, bevor die Interaktion beginnt.
+
+\section*{Beschränkungen und Bewertung}
+
+Die Anzahl $n$ der Athleten erfüllt 
+$2\leq n\leq 1500$. % constraint:n
+Die Unerschütterlichkeit~$a_i$ eines jeden Athleten erfüllt 
+$1\leq a_i\leq 86\.400$; % constraint:skillbounds
+sie sind alle unterschiedlich. % constraint:allskillsdifferent
+Du kannst 
+höchstens $3000$~Abfragen machen; % constraint:maxnumqueries
+Deine letzte Ausgabezeile, d.h. die Zeile, die mit \texttt{!} beginnt, wird nicht als Abfrage gezählt.
+
+Deine Lösung wird an einer Reihe von Testgruppen getestet, von denen jede eine bestimmte Anzahl von Punkten wert ist.
+Jede Testgruppe enthält eine Reihe von Testfällen.
+Um die Punkte für eine Testgruppe zu erhalten, musst du alle Testfälle in der Testgruppe lösen.
+Deine endgültige Punktzahl ist die maximale Punktzahl für eine einzelne Einsendung.
+
+Für Gruppe~$3$ ist deine Punktzahl die niedrigste Punktzahl aller Testfälle in der Gruppe.
+Die Punktzahl für jeden Testfall hängt von der Anzahl der Abfragen ab, die du verwendest;
+weniger Abfragen sind besser:
+Angenommen, du verwendest $q$ Abfragen. 
+Wenn $q \le n+25$, dann bekommst du die vollen $80$~Punkte. 
+Wenn $q > 3000$ ist, bekommst du keine Punkte.
+Andernfalls bekommst du 
+$118,2 - 12 \cdot \ln(q - n)$~Punkte, gerundet auf die nächste ganze Zahl. % constraint:scoringfunction
+Für $n = 1500$ und $q = 3000$ bekommst du zum Beispiel $30$~Punkte.
+
+\medskip
+\begin{tabular}{lll}
+Gruppe & Punkte & Beschränkungen\\\hline
+$1$  &  $9$ & $n\leq 50$\\
+$2$  &  $11$ & $n\leq 1000$\\
+$3$  &  $0$--$80$ & $1000 < n\leq 1500$\\
+\end{tabular}
+
+\section*{Erklärung der Beispielinteraktion}
+
+Beispielinteraktion $1$ zeigt eine mögliche Interaktion anhand des obigen Beispiels. 
+Beachte, dass Annas und Tonys Stärken korrekt bestimmt sind.
+(Esthers Stärke kann nie bestimmt werden.)
