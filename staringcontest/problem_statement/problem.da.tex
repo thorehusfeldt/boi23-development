@@ -1,0 +1,83 @@
+\problemname{Stirrekonkurrence}
+
+\illustration{.4}{img/Staring_contest.pdf}{}
+
+En \emph{stirrekonkurrence} er en klassisk mellem to personers evne til at stirre den anden i øjnene, mens man opretholder en ansigtsudtryk af ophøjet og behersket sindsligevægt.
+Man vinder ved at opretholde øjenkontakten længere end modstanderen.
+Konkurrencen slutter, når den ene deltager taber fatningen, typisk ved at kigge væk, smile, tale eller fnise.
+
+Som træner for det nationale stirre\-lands\-hold skal du bestemme uforstyrreligheden for hvert af landsholdets $n$~medlemmer til verdensfinalen.
+Den $i$'te atlet kan opretholde øjenkontakt i præcis $a_i$~sekunder, men disse værdier er ukendte for dig i begyndelsen.
+For eksempel kan dit hold bestå af $n=3$ medlemmer:
+
+\medskip
+\begin{tabular}{lll}
+$i$ & Navn & $a_i$\\\hline
+1 & Anna & 431 \\
+2 & Esther & 623 \\
+3 & Tony & 121
+\end{tabular}
+
+\medskip
+Når atlet~$i$ konkurrerer mod atlet~$j$, varer konfrontationen præcis $\min(a_i, a_j)$ sekunder, hvorpå den svagere deltager taber fatningen, og begge deltagerne umiddelbart begynder at smile eller grine.
+Hvis Anna for eksempel konkurrerer mod Esther, varer konkurrencen i $431$~sekunder.
+Det er vigtigt at understrege, at det for en udenforstående observatør er umuligt at bestemme den faktiske \emph{vinder} af konfrontationen (i dette tilfælde, Esther).
+Kun \emph{varigheden} af konkurrencen er målbar.
+
+Dit mål er at estimere værdierne $a_1,\ldots, a_n$ med så få stirrekonkurrencer som muligt.
+Det er klart, at den stærkeste atlets styrke aldrig vil kunne blive bestemt, så du har lov til at undervurdere én af $a_i$'erne.
+
+\section*{Interaktion}
+
+Dette er et interaktivt problem.
+Interaktionen begynder med, at du læser en enkelt linje, der indeholder tallet~$n$.
+Herefter kan du stille spørgsmål på formen ``\texttt{?} $i$ $j$'', hvor $1\leq i\leq n$, $1\leq j\leq n$ og $i\neq j$.
+Svaret på et spørgsmål er et enkelt tal: værdien $\min(a_i, a_j)$.
+Interaktionen slutter, når du udskriver en enkelt linje bestående af \texttt{!} efterfulgt af dine estimater $b_1$, $\ldots$, $b_n$, adskilte af mellemrum.
+Derefter må du ikke skrive mere.
+
+Din indsendelse er korrekt, hvis $b_i=a_i$ for hver deltager $i$ undtagen én, som du måske undervurderer.
+Mere præcist skal der gælde $b_i\leq a_i$ for alle $1\leq i\leq n$, og vi tillader $b_k \neq a_k$ for højst ét $k$.
+
+
+Interaktoren er \emph{ikke-adaptiv}, hvilket betyder, at $a_1,\ldots, a_n$ er bestemt før interaktionen begynder.
+
+\section*{Begrænsninger og pointgivning}
+
+Antallet $n$ af atleter opfylder
+$2\leq n\leq 1500$. % constraint:n
+Uforstyrreligheden $a_i$ for hver atlet opfylder
+$1\leq a_i\leq 86,400$, % constraint:skillbounds
+de er alle forskellige. % constraint:allskillsdifferent
+Du må stille
+højst $3000$ spørgsmål; % constraint:maxnumqueries
+din sidst udskrevne linje, dvs.\ linjen, der starter med \texttt{!}, tælles ikke som spørgsmål.
+
+Din løsning vil blive testet på en række testgrupper, hver med en vist antal point.
+Hver testgruppe indeholder en række testfald.
+For at opnå point for en testgruppe skal du løse alle testfald i testgruppen.
+Din endelige score vil være den højeste score for en enkelt indsendelse.
+
+For gruppe $3$ er din score den minimale score blandt alle testfald i gruppen.
+Scoren for hvert testfald afhænger af antallet af forespørgsler, du bruger;
+færre forespørgsler er bedre.
+Antag, at du bruger $q$ forespørgsler.
+Hvis $q \le n+25$, får du de fulde $80$~point.
+Hvis $q > 3000$, får du ingen point.
+Ellers får du
+$118.2 - 12 \cdot \ln(q - n)$~point, afrundet til nærmeste heltal. % constraint:scoringfunction
+For eksempel, for $n = 1500$ og $q = 3000$, får du $30$~point.
+
+\medskip
+\begin{tabular}{lll}
+Gruppe & Point & Begrænsninger\\\hline
+$1$ & $9$ & $n\leq 50$\\
+$2$ & $11$ & $n\leq 1000$\\
+$3$ & $0$--$80$ & $1000 < n\leq 1500$
+\end{tabular}
+
+\section*{Forklaring af eksempelinteraktionen}
+
+Eksempelinteraktion $1$ viser en mulig interaktion med brug af ovenstående eksempel.
+Bemærk, at Annas og Tonys styrker er korrekt bestemte.
+(Esthers kan aldrig bestemmes.)

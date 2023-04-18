@@ -4,9 +4,9 @@
   Licens CC BY-SA 2.0.}
 
 \noindent
-De helautonome mikrobryggerier, der er installeret i de forladte dværgminer af Moravia, bærer vitterligt vidnesbyrd om dværgfolkets opfindsomhed og håndværk!
+De helautonome mikrobryggerier, der er blevet bygget i Moravias forladte dværgminer, bærer vitterligt vidnesbyrd om dværgfolkets opfindsomhed og håndværk!
 Desværre rystes minerne sommetider af jordskælv, der fører til at de deraf forskudte rør og tragte spilder kostbar væske på gulvet.
-Som den Ophøjede vogter for bryggerisikkerhed er det dit ansvar at slukke maskinerne i hver hal i tilfælde af et jordskælv.
+Som den ophøjede vogter for bryggerisikkerhed er det dit ansvar at slukke maskinerne i hver hal i tilfælde af et jordskælv.
 
 Det tager tid at gå gennem tunnelerne,
 så du vil uundgåeligt komme for sent til mange af maskinerne.
@@ -29,7 +29,7 @@ I eksempel~$1$ ser minerne sådan her ud:
 
 \includegraphics[width=.2\textwidth]{img/sample-1.pdf}
 
-Hvis du begynder i hal~$2$ og besøger resten af hallene i rækkefølgen $2$, $1$, $2$, $3$, kan du slukke deres maskiner ved tid~$0$ (i hal $2$), tid~$1$ (i hal $1$) og tid~$3$ (i hal $3$).
+Hvis du begynder i hal~$2$ og besøger resten af hallene i rækkefølgen $2$, $1$, $2$, $3$, kan du slukke deres maskiner ved tidspunkt~$0$ (i hal $2$), tidspunkt~$1$ (i hal $1$) og tidspunkt~$3$ (i hal $3$).
 Dette spilder sammenlagt $0+1+3=4$~liter væske.
 Hvis du derimod starter i hal~$1$ og besøger hallerne i rækkefølgen $1$, $2$, $3$, så er den samlede mængde af spildt væske $0+1+2=3$~liter, hvilket er bedre.
 
@@ -37,10 +37,10 @@ Hvis du derimod starter i hal~$1$ og besøger hallerne i rækkefølgen $1$, $2$,
 
 \section*{Indlæsning}
 
-Første linje af indlæsningen består af heltallet $n$, som angiver antallet af haller.
-Vi antager, at hallerne er nummeret $1$, $\ldots$, $n$.
+Første linje af indlæsningen består af heltallet~$n$, som angiver antallet af haller.
+Vi antager, at hallerne er nummereret $1$, $\ldots$, $n$.
 
-Hver af de næste $n-1$ linjer består af to heltal $u$ og $v$, adskilte af mellemrum, som opfylder
+Hver af de næste $n-1$~linjer består af to heltal $u$ og $v$, adskilte af mellemrum, som opfylder
 $1\leq u < v \leq n$ % constraint:hallnames
 og betyder, at der er en tunnel mellem hal~$u$ og hal~$v$.
 
@@ -53,10 +53,10 @@ Skriv et enkelt heltal: det mindste antal liter af spildt væske.
 Der gælder altid
 $1\leq n\leq 10^5$. % constraint:n
 
-Your solution will be tested on a set of test groups, each worth a number of points.
-Each test group contains a set of test cases.
-To get the points for a test group you need to solve all test cases in the test group.
-Your final score will be the maximum score of a single submission.
+Din løsning vil blive testet på en række testgrupper, hver med en vist antal point.
+Hver testgruppe indeholder en række testfald.
+For at opnå point for en testgruppe skal du løse alle testfald i testgruppen.
+Din endelige score vil være den højeste score for en enkelt indsendelse.
 
 \medskip
 \begin{tabular}{lll}
