@@ -4,15 +4,15 @@
 
 \noindent
 Spoksojimo varžybos yra klasikinė šaltakraujiškumo dvikova, 
-kurioje du varžovai spokso vienas į kitą stengdamiesi išlaikyti užtikrintą ramybę veide.
+kurio\-je du varžovai spokso vienas į kitą stengdamiesi išlaikyti užtikrintą ramybę veide.
 Varžybų tikslas -- išlaikyti akių kontaktą ilgiau nei priešininkas.
-Dvikova baigiama, kai vienas iš dalyvių sudrumsčia ramybės būseną, 
-įprastai tai nutinka dalyviui pažiūrėjus į šalį, nusišypsojus, prašnekus ar sukikenus.
+Dvikova baigiama, kai vienas iš dalyvių sudrums\-čia ramybės būseną. 
+Įprastai tai nutinka dalyviui pažiūrėjus į šalį, nusišypsojus, prašnekus ar sukikenus.
 
-Kadangi esate nacionalinių stebėjimo varžybų treneris, artėjantiems pasaulio finalams
-norite nustatyti kiekvieno iš $n$ jūsų komandos narių šaltakraujiškumo lygį.
-$i$-tasis sportininkas gali išlaikyti akių kontaktą lygiai $a_i$ sekundžių, tačiau šios reikšmės jums nėra žinomos iš pradžių.
-Pavyzdžiui, jūsų komanda galėtų būti sudaryta iš $n=3$ narių:
+Esate nacionalinių spoksojimo varžybų treneris, ir artėjančiam pasaulinių varžybų finalui
+norite sužinoti kiekvieno iš jūsų $n$ komandos narių šaltakraujiškumo lygį.
+$i$-tasis sportininkas gali išlaikyti akių kontaktą lygiai $a_i$ sekundžių, bet pradžioje šių reikšmių nežinote.
+Pavyzdžiui, jūsų komandoje $n=3$ nariai:
 
 \medskip
 \begin{tabular}{lll}
@@ -23,34 +23,30 @@ Pavyzdžiui, jūsų komanda galėtų būti sudaryta iš $n=3$ narių:
 \end{tabular}
 
 \medskip
-Kai $i$-tasis ir $j$-tasis sportininkai varžosi, jų akistata trunka lygiai $\min(a_i, a_j)$ sekundžių, 
+Kai  varžosi $i$-tasis ir $j$-tasis sportininkai, jų akistata trunka lygiai $\min(a_i, a_j)$ sekundžių, 
 po kurių silpnesnis varžovas sudrumsčia ramybę ir per sekundės dalį abu dalyviai ima šypsotis ir kikenti.
-Pavyzdžiui, jei Anna varžytųsi su Esther, ši dvikova truktų $431$~sekundžių.
-Svarbu pastebėti, jog išoriniam stebėtojui tikrojo akistatos \emph{laimėtojo} (šiuo atveju, Esther) neįmanoma nustatyti.
+Pavyzdžiui, jei Anna varžytųsi su Esther, ši dvikova truktų $431$~sekundę.
+Svarbu tai, kad išorinis stebėtojas negali nustatyti akistatos \emph{laimėtojo} (šiuo atveju, Esther).
 Stebėtojas gali išmatuoti tik \emph{trukmę}.
 
-Jūsų tikslas -- išsiaiškinti reikšmes $a_1,\ldots, a_n$ surengiant kuo mažiau spoksojimo varžybų.
-Aišku, stipriausio sportininko stiprumo neįmanoma nustatyti, tad jums leidžiama nuvertinti vieną iš $a_i$ reikšmių.
+Išsiaiškinkite $a_1,\ldots, a_n$ reikšmes surengdami kuo mažiau spoksojimo varžybų.
+Aišku, stipriausiojo sportininko stiprumo neįmanoma nustatyti, tad galite nuvertinti (t. y. nurodyti mažesnę) vieną iš $a_i$ reikšmių.
 
-\section*{Bendravimas}
+\section*{Sąveika}
 
-Ši užduotis yra interaktyvi.
-Bendravimo pradžioje vienoje eilutėje pateikiamas sveikasis skaičius $n$.
-Tuomet jūs galite spausdinti užklausas formatu ,,\texttt{?} $i$ $j$``, kur $1\leq i\leq n$ ir $1\leq j\leq n$ bei $i\neq j$.
+Užduotis yra interaktyvi.
+Pradiniu momentu pateikiamas sveikasis skaičius $n$ (viena eilutė).
+Tuomet galite išvesti užklausas formatu ,,\texttt{?} $i$ $j$``, kur $1\leq i\leq n$ ir $1\leq j\leq n$ bei $i\neq j$.
 Atsakymas į užklausą yra vienas sveikasis skaičius: reikšmė $\min(a_i, a_j)$.
-Bendravimas baigiamas jums išvedus vieną eilutę, kurioje pateiktas simbolis \texttt{!},
-po kurio pateikta $n$ spėjimų tarpais atskirtais sveikaisiais skaičiais $b_1$, $\ldots$, $b_n$.  
-Tai turi buti paskutinė jūsų programos išvesties eilutė.
-
-Jūsų sprendimas laikomas teisingu, jeigu galioja $b_i=a_i$ kiekvienam dalyviui~$i$, išskyrus vienam, 
+Sąveika baigiama kai išvedate vieną eilutę, kurioje yra simbolis \texttt{!} ir
+$n$ spėjimų: tarpais atskirtų sveikųjų skaičių $b_1$, $\ldots$, $b_n$.  
+Tai turi buti paskutinioji jūsų programos išvesties eilutė.
+Sprendimas laikomas teisingu, jeigu $b_i=a_i$ kiekvienam dalyviui~$i$, išskyrus vienam, 
 kurį galite nuvertinti.
-Jei tiksliau, reikalaujama, jog visiems $1\leq i\leq n$ galiotų $b_i\leq a_i$
+Tai yra reikalaujama, kad visiems $1\leq i\leq n$ galiotų $b_i\leq a_i$
 ir daugiausiai vienam $k$ galiotų $b_k \neq a_k$.
-
-Bendravimo programa \emph{nėra adaptyvi}. Tai reiškia, kad reikšmės $a_1,\ldots, a_n$ yra nustatomos prieš prasidedant bendravimui.
-
+Sąveikos programa \emph{nėra adaptyvi}. Tai reiškia, kad reikšmės $a_1,\ldots, a_n$ yra nustatomos prieš prasidedant sąveikai.
 \section*{Ribojimai ir vertinimas}
-
 Sportininkų skaičiui $n$ galioja
 $2\leq n\leq 1500$. % constraint:n
 Kiekvieno sportininko šaltakraujiškumo lygiui~$a_i$ galioja 
@@ -58,22 +54,19 @@ $1\leq a_i\leq 86\,400$, % constraint:skillbounds
 visos šios reikšmės skirtingos. % constraint:allskillsdifferent
 Galite atlikti daugiausiai $3000$~užklausų; % constraint:maxnumqueries
 paskutinė programos išvesties eilutė, t.y., eilutė, prasidedanti simboliu \texttt{!}, nėra laikoma užklausa.
-
 Jūsų sprendimas bus testuojamas su keliomis testų grupėmis, kurių kiekviena verta tam tikro skaičiaus taškų.
 Kiekviena testų grupė sudaryta iš įvairių testų.
-Testų grupės taškai skiriami tik išsprendus visus testus, esančius toje grupėje.
+Testų grupės taškai skiriami tik išsprendus visus tos grupės testus.
 Galutinis rezultatas lygus daugiausiai surinkusio sprendimo taškų skaičiui.
-
 $3$-iosios testų grupės rezultatas lygus mažiausiam kurio nors šios grupės testo taškų skaičiui.
 Kiekvieno testo taškai priklauso nuo to, kiek užklausų atliekate;
 kuo mažiau užklausų, tuo geriau.
 Tarkime, kad atliekate $q$ užklausų. 
 Jei $q \le n+25$, tai gaunate visus $80$~taškų. 
-Jei $q > 3000$, negaunate jokių taškų.
+Jei $q > 3000$, negaunate taškų.
 Kitu atveju, gaunate 
 $118.2 - 12 \cdot \ln(q - n)$~taškų, suapvalinus iki artimiausio sveikojo skaičiaus. % constraint:scoringfunction
 Pavyzdžiui, jeigu $n = 1500$ ir $q = 3000$, gautumėte $30$~taškų.
-
 \medskip
 \begin{tabular}{lll}
 Grupė & Taškai & Papildomi ribojimai\\\hline
@@ -81,8 +74,6 @@ $1$  &  $9$ & $n\leq 50$\\
 $2$  &  $11$ & $n\leq 1000$\\
 $3$  &  $0$--$80$ & $1000 < n\leq 1500$\\
 \end{tabular}
-
-\section*{Bendravimo pavyzdžio paaiškinimas}
-
-Bendravimo pavyzdyje $1$ (\emph{Sample Interaction $1$}) parodytas įmanomas bendravimas naudojant aukščiau aprašytą pavyzdį.
-Pastebėkite, kad Annos ir Tonio stiprumai yra nustatyti teisingai (o Estherio stiprumo neįmanoma nustatyti).
+\section*{Sąveikos pavyzdžio paaiškinimas}
+Žemiau (\emph{Sample Interaction $1$}) parodyta galima sąveika naudojant aukščiau aprašytą pavyzdį.
+Pastebėkite, kad Annos ir Tony stiprumai yra nustatyti teisingai, o Esther stiprumo neįmanoma nustatyti.
