@@ -2,23 +2,27 @@
 
 \noindent
 Natūraliųjų skaičių seka $(x_1,\ldots,x_m)$ vadinama \emph{gera}, jeigu  $x_1 = 1$ ir kiekvienam $1 < j \leq m$ galioja arba $x_j=x_{j-1}+1$, arba $x_j=x_k\cdot x_l$, kur $k$ ir $l$ yra tokie skaičiai, kuriems galioja $0< k\leq l< j$.
+
 Pavyzdžiui, abidvi sekos~$(1,1)$ ir $(1,2)$ yra geros, bet seka~$(1,3)$ -- ne.
-Kai duoti $n$ skaičių $w_1,\ldots,w_n$, tai sekos $(x_1,\ldots,x_m)$, kuriai galioja $1\leq x_j \leq n$ kiekvienam $1\leq j\leq m$,
-\emph{svoris} yra lygus
+
+Duotiesiems $n$ skaičių $w_1,\ldots,w_n$, sekos $(x_1,\ldots,x_m)$, kur kiekvienam $1\leq j\leq m$
+ galioja $1\leq x_j \leq n$ , \emph{svoris} apibrėžiamas taip:
 \[ w_{x_1} +\cdots +w_{x_m}\,.\] 
-Pavyzdžiui, tarkime, kad yra duoti svoriai $w_1=10,  w_2=42,w_3= 1$. Tuomet sekos~$(1,1)$ svoris yra $20$, o sekos~$(1,3)$ -- $11$.
-Kiekvienam $1\leq i\leq n$ pažymėkime mažiausią geros sekos, kurioje yra $i$, svorį kaip $s_i$.
 
-Jūsų užduotis yra rasti reikšmes $s_1,\ldots ,s_n$.
+Pavyzdžiui, duoti svoriai $w_1=10,  w_2=42,w_3= 1$. Tuomet sekos~$(1,1)$ svoris yra $20$, o sekos~$(1,3)$ -- $11$.
 
-\section*{Įvestis}
+Kiekvienam $1\leq i\leq n$ pažymėkime mažiausią geros sekos, kurioje yra $i$, svorį $s_i$.
 
-Pirmoje įvesties eilutėje pateiktas sveikasis skaičius $n$ -- skaičius, kiek yra svorių.
+Raskite $s_1,\ldots ,s_n$ reikšmes
+
+\section*{Pradiniai duomenys}
+
+Pirmoje įvesties eilutėje pateiktas svorių skaičius $n$ (sveikasis skaičius).
 Kitose $n$ eilučių pateikti svoriai -- sveikieji skaičiai $w_1, \ldots, w_n$.
 
-\section*{Išvestis}
+\section*{Rezultatai}
 
-Išspausdinkite $n$ eilučių. Jose iš eilės pateikite $s_1$, $\ldots$, $s_n$.
+Išveskite $n$ eilučių. Jose iš eilės pateikite $s_1$, $\ldots$, $s_n$.
 
 \section*{Ribojimai ir vertinimas}
 
@@ -29,8 +33,8 @@ $1\leq w_i \leq 10^6$ kiekvienam $1\leq i \leq n$.% constraint:wi
 
 Jūsų sprendimas bus testuojamas su keliomis testų grupėmis, kurių kiekviena verta tam tikro skaičiaus taškų.
 Kiekviena testų grupė sudaryta iš įvairių testų.
-Testų grupės taškai skiriami tik išsprendus visus testus, esančius toje grupėje.
-Galutinis rezultatas lygus daugiausiai surinkusio sprendimo taškų skaičiui.
+Testų grupės taškai skiriami tik išsprendus visus grupės testus.
+Galutinis taškų skaičius lygus daugiausiai surinkusio sprendimo taškų skaičiui.
 
 \medskip
 \begin{tabular}{lll}
@@ -40,5 +44,5 @@ $2$   & $10$ & $n\leq 300$, $w_1=\cdots=w_n = 1$ \\
 $3$   & $10$ & $n\leq 300$, $w_1=\cdots=w_n$ \\ % constraint:uniformweights
 $4$   & $9$ & $n\leq 1400$, $w_1=\cdots=w_n = 1$ \\
 $5$   & $45$ & $n\leq 5000$\\
-$6$   & $15$ & \emph{jokių papildomų ribojimų}
+$6$   & $15$ & \emph{papildomų ribojimų nėra}
 \end{tabular}
