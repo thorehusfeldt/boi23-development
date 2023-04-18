@@ -14,32 +14,26 @@ Examples of polished problems can be found in `_tools/examples`, including two p
 Translation
 -----------
 
-Problem statements are written in LaTeX and reside in `<problem_id>/problem_name/problem.<code>.tex`, where `<code>` is the two-letter language code.
+Problem statements are written in LaTeX and reside in `<problem_id>/problem_statement/problem.<code>.tex`, where `<code>` is the two-letter language code, such as `sequence/problem_statement/problem.da.tex`.
+The “original” is the English (`.en`) version.
 
 To turn this into PDF or HTML, assuming you want the Danish translation (using the ISO 639-1 two-letter language code `da`) of problem `sequence`:
 
-```
-_tools/load_docker.sh
-_tools/verify sequence
+```sh
 problem2pdf -l da sequence
 problem2html -l da sequence
 ```
 
-The `verify` step is quite time consuming; it builds the input/output pairs in `sequence/data/sample` needed for the sample inputs in the problem statement. To avoid full verification, you can instead just do (after running the docker image)
+The easiest way to get `problem2pdf` and `problem2html` to run on you machine is to install the docker image, so _first_ you should run
 
+```sh
+_tools/load_docker.sh
 ```
-cd sequence/data
-./generate.sh
-cd ../..
-problem2pdf -l da sequence
-```
-
-(Once you’ve generated the `.ans` files in `sequence/data/sample` you don’t need to rebuild them.)
 
 To avoid errors, the script `_tools/checkconstraints` extracts properly labeled LaTeX source code and shows it next to the other translations (as well the relevant parts of the input validator and instance generators).
 So please run 
 
-```
+```sh
 _tools/load-docker.sh
 _tools/checkconstraints <problem_id>
 ```
