@@ -41,3 +41,4 @@ Alternatively, run `_tools/verify <id>`, which builds problem `<id>` and (among 
 ### Known Issues
 
 * `astronomer` This problem has many test groups and many partially accepted submissions in various languages, which leads to many warnings about sensitive time limits. This could not be helped.
+* Ukrainian translations and `problem2pdf`. The font encoding `OT2` used in `problem2pdf`'s class file does not support Cyrillic, so the `uk` translations break `problem2pdf`. (The HTML looks good, though.)
