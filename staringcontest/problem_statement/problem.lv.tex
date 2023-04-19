@@ -1,0 +1,82 @@
+\problemname{Skatīšanās sacensības}
+
+\illustration{.4}{img/Staring_contest.pdf}{}
+
+\noindent
+Skatīšanās sacensības ir klasiska izturības cīņa, kur divi cilvēki skatās viens otra acīs, uzturot mierīgu sejas izteiksmi.
+Mērķis ir saglabāt acu kontakta ilgāk par pretinieku.
+Sacensības beidzas, kad viens dalībnieks zaudē koncentrēšanos, piemēram, novēršot skatienu, smaidot, runājot vai smejoties.
+
+Kā nacionālajam skatīšanās sacensību trenerim, jums ir jānosaka katra komandas dalībnieka izturība gaidāmajā pasaules finālā, kur komanda sastāv no $n$ dalībniekiem.
+$i$-tais sportists var uzturēt acu kontaktu tieši $a_i$ sekundes, bet šīs vērtības jums sākumā nav zināmas.
+Piemēram, jūsu komanda varētu sastāvēt no $n=3$ dalībniekiem:
+
+\medskip
+\begin{tabular}{lll}
+  $i$ & Vārds & $a_i$ \\\hline
+  1 & Anna &  431 \\
+  2 & Estere & 623 \\
+  3 & Tonijs &  121\\
+\end{tabular}
+
+\medskip
+Kad $i$-tais un $j$-tais dalībnieks sacenšas, konfrontācija ilgst tieši $\min(a_i, a_j)$ sekundes, tajā brīdī vājākais dalībnieks zaudē koncentrēšanos un pēc mirkļa abi dalībnieki sāk smaidīt un smieties.
+Piemēram, ja Anna sacenšas ar Esteri, sacensības ilgst $431$ sekundes.
+Svarīgi ir atzīmēt, ka vērotājam no malas faktisko \emph{uzvarētāju} konfrontācijā (šajā gadījumā - Estere) ir neiespējami noteikt, izmērāms ir tikai konfrontācijas \emph{ilgums}.
+
+Jūsu mērķis ir noteikt $a_1,\ldots, a_n$ vērtības, izmantojot pēc iespējas mazāk skatīšanās sacensību.
+Skaidrs, ka spēcīgākā sportista spēku nekad nevar noteikt, tāpēc jums ir atļauts neprecīzi noteikt vienu no $a_i$ vērtībām.
+
+
+\section*{Komunikācija}
+
+Šis ir interaktīvs uzdevums.
+Komunikācija sākas ar vienas rindas lasīšanu, kas satur veselu skaitli $n$.
+Tad jūs varat vaicāt pieprasījumus, kas ir formātā "\texttt{?} $i$ $j$", kur $1\leq i\leq n$ un $1\leq j\leq n$ un $i\neq j$.
+Atbilde uz jūsu pieprasījumu būs viens vesels skaitlis: $\min(a_i, a_j)$ vērtība.
+Komunikācija beidzas ar vienas rindas izdrukāšanu, kas sastāv no \texttt{!}, aiz kura seko $n$ noteiktie veselie skaitļi $b_1$, $\ldots$, $b_n$, kas atdalīti ar atstarpi. Šai ir jābūt pēdejai izvada rindai.
+
+Jūsu risinājums ir pareizs, ja $b_i=a_i$ katram dalībniekam $i$, izņemot vienu, kuram sagaidāmo iztūrību drīkst novērtēt par zemu. Precīzāk, tiek sagaidīts, ka $b_i\leq a_i$ visiem $1\leq i\leq n$ un atļaujam, ka $b_k \neq a_k$ ne vairāk kā vienai $k$ vērtībai.
+
+Testēšānas sistēmas komunikācijas programma ir \emph{neadaptīva}, kas nozīmē, ka $a_1,\ldots, a_n$ tiek fiksētas pirms komunikācijas sākuma.
+
+
+\section*{Ierobežojumi un vērtēšana}
+
+Dalībnieku skaits $n$ atbilst ierobežojumam:
+$2\leq n\leq 1500$. % constraint:n
+Katra dalībnieka izturība~$a_i$ atbilst ierobežojumiem: 
+$1\leq a_i\leq 86\,400$, % constraint:skillbounds
+visas vērtības ir atšķirīgas. % constraint:allskillsdifferent
+Jūs varat veikt 
+ne vairāk kā $3000$~vaicājumus; % constraint:maxnumqueries
+beidzamā izvada rinda, \emph{t.i.}, rinda, kas sākas ar \texttt{!}, netiek skaitīta kā vaicājums.
+
+Jūsu risinājums tiks pārbaudīts uz vairākām testu grupām, kur katra grupa ir vērta noteiktu punktu skaitu.
+Katra testu grupa satur vairākus testus.
+Lai saņemtu punktus par testu grupu, ir jāatrisina visi testi testu grupā.
+Jūsu gala rezultāts būs lielākais punktu skaits, kas iegūts ar vienu risinājuma iesniegumu.
+
+$3.$ grupai jūsu rezultāts ir minimālais punktu skaits starp visiem testiem testu grupā.
+Katram testam punktu skaits ir atkarīgs no pieprasījumu skaita, ko jūs veiksiet; 
+mazāk pieprasījumu ir labāk.
+Pieņemsim, ka jūs izmantojat $q$ pieprasījumus.
+Ja $q \le n+25$, tad jūs saņemsiet visus $80$ punktus.
+Ja $q > 3000$, tad jūs nesaņemsiet punktus.
+Citādi jūs saņemsiet 
+$118.2 - 12 \cdot \ln(q - n)$~punktus, kas noapaļoti līdz tuvākajam veselam skaitlim. % constraint:scoringfunction
+Piemēram, ja $n = 1500$ un $q = 3000$, tad jūs saņemsiet $30$ punktus.
+
+\medskip
+\begin{tabular}{lll}
+Grupa & Punkti & Ierobežojumi\\\hline
+$1$  &  $9$ & $n\leq 50$\\
+$2$  &  $11$ & $n\leq 1000$\\
+$3$  &  $0$--$80$ & $1000 < n\leq 1500$\\
+\end{tabular}
+
+\section*{Parauga komunikācijas skaidrojums}
+
+$1.$ piemēra komunikācija demonstrē iepriekš aprakstīto piemēru.
+Pievērsiet uzmanību, ka Annas un Tonija izturības ir pareizi noteiktas.
+(Esteres spējas nevar pareizi noteikt.)
