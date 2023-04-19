@@ -41,12 +41,16 @@ Atsakymas į užklausą yra vienas sveikasis skaičius: reikšmė $\min(a_i, a_j
 Sąveika baigiama kai išvedate vieną eilutę, kurioje yra simbolis \texttt{!} ir
 $n$ spėjimų: tarpais atskirtų sveikųjų skaičių $b_1$, $\ldots$, $b_n$.  
 Tai turi buti paskutinioji jūsų programos išvesties eilutė.
+
 Sprendimas laikomas teisingu, jeigu $b_i=a_i$ kiekvienam dalyviui~$i$, išskyrus vienam, 
 kurį galite nuvertinti.
-Tai yra reikalaujama, kad visiems $1\leq i\leq n$ galiotų $b_i\leq a_i$
+Tai yra, reikalaujama, kad visiems $1\leq i\leq n$ galiotų $b_i\leq a_i$
 ir daugiausiai vienam $k$ galiotų $b_k \neq a_k$.
+
 Sąveikos programa \emph{nėra adaptyvi}. Tai reiškia, kad reikšmės $a_1,\ldots, a_n$ yra nustatomos prieš prasidedant sąveikai.
+
 \section*{Ribojimai ir vertinimas}
+
 Sportininkų skaičiui $n$ galioja
 $2\leq n\leq 1500$. % constraint:n
 Kiekvieno sportininko šaltakraujiškumo lygiui~$a_i$ galioja 
@@ -54,10 +58,12 @@ $1\leq a_i\leq 86\,400$, % constraint:skillbounds
 visos šios reikšmės skirtingos. % constraint:allskillsdifferent
 Galite atlikti daugiausiai $3000$~užklausų; % constraint:maxnumqueries
 paskutinė programos išvesties eilutė, t.y., eilutė, prasidedanti simboliu \texttt{!}, nėra laikoma užklausa.
+
 Jūsų sprendimas bus testuojamas su keliomis testų grupėmis, kurių kiekviena verta tam tikro skaičiaus taškų.
 Kiekviena testų grupė sudaryta iš įvairių testų.
 Testų grupės taškai skiriami tik išsprendus visus tos grupės testus.
 Galutinis rezultatas lygus daugiausiai surinkusio sprendimo taškų skaičiui.
+
 $3$-iosios testų grupės rezultatas lygus mažiausiam kurio nors šios grupės testo taškų skaičiui.
 Kiekvieno testo taškai priklauso nuo to, kiek užklausų atliekate;
 kuo mažiau užklausų, tuo geriau.
@@ -67,7 +73,9 @@ Jei $q > 3000$, negaunate taškų.
 Kitu atveju, gaunate 
 $118.2 - 12 \cdot \ln(q - n)$~taškų, suapvalinus iki artimiausio sveikojo skaičiaus. % constraint:scoringfunction
 Pavyzdžiui, jeigu $n = 1500$ ir $q = 3000$, gautumėte $30$~taškų.
+
 \medskip
+
 \begin{tabular}{lll}
 Grupė & Taškai & Papildomi ribojimai\\\hline
 $1$  &  $9$ & $n\leq 50$\\
