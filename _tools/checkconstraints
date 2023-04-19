@@ -85,8 +85,8 @@ class StatementConstraints:
         mode = "looking"
         for line in infile:
             if re.search(r"constraint:", line):
-                m = re.search("constraint:([A-Za-z_]+)", line)
-                self.constraints[m.group(1)] = line.strip()
+                for c in re.findall(r"constraint:([A-Za-z_]+)", line):
+                    self.constraints[c] = line.strip()
             if re.search(r"tabular", line):
                 mode = "slurping"
                 continue
