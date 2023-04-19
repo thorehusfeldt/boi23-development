@@ -4,61 +4,61 @@
   License CC BY-SA 2.0.}
 
 \noindent
-Apleistose Moravijos Nykštukų kasyklose įrengtos visiškai autonominės nedidukės alaus daryklos
+Apleistose Moravijos Nykštukų kasyklose įrengtos nedidukės autonominės alaus daryklos
 išties yra Nykštukų inžinerijos išradingumo ir meistriškumo įrodymas!
-Deja, kartais žemės drebėjimai niokoja kasyklas, dėl ko vamzdžiai išsiklibina ir iš piltuvų vertingasis skystis pilamas ant grindų.
-Jūsų, kaip aukščiausiojo alaus daryklų saugumo prižiūrėtojo, pareiga yra išjungti mašinas visose kasyklų salėse, 
-jeigu įvyktų žemės drebėjimas.
+Deja, kartais žemės drebėjimai niokoja kasyklas, vamzdžiai išsiklibina ir iš piltuvų vertingasis skystis pilamas ant grindų.
+Jeigu įvyktų žemės drebėjimas, jūs, kaip aukščiausiasis alaus daryklų apsaugos pareigūnas, turite išjungti mašinas visose kasyklų salėse.
 
-Keliauti tuneliais užtrunka laiko, todėl jūs neišvengiamai užtruksite atvykti prie daugelio mašinų.
-Tačiau jūs norite, kad visas išpilto skysčio kiekis būtų kuo mažesnis.
+
+Kol tuneliais pasieksite visas mašinas, užtruksite.
+Nežiūrint to, norisi, kad visas išlaistyto skysčio kiekis būtų kuo mažesnis.
 
 \medskip
-Nykštukų kasyklos sudarytos iš $n$~salių, sujungtų $n-1$~tunelių.
-Visa kasyklų sistema yra jungi, tad iš bet kurios salės įmanoma pasiekti bet kurią kitą.
+Nykštukų kasyklas sudaro  $n$~salių ir jas jungia $n-1$~tunelis.
+Kasyklų sistema yra jungi, tad iš bet kurios salės įmanoma pasiekti bet kurią kitą.
 Pereiti tunelį užtrunka $1$~laiko vienetą.
-Išjungti mašiną ir pereiti salę neužtrunka nė kiek laiko.
-Jei kurioje nors salėje mašina išjungiama praėjus laikui~$t$ po žemės drebėjimo, ši mašina iš viso išpila
+Mašinos išjungimas ir salės perėjimas neužtrunka laiko.
+Jei kurioje nors salėje mašina išjungiama praėjus $t$ laiko po žemės drebėjimo, tai mašina jau bus spėjusi išlieti
 $t$~litrų skysčio.
-Įvyksta lygiai vienas žemės drebėjimas, kuris paveikia visas sales tuo pačiu metu. 
+Įvyksta lygiai vienas žemės drebėjimas, kuris paveikia visas sales tuo pat metu. 
 Be to, jokia mašina negali būti išjungta prieš drebėjimą. 
 Pradėti galite bet kurioje iš salių.
 
 \section*{Pavyzdys}
 
-Pirmojoje pavyzdinėje įvestyje (\emph{Sample Input~$1$}) aprašytos kasyklos atrodo štai taip:
+Pirmajame pavyzdyje aprašytos kasyklos atrodo štai taip:
 
 \includegraphics[width=.2\textwidth]{img/sample-1.pdf}
 
-Jeigu pradėtumėte salėje~$2$ ir sales aplankytumėte tvarka $2$, $1$, $2$, $3$, 
-tuomet mašinas išjungtumėte laiko momentu~$0$ (salėje $2$), laiko momentu~$1$ (salėje $1$) bei laiko momentu~$3$ (salėje $3$).
-Iš viso būtų išpilstyta $0+1+3=4$~litrų skysčio.
-Tačiau jeigu pradėtumėte salėje~$1$ ir sales aplankytumėte tvarka $1$, $2$, $3$, 
-viso išpilsyto skysčio kiekis būtų $0+1+2=3$~litrų, kas yra geriau.
+Jeigu pradėtumėte $2$-ojoje salėje ir sales aplankytumėte tvarka $2$, $1$, $2$, $3$, 
+tuomet mašinas išjungtumėte laiko momentais~$0$ ($2$-ojoje salėje), ~$1$ ($1$-ojoje salėje) ir~$3$ ($3$-iojoje salėje).
+Iš viso būtų išlaistyta $0+1+3=4$~litrų skysčio.
+Tačiau jeigu pradėtumėte $1$-ojoje salėje ir sales aplankytumėte tvarka $1$, $2$, $3$, 
+iš viso būtų išlaistyti $0+1+2=3$~litrai skysčio, kas yra geriau.
 
 \includegraphics[width=.4\textwidth]{img/sample-1-ans.pdf}
 
-\section*{Įvestis}
+\section*{Pradiniai duomenys}
 
-Pirmoje įvesties eilutėje pateiktas sveikasis skaičius $n$, žymintis salių skaičių.
+Pirmoje eilutėje pateiktas salių skaičius $n$ (sveikasis skaičius).
 Salės numeruojamos $1$, $\ldots$, $n$.
 Kitose $n-1$ eilučių pateikiama po du sveikuosius skaičius $u$ ir $v$, kuriems galioja
 $1\leq u < v \leq n$ % constraint:hallnames
-ir kurie žymi, jog tarp salės~$u$ ir salės~$v$ yra tunelis.
+ir kurie žymi, kad sales~$u$ ir $v$ jungia tunelis.
 
-\section*{Išvestis}
+\section*{Rezultatai}
 
-Išveskite vieną sveikąjį skaičių: kiek mažiausiai skysčio išsipils (litrais).
+Išveskite vieną sveikąjį skaičių: kiek mažiausiai skysčio išsilaistys (litrais).
 
 \section*{Ribojimai ir vertinimas}
 
 Visada galios
 $1\leq n\leq 10^5$. % constraint:n
 
-Jūsų sprendimas bus testuojamas su keliomis testų grupėmis, kurių kiekviena verta tam tikro skaičiaus taškų.
+Sprendimas bus testuojamas su keliomis testų grupėmis, kurių kiekviena verta tam tikro skaičiaus taškų.
 Kiekviena testų grupė sudaryta iš įvairių testų.
-Testų grupės taškai skiriami tik išsprendus visus testus, esančius toje grupėje.
-Galutinis rezultatas lygus daugiausiai surinkusio sprendimo taškų skaičiui.
+Testų grupės taškai skiriami tik išsprendus visus grupės testus.
+Galutinis taškų, skiriamų už šį uždavinį, skaičius, lygus daugiausiai surinkusio sprendimo taškų skaičiui.
 
 \medskip
 \begin{tabular}{lll}
@@ -67,5 +67,5 @@ Grupė & Taškai & Papildomi ribojimai \\\hline
   $2$ & $19$ & daugiausiai viena salė turi daugiau nei du tunelius\\
   $3$ & $20$ & $n\leq 10$\\
   $4$ & $21$ & $n\leq 1000$\\
-  $5$ & $22$ & \emph{Jokių papildomų ribojimų}
+  $5$ & $22$ & \emph{nėra}
 \end{tabular}
