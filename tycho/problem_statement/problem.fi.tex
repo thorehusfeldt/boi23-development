@@ -8,9 +8,9 @@
 Planeetantutkimusmönkijän \emph{Tycho VIII}:n täytyy palata takaisin tukikohtaansa 
 kerättyään mineraalinäytteitä.
 % Tycho travels in a straight line from position~$0$ to the home base at position~$b$.
-Tycho liikkuu suoralla viivalla pisteestä~$0$ tukikohtaan pisteeseen~$b$.
+Tycho liikkuu suoralla viivalla pisteestä~$0$ tukikohtaan pisteessä~$b$.
 % While moving, it advances at a slow but steady pace of $1$~unit per second.
-Se liikkuu eteenpäin hitaalla mutta tasaisella $1$~yksikön nopeudella.
+Se liikkuu eteenpäin hitaalla mutta varmalla $1$~yksikön nopeudella.
 % Every second, Tycho takes $1$~unit of environmental damage from the harsh 
 % planetary conditions.
 Joka sekunti Tycho ottaa $1$~yksikön ympäristövahinkoa planeetan ankarien 
@@ -42,13 +42,13 @@ Mikä on pienin määrä vahinkoa, jonka Tycho voi saada matkallaan tukikohtaan?
 
 % Consider the situation where the home base is at position $18$ and there 
 % are shelters at positions $8$ and $15$.
-Otetaan tilanne, jossa tukikohta on kohdassa $18$ ja suojia on kohdissa $8$ ja $15$.
+Tarkastellaan tilannetta, jossa tukikohta on kohdassa $18$ ja suojia on kohdissa $8$ ja $15$.
 
 \includegraphics[width=.3\textwidth]{img/samplesetup}
 
 % Assume that the pulsar's period is $4$, so unsheltered Tycho would take 
 % damage at times $4$, $8$, $12$, etc.
-Oletetaan, että pulsarin jakso on $4$, eli suojaamaton Tycho saisi vahinkoa 
+Oletetaan, että pulsarin jaksonaika on $4$, eli suojaamaton Tycho saisi vahinkoa 
 hetkillä $4$, $8$, $12$, jne.
 % If Tycho leaves from the starting position (where it's sheltered) at time 
 % $0$, it can reach the first shelter after $8$ seconds, incurring radiation 
@@ -79,8 +79,8 @@ Nämä kaksi tilannetta on esitetty tässä:
 
 % If the pulsar's period is $10$, Tycho can wait at the starting position 
 % for $2$~seconds and then just go home without stopping at any shelter.
-Jos pulsarin jakso on $10$, niin Tycho voi odottaa alkupisteessä $2$~sekuntia 
-ja sitten vain mennä tukikohtaan pysähtymättä mihinkään suojaan.
+Jos pulsarin jaksonaika on $10$, niin Tycho voi odottaa alkupisteessä $2$~sekuntia 
+ja sitten vain mennä tukikohtaan py\-säh\-ty\-mät\-tä mihinkään suojaan.
 % Thus it passes the $1$st shelter (at position~$8$) at just the right 
 % moment when the pulsar flares and arrives at the home base at time $20$, 
 % for a total of $20$ environmental damage and no radiation damage at all.
@@ -95,20 +95,20 @@ saaden yhteensä $20$ ympäristövahinkoa eikä yhtään säteilyvahinkoa.
 % The first line consists of four integers $b$, $p$, $d$, and $n$, separated 
 % by single spaces:
 Syötteen ensimmäinen rivi sisältää neljä kokonaislukua $b$, $p$, $d$, ja $n$ 
-välilyönneillä erotettuna:
+välilyönneillä erotettuina:
 % the location $b$ of the home base,
 tukikohdan sijainti $b$,
 % the pulsar's flare period~$p$,
-pulsarin purkausjakso~$p$,
+pulsarin purkauksien jaksonaika~$p$,
 % the additional radiation damage~$d$ caused by each flare of the pulsar,
-lisävahinko~$d$, jonka pulsarin jokainen purkaus aiheuttaa,
+pulsarin jokaisen purkauksen aiheuttama lisävahinko~$d$,
 % the number~$n$ of the shelters.
 suojapaikkojen määrä~$n$. 
 % The following $n$~lines each contain an integer giving the shelter 
 % locations $a_1$, $\ldots$, $a_n$, with 
 % $0<a_1<\cdots <a_n< b$. % constraint:shelterbounds, constraint:sortedshelters
 Seuraavat $n$~riviä sisältävät jokainen yhden kokonaisluvun, 
-antaen suojien sijainnit $a_1$, $\ldots$, $a_n$, missä 
+suojien sijainnit $a_1$, $\ldots$, $a_n$, missä 
 $0<a_1<\cdots <a_n< b$. % constraint:shelterbounds, constraint:sortedshelters
 
 \section*{Tuloste}
@@ -166,4 +166,4 @@ Ryhmä & Pisteet & Rajoitukset \\\hline
 % For example, sample inputs $2$, $3$, and $4$ belong to test group~$1$.
 \noindent $^*$ Testiryhmässä~$1$ Tycho 
 voi joutua odottamaan kohdassa~$0$ \emph{ennen} kuin se on alkanut liikkua.
-Esimerkiksi esimerkkisyötteet $2$, $3$, ja $4$ kuuluvat testiryhmään~$1$.
+Esimerkiksi e\-si\-merk\-ki\-syöt\-teet $2$, $3$, ja $4$ kuuluvat testiryhmään~$1$.

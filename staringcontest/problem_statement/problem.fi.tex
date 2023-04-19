@@ -2,29 +2,28 @@
 
 \illustration{.4}{img/Staring_contest.pdf}{}
 
-\noindent
 %A staring contest is a classical battle of imperturbability in which two people 
+\noindent
 Tuijotuskilpailu on klassinen häiriintymättömyyden taistelu, jossa kaksi ihmistä
 %stare into each other's eyes while maintaining a facial expression of assured serenity.
 tuijottavat toisiaan silmiin ylläpitäen samalla varman neutraalia ilmettä.
 %The goal is to maintain eye contact for longer than your opponent.
-Tavoitteena on ylläpitää katsekontaktia pidempään kuin vastustaja.
+Tavoitteena on säilyttää katsekontakti vastustajaa pidempään.
 % The contest ends when one participant breaks composure, typically 
-Kilpailu loppuu kun toinen osallistujista ei saa enää pidettyä pokkaansa,
+Kilpailu loppuu, kun toinen osallistujista ei saa enää pidettyä pokkaansa,
 % by looking away, smiling, speaking, or giggling.
 vaan esimerkiksi katsoo pois, hymyilee, puhuu tai nauraa.
 
 % As a coach of the national staring contest you need to determine the 
 % imperturbability of each of your team's $n$ members for the upcoming world finals.
 Kansallisen tuijotuskilpailun valmentajana sinun täytyy selvittää jokaisen 
-tiimisi $n$:n jäsenen häiriintymättömyys tulevaa maailmanmestaruuskilpailua varten.
-
+joukkueesi $n$:n jäsenen häiriintymättömyys tulevaa maailmanmestaruuskilpailua varten.
 % The $i$th athlete can maintain eye contact for exactly $a_i$ seconds, 
 Kilpailijoista $i$:s pystyy ylläpitämään katsekontaktia tasan $a_i$ sekuntia,
 % but these values are unknown to you in the beginning.
 mutta et tiedä näitä arvoja alussa.
 % For instance, you could have a team of $n=3$ members:
-Esimerkiksi, sinulla voisi olla tiimi, jossa on $n=3$ jäsentä:
+Esimerkiksi, sinulla voisi olla joukkue, jossa on $n=3$ jäsentä:
 
 \medskip
 \begin{tabular}{lll}
@@ -47,54 +46,54 @@ Jos esimerkiksi Anna kilpailee Estheriä vastaan, kisa kestää $431$~sekuntia.
 % Importantly, to an outside observer the actual \emph{winner} of the confrontation 
 %(in this case, Esther) is impossible to determine, only the \emph{duration} of the 
 %contest is measurable.
-On tärkeää huomata, että ulkopuolisen tarkastelijan on mahdotonta päätellä 
-kisan \emph{voittajaa} (tässä tapauksessa Esther), vaan vain kisan 
-\emph{pituus} on mitattavissa.
+Huomaa, että ulkopuolisen tarkastelijan on mahdotonta päätellä 
+kisan \emph{voittajaa} (tässä tapauksessa Esther), vaan ainoastaan kisan 
+\emph{kesto} on mitattavissa.
 
 
 % Your goal is to estimate the values $a_1,\ldots, a_n$ using as few staring contests 
 % as possible.
-Tehtäväsi on arvioida arvot $a_1,\ldots, a_n$ käyttäen mahdollisimman pientä 
+Tehtäväsi on arvioida lukuja $a_1,\ldots, a_n$ käyttäen mahdollisimman pientä 
 määrää tuijotuskilpailuja.
 % Clearly, the strength of the strongest athlete can never be determined, so you are 
 % allowed to underestimate one of the $a_i$.
-Parhaimman kisaajan häiriintymättömyyttä on selvästi mahdoton määrittää, joten 
-saat aliarvoida yhden arvoista $a_i$.
+Parhaimman kisaajan häiriintymättömyyttä on selvästi mahdotonta määrittää, joten 
+saat aliarvioida yhden luvuista $a_i$.
 
 \section*{Interaktio}
 
 % This is an interactive problem.
 Tämä on interaktiivinen tehtävä.
 % The interaction begins with you reading a single line containing the integer $n$.
-Interaktio alkaa sillä, että luet yhden rivin joka sisältää kokonaisluvun $n$.
+Interaktio alkaa sillä, että luet yhden rivin, joka sisältää kokonaisluvun $n$.
 % You may then ask queries of the form ``\texttt{?} $i$ $j$'' such that 
 % $1\leq i\leq n$ and $1\leq j\leq n$ and $i\neq j$.
-Voit tehdä kyselyitä muodossa ``\texttt{?} $i$ $j$'', jossa 
+Voit tehdä kyselyitä muotoa ``\texttt{?} $i$ $j$'', missä 
 $1\leq i\leq n$, $1\leq j\leq n$ ja $i\neq j$.
 % The response to a query is a single integer: the value $\min(a_i, a_j)$.
-Vastaus kyselyyn on yksi kokonaisluku: arvo $\min(a_i, a_j)$.
+Vastaus kyselyyn on yksi kokonaisluku: kesto $\min(a_i, a_j)$.
 % The interaction ends with you printing a single line consisting of \texttt{!} 
 % followed by $n$ estimates in the form of integers $b_1$, $\ldots$, $b_n$, 
 % separated by spaces.
-Interaktio loppuu, kun tulostat yhden rivin joka alkaa merkillä \texttt{!}, 
-jota seuraa $n$ arviota välilyönneillä erotettuina kokonaislukuina 
+Interaktio loppuu, kun tulostat yhden rivin, joka koostuu merkistä \texttt{!} 
+ja $n$ arviosta välilyönneillä erotettuina kokonaislukuina 
 $b_1$, $\ldots$, $b_n$.
 % This must be your final line of output.
 Tämän täytyy olla tulosteesi viimeinen rivi.
 
 % Your submission is correct if $b_i=a_i$ for every contestant~$i$ except one, 
 % which you may underestimate.
-Palautuksesi on oikein, jos $b_i=a_i$ jokaiselle kisaajalle ~$i$ paitsi yhdelle,
-jonka arvon saat aliarvoida.
+Palautuksesi on oikein, jos $b_i=a_i$ jokaiselle kisaajalle~$i$, paitsi yhdelle,
+jonka häiriintymättömyyden saat a\-li\-ar\-vi\-oi\-da.
 %To be precise, we require $b_i\leq a_i$ for all $1\leq i\leq n$ and allow 
 %$b_k \neq a_k$ for at most one~$k$.
-Tarkalleen ottaen vaadimme että $b_i\leq a_i$ kaikille $1\leq i\leq n$  
-ja sallimme $b_k \neq a_k$ enintään yhdelle~$k$:lle.
+Tarkalleen ottaen vaadimme, että $b_i\leq a_i$ kaikille $1\leq i\leq n$  
+ja sallimme $b_k \neq a_k$ korkeintaan yhdelle~$k$:lle.
 
 % The interactor is \emph{non-adaptive}, meaning that the $a_1,\ldots, a_n$ are 
 % determined before the interaction begins.
-Tehtävän interaktori on \emph{ei-adaptiivinen}, eli arvot $a_1,\ldots, a_n$ 
-on päätetty etukäteen ennen kuin interaktio alkaa.
+Tehtävän interaktori \emph{ei ole} adaptiivinen, eli luvut $a_1,\ldots, a_n$ 
+ovat päätetty ennen interaktion alkamista.
 
 \section*{Rajoitukset ja pisteytys}
 
@@ -111,7 +110,7 @@ ja ne ovat kaikki erisuuria keskenään. % constraint:allskillsdifferent
 % at most $3000$~queries; 
 % your final line of output, \emph{i.e.}, the line starting with \texttt{!}, is not counted as a query.
 Voit käyttää enintään $3000$~kyselyä; % constraint:maxnumqueries
-Viimeistä tulosteriviäsi, \emph{eli} sitä riviä joka alkaa merkillä \texttt{!},
+viimeistä tulosteriviäsi, eli merkillä \texttt{!} alkavaa riviä,
 ei lasketa kyselyksi.
 % your final line of output, \emph{i.e.}, the line starting with \texttt{!}, is 
 % not counted as a query.
@@ -130,7 +129,7 @@ Ryhmässä~$3$ pistemääräsi on kaikkien ryhmän testien pienin pistemäärä.
 %The score for each test case depends on the number of queries you use;
 %fewer queries are better:
 Yhden testitapauksen pistemäärä riippuu käyttämiesi kyselyiden määrästä; 
-mitä vähemmän kyselyita, sitä parempi:
+mitä vähemmän kyselyita, sen parempi:
 %Suppose you use $q$ queries. 
 Oletetaan, että teet $q$ kyselyä.
 %If $q \le n+25$, then you get the full $80$~points. 
@@ -158,5 +157,5 @@ $3$  &  $0$--$80$ & $1000 < n\leq 1500$\\
 % Note that Anna's and Tony's strengths are correctly determined.
 % (Esther's can never be determined.)
 Esimerkki-interaktio $1$ näyttää mahdollisen interaktion ylläolevalle esimerkille.
-Huomaa, että Annan ja Tonyn häiriintymättömyydet on määritetty oikein. 
+Huomaa, että Annan ja Tonyn häi\-riin\-ty\-mät\-tö\-myy\-det on määritetty oikein. 
 (Estherin häiriintymättömyyttä ei voida määrittää.)
