@@ -1,0 +1,56 @@
+\problemname{Jono}
+
+\noindent
+Jono positiivisia kokonaislukuja $(x_1,\ldots,x_m)$ on \emph{hyvä}, jos 
+$x_1 = 1$ ja jokaiselle $1 < j \leq m$ pätee joko 
+$x_j=x_{j-1}+1$, tai $x_j=x_k\cdot x_l$ joillekin $k$ ja $l$, joille 
+$0< k\leq l< j$.
+Esimerkiksi jonot~$(1,1)$ ja $(1,2)$ ovat hyviä, mutta jono~$(1,3)$ ei ole hyvä.
+Annettuna on $n$ kokonaislukua $w_1,\ldots,w_n$.
+Jonon
+$(x_1,\ldots,x_m)$, missä $1\leq x_j \leq n$ kaikille $1\leq j\leq m$, 
+\emph{paino} määritellään
+\[ w_{x_1} +\cdots +w_{x_m}\,.\]
+Esimerkiksi painoilla $w_1=10, w_2=42,w_3= 1$ jonon~$(1,1)$ paino on $20$, ja 
+jonon~$(1,3)$ paino on $11$. 
+Jokaiselle arvolle $1\leq v\leq n$ määritellään luku $s_v$: pienin mahdollinen paino 
+jonolle, joka sisältää arvon $v$.
+
+Tehtäväsi on selvittää arvot $s_1,\ldots, s_n$.
+
+\section*{Syöte}
+
+Syötteen ensimmäinen rivi sisältää yhden kokonaisluvun $n$: painojen lukumäärä.
+Seuraavat $n$ riviä sisältävät painot $w_1, \ldots, w_n$.
+
+\section*{Tuloste}
+
+Tulosta $n$ riviä sisältäen luvut $s_1$, $\ldots$, $s_n$ järjestyksessä.
+
+\section*{Rajoitukset ja pisteytys}
+
+Kaikille syötteille pätee
+$1\leq n \leq 30\,000$ % constraint:n
+ja
+$1\leq w_i \leq 10^6$ kaikille $1\leq i \leq n$.% constraint:wi
+
+
+% Your solution will be tested on a set of test groups, each worth a number of points.
+Ratkaisu testataan testiryhmillä, joista kullakin on oma pistemäärä.
+% Each test group contains a set of test cases.
+Jokainen testiryhmä sisältää joukon testitapauksia.
+% To get the points for a test group you need to solve all test cases in the test group.
+Ryhmän pisteet saa vain, jos ratkaisee kaikki sen testitapaukset.
+% Your final score will be the maximum score of a single submission.
+Tehtävän lopullinen pistemäärä on suurin yksittäisen lähetyksen pistemäärä.
+
+\medskip
+\begin{tabular}{lll}
+Ryhmä & Pisteet & Rajoitukset \\\hline
+$1$   & $11$ & $n\leq 10$ \\
+$2$   & $10$ & $n\leq 300$, $w_1=\cdots=w_n = 1$ \\
+$3$   & $10$ & $n\leq 300$, $w_1=\cdots=w_n$ \\ % constraint:uniformweights
+$4$   & $9$ & $n\leq 1400$, $w_1=\cdots=w_n = 1$ \\
+$5$   & $45$ & $n\leq 5000$\\
+$6$   & $15$ & \emph{Ei muita rajoituksia}
+\end{tabular}

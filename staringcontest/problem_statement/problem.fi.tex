@@ -1,0 +1,161 @@
+\problemname{Tuijotuskilpailu}
+
+\illustration{.4}{img/Staring_contest.pdf}{}
+
+%A staring contest is a classical battle of imperturbability in which two people 
+\noindent
+Tuijotuskilpailu on klassinen häiriintymättömyyden taistelu, jossa kaksi ihmistä
+%stare into each other's eyes while maintaining a facial expression of assured serenity.
+tuijottavat toisiaan silmiin ylläpitäen samalla varman neutraalia ilmettä.
+%The goal is to maintain eye contact for longer than your opponent.
+Tavoitteena on säilyttää katsekontakti vastustajaa pidempään.
+% The contest ends when one participant breaks composure, typically 
+Kilpailu loppuu, kun toinen osallistujista ei saa enää pidettyä pokkaansa,
+% by looking away, smiling, speaking, or giggling.
+vaan esimerkiksi katsoo pois, hymyilee, puhuu tai nauraa.
+
+% As a coach of the national staring contest you need to determine the 
+% imperturbability of each of your team's $n$ members for the upcoming world finals.
+Kansallisen tuijotuskilpailun valmentajana sinun täytyy selvittää jokaisen 
+joukkueesi $n$:n jäsenen häiriintymättömyys tulevaa maailmanmestaruuskilpailua varten.
+% The $i$th athlete can maintain eye contact for exactly $a_i$ seconds, 
+Kilpailijoista $i$:s pystyy ylläpitämään katsekontaktia tasan $a_i$ sekuntia,
+% but these values are unknown to you in the beginning.
+mutta et tiedä näitä arvoja alussa.
+% For instance, you could have a team of $n=3$ members:
+Esimerkiksi, sinulla voisi olla joukkue, jossa on $n=3$ jäsentä:
+
+\medskip
+\begin{tabular}{lll}
+  $i$ & Nimi & $a_i$\\\hline
+  1 & Anna &  431 \\
+  2 & Esther & 623 \\
+  3 & Tony &  121\\
+\end{tabular}
+
+\medskip
+% When athletes $i$ and $j$ compete, the confrontation lasts exactly 
+%$\min(a_i, a_j)$ seconds, at which moment the weaker contestant breaks 
+%composure and both contestants start smiling and giggling within a 
+%fraction of a second.
+Kun kisajaat $i$ ja $j$ kilpailevat, heidän yhteenottonsa kestää tarkalleen 
+$\min(a_i, a_j)$ sekuntia, minkä jälkeen heikomman kisaajan pokka pettää 
+ja molemmat alkavat hymyillä ja kikattaa sekunnin murto-osassa.
+% For instance, if Anna competes against Esther, the contest lasts for $431$~seconds.
+Jos esimerkiksi Anna kilpailee Estheriä vastaan, kisa kestää $431$~sekuntia.
+% Importantly, to an outside observer the actual \emph{winner} of the confrontation 
+%(in this case, Esther) is impossible to determine, only the \emph{duration} of the 
+%contest is measurable.
+Huomaa, että ulkopuolisen tarkastelijan on mahdotonta päätellä 
+kisan \emph{voittajaa} (tässä tapauksessa Esther), vaan ainoastaan kisan 
+\emph{kesto} on mitattavissa.
+
+
+% Your goal is to estimate the values $a_1,\ldots, a_n$ using as few staring contests 
+% as possible.
+Tehtäväsi on arvioida lukuja $a_1,\ldots, a_n$ käyttäen mahdollisimman pientä 
+määrää tuijotuskilpailuja.
+% Clearly, the strength of the strongest athlete can never be determined, so you are 
+% allowed to underestimate one of the $a_i$.
+Parhaimman kisaajan häiriintymättömyyttä on selvästi mahdotonta määrittää, joten 
+saat aliarvioida yhden luvuista $a_i$.
+
+\section*{Interaktio}
+
+% This is an interactive problem.
+Tämä on interaktiivinen tehtävä.
+% The interaction begins with you reading a single line containing the integer $n$.
+Interaktio alkaa sillä, että luet yhden rivin, joka sisältää kokonaisluvun $n$.
+% You may then ask queries of the form ``\texttt{?} $i$ $j$'' such that 
+% $1\leq i\leq n$ and $1\leq j\leq n$ and $i\neq j$.
+Voit tehdä kyselyitä muotoa ``\texttt{?} $i$ $j$'', missä 
+$1\leq i\leq n$, $1\leq j\leq n$ ja $i\neq j$.
+% The response to a query is a single integer: the value $\min(a_i, a_j)$.
+Vastaus kyselyyn on yksi kokonaisluku: kesto $\min(a_i, a_j)$.
+% The interaction ends with you printing a single line consisting of \texttt{!} 
+% followed by $n$ estimates in the form of integers $b_1$, $\ldots$, $b_n$, 
+% separated by spaces.
+Interaktio loppuu, kun tulostat yhden rivin, joka koostuu merkistä \texttt{!} 
+ja $n$ arviosta välilyönneillä erotettuina kokonaislukuina 
+$b_1$, $\ldots$, $b_n$.
+% This must be your final line of output.
+Tämän täytyy olla tulosteesi viimeinen rivi.
+
+% Your submission is correct if $b_i=a_i$ for every contestant~$i$ except one, 
+% which you may underestimate.
+Ratkaisusi katsotaan oikeaksi, jos $b_i=a_i$ jokaiselle kisaajalle~$i$, paitsi yhdelle,
+jonka häiriintymättömyyden saat a\-li\-ar\-vi\-oi\-da.
+%To be precise, we require $b_i\leq a_i$ for all $1\leq i\leq n$ and allow 
+%$b_k \neq a_k$ for at most one~$k$.
+Tarkalleen ottaen vaadimme, että $b_i\leq a_i$ kaikille $1\leq i\leq n$  
+ja sallimme $b_k \neq a_k$ korkeintaan yhdelle~$k$:lle.
+
+% The interactor is \emph{non-adaptive}, meaning that the $a_1,\ldots, a_n$ are 
+% determined before the interaction begins.
+Tehtävän interaktori \emph{ei ole} adaptiivinen, eli luvut $a_1,\ldots, a_n$ 
+ovat päätetty ennen interaktion alkamista.
+
+\section*{Rajoitukset ja pisteytys}
+
+%The number $n$ of athletes satisfies 
+%$2\leq n\leq 1500$.
+Kisaajien määrälle $n$ pätee 
+$2\leq n\leq 1500$. % constraint:n
+%The imperturbability~$a_i$ of each athlete satisfies 
+Kisaajien häiriintymättömyyksille~$a_i$ pätee
+$1\leq a_i\leq 86\,400$, % constraint:skillbounds
+%they are all different. 
+ja ne ovat kaikki erisuuria keskenään. % constraint:allskillsdifferent
+% You can use 
+% at most $3000$~queries; 
+% your final line of output, \emph{i.e.}, the line starting with \texttt{!}, is not counted as a query.
+Voit käyttää enintään $3000$~kyselyä; % constraint:maxnumqueries
+viimeistä tulosteriviäsi, eli merkillä \texttt{!} alkavaa riviä,
+ei lasketa kyselyksi.
+% your final line of output, \emph{i.e.}, the line starting with \texttt{!}, is 
+% not counted as a query.
+
+% Your solution will be tested on a set of test groups, each worth a number of points.
+Ratkaisu testataan testiryhmillä, joista kullakin on oma pistemäärä.
+% Each test group contains a set of test cases.
+Jokainen testiryhmä sisältää joukon testitapauksia.
+% To get the points for a test group you need to solve all test cases in the test group.
+Ryhmän pisteet saa vain, jos ratkaisee kaikki sen testitapaukset.
+% Your final score will be the maximum score of a single submission.
+Tehtävän lopullinen pistemäärä on suurin yksittäisen lähetyksen pistemäärä.
+
+%For group~$3$, your score is the minimum score among all test cases in the group.
+Ryhmässä~$3$ pistemääräsi on kaikkien ryhmän testien pienin pistemäärä.
+%The score for each test case depends on the number of queries you use;
+%fewer queries are better:
+Yhden testitapauksen pistemäärä riippuu käyttämiesi kyselyiden määrästä; 
+mitä vähemmän kyselyita, sen parempi:
+%Suppose you use $q$ queries. 
+Oletetaan, että teet $q$ kyselyä.
+%If $q \le n+25$, then you get the full $80$~points. 
+Jos $q \le n+25$, niin saat täydet $80$~pistettä. 
+Jos $q > 3000$, niin saat nolla pistettä.
+%Otherwise, you get 
+%$118.2 - 12 \cdot \ln(q - n)$~points, rounded to the nearest integer. 
+Muussa tapauksessa saat $118.2 - 12 \cdot \ln(q - n)$~pistettä, 
+pyöristettynä lähimpään kokonaislukuun. % constraint:scoringfunction
+%For instance, for $n = 1500$ and $q = 3000$, you get $30$~points.
+Jos esimerkiksi $n = 1500$ ja $q = 3000$, niin saat $30$~pistettä.
+
+\medskip
+\begin{tabular}{lll}
+Ryhmä & Pisteet & Rajoitukset\\\hline
+$1$  &  $9$ & $n\leq 50$\\
+$2$  &  $11$ & $n\leq 1000$\\
+$3$  &  $0$--$80$ & $1000 < n\leq 1500$\\
+\end{tabular}
+
+% \section*{Explanation of sample interactions}
+\section*{Selitys esimerkkitapauksille}
+
+% Sample interaction $1$ shows a possible interaction using the above example. 
+% Note that Anna's and Tony's strengths are correctly determined.
+% (Esther's can never be determined.)
+Esimerkki $1$ näyttää mahdollisen interaktion ylläolevalle esimerkille.
+Huomaa, että Annan ja Tonyn häi\-riin\-ty\-mät\-tö\-myy\-det on määritetty oikein. 
+(Estherin häiriintymättömyyttä ei voida määrittää.)
