@@ -6,7 +6,7 @@
  *
  *   Note: Queries points outside the grid, except for k=1
  *
- *   # @EXPECTED_GRADES@ AC WA WA WA WA WA WA
+ *   # @EXPECTED_GRADES@ AC AC AC AC WA WA WA
  */
 
 
@@ -65,11 +65,11 @@ map<ll, int> subtract_known(map<ll, int> ret, vector<Point> const&query, vector<
     return ret;
 }
 
-const ll STEP = 2.01e8;
 
 signed main(){
     cin >> X >> k >> Q;
     Y = X;
+    const ll STEP = 2*Y+1;
     vector<Point> q_A = {Point{-X, -Y}}, q_B = {Point{X, -Y}};
     auto A_orig = query(q_A);
     auto B_orig = query(q_B);

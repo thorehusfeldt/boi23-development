@@ -1,5 +1,5 @@
 /*
- * @EXPECTED_GRADES@ WA WA WA WA WA WA WA
+ * @EXPECTED_GRADES@ AC WA WA WA WA WA WA
  *   A solution that only queries a single point at a time.
  *   This solution does not use candidates. Instead, a quad-tree like descent
  *   is used to search the entire plane.
@@ -74,7 +74,7 @@ signed main(){
             ans.insert(center);
             return;
         }
-        const int R = r - r/2;
+        const ll R = r - r/2;
         r /= 2;
         rec(rec, Point{center.x + R, center.y}, r);
         rec(rec, Point{center.x - R, center.y}, r);
