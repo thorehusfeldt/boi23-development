@@ -6,7 +6,7 @@
 % A staring contest is a classical battle of imperturbability in which two people stare into each other's eyes while maintaining a facial expression of assured serenity.
 Konkurs gapienia się to klasyczna bitwa niewzruszoności, w której dwie osoby wpatrują się w siebie nawzajem, zachowując przy tym wyraz twarzy o zapewnionym spokoju.
 % The goal is to maintain eye contact for longer than your opponent.
-Celem jest utrzymanie kontaktu wzrokowego dłużej niż twój przeciwnik.
+Celem jest utrzymanie kontaktu wzrokowego dłużej niż Twój przeciwnik.
 % The contest ends when one participant breaks composure, typically by looking away, smiling, speaking, or giggling.
 Konkurs kończy się, gdy jeden z uczestników złamie opanowanie, zazwyczaj odwracając wzrok, uśmiechając się, mówiąc lub chichocząc.
 
@@ -20,7 +20,7 @@ Na przykład, możesz mieć drużynę składającą się z $n=3$ członków:
 \medskip
 \begin{tabular}{lll}
 %   $i$ & Name & $a_i$\\\hline
-  $i$ & Imię i nazwisko & $a_i$\\\hline
+  $i$ & Imię & $a_i$\\\hline
 %   1 & Anna &  431 \\
  1 & Anna & 431 \\ % TODO: zdecydować czy inaczej nazwać przykładowych uczestników
 %   2 & Esther & 623 \\
@@ -47,15 +47,15 @@ Oczywiście, siła najsilniejszego zawodnika nigdy nie może być określona, wi
 % This is an interactive problem.
 To jest problem interaktywny.
 % The interaction begins with you reading a single line containing the integer $n$.
-Interakcja rozpoczyna się od przeczytania pojedynczego wiersza zawierającego liczbę całkowitą $n$.
+Interakcja rozpoczyna się od wczytania ze standardowego wejścia pojedynczego wiersza zawierającego liczbę całkowitą $n$.
 % You may then ask queries of the form ``\texttt{?} $i$ $j$'' such that $1\leq i\leq n$ and $1\leq j\leq n$ and $i\neq j$.
 Następnie możesz zadawać pytania w postaci ``\texttt{?} $i$ $j$'' takie, że $1\leq i\leq n$ oraz $1\leq j\leq n$ oraz $i\neq j$.
 % The response to a query is a single integer: the value $\min(a_i, a_j)$.
 Odpowiedzią na zapytanie jest jedna liczba całkowita: wartość $\min(a_i, a_j)$.
 % The interaction ends with you printing a single line consisting of \texttt{!} followed by $n$ estimates in the form of integers $b_1$, $\ldots$, $b_n$, separated by spaces.
-Interakcja kończy się wydrukowaniem pojedynczego wiersza składającego się ze znaku \texttt{!}, po którym następuje $n$ oszacowań w postaci liczb całkowitych $b_1$, $\ldots$, $b_n$, oddzielonych spacjami.
+Interakcja kończy się wypisaniem na standardowe wyjście pojedynczego wiersza składającego się ze znaku \texttt{!}, po którym następuje $n$ oszacowań w postaci liczb całkowitych $b_1$, $\ldots$, $b_n$, oddzielonych spacjami.
 % This must be your final line of output.
-To musi być twój ostatni wiersz wyjścia.
+To musi być Twój ostatni wiersz wyjścia.
 
 % Your submission is correct if $b_i=a_i$ for every contestant~$i$ except one, which you may underestimate.
 Twoje zgłoszenie będzie uznane za poprawne, jeśli $b_i=a_i$ dla każdego zawodnika~$i$ z wyjątkiem jednego, którego możesz nie docenić.
@@ -100,7 +100,7 @@ mniejsza liczba zapytań jest lepsza:
 % Suppose you use $q$ queries. 
 Załóżmy, że używasz $q$ zapytań. 
 % If $q \le n+25$, then you get the full $80$~points. 
-Jeśli $q \le n+25$, to otrzymujesz pełne $80$~punkty. 
+Jeśli $q \le n+25$, to otrzymujesz pełne $80$~punktów. 
 % If $q > 3000$, then you get no points.
 Jeśli $q > 3000$, to nie dostaniesz żadnych punktów.
 % Otherwise, you get 
@@ -126,4 +126,4 @@ Przykładowa interakcja $1$ pokazuje możliwą interakcję z wykorzystaniem powy
 % Note that Anna's and Tony's strengths are correctly determined.
 Zauważ, że siły Anny i Tony'ego są poprawnie określone.
 % (Esther's can never be determined.)
-(Moc Estera nigdy nie może być określona).
+(Siła Estera nigdy nie może być określona).

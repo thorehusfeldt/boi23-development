@@ -1,11 +1,11 @@
 % \problemname{Mineral deposits}
-\problemname{Złoża mineralne}
+\problemname{Złoża minerałów}
 
-\illustration{.3}{img/turnbull.jpg}{Eroding mud face exposing new minerals. Photo: Michael D.\ Turnbull, licence: CC BY-SA.}
+\illustration{.3}{img/turnbull.jpg}{Erodująca ściana błota odsłaniająca nowe minerały. Zdjęcie: Michael D.\ Turnbull, licencja: CC BY-SA.}
 
 \noindent
 % You handle signal processing for an extra-terrestrial mining company, and your vessel is currently approaching an asteroid. 
-Zajmujesz się przetwarzaniem sygnałów dla pozaziemskiej firmy wydobywczej, a twój statek właśnie zbliża się do asteroidy. 
+Zajmujesz się przetwarzaniem sygnałów dla pozaziemskiej firmy wydobywczej, a Twój statek właśnie zbliża się do asteroidy. 
 % Preliminary scans show the presence of $k$~mineral deposits on the asteroid, but their precise locations are unknown.
 Wstępne skany wskazują na obecność $k$~złóż minerałów na asteroidzie, ale ich dokładne lokalizacje nie są znane.
 
@@ -14,30 +14,30 @@ Wstępne skany wskazują na obecność $k$~złóż minerałów na asteroidzie, a
 % The surface of the asteroid can be seen as a grid of integer coordinates.
 Powierzchnia asteroidy może być postrzegana jako siatka współrzędnych całkowitych.
 % Each of the mineral deposits is located at unknown integer coordinates such that the $i$th deposit has coordinates $(x_i, y_i)$ with  
-Każde ze złóż mineralnych znajduje się w nieznanych współrzędnych całkowitych, tak że $i$-te złoże ma współrzędne $(x_i, y_i)$ spełniające
+Każde ze złóż minerałów znajduje się w nieznanych współrzędnych całkowitych, tak że $i$-te złoże ma współrzędne $(x_i, y_i)$ spełniające
 % $-b \le x_i \le b$ and $-b\le y_i \le b$ %constraint:depositcoords
 $-b \le x_i \le b$ oraz $-b\le y_i \le b$ %constraint:depositcoords
 % for some integer $b$ corresponding to the size of your initial scan.
-dla pewnej liczby całkowitej $b$ odpowiadającej rozmiarowi twojego początkowego skanu.
+dla pewnej liczby całkowitej $b$ odpowiadającej rozmiarowi Twojego początkowego skanu.
 
 % To determine the precise locations of the mineral deposits, you may send probes to the surface of the asteroid. 
 Aby określić dokładne położenie złóż minerałów, możesz wysłać na powierzchnię asteroidy sondy. 
 % The probes are sent out in waves of several probes at once.
-Sondy są wysyłane w porcjach po kilka sond jednocześnie.
+Sondy są wysyłane w falach po kilka sond jednocześnie.
 
 % Say you sent a wave of $d$~probes to the surface at coordinates $(s_j,t_j)$ for $1\leq j\leq d$.
-Powiedzmy, że wysłałeś jedną porcję $d$~sond na powierzchnię na współrzędne $(s_j,t_j)$ dla $1\leq j\leq d$.
+Powiedzmy, że wysłałeś jedną falę $d$~sond na powierzchnię na współrzędne $(s_j,t_j)$ dla $1\leq j\leq d$.
 % When a probe arrives at its coordinates, it determines the Manhattan distances to each of the $k$~mineral deposits and sends the distances back to the ship. 
 Kiedy sonda dociera do swoich współrzędnych, określa odległości w metryce Manhattan do każdego z $k$~złóż minerałów i wysyła odległości z powrotem na statek. 
 % All data packets arrive at the same time, and it is not possible to determine which probes returned which distances. 
 Wszystkie pakiety danych docierają w tym samym czasie i nie jest możliwe określenie, które sondy zwróciły jakie odległości. 
 % Thus the wave returns the $k\cdot d$ integer distances
-Tak więc porcja zwraca $k\cdot d$ odległości całkowitych
+Tak więc fala zwraca $k\cdot d$ odległości całkowitych
 % \[|x_i-s_j| + |y_i - t_j| \qquad\text{for all } i \in \{1,\ldots,k\} \text{ and } j \in\{ 1,\ldots,d\}\,.\]
 \[|x_i-s_j| + |y_i - t_j| \qquad\text{dla każdego } i \in \{1,\ldots,k\} \text{ oraz } j \in\{ 1,\ldots,d\}\,.\]
 
 % You need to minimise the number of waves of probes that is sent to the surface.
-Musisz zminimalizować liczbę porcji sond, które są wysyłane na powierzchnię.
+Musisz zminimalizować liczbę fal sond, które są wysyłane na powierzchnię.
 
 
 \section*{Interakcja}
@@ -45,18 +45,18 @@ Musisz zminimalizować liczbę porcji sond, które są wysyłane na powierzchni�
 % This is an interactive problem.
 Jest to problem interaktywny.
 % Interaction begins with you reading a single line containing three integers $b$, $k$, and $w$:
-Interakcja rozpoczyna się od przeczytania pojedynczego wiersza zawierającego trzy liczby całkowite $b$, $k$ oraz $w$:
+Interakcja rozpoczyna się od wczytania ze standardowego wejścia pojedynczego wiersza zawierającego trzy liczby całkowite $b$, $k$ oraz $w$:
 % the grid's boundary~$b$,
 granica siatki~$b$,
 % the number~$k$ of mineral deposits,
 liczbę złóż minerałów~$k$,
 % and the maximum number~$w$ of waves you may send.
-i maksymalna liczba~$w$ porcji, które możesz wysłać.
+i maksymalna liczba~$w$ fal, które możesz wysłać.
 
 % You then ask at most $w$ queries, each corresponding to a wave.
-Następnie zadajesz co najwyżej $w$ zapytań, każde odpowiadające jakiejś porcji.
+Następnie zadajesz co najwyżej $w$ zapytań, każde odpowiadające jakiejś fali.
 % A query consists of \texttt{?} followed by $2d$ integers separated by space, such as ``\texttt{?} $s_1$ $t_1$ $\cdots$ $s_d$ $t_d$'', where the number~$d$ of probes in this wave must satisfy
-Zapytanie składa się z \texttt{?}, po którym następuje $2d$ liczb całkowitych oddzielonych spacją, na przykład ``\texttt{?} $s_1$ $t_1$ $\cdots$ $s_d$ $t_d$'', gdzie liczba~$d$ sond w tej porcji musi spełniać wymagania
+Zapytanie składa się z \texttt{?}, po którym następuje $2d$ liczb całkowitych oddzielonych spacją, na przykład ``\texttt{?} $s_1$ $t_1$ $\cdots$ $s_d$ $t_d$'', gdzie liczba~$d$ sond w tej fali musi spełniać wymagania
 $1\leq d\leq 2000$. % constraint:wavesize
 % The values $(s_i,t_i)$ are interpreted as the coordinates of the $i$th probe and must satisfy
 Wartości $(s_i,t_i)$ są interpretowane jako współrzędne $i$-tej sondy i muszą spełniać
@@ -65,13 +65,13 @@ $-10^8 \leq s_i \leq 10^8$ oraz $-10^8 \leq t_i \leq 10^8$. % constraint:probeco
 % The response is a single line with $k \cdot d$ integers in non-decreasing order: all pairs of Manhattan distances between the mineral deposits and the probe coordinates.
 Odpowiedzią jest jeden wiersz zawierający $k \cdot d$ liczb całkowitych w kolejności niemalejącej: wszystkie pary odległości w metryce Manhattan pomiędzy złożami mineralnymi oraz współrzędnymi sondy.
 % The total number of probes across all waves may not exceed
-Całkowita liczba sond we wszystkich porcjach nie może przekroczyć
+Całkowita liczba sond we wszystkich falach nie może przekroczyć
 $2\cdot 10^4.$ % constraint:totalprobes
 
 % Interaction ends with you printing a single line consisting of \texttt{!} followed by $k$ points $x_1, y_1, x_2, y_2, \ldots x_k, y_k$, separated by space.
 Interakcja kończy się wypisaniem pojedynczego wiersza składającego się ze znaku \texttt{!}, po którym następuje $k$ punktów $x_1, y_1, x_2, y_2, \ldots x_k, y_k$, oddzielone spacją.
 % This must be your last line of output.
-To musi być twój ostatni wiersz wyjścia.
+To musi być ostatni wiersz wypisany przez Ciebie na standardowe wyjście.
 
 % Your submission is considered correct if you print all locations of the mineral deposits.
 Twoje zgłoszenie zostanie uznane za poprawne, jeśli wypiszesz wszystkie lokalizacje złóż minerałów.
@@ -122,12 +122,12 @@ W tym przykładzie, na pozycjach $(1,2)$ oraz $(-3,-2)$ znajdują się $k=2$ zł
 % In the first wave, you might send $d=3$ probes to $(-4,-3)$, $(-1, 0)$, and $(2,-1)$, shown as black dots.
 W pierwszym rzucie możesz wysłać $d=3$ sondy na pozycje $(-4,-3)$, $(-1, 0)$ oraz $(2,-1)$, zareprezentowane jako czarne kropki.
 % This wave would return the $6$ distances \[
-Ta porcja zwróciłaby $6$ odległości \[
+Ta fala zwróciłaby $6$ odległości \[
   2, 4, 4, 4, 6, 10\,.
 \]
 % In the next wave, you might send $d=2$ probes to $(1,2)$ and $(0,-2)$.
- W następnej porcji można wysłać sondy $d=2$ do $(1,2)$ oraz $(0,-2)$.
+ W następnej fali można wysłać sondy $d=2$ do $(1,2)$ oraz $(0,-2)$.
 % This wave would return the $4$ distances \[
-Ta porcja zwróciłaby $4$ odległości \[
+Ta fala zwróciłaby $4$ odległości \[
   0, 3, 5, 8\,.
 \]
