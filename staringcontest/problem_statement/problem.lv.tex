@@ -4,7 +4,7 @@
 
 \noindent
 Skatīšanās sacensības ir klasiska izturības cīņa, kur divi cilvēki skatās viens otra acīs, uzturot mierīgu sejas izteiksmi.
-Mērķis ir saglabāt acu kontakta ilgāk par pretinieku.
+Mērķis ir saglabāt acu kontaktu ilgāk par pretinieku.
 Sacensības beidzas, kad viens dalībnieks zaudē koncentrēšanos, piemēram, novēršot skatienu, smaidot, runājot vai smejoties.
 
 Kā nacionālajam skatīšanās sacensību trenerim, jums ir jānosaka katra komandas dalībnieka izturība gaidāmajā pasaules finālā, kur komanda sastāv no $n$ dalībniekiem.
@@ -21,11 +21,11 @@ Piemēram, jūsu komanda varētu sastāvēt no $n=3$ dalībniekiem:
 
 \medskip
 Kad $i$-tais un $j$-tais dalībnieks sacenšas, konfrontācija ilgst tieši $\min(a_i, a_j)$ sekundes, tajā brīdī vājākais dalībnieks zaudē koncentrēšanos un pēc mirkļa abi dalībnieki sāk smaidīt un smieties.
-Piemēram, ja Anna sacenšas ar Esteri, sacensības ilgst $431$ sekundes.
-Svarīgi ir atzīmēt, ka vērotājam no malas faktisko \emph{uzvarētāju} konfrontācijā (šajā gadījumā - Estere) ir neiespējami noteikt, izmērāms ir tikai konfrontācijas \emph{ilgums}.
+Piemēram, ja Anna sacenšas ar Esteri, sacensības ilgst $431$~sekundes.
+Svarīgi ir atzīmēt, ka vērotājam no malas faktisko \emph{uzvarētāju} konfrontācijā (šajā gadījumā Estere) ir neiespējami noteikt, izmērāms ir tikai konfrontācijas \emph{ilgums}.
 
 Jūsu mērķis ir noteikt $a_1,\ldots, a_n$ vērtības, izmantojot pēc iespējas mazāk skatīšanās sacensību.
-Skaidrs, ka spēcīgākā sportista spēku nekad nevar noteikt, tāpēc jums ir atļauts neprecīzi noteikt vienu no $a_i$ vērtībām.
+Skaidrs, ka spēcīgākā sportista spēku nekad nevar noteikt, tāpēc jums ir atļauts novērtēt par zemu vienu no $a_i$ vērtībām.
 
 
 \section*{Komunikācija}
@@ -36,7 +36,7 @@ Tad jūs varat vaicāt pieprasījumus, kas ir formātā "\texttt{?} $i$ $j$", ku
 Atbilde uz jūsu pieprasījumu būs viens vesels skaitlis: $\min(a_i, a_j)$ vērtība.
 Komunikācija beidzas ar vienas rindas izdrukāšanu, kas sastāv no \texttt{!}, aiz kura seko $n$ noteiktie veselie skaitļi $b_1$, $\ldots$, $b_n$, kas atdalīti ar atstarpi. Šai ir jābūt pēdejai izvada rindai.
 
-Jūsu risinājums ir pareizs, ja $b_i=a_i$ katram dalībniekam $i$, izņemot vienu, kuram sagaidāmo iztūrību drīkst novērtēt par zemu. Precīzāk, tiek sagaidīts, ka $b_i\leq a_i$ visiem $1\leq i\leq n$ un atļaujam, ka $b_k \neq a_k$ ne vairāk kā vienai $k$ vērtībai.
+Jūsu risinājums ir pareizs, ja $b_i=a_i$ katram dalībniekam~$i$, izņemot vienu, kuram sagaidāmo iztūrību drīkst novērtēt par zemu. Precīzāk, tiek sagaidīts, ka $b_i\leq a_i$ visiem $1\leq i\leq n$ un atļaujam, ka $b_k \neq a_k$ ne vairāk kā vienai~$k$ vērtībai.
 
 Testēšānas sistēmas komunikācijas programma ir \emph{neadaptīva}, kas nozīmē, ka $a_1,\ldots, a_n$ tiek fiksētas pirms komunikācijas sākuma.
 
@@ -61,11 +61,11 @@ $3.$ grupai jūsu rezultāts ir vismazākais punktu skaits starp visiem testiem 
 Katram testam punktu skaits ir atkarīgs no pieprasījumu skaita, ko jūs veiksiet; 
 mazāk pieprasījumu ir labāk.
 Pieņemsim, ka jūs izmantojat $q$ pieprasījumus.
-Ja $q \le n+25$, tad jūs saņemsiet visus $80$ punktus.
+Ja $q \le n+25$, tad jūs saņemsiet visus $80$~punktus.
 Ja $q > 3000$, tad jūs nesaņemsiet punktus.
 Citādi jūs saņemsiet 
 $118.2 - 12 \cdot \ln(q - n)$~punktus, kas noapaļoti līdz tuvākajam veselam skaitlim. % constraint:scoringfunction
-Piemēram, ja $n = 1500$ un $q = 3000$, tad jūs saņemsiet $30$ punktus.
+Piemēram, ja $n = 1500$ un $q = 3000$, tad jūs saņemsiet $30$~punktus.
 
 \medskip
 \begin{tabular}{lll}
