@@ -7,9 +7,9 @@ Ein Wettstarren ist ein klassischer Kampf der Unerschütterlichkeit, bei dem zwe
 Ziel ist es, den Augenkontakt länger aufrechtzuerhalten als der Gegner.
 Der Wettbewerb endet, wenn einer der Teilnehmer die Fassung verliert, indem er wegschaut, lächelt, spricht oder kichert.
 
-Als Trainer des nationalen Starwettbewerbs musst du für das bevorstehende Weltfinale die Unerschütterlichkeit aller $n$ Mitglieder deiner Mannschaft bestimmen.
+Als Trainer des nationalen Anstarrwettbewerbs musst du für das bevorstehende Weltfinale die Unerschütterlichkeit aller $n$ Mitglieder deiner Mannschaft bestimmen.
 Der $i$-te Sportler kann den Blickkontakt genau $a_i$ Sekunden lang aufrechterhalten, aber diese Werte sind Dir anfangs unbekannt.
-Du kannst zum Beispiel eine Mannschaft mit $n=3$ Mitgliedern haben:
+Du könntest zum Beispiel eine Mannschaft mit $n=3$ Mitgliedern haben:
 
 \medskip
 \begin{tabular}{lll}
@@ -20,7 +20,7 @@ Du kannst zum Beispiel eine Mannschaft mit $n=3$ Mitgliedern haben:
 \end{tabular}
 
 \medskip
-Wenn die Athleten $i$ und $j$ gegeneinander antreten, dauert die Konfrontation genau $\min(a_i, a_j)$ Sekunden, wobei der schwächere Teilnehmer die Fassung verliert und beide Teilnehmer innerhalb eines Sekundenbruchteils zu lächeln und zu kichern beginnen.
+Wenn die Athleten $i$ und $j$ gegeneinander antreten, dauert die Konfrontation genau $\min(a_i, a_j)$ Sekunden, wonach der schwächere Teilnehmer die Fassung verliert und beide Teilnehmer innerhalb eines Sekundenbruchteils zu lächeln und zu kichern beginnen.
 Wenn zum Beispiel Anna gegen Esther antritt, dauert der Wettbewerb $431$~Sekunden.
 Für einen außenstehenden Beobachter ist es unmöglich, den tatsächlichen Gewinner der Konfrontation (in diesem Fall Esther) zu bestimmen, nur die Dauer des Wettkampfs ist messbar.
 
@@ -31,15 +31,15 @@ Es ist klar, dass die Stärke des stärksten Athleten nie bestimmt werden kann, 
 
 Dies ist ein interaktives Problem.
 Die Interaktion beginnt damit, dass du eine einzelne Zeile einliest, die die ganze Zahl $n$ enthält.
-Du kannst dann Abfragen der Form ``\texttt{?} $i$ $j$'' stellen, so dass $1\leq i\leq n$ und $1\leq j\leq n$ und $i\neq j$.
+Du kannst dann Abfragen der Form ``\texttt{?} $i$ $j$'' stellen, wobei $1\leq i\leq n$ und $1\leq j\leq n$ und $i\neq j$ gelten muss.
 Die Antwort auf eine Abfrage ist eine einzelne ganze Zahl: der Wert $\min(a_i, a_j)$.
 Die Interaktion endet damit, dass du eine einzelne Zeile ausgibst, bestehend aus \texttt{!}, gefolgt von $n$ Schätzungen in Form von ganzen Zahlen $b_1$, $\ldots$, $b_n$, getrennt durch Leerzeichen.
 Dies muss die letzte Zeile der Ausgabe sein.
 
-Deine Eingabe ist korrekt, wenn $b_i=a_i$ für jeden Teilnehmer~$i$ außer einem, den du vielleicht unterschätzt, gilt.
-Um genau zu sein, verlangen wir $b_i\leq a_i$ für alle $1\leq i\leq n$ und erlauben $b_k \neq a_k$ für höchstens einen~$k$.
+Deine Einsendung ist korrekt, wenn $b_i=a_i$ für jeden Teilnehmer~$i$ außer einem, den du vielleicht unterschätzt, gilt.
+Um genau zu sein: Wir verlangen $b_i\leq a_i$ für alle $1\leq i\leq n$ und erlauben $b_k \neq a_k$ für höchstens ein~$k$.
 
-Der Interaktor ist \emph{nicht adaptiv}, d.h. die $a_1,\ldots, a_n$ sind bestimmt, bevor die Interaktion beginnt.
+Der Interaktor ist \emph{nicht adaptiv}, das heißt die $a_1,\ldots, a_n$ werden bestimmt, bevor die Interaktion beginnt.
 
 \section*{Beschränkungen und Bewertung}
 
@@ -59,12 +59,12 @@ Deine endgültige Punktzahl ist die maximale Punktzahl für eine einzelne Einsen
 
 Für Gruppe~$3$ ist deine Punktzahl die niedrigste Punktzahl aller Testfälle in der Gruppe.
 Die Punktzahl für jeden Testfall hängt von der Anzahl der Abfragen ab, die du verwendest;
-weniger Abfragen sind besser:
+weniger Abfragen sind besser.
 Angenommen, du verwendest $q$ Abfragen. 
 Wenn $q \le n+25$, dann bekommst du die vollen $80$~Punkte. 
 Wenn $q > 3000$ ist, bekommst du keine Punkte.
 Andernfalls bekommst du 
-$118,2 - 12 \cdot \ln(q - n)$~Punkte, gerundet auf die nächste ganze Zahl. % constraint:scoringfunction
+$118{,}2 - 12 \cdot \ln(q - n)$~Punkte, gerundet auf die nächste ganze Zahl. % constraint:scoringfunction
 Für $n = 1500$ und $q = 3000$ bekommst du zum Beispiel $30$~Punkte.
 
 \medskip
