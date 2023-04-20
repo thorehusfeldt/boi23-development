@@ -19,7 +19,7 @@ for noget heltal $b$ svarende til størrelsen af din indledende skanning.
 For at bestemme de nøjagtige positioner af mineralforekomsterne kan du sende sonder til asteroidens overflade. 
 Sonderne sendes ud i bølger af flere sonder ad gangen.
 
-Når en sonde ankommer til sine koordinater, bestemmer den Manhattan-afstanden til hver af de $k$ mineralforekomster og sender afstandene tilbage til rumskibet.
+Når en sonde ankommer til sine koordinater, bestemmer den manhattan-afstanden til hver af de $k$ mineralforekomster og sender afstandene tilbage til rumskibet.
 Alle datapakker ankommer samtidigt, og det er ikke muligt at afgøre, hvilke sonder der har returneret hvilke afstande. 
 En bølge returnerer altså $k\cdot d$ heltal, der repræsenterer afstandene:
 \[
@@ -41,7 +41,7 @@ $1\leq d\leq 2000$. % constraint:wavesize
 Værdierne $(s_i,t_i)$ bliver tolket som koordinaterne for den $i$'te sonde og skal opfylde 
 $-10^8 \leq s_i \leq 10^8$ og $-10^8 \leq t_i \leq 10^8$. % constraint:probecoordinates
 Svaret, du får tilbage, er en enkelt linje med $k \cdot d$~heltal i ikke-aftagende rækkefølge:
-alle par af Manhattan-afstande mellem mineralforekomsterne og sondekoordinaterne.
+manhattan-afstande mellem alle par af mineralforekomster og sondekoordinater.
 Det samlede antal sonder på tværs af alle bølger må ikke overstige
 $2\cdot 10^4$. % constraint:totalprobes
 
