@@ -2,11 +2,12 @@
 
 \illustration{.4}{img/Staring_contest.pdf}{}
 
-En \emph{stirrekonkurrence} er en klassisk mellem to personers evne til at stirre den anden i øjnene, mens man opretholder en ansigtsudtryk af ophøjet og behersket sindsligevægt.
-Man vinder ved at opretholde øjenkontakten længere end modstanderen.
+\noindent
+En \emph{stirrekonkurrence} er en klassisk konfrontation af to personers evne til at stirre den anden i øjnene under opretholdelsen af et ansigtsudtryk præget af ophøjet og behersket sindsligevægt.
+Man vinder ved at holde øjenkontakten længere end modstanderen.
 Konkurrencen slutter, når den ene deltager taber fatningen, typisk ved at kigge væk, smile, tale eller fnise.
 
-Som træner for det nationale stirre\-lands\-hold skal du bestemme uforstyrreligheden for hvert af landsholdets $n$~medlemmer til verdensfinalen.
+Som træner for stirre\-lands\-holdet skal du til verdensmesterskaberne bestemme uforstyrreligheden for hvert af landsholdets $n$~medlemmer.
 Den $i$'te atlet kan opretholde øjenkontakt i præcis $a_i$~sekunder, men disse værdier er ukendte for dig i begyndelsen.
 For eksempel kan dit hold bestå af $n=3$ medlemmer:
 
@@ -24,7 +25,7 @@ Hvis Anna for eksempel konkurrerer mod Esther, varer konkurrencen i $431$~sekund
 Det er vigtigt at understrege, at det for en udenforstående observatør er umuligt at bestemme den faktiske \emph{vinder} af konfrontationen (i dette tilfælde, Esther).
 Kun \emph{varigheden} af konkurrencen er målbar.
 
-Dit mål er at estimere værdierne $a_1,\ldots, a_n$ med så få stirrekonkurrencer som muligt.
+Du skal estimere værdierne $a_1,\ldots, a_n$ med så få stirrekonkurrencer som muligt.
 Det er klart, at den stærkeste atlets styrke aldrig vil kunne blive bestemt, så du har lov til at undervurdere én af $a_i$'erne.
 
 \section*{Interaktion}
@@ -32,7 +33,7 @@ Det er klart, at den stærkeste atlets styrke aldrig vil kunne blive bestemt, s�
 Dette er et interaktivt problem.
 Interaktionen begynder med, at du læser en enkelt linje, der indeholder tallet~$n$.
 Herefter kan du stille spørgsmål på formen ``\texttt{?} $i$ $j$'', hvor $1\leq i\leq n$, $1\leq j\leq n$ og $i\neq j$.
-Svaret på et spørgsmål er et enkelt tal: værdien $\min(a_i, a_j)$.
+Svaret på dit spørgsmål er et enkelt tal: værdien $\min(a_i, a_j)$.
 Interaktionen slutter, når du udskriver en enkelt linje bestående af \texttt{!} efterfulgt af dine estimater $b_1$, $\ldots$, $b_n$, adskilte af mellemrum.
 Derefter må du ikke skrive mere.
 
@@ -40,7 +41,7 @@ Din indsendelse er korrekt, hvis $b_i=a_i$ for hver deltager $i$ undtagen én, s
 Mere præcist skal der gælde $b_i\leq a_i$ for alle $1\leq i\leq n$, og vi tillader $b_k \neq a_k$ for højst ét $k$.
 
 
-Interaktoren er \emph{ikke-adaptiv}, hvilket betyder, at $a_1,\ldots, a_n$ er bestemt før interaktionen begynder.
+Opgaven er \emph{ikke-adaptiv}, hvilket betyder, at $a_1,\ldots, a_n$ er bestemt før interaktionen begynder.
 
 \section*{Begrænsninger og pointgivning}
 
@@ -66,7 +67,7 @@ Hvis $q \le n+25$, får du de fulde $80$~point.
 Hvis $q > 3000$, får du ingen point.
 Ellers får du
 $118,2 - 12 \cdot \ln(q - n)$~point, afrundet til nærmeste heltal. % constraint:scoringfunction
-For eksempel, for $n = 1500$ og $q = 3000$, får du $30$~point.
+For $n = 1500$ og $q = 3000$ får du for eksempel $30$~point.
 
 \medskip
 \begin{tabular}{lll}

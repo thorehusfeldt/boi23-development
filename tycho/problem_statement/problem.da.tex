@@ -3,13 +3,13 @@
 \illustration{.4}{img/MarsPerseveranceRover.jpg}{}
 
 \noindent
-Det planetariske udforsknings\-køretøj \emph{Tycho VIII} skal tilbage til hjemmebasen efter at have indsamlet mineralprøver.
+Rum\-udforsknings\-køretøjet \emph{Tycho VIII} skal tilbage til hjemmebasen efter at have indsamlet mineralprøver.
 Tycho bevæger sig i en lige linje fra position~$0$ til hjemmebasen ved position~$b$.
 Når den bevæger sig, flytter den sig med en langsom, men stabil hastighed på $1$~enhed pr.\ sekund.
 Hvert sekund tager Tycho $1$~enhed miljøskade fra de barske forhold på planeten.
 
-Situationen er endnu værre på grund af stråling fra en nærliggende pulsar, der tilføjer $d$~yderligere enheder af skade hvert $p$'te sekund.
-Strålingsskader kan dog undgås ved at søge ly i en af de $n$~forskellige skjulesteder langs vejen - huler, vegetation, store sten, ligene af planetens megafauna.
+Situationen forværres desuden af strålingen fra en nærliggende pulsar, der tilføjer $d$~yderligere enheder af skade hvert $p$'te sekund.
+Strålingsskaderne kan dog undgås ved at søge ly i de $n$~forskellige skjulesteder langs vejen -- huler, vegetation, store sten, skeletter af planetens megafauna, osv.
 Tycho kan vælge at stå stille på vilkårlige tidspunkter i et vilkårligt antal sekunder.
 
 Startpositionen~$0$ og hjemmebasen ved $b$ gælder begge sum skjulested, så Tycho tager ingen strålingsskader der.
@@ -23,9 +23,9 @@ Betragt situationen, hvor hjemmebasen er ved position $18$, og der er skjulested
 
 \includegraphics[width=.3\textwidth]{img/samplesetup}
 
-Antag at pulsarens periode er~$4$, så Tycho ville tage skade på tidspunkterne $4$, $8$, $12$, osv., hvis den ikke er skjult.
-Hvis Tycho forlader startpositionen (hvor den er skjult) på tidspunkt~$0$, kan den nå det første skjulested efter $8$~sekunder og blive strålingsskadet på tidspunkt~$4$ (men ikke på tidspunkt $8$, idet den er skjult).
-Fortsætter den uden at stoppe, når den hjemmebasen på tidspunkt~$18$ og pådrager sig $d+d$ flere enheder af strålingsskade (på tidspunkterne $12$ og $16$, henholdsvis).
+Antag at pulsarens periode er~$4$, så Tycho ville tage skade på tidspunkterne $4$, $8$, $12$, osv., hvis den ikke er i ly.
+Hvis Tycho forlader startpositionen (hvor den er i ly) på tidspunkt~$0$, kan den nå det første skjulested efter $8$~sekunder og blive strålingsskadet på tidspunkt~$4$ (men ikke på tidspunkt $8$, idet den er i ly).
+Fortsætter den uden at stoppe, ankommer den til hjemmebasen på tidspunkt~$18$ og pådrager sig $d+d$ flere enheder af strålingsskade (på tidspunkterne $12$ og $16$, henholdsvis).
 På denne måde vil den samlet pådrage sig $d+d+d=3d$ enheder af strålingsskader og $18$ enheder af miljøskader.
 Hvis Tycho i stedet venter ved det $2$.~skjulested (ved position~$15$) i $1$~sekund, forårsager pulsen på tidspunkt~$16$ ingen skade, og Tycho når hjemmebasen på tidspunkt~$19$ med et samlet antal skader på $2d + 19$.
 Dette er bedre for de fleste værdier af $d$.

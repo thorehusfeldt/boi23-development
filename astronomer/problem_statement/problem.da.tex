@@ -29,15 +29,16 @@ Billedet viser desuden optimale løsninger på eksempler~$1$, $2$ og~$4$.
 \section*{Indlæsning}
 
 Første linje består af fire heltal:
-antallet $k$ af stjerner, som astronomen ønsker at observere,
-antallet $n$ af stjerner på aftenens stjernehimmel,
-omkostningen $s$ for at flytte teleskopet og
-omkostningen $t$ for at bygge et teleskop.
+antallet~$k$ af stjerner, som astronomen ønsker at observere,
+antallet~$n$ af stjerner på aftenens stjernehimmel,
+omkostningen~$s$ ved at flytte teleskopet og
+omkostningen~$t$ ved at bygge et teleskop.
 Derefter følger $n$ linjer, hvor den $i$'te linje indeholder de heltallige koordinater $x_i$ og $y_i$ for den $i$'te stjerne.
 
 \section*{Udskrift}
 
 Et enkelt reelt tal: det mindste beløb i kroner, som astronomen skal bruge.
+Tallet angives i angelsaksisk format, dvs.\ med decimalpunktum som vist i eksemplerne.
 
 \section*{Begrænsninger og pointgivning}
 
@@ -46,7 +47,7 @@ Du kan antage at følgende gælder:
 \item $1\leq k\leq n\leq 700$. % constraint:kn
 \item $x_i, y_i\in \{-10^9,\ldots, 10^9\}$ for alle $i\in\{1,\ldots,n\}$. % constraint:xy
 \item $s,t\in \{0,\ldots, 10^9\}$. % constraint:st
-\item Dit svar accepteres hvis det er inden for en relativ eller absolut tolerance på $\epsilon = 10^{-6}$ af det korrekte svar.
+\item Dit svar accepteres, hvis det er inden for en relativ eller absolut tolerance på $\epsilon = 10^{-6}$ af det korrekte svar.
 \end{enumerate}
 
 Din løsning vil blive testet på en række testgrupper, hver med en vist antal point.
