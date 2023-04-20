@@ -61,6 +61,10 @@ int main()
 	int n, k;
 	int s, t;
 	cin >> k >> n >> s >> t;
+	if(s == 0 && t == 0)  {
+		cout << 0 << endl;
+		return 0;
+	}
 	point A[n];
 	for (int i = 0; i < n; i++)
 		cin >> A[i].x >> A[i].y;

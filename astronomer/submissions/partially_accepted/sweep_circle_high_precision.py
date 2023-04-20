@@ -32,6 +32,9 @@ def err(a,b):
     return d/m
 
 k,n,s,t = map(int,input().split())
+if(s == 0 and t == 0):
+    print(0)
+    sys.exit(0)
 s = s
 t = t
 ot = t
