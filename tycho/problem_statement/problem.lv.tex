@@ -4,22 +4,22 @@
 
 \noindent
 Planētas izpētes transportlīdzeklim \emph{Tycho VIII} pēc minerālu paraugu savākšanas ir jāatgriežas mājas bāzē.
-Tycho ceļo pa taisnu līniju no pozīcijas $0$ līdz bāzei, kas atrodas pozīcijā $b$.
+Tycho ceļo pa taisnu līniju no pozīcijas~$0$ līdz bāzei, kas atrodas pozīcijā $b$.
 Pārvietojoties tas virzās lēnā, bet pastāvīgā tempā ar ātrumu $1$~vienība sekundē.
 Katrā sekundē Tycho cieš $1$~vienības vides bojājumus no smagajiem apstākļiem uz planētas.
 
-Situāciju pasliktina tuvējā pulsāra radiācija, kas katru $p$ sekundi izraisa papildus $d$ vienības ar bojājumiem.
-Tomēr radiācijas bojājumus var novērst meklējot pajumti vienā no $n$ dažādajiem pa ceļam atrodamajos slēpņos: alās, augsnē, lielos akmeņos, planētas lielo dzīvnieku kaulu karkasos.
-Tycho jebkurā punktā var izvēlēties apstāties uz veselu skaitu sekundēm.
+Situāciju pasliktina tuvējā pulsāra radiācija, kas katru $p$-to sekundi izraisa papildus $d$ vienības ar bojājumiem.
+Tomēr radiācijas bojājumus var novērst, meklējot pajumti vienā no $n$ dažādos pa ceļam atrodamajos slēpņos: alās, augsnē, lielos akmeņos, planētas lielo dzīvnieku kaulu karkasos.
+Tycho jebkurā punktā var izvēlēties apstāties uz veselu sekunžu skaitu.
 
-Sākuma pozīcija $0$ un bāze $b$ ir ar pajumti, tāpēc Tycho tajās nav pakļauts radiācijas bojājumiem.
+Sākuma pozīcija~$0$ un bāze~$b$ ir ar pajumti, tāpēc Tycho tajās nav pakļauts radiācijas bojājumiem.
 
 \medskip
-Kāds ir vismazākais bojājumu apjoms, ko Tycho cieš ceļā atpakaļ uz bāzi?
+Kāds ir vismazākais bojājumu apjoms, ko Tycho var ciest ceļā atpakaļ uz bāzi?
 
 \section*{Piemērs}
 
-Apsveriet situāciju, kad mājas bāze atrodas $18$. pozīcijā un patvērumi ir pozīcijās $8$ un $15$.
+Aplūkosim situāciju, kad mājas bāze atrodas $18$.~pozīcijā un patvērumi ir pozīcijās $8$ un $15$.
 
 \includegraphics[width=.3\textwidth]{img/samplesetup}
 
@@ -33,8 +33,8 @@ Ja tomēr Tycho gaida $2.$ pajumtē (pozīcijā $15$) $1$ sekundi, impulss laika
 
 \includegraphics[width=.8\textwidth]{img/sample1_2.pdf}
 
-Ja pulsāra periods ir $10$, Tycho var sākuma pozīcijā gaidīt $2$ sekundes un tad doties uz bāzi bez apstāšanās nevienā pajumtē.
-Tādējādi viņš dodas cauri $1.$ patvērumam (pozīcijā $8$) īstajā brīdī, kad pulsārs uzliesmo, un sasniedz mājas bāzi laika momentā $20$, kopumā saņemot $20$ vienības ar vides bojājumiem un nekādus radiācijas bojājumus.
+Ja pulsāra periods ir $10$, Tycho var sākuma pozīcijā gaidīt $2$~sekundes un tad doties uz bāzi bez apstāšanās nevienā pajumtē.
+Tādējādi viņš dodas cauri $1.$ patvērumam (pozīcijā~$8$) tieši tajā brīdī, kad pulsārs uzliesmo, un sasniedz mājas bāzi laika momentā $20$, kopumā saņemot $20$ vienības ar vides bojājumiem un nekādus radiācijas bojājumus.
 
 \includegraphics[width=.4\textwidth]{img/sample3.pdf}
 
@@ -42,15 +42,15 @@ Tādējādi viņš dodas cauri $1.$ patvērumam (pozīcijā $8$) īstajā brīd�
 
 Pirmā rinda sastāv no četrām veselām skaitļu vērtībām $b$, $p$, $d$ un $n$, kas ir atdalītas ar vienu atstarpi:
 mājas bāzes atrašanās vietu $b$,
-pulsāru staru uzliesmojuma periodu $p$,
-radiācijas bojājumu apjomu $d$, kuru izraisa katrs pulsāra uzliesmojums,
-pajumšu skaits $n$.
-Nākamās $n$ rindas satur pa vienam skaitlim, kas apzīmē pajumšu atrašanās vietas $a_1$, $\ldots$, $a_n$, ar nosacījumu, ka
+pulsāru staru uzliesmojuma periodu~$p$,
+radiācijas bojājumu apjomu~$d$, kuru izraisa katrs pulsāra uzliesmojums,
+pajumšu skaits~$n$.
+Nākamās $n$~rindas satur pa vienam skaitlim, kas apzīmē pajumšu atrašanās vietas $a_1$, $\ldots$, $a_n$, ar nosacījumu, ka
 $0<a_1<\cdots <a_n< b$. % constraint:shelterbounds, constraint:sortedshelters
 
 \section*{Izvaddati}
 
-Jāizvada vesels skaitlis - minimālais bojājumu skaits, kas Tycho ir jāuztur, lai sasniegtu punktu $b$.
+Jāizvada vesels skaitlis, minimālais bojājumu skaits, kas Tycho ir jāuztur, lai sasniegtu punktu $b$.
 
 
 \section*{Ierobežojumi un vērtēšana}
@@ -83,4 +83,4 @@ Jūsu gala rezultāts būs lielākais punktu skaits, kas iegūts ar vienu risin�
 \end{tabular}
 
 \medskip
-\noindent $^*$ $1.$ testu grupā Tycho var vēl joprojām būt spiests gaidīt pozīcijā $0$ \emph{pirms} tas sāk pārvietoties. Piemēram, $2.$, $3.$ un $4.$ parauga ievaddatos, kas pieder $1.$ testa grupai.
+\noindent $^*$ $1$.~testu grupā Tycho var vēl joprojām būt spiests gaidīt pozīcijā~$0$ \emph{pirms} tas sāk pārvietoties. Piemēram, $2$., $3$. un $4$. parauga ievaddatos, kas pieder $1$.~testa grupai.
