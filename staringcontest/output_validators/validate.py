@@ -66,6 +66,8 @@ with open(sys.argv[1]) as in_file:
     q = 0
     while q < 3_000: # constraint:maxnumqueries
         line = get_team_line().split()
+        if len(line) < 1:
+            fail("Team output contains no tokens (e.g., empty or all whitespace")
         if line[0] == '?':
             if len(line) != 3:
                 fail(f"Got {len(line)} tokens, expected 3")
