@@ -24,7 +24,7 @@ assert d <= args.max_d
 assert n <= args.max_n
 
 assert n < b # constraint:sheltersfit
-assert p < b # constraint:pulsehappens
+assert 1 <= p < b # constraint:pulsehappens
 
 assert 1 <= b <= 10**12 # constraint:b
 assert 0 <= d <= 10**6  # constraint:d
