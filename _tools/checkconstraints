@@ -11,7 +11,7 @@ import sys
 import yaml
 
 
-BOI23LANGUAGES = ["da", "de", "en", "et", "is", "lt", "lv", "no", "pl", "sv", "uk"]
+BOI23LANGUAGES = ["da", "de", "en", "et", "is", "lt", "lv", "no", "pl", "sv", "uk", "fi"]
 INTre = r"\$(\d+)\$"  # matches '$54$' but not '54' or '$ 54$'
 RANGEre = r"\$(\d+)\$--\$(\d+)\$"  # matches '$54--67$'
 
