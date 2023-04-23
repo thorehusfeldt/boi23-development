@@ -1,0 +1,84 @@
+\problemname{Tõttvaatamisvõistlus}
+
+\illustration{.4}{img/Staring_contest.pdf}{}
+
+\noindent
+Tõtt vaatamine on klassikaline vankumatuse võistlus, kus kaks inimest vaatavad täiesti tõsise näoilmega üksteise silmadesse.
+Eesmärk on vastasest kauem silmsidet hoida.
+Matš lõpeb, kui üks osalistest enam vastu ei pea --- vaatab eemale, naeratab, hakkab räägima või itsitama.
+
+Riikliku tõttvaatamisvõistluse treenerina on sinu ülesanne teha tulevaste maailmameistrivõistluste tarbeks kindlaks võistkonna iga $n$ liikme vankumatus.
+$i$-s võistleja suudab silmsidet hoida täpselt $a_i$ sekundit; need väärtused on aga sulle esialgu teadmata.
+Näiteks võib sul olla $n=3$ liikmest koosnev võistkond:
+
+\medskip
+\begin{tabular}{lll}
+  $i$ & Nimi & $a_i$\\\hline
+  1 & Anna &  431 \\
+  2 & Ester & 623 \\
+  3 & Tõnu &  121\\
+\end{tabular}
+
+\medskip
+Kui võistlejad $i$ ja $j$ omavahel võistlevad, kestab matš täpselt $\min(a_i, a_j)$ sekundit; pärast seda ei pea nõrgem võistleja enam vastu ja mõlemad võistlevad hakkavad murdosa jooksul naeratama ja
+itsitama.
+Näiteks kui Anna võistleb Estri vastu, kestab võistlus $431$~sekundit.
+Sealhulgas ei ole välisel vaatlejal võimalik aru saada, kes matši \emph{võitis} (antud juhul Ester):
+mõõdetav on vaid matši \emph{kestus}.
+
+Sinu eesmärk on teha võimalikult väheste matšidega kindlaks väärtused $a_1,\ldots, a_n$.
+On selge, et tugevaima võistleja tugevust ei saa kuidagi kindlaks teha, seega on sul lubatud ühte arvudest $a_i$ alahinnata.
+
+\section*{Interaktsioon}
+
+See on interaktiivne ülesanne.
+Interaktsioon algab, kui loed sisendist üheainsa täisarvu $n$.
+Seejärel saad sa küsida päringuid kujul ``\texttt{?} $i$ $j$'', kus $1\leq i\leq n$, $1\leq j\leq n$ ja $i\neq j$.
+Päringule saad sa vastuseks üheainsa täisarvu: väärtuse $\min(a_i, a_j)$.
+Interaktsioon lõpeb, kui trükid välja rea, mis koosneb sümbolist \texttt{!} ja sellele järgnevatest $n$ tühikutega eraldatud täisarvust $b_1$, $\ldots$, $b_n$.
+See peab olema viimane sinu poolt trükitud väljundirida.
+
+Vastus loetakse korrektseks, kui $b_i=a_i$ iga võistleja~$i$ kohta peale ühe, mida võid alahinnata.
+Täpsemalt nõutakse, et $b_i\leq a_i$ iga $1\leq i\leq n$ kohta, kusjuures $b_k \neq a_k$ võib kehtida ülimalt ühe~$k$ korral.
+
+Interaktor \emph{ei ole kohanemisvõimeline} ehk arvud $a_1, \ldots, a_n$ määratakse enne interaktsiooni algust.
+
+\section*{Piirangud ja hindamine}
+
+Võistlejate arv $n$ rahuldab tingimust
+$2\leq n\leq 1500$. % constraint:n
+Iga võistleja vankumatus~$a_i$ rahuldab
+$1\leq a_i\leq 86\,400$, % constraint:skillbounds
+kusjuures nad on kõik omavahel erinevad. % constraint:allskillsdifferent
+Sa saad kasutada
+ülimalt $3000$~päringut; % constraint:maxnumqueries
+kusjuures viimast väljundirida, s.t. seda, mis algab sümboliga \texttt{!}, ei loeta päringuks.
+
+Selles ülesandes on testid jagatud gruppidesse, iga grupp on väärt mingi arvu punkte.
+Iga grupi eest saavad punkte vaid need lahendused, mis läbivad kõik sellesse gruppi kuuluvad testid.
+Sinu lõplik skoor on esituste maskimum.
+
+Grupis~$3$ on sinu skoor minimaalne skoor üle kõikide grupis olevate testide.
+Testi eest saadav skoor sõltub kasutatud päringute arvust;
+väikesem päringute arv on parem.
+Oletame, et kasutad $q$ päringut.
+Kui $q \le n+25$, saad kõik $80$~punkti.
+Kui $q > 3000$, siis sa punkte ei saa.
+Ülejäänud juhtudel saad
+$118.2 - 12 \cdot \ln(q - n)$~punkti, ümardatud lähima täisarvuni. % constraint:scoringfunction
+Näiteks kui $n = 1500$ ja $q = 3000$, saad $30$~punkti.
+
+\medskip
+\begin{tabular}{lll}
+Grupp & Punktid & Lisapiirangud \\\hline
+$1$  &  $9$ & $n\leq 50$\\
+$2$  &  $11$ & $n\leq 1000$\\
+$3$  &  $0$--$80$ & $1000 < n\leq 1500$\\
+\end{tabular}
+
+\section*{Näiteinteraktsiooni selgitus}
+
+Näiteinteraktsioonis $1$ on toodud üks võimalik interaktsioon, mis vastab
+ülaltoodud näitele.
+Pane tähele, et Anna ja Tõnu tugevused on leitud korrektselt.
+(Estri oma ei ole võimalik selgeks teha.)
