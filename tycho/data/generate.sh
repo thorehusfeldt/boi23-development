@@ -24,7 +24,7 @@ sample 3
 sample 4
 sample 5
 
-group group1 8
+group group1 18
 limits --max_p 1_000_000 --no_wait
 tc 2
 tc 3
@@ -38,7 +38,7 @@ tc nw-big-1      gen_no_wait -b 1_000_000_000_000 -p 1_000_000 -d 12345 -n 100_0
 tc nw-big-2      gen_no_wait -b 1_000_000_000_000 -p 1_000_000 -d 12345 -n 100_000 -use 90_000 -start 23415 -trivial 9950
 
 
-group group2 5
+group group2 15
 limits --max_b 1000 --max_p 100 --max_n 10
 
 tc 1
@@ -84,7 +84,6 @@ tc sm-waiting-2    gen_waiting -n 100 -p 12 -d 13
 
 group group4 15
 limits --max_p 1_000_000 --max_n 1000 
-include_group group2
 include_group group3
 tc check-inf
 tc md-some-holes   gen_random -b 1000 -p 2 -d 10 -n 333
@@ -114,7 +113,7 @@ tc small-m-crit-bigc       gen_critc   -b 1_000_000 -p 100 -d0 43 -n 1000
 tc lg-waiting-1           gen_waiting -n 100_000 -p 100 -d 100
 tc lg-waiting-2           gen_waiting -n 100_000 -p 100 -d 101
 
-group group6 35
+group group6 15
 limits --max_p 1_000_000
 include_group group1
 include_group group4
