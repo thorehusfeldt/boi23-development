@@ -21,7 +21,7 @@ sample 4
 sample 5
 
 # t <= s
-group group1 8
+group group1 18
 limits --s_geq_t
 tc 1
 
@@ -40,7 +40,7 @@ tc s-geq-t-lg-random-3 gen_random       --s 100 --t 10  --k 50  --n 499
 tc s-geq-t-lg-random-4 gen_random       --s 1   --t 1   --k 123 --n 700
 
 # k = n <= 50 and s = 0
-group group2 9
+group group2 17
 limits --s_eq_0 --max_n 50
 tc 4
 tc k-eq-n-s_eq_t_eq_0 gen_random        --s 0   --t 0   --k  5 --n 10
@@ -78,7 +78,7 @@ tc s-eq-0-sm-planted-ans-4 gen_equal_planted_answer --s 0 --t 100 --k 20 --n 50
 tc s-eq-0-sm-planted-ans-5 gen_equal_planted_answer --s 0 --t 1000000000 --k 20 --n 50
 
 # s = 0 
-group group3 18
+group group3 15
 limits --s_eq_0
 include_group group2
 tc lg-s0-random-3 gen_random       --s 0 --t  10 --k  5 --n 700
@@ -100,7 +100,7 @@ tc lg-s0-planted-ans-4 gen_equal_planted_answer --s 0 --t 1000 --k 50 --n 700
 tc lg-s0-planted-ans-5 gen_equal_planted_answer --s 0 --t 1000 --k 100 --n 700
 
 # O(n^4)
-group group4 13
+group group4 12
 limits --max_n 50
 include_group group2
 tc 1
@@ -150,7 +150,7 @@ tc md-planted-ans-2 gen_equal_planted_answer --s 9 --t 30 --k 10 --n 350
 tc md-planted-ans-3 gen_equal_planted_answer --s 9 --t 30 --k 40 --n 350
 
 # O(n^2 lg eps^-2)
-group group6 15
+group group6 10
 output_validator_flags float_tolerance 0.1
 tc lp-s_eq_t_eq_0 gen_random        --s 0   --t 0   --k  5  --n 10
 tc lp-sm-random-3 gen_random        --s 100 --t 10  --k  5  --n 50
@@ -183,7 +183,7 @@ tc lp-planted-ans-5 gen_equal_planted_answer --s 900000000 --t 1000000000 --k 10
 
 
 # O(n^2 lg eps^-1 + n lg eps^-2 lg n)
-group group7 23
+group group7 14
 include_group group1
 include_group group2
 include_group group3
