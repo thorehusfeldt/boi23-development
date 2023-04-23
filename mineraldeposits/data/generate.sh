@@ -14,7 +14,7 @@ compile gen_border_points.py
 samplegroup
 # no samples
 
-group group1 9
+group group1 16
 limits --max_k 1 --min_w 10_000
 tc one-point-1 gen_explicit 10 10000 5 5
 tc one-point-2 gen_explicit 10 10000 9 1
@@ -67,7 +67,7 @@ tc g3-random-maxcand-5 gen_maximise_candidates --b 100_000_000 --w 210 --k 20 --
 tc g3-borders-1 gen_border_points --b 100_000_000 --w 210 --k 20
 tc g3-borders-2 gen_border_points --b 100_000_000 --w 210 --k 20
 
-group group4 7
+group group4 13
 limits --min_w 130
 include_group group3
 tc g4-random-maxk-1 gen_random --b 100 --w 130 --k 20
@@ -79,7 +79,7 @@ tc g4-random-maxcand-5 gen_maximise_candidates --b 100_000_000  --w 130 --k 20 -
 tc g4-borders-1 gen_border_points --b 100_000_000 --w 130 --k 20
 tc g4-borders-2 gen_border_points --b 100_000_000 --w 130 --k 20
 
-group group5 20
+group group5 14
 limits --min_w 3 --max_b 10_000 
 #include_group group5
 tc ukr_task_description_sample_1 gen_explicit 5 3 1 2 3 3 2 5
@@ -95,7 +95,7 @@ tc g5-borders-1 gen_border_points --b 10_000 --w 3 --k 20
 tc g5-borders-2 gen_border_points --b 10_000 --w 3 --k 20
 
 
-group group6 15
+group group6 14
 limits --min_w 3 --max_b 10_000_000
 include_group group5
 tc g6-random-maxk-5 gen_random --b 10_000_000  --w 3 --k 20
@@ -108,7 +108,7 @@ tc g6-borders-1 gen_border_points --b 10_000_000 --w 3 --k 20
 tc g6-borders-2 gen_border_points --b 10_000_000 --w 3 --k 20
 
 
-group group7 19
+group group7 13
 include_group group4
 include_group group6
 tc g7-tmp-1 gen_random --b 100_000_000 --w 2 --k 7
