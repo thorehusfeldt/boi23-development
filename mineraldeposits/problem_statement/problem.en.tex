@@ -11,7 +11,7 @@ Preliminary scans show the presence of $k$~mineral deposits on the asteroid, but
 The surface of the asteroid can be seen as a grid of integer coordinates.
 Each of the mineral deposits is located at unknown integer coordinates such that the $i$th deposit has coordinates $(x_i, y_i)$ with  
 $-b \le x_i \le b$ and $-b\le y_i \le b$ %constraint:depositcoords
-for some integer $b$ corresponding to the size of your initial scan.
+for some integer $b$ corresponding to the size of your initial scan. All locations are unique.
 
 To determine the precise locations of the mineral deposits, you may send probes to the surface of the asteroid. 
 The probes are sent out in waves of several probes at once.
@@ -38,6 +38,7 @@ A query consists of \texttt{?} followed by $2d$ integers separated by space, suc
 $1\leq d\leq 2000$. % constraint:wavesize
 The values $(s_i,t_i)$ are interpreted as the coordinates of the $i$th probe and must satisfy
 $-10^8 \leq s_i \leq 10^8$ and $-10^8 \leq t_i \leq 10^8$. % constraint:probecoordinates
+Each $(s_i,t_i)$ in a wave must be unique.
 The response is a single line with $k \cdot d$ integers in non-decreasing order: 
 the Manhattan distances between all pairs of mineral deposits and probe coordinates.
 The total number of probes across all waves may not exceed
